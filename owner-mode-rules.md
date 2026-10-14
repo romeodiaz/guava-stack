@@ -41,4 +41,4 @@ Your AI assistant works like it owns the result: it handles the safe work on its
 - v1.5.0 (2026-10-14): Rule 17 now runs final copy through the live [humanizer skill](https://github.com/blader/humanizer) by blader, fetched fresh each time.
 - v1.4.0 (2026-10-14): Rule 4 now asks for all decisions at once as a numbered list with a recommended answer for each. New rule 23 keeps passwords, keys and personal details out of notes and handoffs. Both ideas come from [Matt Pocock's skills](https://github.com/mattpocock/skills).
 - v1.3.0 (2026-10-14): Simplified the repo to a few files. The rules haven't changed since v1.0.0.
-- v1.0.0 (2026-10-14): First release of the 22 rules.
+- v1.0.0 (2026-10-14): First release of the 22 rules, adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack).

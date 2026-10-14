@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0 (2026-10-14)
+- Flattened the repo: hub-setup.md and owner-mode-rules.md now live at the root.
+- Merged the Owner Mode install prompt into owner-mode-rules.md.
+- Assistant notes are one file each in assistants/.
+
 ## 1.1.1 (2026-10-14)
 - Moved the Start here steps into README.md and removed START.md.
 

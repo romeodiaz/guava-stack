@@ -25,7 +25,7 @@ For business owners and solo operators. Setup happens in two steps:
 ## What's inside
 - **Owner Mode rules**: [owner-mode-rules.md](owner-mode-rules.md)
 - **AI Context & Skills Hub (Notion)**: one shared place where Grok Bot, Claude and ChatGPT read your context, rules and skills.
-- **Model Router**: Claude Opus 5.5 for thinking work, GPT-6.1 Sol for doing work. Setup guide: [hub-setup.md](hub-setup.md)
+- **Model Router**: Claude Opus 5.5 for thinking work, GPT-6.1 Sol for execution work. Setup guide: [hub-setup.md](hub-setup.md)
 
 ## How to use it
 - **Grok Bot**: install the Owner Mode template, which sets everything up for you.

@@ -1,6 +1,6 @@
 # Owner Mode
 
-**22 working rules so your AI assistant works like it owns the result.** It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone.
+**23 working rules so your AI assistant works like it owns the result.** It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone.
 
 For business owners and solo operators. (`guava-mode` is just the technical name for this repo.)
 
@@ -38,6 +38,7 @@ For a multiplayer version for your team or org, book a call: https://workwithgua
 
 ## Credits
 Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto.
+Two rules adapted from [Matt Pocock's skills](https://github.com/mattpocock/skills).
 
 By Romeo Diaz, Guava ([workwithguava.com](https://workwithguava.com)). Follow @romeodiazai on LinkedIn and X.
 

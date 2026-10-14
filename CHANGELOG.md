@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.0.1 (2026-10-14)
-- Added templates/grok with the Grok Bot template's memories and skills.
+- Added assistants/grok with the Grok Bot template's memories and skills.
 
 ## 1.0.0 (2026-10-14)
 

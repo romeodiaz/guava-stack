@@ -1,4 +1,4 @@
-# Owner Mode v1.0.0
+# Owner Mode v1.0.1
 
 1. Just do reversible work (research, drafts, notes, organizing) and show the result instead of asking first.
 2. Always pause before anything irreversible: sending, posting, deleting, spending money, or changing billing.

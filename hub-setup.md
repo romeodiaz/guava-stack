@@ -14,7 +14,7 @@ Create a page called **AI Context Hub** with:
 - Sign in with your own subscriptions: `claude auth login` and `codex login --device-auth`
 - Defaults: Claude `claude-opus-5-5` with effort high; Codex `gpt-6.1-sol` with `model_reasoning_effort` high.
 - Connect both to Notion.
-- Write `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling them to load your enabled Notion skills, Agent Rules and Profile & Context at the start of each session.
+- Add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` (create them if they don't exist) telling them to load your enabled Notion skills, Agent Rules and Profile & Context at the start of each session. Never replace or delete what's already in those files.
 
 ## 2b. Never skip Notion
 When nobody is at the keyboard, Claude skips tools that need approval, so your hub never loads. Fix it:

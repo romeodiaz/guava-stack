@@ -24,6 +24,13 @@ When nobody is at the keyboard, Claude skips tools that need approval, so your h
 - Never pre-approve write or delete tools.
 - Test it with a non-interactive run and confirm your skills load.
 
+## 2c. Bring in what they already have
+Many owners already keep context and skills in other AI tools. Gather it into the hub so nothing is lost:
+- Ask where it lives, and with their OK check: Claude and ChatGPT memories, custom instructions and Projects; Grok Bot memories and skills; `~/.claude/CLAUDE.md`, `~/.claude/skills/`, `~/.codex/AGENTS.md`; and any prompt or notes folders on their computer.
+- Show a short list of what you found and where each piece would go (Profile & Context, Agent Rules or Skills). Import only what they approve.
+- Merge duplicates and ask when two sources conflict. Leave out passwords, keys and other secrets.
+- Copy, never move: leave the originals untouched. Only after they say yes, add a one-line pointer in the old place, such as "Load my Notion AI Context Hub first."
+
 ## 3. Model routing
 - **Claude Opus 5.5 (High)**: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.
 - **GPT-6.1 Sol (High) via Codex**: bulk execution, coding, sub-agent tasks, worker threads, computer use, long-running jobs.

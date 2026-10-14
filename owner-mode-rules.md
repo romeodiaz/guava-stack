@@ -1,12 +1,12 @@
-# Owner Mode v1.2.0
+# Owner Mode v1.3.0
 
 Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone.
 
 ## How to install or update (for your AI assistant)
-1. Get the latest version of this file and the version number from https://raw.githubusercontent.com/romeodiaz/guava-mode/main/owner-mode-rules.md and https://raw.githubusercontent.com/romeodiaz/guava-mode/main/VERSION.
+1. Get the latest version of this file from https://raw.githubusercontent.com/romeodiaz/guava-mode/main/owner-mode-rules.md. The version number is in its title.
 2. Find the "Agent Rules" page in the owner's Notion AI Context Hub. If you can't find it, ask where to put the rules.
 3. If Owner Mode isn't there yet, save the rules below in a section called "How to work with me", with the version number.
-4. If it's already there, compare versions and only replace the rules if this version is newer. Then read https://raw.githubusercontent.com/romeodiaz/guava-mode/main/CHANGELOG.md and explain in plain words what changed.
+4. If it's already there, compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using What changed at the bottom.
 5. Follow these rules on every task from now on.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it.
 
@@ -35,3 +35,7 @@ Your AI assistant works like it owns the result: it handles the safe work on its
 20. For long jobs, keep a short log of what you decided and why.
 21. When the owner keeps repeating an instruction, turn it into a skill or routine.
 22. When corrected, update the relevant skill or Agent Rules so it doesn't happen again.
+
+## What changed
+- v1.3.0 (2026-10-14): Simplified the repo to a few files. The rules haven't changed since v1.0.0.
+- v1.0.0 (2026-10-14): First release of the 22 rules.

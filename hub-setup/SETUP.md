@@ -1,0 +1,45 @@
+# AI Context & Skills Hub + Model Router: setup
+
+These steps give Grok Bot, Claude and ChatGPT one shared place for your context, rules and skills, and send each kind of work to the model that's best at it.
+
+## 1. Build the Notion hub
+Create a page called **AI Context Hub** with:
+- **Profile & Context**: answer a short interview about you and your business. No passwords, keys or other secrets.
+- **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; keep a change log.
+- **Skills**: a database for Notion's skill upload, including a model-routing skill. Enable all skills for external agents and Notion AI.
+
+## 2. Install the command-line tools
+- Install Claude Code: `npm i -g @anthropic-ai/claude-code`
+- Install Codex: `npm i -g @openai/codex`
+- Sign in with your own subscriptions: `claude auth login` and `codex login --device-auth`
+- Defaults: Claude `claude-opus-5-5` with effort high; Codex `gpt-6.1-sol` with `model_reasoning_effort` high.
+- Connect both to Notion.
+- Write `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling them to load your enabled Notion skills, Agent Rules and Profile & Context at the start of each session.
+
+## 2b. Never skip Notion
+When nobody is at the keyboard, Claude skips tools that need approval, so your hub never loads. Fix it:
+- Back up `~/.claude/settings.json` first.
+- Under `permissions.allow`, add the Notion read-only tools: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill`. Use the exact prefix shown by `claude mcp list` (for example `mcp__claude_ai_Notion__notion-fetch`).
+- Do the same for Codex if needed.
+- Never pre-approve write or delete tools.
+- Test it with a non-interactive run and confirm your skills load.
+
+## 3. Model routing
+- **Claude Opus 5.5 (High)**: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.
+- **GPT-6.1 Sol (High) via Codex**: bulk execution, coding, sub-agent tasks, worker threads, computer use, long-running jobs.
+
+## 3b. Stay inside Anthropic's terms
+- Use the official Claude Code CLI with your own login only.
+- Never share tokens or route other people's requests through your plan.
+- Keep Claude work tied to tasks you start. No unattended loops or 24/7 jobs; send those to Codex.
+- Stop when you hit usage limits.
+- Never use outputs to train competing models.
+- For heavy or always-on Claude automation, use an Anthropic API key, or do it by hand in Claude Desktop.
+
+## 4. Standing instruction
+Save a standing instruction for your assistant to load the hub before any real work.
+
+## 5. Final checks
+- Check the current Anthropic and OpenAI terms.
+- Test each CLI.
+- Add the Notion connector in the Claude and ChatGPT apps, with a custom instruction: "Load my Notion AI Context Hub first."

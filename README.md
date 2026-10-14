@@ -39,6 +39,7 @@ For a multiplayer version for your team or org, book a call: https://workwithgua
 ## Credits
 Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto.
 Two rules adapted from [Matt Pocock's skills](https://github.com/mattpocock/skills).
+Rule 17 uses the [humanizer skill](https://github.com/blader/humanizer) by blader.
 
 By Romeo Diaz, Guava ([workwithguava.com](https://workwithguava.com)). Follow @romeodiazai on LinkedIn and X.
 

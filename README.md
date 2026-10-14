@@ -37,7 +37,7 @@ Tell your assistant: **"update Owner Mode from github.com/romeodiaz/guava-mode"*
 For a multiplayer version for your team or org, book a call: https://workwithguava.com/talk
 
 ## Credits
-Adapted from poteto mode in Cursor's pstack plugin, by poteto.
+Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto.
 
 By Romeo Diaz, Guava ([workwithguava.com](https://workwithguava.com)). Follow @romeodiazai on LinkedIn and X.
 

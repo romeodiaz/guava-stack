@@ -19,7 +19,7 @@ For business owners and solo operators. (`guava-mode` is just the technical name
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.
    - When the owner says "update Owner Mode", follow owner-mode-rules.md from github.com/romeodiaz/guava-mode.
 4. Follow [hub-setup.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/hub-setup.md).
-5. Offer Owner Mode: "Want to turn on Owner Mode? Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [owner-mode-rules.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/owner-mode-rules.md). If not, tell them they can say "turn on Owner Mode" anytime.
+5. Offer Owner Mode: "Ready to turn on Owner Mode? Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [owner-mode-rules.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/owner-mode-rules.md). If not, tell them they can say "turn on Owner Mode" anytime.
 
 ## What's inside
 - **Owner Mode rules**: [owner-mode-rules.md](owner-mode-rules.md)

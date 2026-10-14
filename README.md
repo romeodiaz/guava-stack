@@ -5,7 +5,7 @@
 For business owners and solo operators. (`guava-mode` is just the technical name for this repo.)
 
 ## Start here
-**AI assistants:** follow these steps in order. First check `assistants/<your assistant>/ADAPTER.md` for steps to skip or change. If there's no adapter for you, do what your platform supports and tell the owner what you skipped.
+**AI assistants:** follow these steps in order. First check `assistants/<your assistant>.md` for steps to skip or change. If there's no adapter for you, do what your platform supports and tell the owner what you skipped.
 
 1. Follow [ONBOARDING.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/ONBOARDING.md) (questions for the owner).
 2. Save [INSTRUCTIONS.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/INSTRUCTIONS.md) to your memory, custom instructions or system prompt.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 (2026-10-14)
+- Added START.md, a single entry point any assistant can follow.
+- Added ONBOARDING.md and INSTRUCTIONS.md at the root.
+- Slimmed assistants/grok to an ADAPTER.md for Grok Bot-specific notes.
+
 ## 1.0.1 (2026-10-14)
 - Added assistants/grok with the Grok Bot template's memories and skills.
 

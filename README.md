@@ -4,6 +4,9 @@
 
 For business owners and solo operators. (`guava-mode` is just the technical name for this repo.)
 
+## Start here
+Any AI assistant can set this up by following [START.md](START.md). Platform notes live in `assistants/<name>/ADAPTER.md`.
+
 ## What's inside
 - **Owner Mode rules**: [owner-mode/RULES.md](owner-mode/RULES.md)
 - **AI Context & Skills Hub (Notion)**: one shared place where Grok Bot, Claude and ChatGPT read your context, rules and skills.

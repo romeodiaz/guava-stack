@@ -5,7 +5,7 @@
     "url": "https://workwithguava.com"
   },
   "metadata": {
-    "description": "The Guava Stack for business owners and solo operators: a shared Notion AI context hub, a Claude + Codex model router, and guava-mode."
+    "description": "The Guava Stack for business owners and solo operators: a shared Notion AI context hub, a Claude + Codex model router, and founder-mode."
   },
   "plugins": [
     {
@@ -19,8 +19,8 @@
       "description": "For business owners and solo operators. Routes thinking work to Claude Opus 5.5 and execution work to GPT-6.1 Sol through the Claude Code and Codex CLIs, on the plans you already pay for. Part of the Guava Stack."
     },
     {
-      "name": "guava-mode",
-      "source": "./guava-mode",
+      "name": "founder-mode",
+      "source": "./founder-mode",
       "description": "For business owners and solo operators. 26 working rules so your AI assistant handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Part of the Guava Stack."
     }
   ]

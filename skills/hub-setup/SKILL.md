@@ -44,6 +44,7 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - **GPT-6.1 Sol (High) via Codex**: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.
 - **Browser and desktop tasks**: keep using the assistant's own computer tools.
 - **If either CLI fails**: do the task yourself and say so.
+- **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
 ## 3b. Stay inside Anthropic's terms
 - Use the official Claude Code CLI with your own login only.

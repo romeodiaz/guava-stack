@@ -18,7 +18,7 @@ For business owners and solo operators. Setup happens in two steps:
    - Is Notion connected here? If not, help connect it.
    - Do you have a Claude plan (Pro or Max) and a ChatGPT plan (Plus or Pro)?
 3. Save these standing instructions to your memory, custom instructions or system prompt (to shared memory across all the owner's assistants if your platform has it):
-   - Model routing: Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; browser and desktop tasks stay with your own computer tools; if either CLI fails, do the task yourself and say so.
+   - Model routing: Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; browser and desktop tasks stay with your own computer tools; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.
    - When the owner says "update Owner Mode", follow skills/owner-mode/SKILL.md from github.com/romeodiaz/guava-mode.
 4. Follow [skills/hub-setup/SKILL.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/skills/hub-setup/SKILL.md).

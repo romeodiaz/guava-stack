@@ -5,7 +5,7 @@
 - **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. Also save the README's model-routing instruction there:
   ```
   Before any substantive task, load my Notion AI Context Hub first (Profile & Context, Agent Rules and Skills) and treat it as the source of truth.
-  Route work per the model routing in my Notion hub: Claude Code CLI for thinking work, Codex CLI for execution work; if a CLI fails, do it yourself and say so.
+  Model routing: Claude Opus 5.5 High via Claude CLI (`claude -p`) for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI (`codex exec`) for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; quick replies and connector lookups stay with you; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open. Run routed work through the CLI without being asked, and mention which one you used.
   When I say "update Owner Mode", follow skills/owner-mode-rules/SKILL.md from github.com/romeodiaz/guava-mode.
   ```
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.

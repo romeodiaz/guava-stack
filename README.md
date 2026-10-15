@@ -57,7 +57,7 @@ Pick your assistant.
 <details>
 <summary><strong>Grok Bot</strong></summary>
 
-Install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfWqf3wH), which sets everything up for you. The Grok Bot and Cursor plugin marketplace listing is pending review.
+1-Click install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfWqf3wH), which sets everything up for you. The Grok Bot and Cursor plugin marketplace listing is pending review.
 
 </details>
 

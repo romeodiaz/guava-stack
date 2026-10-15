@@ -5,8 +5,6 @@ description: Set up the owner's shared AI Context & Skills Hub in Notion and the
 
 > Running this as setup? First follow the **Start here** steps in the [README](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/README.md), then come back here.
 
-> Before anything else: make sure you're the owner's main assistant (on Grok Bot, their primary bot). If not, recommend running setup there instead, or offer to make this one main, and wait for their choice.
-
 # AI Context & Skills Hub + Model Router: setup
 
 These steps give Grok Bot, Claude and ChatGPT one shared place for your context, rules and skills, and send each kind of work to the model that's best at it.

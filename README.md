@@ -8,13 +8,10 @@ For business owners and solo operators. Setup happens in two steps:
 2. **Owner Mode (optional).** 23 working rules so your AI assistant works like it owns the result. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
 
 ## Start here
-**Set this up in your main assistant** (on Grok Bot, your primary bot), not a separate one, so all your work uses it. New to Grok Bot? Install the template and it becomes your main bot.
-
 **People:** paste this into your AI assistant: "Set me up by following the Start here steps in github.com/romeodiaz/guava-mode."
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped.
 
-0. Check you're the owner's main assistant. If you're not (for example, a second Grok Bot that isn't their primary bot), say so and recommend running setup in their main one instead, or offer to make this one their main. Continue only once they've chosen.
 1. Say in one line: I'll set up a shared AI Context & Skills Hub in Notion so your AI assistants share the same context and skills, and route work to Claude Opus 5.5 and GPT-6.1 Sol.
 2. Ask one at a time, and save the answers:
    - What should I call you, and what's your business and audience in a sentence or two?

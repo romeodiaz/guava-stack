@@ -2,6 +2,7 @@
 
 Owner Mode version history.
 
+- 2026-10-15 (repo only): The repo is now the Guava Stack (github.com/romeodiaz/guava-stack). Owner Mode lives in guava-mode/, the Notion hub setup in guava-hub/ and the model router in guava-router/. The Owner Mode rules are unchanged.
 - 2026-10-14 (setup only): Setup now walks owners step by step through connecting Notion and adding the hub instruction in the Claude and ChatGPT apps, then checks both work. The Owner Mode rules are unchanged.
 - v1.7.0 (2026-10-14): The plugin now uses only its own bundled files: no live fetching of instructions. Rule 17 summarizes humanizer principles and links blader's humanizer skill instead of fetching it. Setup asks before every edit or install and asks the owner to paste or export context from other AI tools. Changelog moved here.
 - v1.6.1 (2026-10-14): Moved the files into the skills/ folder. The rules are unchanged.

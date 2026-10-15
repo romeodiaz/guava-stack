@@ -11,6 +11,8 @@ These steps give all of the owner's AI assistants one shared place for their con
 
 > **AI assistants:** first check `assistants/<your assistant>.md` in the guava-stack repo for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped.
 
+> **Just the hub?** If the owner asked for guava-hub on its own, do steps 1 to 4 and 7. Skip the one-or-two-models and AI plans questions, write Stack settings with only the Hub and Day-to-day assistant lines, and leave the routing line out of the standing instructions. Tell them they can add guava-router or founder-mode later.
+
 ## The three choices
 Every Guava setup is three choices. Each has a default, so an owner who doesn't care can just say "use the defaults".
 

@@ -147,13 +147,23 @@ Paste this:
 Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 ```
 
-Just want the founder-mode rules?
+</details>
+
+**Just want one piece?** Each one installs and works on its own. Paste one of these:
+
+```
+Install guava-hub from github.com/romeodiaz/guava-stack
+```
+
+```
+Install guava-router from github.com/romeodiaz/guava-stack
+```
 
 ```
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-</details>
+The hub alone gives every assistant your context, rules and skills. The router alone routes between your planner and builder without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
 
 That's it. Try one of these to see it work:
 1. "Set me up with a Google Drive hub. I only pay for Claude."

@@ -136,7 +136,7 @@ Setup asks for a yes before each of these:
 - **Commands run:** `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, a quick test prompt in each, and optionally Cisco Skill Scanner on third-party skills.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
 - **Saved:** pages and a Skills database in your Notion, and standing instructions in your assistant's memory.
-- **External services:** Notion, Anthropic (Claude Code), OpenAI (Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions.
+- **External services:** Notion, Anthropic (Claude Code), OpenAI (Codex), GitHub (this repo). Your profile and business details go only to your own Notion, and routed work goes to Anthropic or OpenAI under your own plans. Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
 
 </details>
 

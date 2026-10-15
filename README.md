@@ -8,7 +8,7 @@ For business owners and solo operators. Setup happens in two steps:
 2. **[Owner Mode](skills/owner-mode/SKILL.md) (optional).** 23 working rules so your AI assistant works like it owns the result. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
 
 ## Why install it
-- **One shared brain for your AI context** via [Notion's Skills API](https://www.notion.com/releases/2026-10-13). Your profile, rules and skills live in your own Notion, and Grok Bot, Claude, ChatGPT and other tools all read from it. Switch tools anytime without starting over.
+- **One shared brain for your AI context.** Your profile, rules and skills live in your own Notion, and Grok Bot, Claude, ChatGPT and other tools all read from it. Switch tools anytime without starting over.
 - **Use the subscriptions you already pay for.** Hard thinking goes to Claude Opus 5.5 and heavy lifting goes to GPT-6.1 Sol, through your own Claude and ChatGPT plans.
 - **Safer skills.** Third-party skills get scanned with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) before they're installed, and you see anything it flags.
 - **Writing that doesn't sound like AI slop.** Owner Mode checks final copy against the [humanizer's principles](https://github.com/blader/humanizer), so posts and emails lose the usual AI writing tells.

@@ -2,7 +2,11 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **planner + reviewer** model and heavy lifting to a **builder** model, on the plans you already pay for. With Grok Bot, Muse or the Claude desktop app's Code tab, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so every new chat checks your first request and sends you to the right model with a ready-to-paste prompt. Think of it as a kitchen: the planner + reviewer is the head chef, who plans the dishes and tastes each plate before it goes out, and the builder is the line cook, who does the prep and the cooking. Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
+Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **planner + reviewer** model and heavy lifting to a **builder** model, on the plans you already pay for. With Grok Bot, Muse or the Claude desktop app's Code tab, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so every new chat checks your first request and sends you to the right model with a ready-to-paste prompt. Think of it as a kitchen:
+- **Head chef** (planner + reviewer, today's best: Claude Opus 5.5): orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.
+- **Line cook** (builder, today's best: GPT-6.1 Sol): bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.
+
+Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
 
 | You pay for | Planner + reviewer | Builder |
 |---|---|---|

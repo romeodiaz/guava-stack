@@ -46,7 +46,7 @@ Three pieces that work together. Start with the hub; the other two are optional.
 3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
 
 ## Make it yours
-Every part is swappable. Pick what fits you today and change it later by telling your assistant.
+Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short Stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like going from one model to two, say "change my setup".
 
 **Where your hub lives**
 
@@ -91,7 +91,7 @@ The plans you pay for decide who's in the kitchen:
 | Cursor, Devin, Droid, Amp and others | Coming soon | Coming soon |
 <!-- /models -->
 
-AI models change fast. When better ones come out, the picks above get updated here. Say "check for newer models" and your assistant offers to swap them in. Your hub stays the same.
+These are suggestions. Any model your plans can run works as head chef or line cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
 
 **On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
 

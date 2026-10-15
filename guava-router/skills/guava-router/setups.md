@@ -44,5 +44,8 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude builder for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 
+## Your own picks
+Owners can put any model in either slot that a tool in their setup can run: any Claude model through Claude Code, any OpenAI model through Codex. Use the same commands as above with that model's ID and effort, and mark it "(own pick)" in Stack settings so "check for newer models" leaves it alone. For app routing, pick a model the app offers.
+
 ## Third-party tools (coming soon)
 Support for Cursor, Devin, Factory's Droid, Amp and other tools, as planner, builder or day-to-day assistant, is coming soon. Until then, set up the closest of the three setups above.

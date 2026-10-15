@@ -23,7 +23,7 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 <!-- /models -->
 
-The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. If the owner asks about third-party tools, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about third-party tools or another provider's models, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
@@ -52,7 +52,7 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 
 Test each tool with a quick non-interactive run that reads the Agent Rules from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session. Create the files if they don't exist. Never replace or delete what's already in them.
+Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them.
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
@@ -72,18 +72,18 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - **Hand-off rule**: if a tool can't reach the hub, the planner (or you) loads what the job needs from the hub and puts it in that tool's prompt.
 - **If either fails**: do the task yourself and say so.
 - **If you are the planner or the builder** (say, Claude Code in a Claude setup), do that slot's work yourself and send only the other slot's work out.
-- **Code tab with the Codex plugin:** hand builder jobs to the `codex:codex-rescue` subagent with the builder's model and effort (the owner can also type `/codex:rescue --model <builder model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
+- **Code tab with the Codex plugin:** hand builder jobs to the `codex:codex-rescue` subagent with the builder's model and effort from Stack settings (the owner can also type `/codex:rescue --model <builder model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
-Save these routing rules as a standing instruction, with the owner's planner and builder named, if hub setup hasn't already. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
+Save these routing rules as a standing instruction if hub setup hasn't already. With a hub, point it at the Planner and Builder in Stack settings instead of naming models, so the owner can swap a model by editing Stack settings; without one, name the models. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
 
 ## App routing (no CLIs)
 An app can't hand work to another model by itself, so the app's instructions do the routing before any work starts: every new chat sizes up the first request, and if it belongs on the other model, the app names that model and gives a ready-to-paste prompt instead of starting.
 
 1. Map the planner and builder to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
-2. Fill in the instruction below with the planner and builder models and show it to the owner. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
+2. Show the owner the instruction below. With a hub, use the first line as written, so it reads the models from Stack settings and a swap there needs no new paste; without a hub, replace it with the models' names. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
    ```
-   Model routing: plan with <planner model>. Execute with <builder model>.
+   Model routing: plan with the Planner in my Stack settings and execute with the Builder. Read them from my AI Context Hub at the start of each chat; if you can't, ask me which model to use.
    Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.
    Route first. At the start of every new chat, before doing anything else, decide whether my request is planning or execution.
    - Right model, or a quick question: go ahead.
@@ -92,7 +92,7 @@ An app can't hand work to another model by itself, so the app's instructions do 
    When a plan is ready, end with a hand-off I can paste into a new chat with the builder: the goal, the steps, what done looks like, and which hub skills to load.
    For important work, remind me to bring the result back to the planner for a check.
    ```
-   With the default setup, the first line reads: "<!-- models:app-routing-example -->Model routing: plan with Claude Opus 5.5. Execute with GPT-6.1 Sol.<!-- /models -->"
+   Without a hub, with the default setup, the first line reads: "<!-- models:app-routing-example -->Model routing: plan with Claude Opus 5.5. Execute with GPT-6.1 Sol.<!-- /models -->"
 3. Test it in a new chat on the planner: ask for something to execute. It passes if the app doesn't start, names the builder, and gives a ready-to-paste prompt. Then, in another new chat, ask for something to plan. It passes if it does the work and ends with a hand-off. If the builder is in a different app, check that app routes planning requests back the same way.
 4. Save the routing to Stack settings, noting which app holds each model.
 
@@ -112,10 +112,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 - CLI routing: test each slot with a quick prompt and tell the owner which model actually answered. App routing: the App routing test above. Don't call setup done until both slots pass.
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.
 
-## Check for newer models
-When the owner says "check for newer models" (or "update guava-router"):
-1. Read [models.yaml](../../models.yaml): the installed copy, or the one in github.com/romeodiaz/guava-stack if the owner set up by pasting the Start here line. To get the newest installed copy, the owner updates the plugin first (`/plugin update`, or reinstall it).
-2. Compare its head chef and line cook for the owner's AI setup with the Planner and Builder in Stack settings. If they match, say the owner is on the newest picks and stop. If the owner picked a model by hand that isn't in models.yaml, leave that slot alone and only mention the new pick.
-3. Show each change as old model, then new model, and wait for a yes.
-4. On a yes, update every place the old model is named, one change at a time: Stack settings, the standing instructions in your memory, the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` if they name models, and the model routing instruction in each Claude and ChatGPT app (show the new first line for the owner to paste). Never replace anything else.
-5. Test each changed slot as in step 7.
+## Changing the setup later
+To swap models, switch between one and two models, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" and "update guava-router" go there too.
+
+Without a hub, do the same by hand: compare the planner and builder with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.

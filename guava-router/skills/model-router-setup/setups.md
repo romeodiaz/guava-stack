@@ -36,6 +36,8 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 
 **In the apps:** both in the Claude app. Plan on Claude Opus 5.5 and execute on Claude Sonnet 5.5, each in its own new chat.
 
+**In the Claude desktop app's Code tab:** routing is built in. Set the model to `opusplan` (type `/model opusplan`, or set `"model": "opusplan"` in `~/.claude/settings.json`): Claude uses Opus 5.5 while in Plan mode and switches to Sonnet 5.5 on its own once the owner approves the plan. Teach the owner one habit: start real work in Plan mode. It works in Local and Remote Control sessions; in Cloud sessions, type `/model opusplan` at the start, since they don't read the computer's settings. Anthropic's docs don't say whether `opusplan` shows in the Code tab's model menu, so set it by command if it doesn't.
+
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude worker for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 
 ## Third-party tools (coming soon)

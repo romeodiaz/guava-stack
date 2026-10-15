@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
+
 # AI Context & Skills Hub + Model Router, with optional Owner Mode
 
 For business owners and solo operators. Setup happens in two steps:

@@ -70,9 +70,9 @@ If the owner pays for Claude and ChatGPT and your platform can run command-line 
 
 ## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
-"Ready to turn on founder-mode? It's 26 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
+"Ready to turn on founder-mode? It's 27 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
 - Turn it on (follow the **founder-mode-rules** skill from founder-mode)
-- Show me the 26 rules first (show them in plain words, then ask again)
+- Show me the 27 rules first (show them in plain words, then ask again)
 - Not now (tell them they can say "turn on founder-mode" anytime)
 
 ## 7. Wrap up

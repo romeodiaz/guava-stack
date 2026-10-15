@@ -82,11 +82,11 @@ Load my Notion AI Context Hub first.
 5. "Start a new chat. Click + and check Notion is turned on under Connectors. Then ask: What's in my AI Context Hub? Paste or describe the answer here."
 
 ChatGPT:
-1. "Now open the ChatGPT desktop app, or chatgpt.com on the web. Click your profile icon in the lower left, then Settings, then Plugins under Integrations."
+1. "Now ChatGPT, on the web (it works better than the desktop app here). Go to chatgpt.com, click your profile icon in the lower left, then Settings, then Plugins under Integrations."
 2. "Find Notion and click Connect (or Install plugin, then Connect)."
 3. "Sign in to Notion, pick the workspace with your AI Context Hub, and approve."
-4. "Click your profile icon, then Settings. Under Personal, open Personalization, then Custom Instructions, then Codex Instructions. Paste this and save:" then show the same code block.
-5. "Start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
+4. "Open [ChatGPT Personalization](https://chatgpt.com/settings/personalization). Under Custom Instructions, paste this in both the ChatGPT box and the Codex box, then save:" then show the same code block.
+5. "Start a new chat on chatgpt.com and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
 
 Check each answer. It passes if it mentions the owner's profile or hub pages. If it fails:
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.

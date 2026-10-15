@@ -1,11 +1,10 @@
 {
   "name": "guava-mode",
   "displayName": "Owner Mode",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion so your AI assistants share your context and skills, routes work to Claude Opus 5.5 and GPT-6.1 Sol, and optionally turns on Owner Mode.",
   "author": {
-    "name": "Romeo Diaz",
-    "url": "https://workwithguava.com"
+    "name": "Romeo Diaz"
   },
   "homepage": "https://workwithguava.com",
   "repository": "https://github.com/romeodiaz/guava-mode",

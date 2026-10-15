@@ -20,14 +20,14 @@ For business owners and solo operators. Setup happens in two steps:
 3. Save these standing instructions to your memory, custom instructions or system prompt:
    - Model routing: Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, sub-agent tasks, worker threads, computer use and long-running jobs.
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.
-   - When the owner says "update Owner Mode", follow owner-mode-rules.md from github.com/romeodiaz/guava-mode.
-4. Follow [hub-setup.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/hub-setup.md).
-5. Offer Owner Mode: "Ready to turn on Owner Mode? Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [owner-mode-rules.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/owner-mode-rules.md). If not, tell them they can say "turn on Owner Mode" anytime.
+   - When the owner says "update Owner Mode", follow skills/owner-mode/SKILL.md from github.com/romeodiaz/guava-mode.
+4. Follow [skills/hub-setup/SKILL.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/skills/hub-setup/SKILL.md).
+5. Offer Owner Mode: "Ready to turn on Owner Mode? Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [skills/owner-mode/SKILL.md](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/skills/owner-mode/SKILL.md). If not, tell them they can say "turn on Owner Mode" anytime.
 
 ## What's inside
 - **AI Context & Skills Hub (Notion)**: one shared place where Grok Bot, Claude and ChatGPT read your context, rules and skills.
-- **Model Router**: Claude Opus 5.5 for thinking work, GPT-6.1 Sol for execution work. Setup guide: [hub-setup.md](hub-setup.md)
-- **Owner Mode rules**: [owner-mode-rules.md](owner-mode-rules.md)
+- **Model Router**: Claude Opus 5.5 for thinking work, GPT-6.1 Sol for execution work. Setup guide: [skills/hub-setup/SKILL.md](skills/hub-setup/SKILL.md)
+- **Owner Mode rules**: [skills/owner-mode/SKILL.md](skills/owner-mode/SKILL.md)
 
 ## How to use it
 - **Grok Bot**: install the Owner Mode template, which sets everything up for you.

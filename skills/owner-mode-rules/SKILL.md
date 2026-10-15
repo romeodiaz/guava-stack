@@ -13,7 +13,7 @@ Your AI assistant works like humans do: it handles the safe work on its own and 
 3. If Owner Mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below in a section called "How to work with me", with the version number.
 4. If it's already there, compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using CHANGELOG.md in the repo.
 5. Follow these rules on every task from now on.
-6. Confirm with a 3-line summary: what you installed, which version, and where you saved it.
+6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.
 
 **People:** paste this into your AI assistant: "Install (or update) Owner Mode from github.com/romeodiaz/guava-mode."
 

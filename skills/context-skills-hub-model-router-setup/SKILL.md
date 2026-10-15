@@ -75,7 +75,7 @@ Claude (covers the desktop app, claude.ai and Claude Code, since they share the 
 1. "Open claude.ai/customize/connectors, or in the desktop app click Customize in the sidebar, then Connectors."
 2. "Click Discover, search Notion, then click Connect to Claude."
 3. "Sign in to Notion and click Allow. Pick the workspace with your AI Context Hub."
-4. "Click your initials in the bottom left, then Settings. Under Instructions for Claude, paste this and save:" then show:
+4. "Click your initials in the bottom left, then Settings, then Account. Under Instructions for Claude, paste this and save:" then show:
 ```
 Load my Notion AI Context Hub first.
 ```
@@ -85,8 +85,8 @@ ChatGPT:
 1. "In ChatGPT, click your profile icon, then Settings, then Plugins (Apps on some accounts)."
 2. "Find Notion and click Connect (or Install plugin, then Connect)."
 3. "Sign in to Notion, pick the workspace with your AI Context Hub, and approve."
-4. "In Settings, open Personalization. Turn on Enable customization, paste this into Custom Instructions and save:" then show the same code block.
-5. "Start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here."
+4. "In Settings, open Personalization and find Custom Instructions. Paste this and save:" then show the same code block. If they see Codex instructions (which edits AGENTS.md on their computer) instead of an Enable customization toggle, add the line there; that's the newer ChatGPT desktop app.
+5. "Start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
 
 Check each answer. It passes if it mentions the owner's profile or hub pages. If it fails:
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.
@@ -94,3 +94,16 @@ Check each answer. It passes if it mentions the owner's profile or hub pages. If
 - No Notion option or Connect is greyed out: it may be the plan or a work admin setting. Ask which plan they're on. On a work account, their admin has to turn Notion on.
 - Ignored the instruction: check it saved, then start a fresh chat.
 Don't call setup done until both apps pass.
+
+## 7. Offer Owner Mode
+Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
+"Ready to turn on Owner Mode? It's 23 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
+- Turn it on
+- Show me the 23 rules first (show them in plain words, then ask again)
+- Not now (tell them they can say "turn on Owner Mode" anytime)
+
+## 8. Wrap up
+End with a short close, never just a confirmation:
+- Two or three lines on what's set up: the Notion hub, both CLIs and the model routing, both apps connected and verified, and Owner Mode with its version if they turned it on.
+- Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
+- Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in Notion and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.

@@ -30,7 +30,7 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 
 **Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so every new chat first checks whether your request is planning or execution, and if it's on the wrong model, hands you a ready-to-paste prompt for the right one. Have both plans but don't want Grok Bot or Muse? The Claude desktop app's Code tab can be your assistant, no terminal needed: Claude plans, and OpenAI's [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) hands execution to Codex. Only pay for Claude? The Code tab's built-in `opusplan` mode plans on Opus and builds on Sonnet for you. Third-party tools like Cursor are coming soon. See [How to use it](#how-to-use-it).
 
-**Your AI models:** two by default, a planner that also reviews (thinking and checking) and a builder (doing). Your plans decide the pair. Prefer one do-it-all model? Pick it and skip routing; the hub and founder-mode work the same.
+**Your AI models:** two by default, run like a kitchen. Your strongest model is the **head chef**: it plans, researches, writes and tastes every plate at the pass before it goes out. Your faster, cheaper model is the **line cook**: it does the prep and the cooking, from bulk tasks and coding to long jobs. Your plans decide the pair. Prefer one do-it-all model? Pick it and skip routing; the hub and founder-mode work the same.
 
 | You pay for | Planner + reviewer | Builder |
 |---|---|---|

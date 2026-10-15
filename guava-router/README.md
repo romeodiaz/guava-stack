@@ -31,4 +31,5 @@ Works best with [guava-hub](../guava-hub/), since both tools load your AI Contex
 - Model picks: [models.yaml](models.yaml) is the one place they're kept. To swap in a newer model, change it there and run `python3 scripts/sync-models.py` from the repo root, which updates every README and skill that shows them. Owners already set up say "check for newer models".
 - Skill: [guava-router](skills/guava-router/SKILL.md), with details for each setup in [setups.md](skills/guava-router/setups.md)
 - Claude Code: `/plugin install guava-router --marketplace romeodiaz/guava-stack`
+- Update: say "update guava-router", or "update guava-stack" for every piece.
 - Install: see [Start here](../README.md#start-here) in the stack README.

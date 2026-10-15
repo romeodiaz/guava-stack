@@ -6,7 +6,7 @@
   ```
   Before any substantive task, load my Notion AI Context Hub first (Profile & Context, Agent Rules and Skills) and treat it as the source of truth.
   Model routing: use the Planner and Builder in my Stack settings, read fresh each task, through the CLI each one names (`claude -p` for Claude Code, `codex exec` for Codex): the planner for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the builder for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; quick replies and connector lookups stay with you; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open. Run routed work through the CLI without being asked, and mention which one you used.
-  When I say "update founder-mode", follow founder-mode/skills/founder-mode/SKILL.md from github.com/romeodiaz/guava-stack.
+  When I say "update guava-stack", "update guava-hub", "update guava-router" or "update founder-mode", follow the Update step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "update guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
   When I ask to change my setup (for example "change my setup", "apply my Stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
   ```
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.

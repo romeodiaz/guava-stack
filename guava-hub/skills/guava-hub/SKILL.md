@@ -1,6 +1,6 @@
 ---
 name: guava-hub
-description: Sets up the owner's shared AI Context & Skills Hub (Notion by default, or Google Drive or OneDrive/SharePoint) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Use when the owner says "set me up", asks for the AI Context Hub, or starts Guava setup.
+description: Sets up the owner's shared AI Context & Skills Hub (Notion by default, or Google Drive or OneDrive/SharePoint) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for the AI Context Hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
@@ -62,7 +62,7 @@ See `assistants/` for notes on each.
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.
    - Model routing: use the Planner and Builder named in Stack settings, read fresh each session, through the tool it names: the planner for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the builder for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, the planner reviews the builder's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - (One-model setups leave out the routing line.)
-   - When the owner says "update founder-mode", follow founder-mode/skills/founder-mode/SKILL.md from github.com/romeodiaz/guava-stack.
+   - When the owner says "update guava-stack", "update guava-hub", "update guava-router" or "update founder-mode", follow the Update step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "update guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
    - When the owner asks to change their setup (for example "change my setup", "make Sonnet my builder", "apply my Stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
 
    The standing instructions point at Stack settings instead of naming models, so when the owner changes a model there, every assistant picks it up the next time it loads the hub. If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
@@ -146,3 +146,32 @@ A planner or builder swap is only an edit to Stack settings, since every assista
    - Going from one model to two, or changing the day-to-day assistant: add or remove the routing lines and run the steps from step 2.
    Only edit what setup added. Removing routing when going to one model means taking out the routing lines setup added, after a yes; never touch anything else in those places.
 5. **Test it** the way setup does: each changed slot answers from the right model, and a new chat in each connected app still finds the hub. Then confirm in two or three lines what changed.
+
+## Update
+Use this when the owner says **"update guava-stack"** or **"update guava-hub"**. ("update guava-router" and "update founder-mode" have their own Update steps in those skills; "update guava-stack" runs all of them.)
+
+Show the whole plan first as one numbered list: each command, and each change as old, then new. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
+
+### 1. Get the newest files
+<!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
+Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub; for "update guava-stack", every one installed):
+- **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session. A Code tab **cloud** session can't update plugins: say so, and ask the owner to say the same thing in a Local session.
+- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
+- **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
+- **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
+- **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
+- **Muse:** no skill files, so nothing to download.
+- **Older copies:** look for Guava pieces under their old names: the `guava-mode` plugin (`claude plugin list`) and skill folders named `owner-mode-rules`, `founder-mode-rules`, `context-skills-hub-setup`, `context-skills-hub-model-router-setup` or `model-router-setup` in `~/.claude/skills`, `~/.agents/skills` and `~/.codex/skills`. They run old instructions next to the new ones. Offer to uninstall the old plugin (`claude plugin uninstall guava-mode@guava`) and move the old folders into a dated backup folder. Never delete them.
+<!-- /update-steps -->
+
+### 2. Bring the hub up to date
+Hubs set up with an earlier version may be missing newer parts. Read the hub, then:
+1. **Stack settings:** if Profile & Context doesn't start with a Stack settings section (hubs set up before 2026-10-15 don't have one), draft it from what the hub already says, such as a Model routing section, and from the owner's day-to-day assistant and AI plans. Ask only for what you can't find. Use the format in step 2 of setup, and mark models that aren't the suggested picks "(own pick)". Add it at the top of Profile & Context. Leave the old section in place, and offer to remove it once Stack settings is in, so the two can't disagree.
+2. **Agent Rules:** they need one rule to follow the model routing in Stack settings. If a rule already points routing somewhere else (such as "Follow the model routing in Profile & Context"), offer to reword that rule rather than add a second one. If Agent Rules keeps a change log, add a dated line for each hub edit.
+3. **Standing instructions:** compare each saved copy (your memory, shared user memory on Grok Bot, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, Muse's SOUL.md and the Claude and ChatGPT app instructions) with the ones in step 1 of setup. Offer to replace lines that name models, point at old names or paths (guava-mode, owner-mode-rules, founder-mode-rules, context-skills-hub-setup, model-router-setup), or are missing the update phrases. Say which local files you'll read before reading them. With the guava-hub plugin installed in Claude Code, the start-up hook replaces the Guava section setup added to `~/.claude/CLAUDE.md`: offer to remove only that section. Walk the owner through app instructions one app per message.
+
+### 3. Run the other updates
+For "update guava-stack", follow the Update step in the **guava-router** skill, then in the **founder-mode** skill, for whichever the owner has. Skip their "get the newest files" step, since step 1 above already did it.
+
+### 4. Check and wrap up
+In a new session or chat, ask "What's in my AI Context Hub?" and "Which Planner and Builder are in my Stack settings?". Both should answer from the hub. Then confirm in a few lines: each plugin's version before and after (from `claude plugin list`, `codex plugin list` or each skill's title), what changed in the hub, and anything left for the owner, such as starting a new session or pasting an app instruction.

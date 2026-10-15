@@ -3,15 +3,25 @@ name: founder-mode
 description: Installs, updates or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the Agent Rules page in their AI Context Hub. Use when the owner says "turn on founder-mode", "update founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v2.0.0
+# founder-mode v2.0.1
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
 ## How to install or update (for your AI assistant)
-1. Use this file as installed. The version number is in its title. To get a newer version, the owner updates the plugin (`/plugin update`, or reinstall it).
+1. Use this file as installed. The version number is in its title. When the owner says "update founder-mode", first get the newest copy of this file (skip this when the guava-hub Update step already did it), then use the new copy for the steps below: read it from where it was installed, or start a new session or chat and say "update founder-mode" again.
+<!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
+Only for the Guava plugins the owner has (for "update founder-mode", just founder-mode):
+- **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session. A Code tab **cloud** session can't update plugins: say so, and ask the owner to say the same thing in a Local session.
+- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
+- **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
+- **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
+- **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
+- **Muse:** no skill files, so nothing to download.
+- **Older copies:** look for Guava pieces under their old names: the `guava-mode` plugin (`claude plugin list`) and skill folders named `owner-mode-rules`, `founder-mode-rules`, `context-skills-hub-setup`, `context-skills-hub-model-router-setup` or `model-router-setup` in `~/.claude/skills`, `~/.agents/skills` and `~/.codex/skills`. They run old instructions next to the new ones. Offer to uninstall the old plugin (`claude plugin uninstall guava-mode@guava`) and move the old folders into a dated backup folder. Never delete them.
+<!-- /update-steps -->
 2. Ask before saving anything. Find the "Agent Rules" page (or document or file) in the owner's AI Context Hub, wherever it lives: Notion, Google Drive or OneDrive/SharePoint. If you can't find it, ask where to put the rules.
 3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
-4. If a "How to work with me" section with a version number is already there (older versions used a different name), compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using CHANGELOG.md in the repo.
+4. If a "How to work with me" section with a version number is already there (older versions were called Owner Mode), compare versions. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. If only setup steps changed, update the version number and say the rules are the same.
 5. Follow these rules on every task from now on. If another rule on the Agent Rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.
 

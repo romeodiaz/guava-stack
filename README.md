@@ -162,7 +162,9 @@ That's it. Try one of these to see it work:
 4. "Write this week's LinkedIn post in my voice."
 
 ## How to update
-Tell your assistant **"update founder-mode"**. It checks for a newer version, updates only if there is one, and tells you what changed. See the [changelog](founder-mode/CHANGELOG.md).
+Tell your assistant **"update guava-stack"**. It gets the newest version of every Guava piece you have, brings your hub up to date (hubs set up before Stack settings get it added), offers any newer models, updates founder-mode, and tells you what changed. It shows the whole plan first, so one yes covers it.
+
+To update one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, say it in a Local Code tab session, not a cloud one. See the [changelog](founder-mode/CHANGELOG.md).
 
 ## Your data stays yours
 Guava collects nothing. Your profile and business details go only to your own hub, and your AI work goes only to the AI services you already use, under your own plans. Setup asks for a yes before every change.

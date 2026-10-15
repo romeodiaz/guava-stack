@@ -18,4 +18,5 @@ Every hub has the same three parts (Profile & Context, Agent Rules and Skills), 
 - Start-up hook: in Claude Code and the Claude desktop app's Code tab, the plugin reminds every new session to load your hub and follow your Stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add.
 - Skill: [guava-hub](skills/guava-hub/SKILL.md)
 - Claude Code: `/plugin install guava-hub --marketplace romeodiaz/guava-stack`
+- Update: say "update guava-hub", or "update guava-stack" for every piece.
 - Install: see [Start here](../README.md#start-here) in the stack README.

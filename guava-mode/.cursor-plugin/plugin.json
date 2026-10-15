@@ -1,8 +1,8 @@
 {
   "name": "guava-mode",
   "displayName": "Owner Mode",
-  "version": "1.7.0",
-  "description": "For business owners and solo operators. Owner Mode: 23 working rules so your AI assistant handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Part of the Guava Stack.",
+  "version": "2.0.0",
+  "description": "For business owners and solo operators. Owner Mode: 26 working rules so your AI assistant handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz"
   },

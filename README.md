@@ -12,7 +12,7 @@ For business owners and solo operators. The stack has three pieces that live tog
 |---|---|---|
 | **[guava-hub](guava-hub/)** | A shared AI Context & Skills Hub in Notion, so Grok Bot, Claude and ChatGPT share your context, rules and skills. | [context-skills-hub-setup](guava-hub/skills/context-skills-hub-setup/SKILL.md) |
 | **[guava-router](guava-router/)** | Routes hard thinking to Claude Opus 5.5 and heavy lifting to GPT-6.1 Sol through their CLIs, on the plans you already pay for. | [model-router-setup](guava-router/skills/model-router-setup/SKILL.md) |
-| **[guava-mode](guava-mode/)** (optional) | Owner Mode: 23 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. | [owner-mode-rules](guava-mode/skills/owner-mode-rules/SKILL.md) |
+| **[guava-mode](guava-mode/)** (optional) | Owner Mode: 26 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. | [owner-mode-rules](guava-mode/skills/owner-mode-rules/SKILL.md) |
 
 Setup starts with the hub, then the router, then offers Owner Mode. You can turn on Owner Mode at the end of setup or anytime later.
 

@@ -38,14 +38,5 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude worker for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 
-## Other tools or a custom mix
-For owners who use Cursor, Devin, Factory's Droid, Amp or another AI tool, or who want any other pairing (for example Opus as planner and Cursor as worker). Any tool can fill either slot.
-
-1. Ask which tools they pay for. Suggest the strongest reasoning model they have as planner and the fastest capable one as worker, and let them pick.
-2. For each slot, record four things in Stack settings: the tool, the model, its effort setting, and how to hand it a job.
-3. **Tools with a CLI:** find the non-interactive command in the tool's docs or its `--help`, then test it. Examples to confirm on the owner's machine: Cursor's `cursor-agent -p`, Droid's `droid exec`, Amp's `amp -x`. Install only what's missing, with a yes, and sign in with the owner's own account.
-4. **Tools that run in the cloud** (such as Devin) take jobs through their own app, Slack or API, not a local command. Record how the owner hands them work, and check their results like any worker's.
-5. Connect each tool to the hub if it supports the hub's connector or MCP server. Most of these tools also read an `AGENTS.md` file for standing instructions; check the tool's docs. If a tool can't reach the hub, the planner passes it what it needs (see the hand-off rule in the skill).
-6. Follow each tool's own terms of service.
-
-**In the apps:** use whichever apps hold the owner's planner and worker, the same way as the setups above.
+## Third-party tools (coming soon)
+Support for Cursor, Devin, Factory's Droid, Amp and other tools, as planner, worker or day-to-day assistant, is coming soon. Until then, set up the closest of the three setups above.

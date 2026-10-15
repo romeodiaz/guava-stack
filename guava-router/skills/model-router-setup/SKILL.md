@@ -1,6 +1,6 @@
 ---
 name: model-router-setup
-description: Sets up a Model Router that sends thinking work to a planner model and doing work to a worker model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as worker, and also supports ChatGPT only, Claude only, and other tools like Cursor, Devin, Droid and Amp. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
+description: Sets up a Model Router that sends thinking work to a planner model and doing work to a worker model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as worker, and also supports ChatGPT only and Claude only. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
@@ -19,18 +19,18 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Other tools or a custom mix (Cursor, Devin, Droid, Amp and others) | The owner's pick | The owner's pick |
+| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 
-[setups.md](setups.md) has the model IDs, commands and notes for each. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+[setups.md](setups.md) has the model IDs, commands and notes for each. If the owner asks about third-party tools, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
 Then pick how it routes, from the owner's day-to-day assistant:
-- **CLI routing:** Grok Bot, Muse, Claude Code, Codex or another tool that can run commands. Follow steps 2 to 7.
+- **CLI routing:** Grok Bot, Muse, Claude Code or Codex. Follow steps 2 to 7.
 - **App routing:** the owner works in the Claude or ChatGPT app (web, desktop or mobile) and doesn't have or want Grok Bot or Muse. Skip steps 2 to 4, follow the **App routing** step below, then steps 6 and 7.
 
 ## 2. Install the command-line tools
 Only the tools the setup uses.
-- Check first, without asking (these only read): `claude --version`, `codex --version`, or the other tool's version command. Skip the install for any tool that answers with a version, and tell the owner it's already there.
-- Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code`; Codex `npm i -g @openai/codex`; other tools as their docs say.
+- Check first, without asking (these only read): `claude --version` and `codex --version`. Skip the install for any tool that answers with a version, and tell the owner it's already there.
+- Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code`; Codex `npm i -g @openai/codex`.
 - Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise sign in with the owner's own subscription: `claude auth login` and `codex login --device-auth`.
 - Set each slot's model and effort as [setups.md](setups.md) shows.
 
@@ -42,11 +42,11 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
   - Codex: run `codex mcp add notion --url https://mcp.notion.com/mcp`, then `codex mcp login notion` and have the owner approve Notion's sign-in page.
 - **Google Drive or OneDrive/SharePoint:**
   - Claude Code picks up the Google Drive or Microsoft 365 connector from the Claude app when it's signed in with the same account. Check `claude mcp list` shows it.
-  - Codex and other tools don't share the ChatGPT app's connectors. Add an official MCP server from Google or Microsoft if one exists for the tool; otherwise skip it and rely on the hand-off rule in step 5.
+  - Codex doesn't share the ChatGPT app's connectors. Add an official MCP server from Google or Microsoft if one exists for the tool; otherwise skip it and rely on the hand-off rule in step 5.
 
 Test each tool with a quick non-interactive run that reads the Agent Rules from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` (or the other tool's instructions file) telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session. Create the files if they don't exist. Never replace or delete what's already in them.
+Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session. Create the files if they don't exist. Never replace or delete what's already in them.
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
@@ -55,7 +55,7 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - Under `permissions.allow`, add only the hub's read-only tools, with the exact prefix `claude mcp list` shows:
   - Notion: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill` (for example `mcp__claude_ai_Notion__notion-fetch`).
   - Google Drive or Microsoft 365: the connector's search, fetch and read tools.
-- Do the same for Codex or other tools if needed.
+- Do the same for Codex if needed.
 - Never pre-approve write or delete tools.
 - Test it with a non-interactive run and confirm the skills load.
 

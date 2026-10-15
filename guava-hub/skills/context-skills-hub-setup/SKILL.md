@@ -30,7 +30,7 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 |---|---|
 | **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. |
 | The Claude or ChatGPT app (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
-| Claude Code, Codex or another coding tool | It runs the CLIs on the owner's computer. |
+| Claude Code or Codex | For owners with both plans who'd rather not use Grok Bot or Muse. It runs on the owner's computer and routes each job through the other CLI. |
 
 See `assistants/` for notes on each.
 
@@ -41,7 +41,7 @@ See `assistants/` for notes on each.
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Other tools or a custom mix (Cursor, Devin, Droid, Amp and others) | The owner's pick | The owner's pick |
+| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 
 ## 1. Start
 1. Say in one line: I'll set up a shared AI Context & Skills Hub so your AI assistants share the same context and skills, and route each job to the AI that's best at it.
@@ -49,7 +49,7 @@ See `assistants/` for notes on each.
    - What should I call you, and what's your business and audience in a sentence or two?
    - Where should your hub live? Offer the three hubs above, Notion marked as recommended. If they're unsure, use Notion.
    - Which assistant will you use day to day? Offer the three kinds above, Grok Bot or Muse marked as recommended. Owners who don't have or want Grok Bot or Muse pick their Claude or ChatGPT app.
-   - Which AI plans do you pay for? Offer the four AI setups above, Claude + ChatGPT marked as recommended. Any paid plan works. For other tools, ask which tool and model they want as planner and as worker, or suggest the strongest reasoning model they have as planner and the fastest capable one as worker.
+   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended. Any paid plan works. If they ask about third-party tools, say support is coming soon and set up the closest of the three for now.
    - Is the hub connected here? If not, help connect it, following the backend's file.
 3. Show the owner these standing instructions, filled in with their hub, planner and worker, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them:
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.
@@ -86,7 +86,7 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my Notion AI Context Hub first."
 
 ## 4. Connect the apps
-Required for every app in the owner's AI setup: Claude, ChatGPT or both (for other tools, any that have a connector for their hub). Follow **Connect the apps** in the backend's file.
+Required for every app in the owner's AI setup: Claude, ChatGPT or both. Follow **Connect the apps** in the backend's file.
 
 Walk them through it; don't leave it as a note or a menu. Don't ask whether the apps are already connected. Start the walkthrough right away; if a step is already done, the owner can say so and you move on. Do Claude first, then ChatGPT. Use the quoted wording in the backend's file as written. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
 

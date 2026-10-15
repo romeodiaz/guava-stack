@@ -28,7 +28,7 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 | OneDrive / SharePoint | Owners on Microsoft 365 |
 | Obsidian / local Markdown | Coming soon |
 
-**Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so every new chat first checks whether your request is planning or execution, and if it's on the wrong model, hands you a ready-to-paste prompt for the right one. Claude Code, Codex and coding tools like Cursor work too. See [How to use it](#how-to-use-it).
+**Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so every new chat first checks whether your request is planning or execution, and if it's on the wrong model, hands you a ready-to-paste prompt for the right one. Have both plans but don't want Grok Bot or Muse? Claude Code or Codex can be your assistant and route between the two CLIs. Third-party tools like Cursor are coming soon. See [How to use it](#how-to-use-it).
 
 **Your AI plans**, which decide the planner (thinking) and the worker (doing):
 
@@ -37,7 +37,7 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) | GPT-6.1 Sol (High) |
 | ChatGPT only | Astra (High) | GPT-6.1 Sol (High) |
 | Claude only | Claude Opus 5.5 (High) | Claude Sonnet 5.5 (High) |
-| Other tools or a custom mix (Cursor, Devin, Droid, Amp and others) | Your pick | Your pick |
+| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 
 Setup saves your choices in your hub, so every assistant follows the same setup. Change any of them later by telling your assistant.
 
@@ -155,7 +155,7 @@ Setup asks for a yes before each of these:
 - **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` or the other tool's install and sign-in, a quick test prompt in each, and optionally Cisco Skill Scanner on third-party skills.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
 - **Saved:** your hub (pages and a Skills database in Notion, or documents in Google Drive or OneDrive/SharePoint), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.
-- **External services:** your hub's service (Notion, Google or Microsoft), the AI providers in your setup (Anthropic for Claude Code, OpenAI for Codex, or the other tools you pick), GitHub (this repo). Your profile and business details go only to your own hub, and routed work goes to those providers under your own plans. Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
+- **External services:** your hub's service (Notion, Google or Microsoft), the AI providers in your setup (Anthropic for Claude, OpenAI for ChatGPT and Codex), GitHub (this repo). Your profile and business details go only to your own hub, and routed work goes to those providers under your own plans. Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
 
 </details>
 

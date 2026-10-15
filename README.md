@@ -33,6 +33,14 @@ It asks a few simple questions, explains each step before doing it, and checks t
 ## What you get
 Three pieces that work together. Start with the hub; the other two are optional.
 
+<table>
+<tr>
+<td align="center" width="33%"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub</sub></td>
+<td align="center" width="33%"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router (optional)</sub></td>
+<td align="center" width="33%"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode (optional)</sub></td>
+</tr>
+</table>
+
 1. **[A shared hub](guava-hub/)**: one home for your profile, your rules for how AI should work for you, and your skills (step-by-step instructions your AI can reuse). Every assistant you connect reads from it.
 2. **[Model routing](guava-router/)** (optional): sends each job to the AI model that's best at it, using the plans you already have.
 3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
@@ -58,8 +66,17 @@ Every part is swappable. Pick what fits you today and change it later by telling
 **One AI model or two**
 
 Keep it simple with one do-it-all model, or split the work like a kitchen:
-- **Head chef** (today's best: Claude Opus 5.5): orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.
-- **Line cook** (today's best: GPT-6.1 Sol): bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.
+
+<table>
+<tr>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>Line cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
+</tr>
+<tr>
+<td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
+<td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
+</tr>
+</table>
 
 The plans you pay for decide who's in the kitchen:
 

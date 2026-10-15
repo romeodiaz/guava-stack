@@ -69,7 +69,7 @@ Save a standing instruction for your assistant to load the hub before any real w
 - Test each CLI with a quick prompt and tell the owner which model actually answered in each. Don't call setup done until both pass.
 
 ## 6. Connect the Claude and ChatGPT apps
-Required. Every owner uses these apps, so walk them through it; don't leave it as a note or a menu. Do Claude first, then ChatGPT. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
+Required. Every owner uses these apps, so walk them through it; don't leave it as a note or a menu. Don't ask whether the apps are already connected. Start the walkthrough right away; if a step is already done, the owner can say so and you move on. Do Claude first, then ChatGPT. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
 
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
 1. "Open claude.ai/customize/connectors, or in the desktop app click Customize in the sidebar, then Connectors."

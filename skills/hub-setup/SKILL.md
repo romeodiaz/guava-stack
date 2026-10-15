@@ -1,9 +1,11 @@
 ---
 name: hub-setup
-description: Set up the owner's shared AI Context & Skills Hub in Notion and the Model Router (Claude Opus 5.5 + GPT-6.1 Sol), then offer Owner Mode. Use when the owner says "set me up", asks for the AI Context Hub, or starts Guava setup.
+description: Sets up the owner's shared AI Context & Skills Hub in Notion and a Model Router that sends thinking work to Claude Code and execution work to Codex. Use when the owner says "set me up", asks for the AI Context Hub or model routing, or starts Guava setup.
 ---
 
-> Running this as setup? First follow the **Start here** steps in the [README](https://raw.githubusercontent.com/romeodiaz/guava-mode/main/README.md), then come back here.
+> Running this as setup? First follow the **Start here** steps in the README at the root of this plugin, then come back here.
+
+**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
 
 # AI Context & Skills Hub + Model Router: setup
 
@@ -13,7 +15,7 @@ These steps give Grok Bot, Claude and ChatGPT one shared place for your context,
 Create a page called **AI Context Hub** with:
 - **Profile & Context**: answer a short interview about you and your business. No passwords, keys or other secrets.
 - **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; keep a change log.
-- **Skills**: a database for Notion's skill upload, including a model-routing skill. Enable all skills for external agents and Notion AI.
+- **Skills**: a database for Notion's skill upload, including a model-routing skill. Ask the owner before enabling these skills for external agents and Notion AI.
 
 ## 2. Install the command-line tools
 - Install Claude Code: `npm i -g @anthropic-ai/claude-code`
@@ -23,8 +25,9 @@ Create a page called **AI Context Hub** with:
 - Connect both to Notion.
 - Add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` (create them if they don't exist) telling them to load your enabled Notion skills, Agent Rules and Profile & Context at the start of each session. Never replace or delete what's already in those files.
 
-## 2b. Never skip Notion
-When nobody is at the keyboard, Claude skips tools that need approval, so your hub never loads. Fix it:
+## 2b. Never skip Notion (optional)
+Only if the owner wants it. When nobody is at the keyboard, Claude skips tools that need approval, so your hub never loads. Fix it:
+- Explain that this changes Claude Code's permission settings, show the exact lines you'll add, and get a yes.
 - Back up `~/.claude/settings.json` first.
 - Under `permissions.allow`, add the Notion read-only tools: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill`. Use the exact prefix shown by `claude mcp list` (for example `mcp__claude_ai_Notion__notion-fetch`).
 - Do the same for Codex if needed.
@@ -33,7 +36,8 @@ When nobody is at the keyboard, Claude skips tools that need approval, so your h
 
 ## 2c. Bring in what they already have
 Many owners already keep context and skills in other AI tools. Gather it into the hub so nothing is lost:
-- Ask where it lives, and with their OK check: Claude and ChatGPT memories, custom instructions and Projects; Grok Bot memories and skills; `~/.claude/CLAUDE.md`, `~/.claude/skills/`, `~/.codex/AGENTS.md`; any prompt or notes folders on their computer; and any other AI tools they use (for example Cursor, Devin or Droid) for rules, memories, instruction files or skills.
+- Ask where it lives. Don't read Claude or ChatGPT memories, chat history, custom instructions or Projects yourself; ask the owner to paste or export what they want imported.
+- For local files (`~/.claude/CLAUDE.md`, `~/.claude/skills/`, `~/.codex/AGENTS.md`, prompt or notes folders, other AI tools such as Cursor, Devin or Droid), first say exactly which paths you'll read, and read them only after a yes.
 - Show a short list of what you found and where each piece would go (Profile & Context, Agent Rules or Skills). Import only what they approve.
 - Before importing or installing any third-party skill, scan it with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) and show the owner anything it flags. A clean scan doesn't prove a skill is safe.
 - Merge duplicates and ask when two sources conflict. Leave out passwords, keys and other secrets.

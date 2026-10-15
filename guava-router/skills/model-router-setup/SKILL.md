@@ -71,19 +71,22 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 Save these routing rules as a standing instruction, with the owner's planner and worker named, if hub setup hasn't already. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
 
 ## App routing (no CLIs)
-An app can't hand work to another model by itself, so the app's instructions do the routing: they tell the assistant which model fits each job, have it say when to switch, and make it hand off cleanly between planning and execution.
+An app can't hand work to another model by itself, so the app's instructions do the routing before any work starts: every new chat sizes up the first request, and if it belongs on the other model, the app sends the owner there with a ready-to-paste prompt instead of starting.
 
 1. Map the planner and worker to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
 2. Fill in the instruction below and show it to the owner. Then walk them through adding it to each app they use, under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and mobile apps.
    ```
    Model routing: plan with <planner, and its app>. Execute with <worker, and its app>.
    Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.
-   If this chat isn't on the right model for the job, say in one line which app and model to switch to, then carry on unless I switch.
-   When a plan is ready, end with a short hand-off I can paste into a new chat with the worker: the goal, the steps, what done looks like, and which hub skills to load.
+   Route first. At the start of every new chat, before doing anything else, decide whether my request is planning or execution.
+   - Right model, or a quick question: go ahead.
+   - Wrong model: don't start. Reply with one line naming the app and model to use, then my request rewritten as a ready-to-paste prompt for a new chat there, with the hub skills it should load.
+   - If I say "stay here", do it on this model.
+   When a plan is ready, end with a hand-off I can paste into a new chat with the worker: the goal, the steps, what done looks like, and which hub skills to load.
    For important work, remind me to bring the result back to the planner for a check.
    ```
    With the defaults, the first line reads: "Model routing: plan with Claude Opus 5.5 in the Claude app. Execute with GPT-6.1 Sol in the ChatGPT app."
-3. Test it: start a new chat on the planner and ask for something to plan, then for something to execute. It passes if the plan ends with a hand-off and the execution request gets a one-line nudge to switch to the worker. If the worker is in a different app, check that app also follows the hub and routing instructions.
+3. Test it in a new chat on the planner: ask for something to execute. It passes if the app doesn't start, names the worker, and gives a ready-to-paste prompt. Then, in another new chat, ask for something to plan. It passes if it does the work and ends with a hand-off. If the worker is in a different app, check that app routes planning requests back the same way.
 4. Save the routing to Stack settings, naming the apps.
 
 ## 6. Stay inside each provider's terms

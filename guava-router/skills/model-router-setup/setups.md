@@ -24,7 +24,7 @@ For owners who only pay for ChatGPT. Both slots run through Codex; skip Claude C
 
 Find Astra's exact model ID in Codex's `/model` menu and use what it shows. Don't guess it.
 
-**In the apps:** both in the ChatGPT app. Plan on Astra and execute on GPT-6.1 Sol, switching in the model picker or starting a new chat on the other model.
+**In the apps:** both in the ChatGPT app. Plan on Astra and execute on GPT-6.1 Sol, each in its own new chat.
 
 ## Claude only
 For owners who only pay for Claude. Both slots run through Claude Code; skip Codex.
@@ -34,7 +34,7 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 | Planner | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | as in the default setup |
 | Worker | Claude Sonnet 5.5, effort high (`claude-sonnet-5-5`) | Claude Code | `claude -p --model claude-sonnet-5-5 "<task>" < /dev/null` |
 
-**In the apps:** both in the Claude app. Plan on Claude Opus 5.5 and execute on Claude Sonnet 5.5, switching in the model picker or starting a new chat on the other model.
+**In the apps:** both in the Claude app. Plan on Claude Opus 5.5 and execute on Claude Sonnet 5.5, each in its own new chat.
 
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude worker for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 

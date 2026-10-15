@@ -29,7 +29,7 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 | Assistant | How routing works |
 |---|---|
 | **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. |
-| The Claude or ChatGPT app (web, desktop or mobile) | No extra assistant needed. The app's instructions tell it which model plans and which executes, and it tells the owner when to switch and hands off between them. |
+| The Claude or ChatGPT app (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
 | Claude Code, Codex or another coding tool | It runs the CLIs on the owner's computer. |
 
 See `assistants/` for notes on each.

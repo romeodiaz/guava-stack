@@ -28,7 +28,7 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 | OneDrive / SharePoint | Owners on Microsoft 365 |
 | Obsidian / local Markdown | Coming soon |
 
-**Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so it plans with one model and executes with another, and tells you when to switch. Claude Code, Codex and coding tools like Cursor work too. See [How to use it](#how-to-use-it).
+**Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so every new chat first checks whether your request is planning or execution, and if it's on the wrong model, hands you a ready-to-paste prompt for the right one. Claude Code, Codex and coding tools like Cursor work too. See [How to use it](#how-to-use-it).
 
 **Your AI plans**, which decide the planner (thinking) and the worker (doing):
 

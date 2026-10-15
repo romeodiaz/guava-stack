@@ -1,5 +1,5 @@
 ---
-name: hub-setup
+name: context-skills-hub-model-router-setup
 description: Sets up the owner's shared AI Context & Skills Hub in Notion and a Model Router that sends thinking work to Claude Code and execution work to Codex. Use when the owner says "set me up", asks for the AI Context Hub or model routing, or starts Guava setup.
 ---
 

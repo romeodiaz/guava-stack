@@ -1,5 +1,5 @@
 ---
-name: owner-mode
+name: owner-mode-rules
 description: Installs, updates or shows Owner Mode, the owner's 23 working rules for their AI assistant, saved to their Notion Agent Rules page. Use when the owner says "turn on Owner Mode", "update Owner Mode" or asks to see the rules.
 ---
 

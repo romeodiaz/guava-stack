@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
+<p align="center"><img src="assets/logo.png" alt="Pixel-art brain" width="120"></p>
 
 # guava-hub: AI Context & Skills Hub
 

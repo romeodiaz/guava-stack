@@ -52,7 +52,7 @@ Setup asks for a yes before each of these:
 3. "Import my existing CLAUDE.md and skills into my AI Context Hub."
 
 ## Support & privacy
-- Support: [workwithguava.com/talk](https://workwithguava.com/talk)
+- Support: [romeo@workwithguava.com](mailto:romeo@workwithguava.com)
 - Privacy: https://workwithguava.com/privacy. Guava collects no data; everything stays in your own Notion, computer and AI accounts.
 
 ## Want it for your whole team?

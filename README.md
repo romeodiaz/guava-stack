@@ -46,7 +46,7 @@ Three pieces that work together. Start with the hub; the other two are optional.
 3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
 
 ## Make it yours
-Every part is swappable. Pick what fits you today and change it later by telling your assistant.
+Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short Stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like going from one model to two, say "change my setup".
 
 **Where your hub lives**
 
@@ -91,7 +91,7 @@ The plans you pay for decide who's in the kitchen:
 | Cursor, Devin, Droid, Amp and others | Coming soon | Coming soon |
 <!-- /models -->
 
-AI models change fast. When better ones come out, the picks above get updated here. Say "check for newer models" and your assistant offers to swap them in. Your hub stays the same.
+These are suggestions. Any model your plans can run works as head chef or line cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
 
 **On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
 
@@ -170,7 +170,7 @@ Guava collects nothing. Your profile and business details go only to your own hu
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** appends a short section to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, or the instructions file of the tools in your AI setup (never replaces what's there). The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions.
+- **Files edited:** appends a short section to `~/.codex/AGENTS.md` and, if the guava-hub plugin isn't installed in Claude Code, `~/.claude/CLAUDE.md`, or the instructions file of the tools in your AI setup (never replaces what's there). The guava-hub plugin's start-up hook adds a short "load my hub" note to each new Claude Code session; it reads only its own file and changes nothing. The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions.
 - **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Claude desktop app's Code tab is your assistant, a quick test prompt in each, and optionally [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) on third-party skills.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
 - **Saved:** your hub (pages and a Skills database in Notion, or documents in Google Drive or OneDrive/SharePoint), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.

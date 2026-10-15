@@ -114,16 +114,9 @@ def app_routing_example(args):
             f"Execute with {DEFAULT['line_cook']['name']}.")
 
 
-def hub_routing_example(args):
-    cli = {"claude-code": "Claude CLI", "codex": "Codex CLI"}
-    h, l = DEFAULT["head_chef"], DEFAULT["line_cook"]
-    return (f"{h['name']} {effort(h)} via {cli[h['tool']]} for orchestration, research, planning, ...; "
-            f"{l['name']} {effort(l)} via {cli[l['tool']]} for bulk execution, coding, ...")
-
-
 KINDS = {"table": table, "kitchen": kitchen, "setup": setup,
          "stack-example": stack_example, "default-pair": default_pair,
-         "app-routing-example": app_routing_example, "hub-routing-example": hub_routing_example}
+         "app-routing-example": app_routing_example}
 
 
 def render(match):

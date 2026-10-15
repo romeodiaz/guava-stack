@@ -1,7 +1,7 @@
 {
   "name": "guava-hub",
   "displayName": "Guava Hub",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion, Google Drive or OneDrive/SharePoint, so all your AI assistants share your context, rules and skills. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz"

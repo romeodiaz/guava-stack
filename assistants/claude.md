@@ -1,6 +1,6 @@
 # Claude adapter
 
-- **Claude Code:** install the plugin with `/plugin marketplace add romeodiaz/guava-mode`, then `/plugin install guava-mode@guava`. Update with `/plugin update`.
+- **Claude Code:** type `/plugin`, add the `romeodiaz/guava-mode` marketplace and pick guava-mode from the list. Updates come through the same menu. Or just paste the Start here line.
 - The standing instructions in the README go in a short section added to the end of `~/.claude/CLAUDE.md`. Never replace what's already there.
 - Claude Code runs on the owner's computer, so all setup skill steps apply. Step 2b is optional.
 - Claude is the thinking model here, so do judgment work yourself and send bulk execution and coding to Codex through the Codex CLI, if it's installed.

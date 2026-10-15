@@ -88,7 +88,7 @@ Paste the line under Start here, or say "Install Owner Mode from github.com/rome
 That's it, you're ready. Try one of the example prompts below to see it work.
 
 ## How to update
-Update the plugin with `/plugin update` (or reinstall it), then tell your assistant **"update Owner Mode"**. It checks the version number, only updates if there's something newer, and tells you what changed. See [CHANGELOG.md](CHANGELOG.md).
+Tell your assistant **"update Owner Mode"**. It checks the version number, only updates if there's something newer, and tells you what changed. See [CHANGELOG.md](CHANGELOG.md).
 
 ## What this changes
 Setup asks for a yes before each of these:

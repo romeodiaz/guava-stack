@@ -67,4 +67,30 @@ Save a standing instruction for your assistant to load the hub before any real w
 ## 5. Final checks
 - Check the current Anthropic and OpenAI terms.
 - Test each CLI with a quick prompt and tell the owner which model actually answered in each. Don't call setup done until both pass.
-- Add the Notion connector in the Claude and ChatGPT apps, with a custom instruction: "Load my Notion AI Context Hub first."
+
+## 6. Connect the Claude and ChatGPT apps
+Required. Every owner uses these apps, so walk them through it; don't leave it as a note or a menu. Do Claude first, then ChatGPT. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
+
+Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
+1. "Open claude.ai/customize/connectors, or in the desktop app click Customize in the sidebar, then Connectors."
+2. "Click Discover, search Notion, then click Connect to Claude."
+3. "Sign in to Notion and click Allow. Pick the workspace with your AI Context Hub."
+4. "Click your initials in the bottom left, then Settings. Under Instructions for Claude, paste this and save:" then show:
+```
+Load my Notion AI Context Hub first.
+```
+5. "Start a new chat. Click + and check Notion is turned on under Connectors. Then ask: What's in my AI Context Hub? Paste or describe the answer here."
+
+ChatGPT:
+1. "In ChatGPT, click your profile icon, then Settings, then Plugins (Apps on some accounts)."
+2. "Find Notion and click Connect (or Install plugin, then Connect)."
+3. "Sign in to Notion, pick the workspace with your AI Context Hub, and approve."
+4. "In Settings, open Personalization. Turn on Enable customization, paste this into Custom Instructions and save:" then show the same code block.
+5. "Start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here."
+
+Check each answer. It passes if it mentions the owner's profile or hub pages. If it fails:
+- Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.
+- Didn't use Notion: in Claude, turn Notion on under + > Connectors in that chat. In ChatGPT, say "use Notion" in the question.
+- No Notion option or Connect is greyed out: it may be the plan or a work admin setting. Ask which plan they're on. On a work account, their admin has to turn Notion on.
+- Ignored the instruction: check it saved, then start a fresh chat.
+Don't call setup done until both apps pass.

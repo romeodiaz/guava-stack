@@ -64,7 +64,7 @@ Install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfW
 <details>
 <summary><strong>Claude</strong></summary>
 
-Paste this, or see the [Claude guide](assistants/claude.md):
+Paste this. Your assistant follows the [Claude guide](assistants/claude.md) automatically.
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
@@ -75,7 +75,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
 <details>
 <summary><strong>ChatGPT Dots</strong></summary>
 
-Paste this, or see the [ChatGPT guide](assistants/chatgpt.md):
+Paste this. Your assistant follows the [ChatGPT guide](assistants/chatgpt.md) automatically.
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
@@ -86,7 +86,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
 <details>
 <summary><strong>Meta Muse Bot</strong></summary>
 
-Paste this, or see the [Muse Bot guide](assistants/muse.md):
+Paste this. Your assistant follows the [Muse Bot guide](assistants/muse.md) automatically.
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.

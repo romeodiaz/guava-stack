@@ -2,7 +2,7 @@
 
 - **Claude Code:** type `/plugin`, add the `romeodiaz/guava-stack` marketplace (it shows up as **guava**) and install **guava-hub**, **guava-router** and **founder-mode** from the list. Updates come through the same menu. Or just paste the Start here line.
 - The standing instructions in the README go in a short section added to the end of `~/.claude/CLAUDE.md`. Never replace what's already there.
-- Claude Code runs on the owner's computer, so every hub and router setup step applies. The router's "Never skip Notion" step is optional.
-- Claude is the thinking model here, so do judgment work yourself and send bulk execution and coding to Codex through the Codex CLI, if it's installed.
+- Claude Code runs on the owner's computer, so every hub and router setup step applies. The router's "Never skip the hub" step is optional.
+- Claude is the planner in the default and Claude-only setups, so do planner work yourself and send worker jobs out: to Codex in the default setup, or to Claude Sonnet 5.5 (`claude -p --model claude-sonnet-5-5`) in Claude only. In other setups, follow the planner and worker in the hub's Stack settings.
 - To import existing context, ask the owner to paste or export it. Don't read Claude memories or chat history yourself.
-- **Claude apps (web and desktop):** connect Notion, add the custom instruction "Load my Notion AI Context Hub first." and upload the skills from `guava-hub/skills/` and `founder-mode/skills/` if the owner wants them there. The apps can't install CLIs, so skip the Model Router setup (guava-router) and tell the owner what you skipped.
+- **Claude apps (web and desktop):** connect the hub's connector (Notion by default), add the hub instruction line from the backend's file, such as "Load my Notion AI Context Hub first.", and upload the skills from `guava-hub/skills/` and `founder-mode/skills/` if the owner wants them there. The apps can't install CLIs, so skip the Model Router setup (guava-router) and tell the owner what you skipped.

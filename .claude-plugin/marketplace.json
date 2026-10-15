@@ -5,18 +5,18 @@
     "url": "https://workwithguava.com"
   },
   "metadata": {
-    "description": "The Guava Stack for business owners and solo operators: a shared Notion AI context hub, a Claude + Codex model router, and founder-mode."
+    "description": "The Guava Stack for business owners and solo operators: a shared AI context hub (Notion, Google Drive, OneDrive/SharePoint or local Markdown), a planner + worker model router, and founder-mode."
   },
   "plugins": [
     {
       "name": "guava-hub",
       "source": "./guava-hub",
-      "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share your context, rules and skills. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion, Google Drive, OneDrive/SharePoint or local Markdown, so all your AI assistants share your context, rules and skills. Part of the Guava Stack."
     },
     {
       "name": "guava-router",
       "source": "./guava-router",
-      "description": "For business owners and solo operators. Routes thinking work to Claude Opus 5.5 and execution work to GPT-6.1 Sol through the Claude Code and Codex CLIs, on the plans you already pay for. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a worker model through their CLIs, on the plans you already pay for. Defaults to Claude Opus 5.5 + GPT-6.1 Sol; also works with ChatGPT only, Claude only, or tools like Cursor, Droid and Amp. Part of the Guava Stack."
     },
     {
       "name": "founder-mode",

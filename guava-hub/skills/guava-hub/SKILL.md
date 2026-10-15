@@ -1,5 +1,5 @@
 ---
-name: context-skills-hub-setup
+name: guava-hub
 description: Sets up the owner's shared AI Context & Skills Hub (Notion by default, or Google Drive or OneDrive/SharePoint) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Use when the owner says "set me up", asks for the AI Context Hub, or starts Guava setup.
 ---
 
@@ -37,7 +37,7 @@ Every setup works across the owner's computer, laptop and phone, because the hub
 See `assistants/` for notes on each.
 
 **AI setup: one model or two.** Default: two.
-- **Two models** (recommended): a **planner + reviewer** does the thinking (planning, research, writing) and checks important work before it's called done; a **builder** does the doing (bulk execution, coding, long jobs). The plans they pay for decide the pair, as below. The model-router-setup skill in guava-router has the full details for each.
+- **Two models** (recommended): a **planner + reviewer** does the thinking (planning, research, writing) and checks important work before it's called done; a **builder** does the doing (bulk execution, coding, long jobs). The plans they pay for decide the pair, as below. The guava-router skill has the full details for each.
 - **One model**: a single do-it-all model for everything, such as Claude Opus 5.5 or GPT-6.1 Sol. No routing, so skip the Model Router step and the routing line. The hub and founder-mode work the same.
 
 | They pay for | Planner + reviewer | Builder |
@@ -60,9 +60,9 @@ See `assistants/` for notes on each.
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.
    - Model routing: `<planner>` for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; `<builder>` for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, `<planner>` reviews the builder's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - (One-model setups leave out the routing line.)
-   - When the owner says "update founder-mode", follow founder-mode/skills/founder-mode-rules/SKILL.md from github.com/romeodiaz/guava-stack.
+   - When the owner says "update founder-mode", follow founder-mode/skills/founder-mode/SKILL.md from github.com/romeodiaz/guava-stack.
 
-   With the defaults, the routing line reads: "Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, ...; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, ...". If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the model-router-setup skill instead of this routing line.
+   With the defaults, the routing line reads: "Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, ...; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, ...". If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
 
 ## 2. Build the hub
 Follow **Build the hub** in the backend's file. Every backend holds the same three parts:
@@ -105,12 +105,12 @@ Then the phone: have the owner install the Claude and ChatGPT phone apps if they
 Don't call setup done until every connected app passes, on the computer and on the phone.
 
 ## 5. Set up the Model Router
-Skip this step for one-model setups. Otherwise, follow the **model-router-setup** skill from guava-router now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and builder CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
+Skip this step for one-model setups. Otherwise, follow the **guava-router** skill now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and builder CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
 
 ## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 "Ready to turn on founder-mode? It's 27 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
-- Turn it on (follow the **founder-mode-rules** skill from founder-mode)
+- Turn it on (follow the **founder-mode** skill)
 - Show me the 27 rules first (show them in plain words, then ask again)
 - Not now (tell them they can say "turn on founder-mode" anytime)
 

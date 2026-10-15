@@ -1,5 +1,5 @@
 ---
-name: model-router-setup
+name: guava-router
 description: Sets up a Model Router that sends thinking work to a planner model and doing work to a builder model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as builder, and also supports ChatGPT only and Claude only. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
@@ -9,7 +9,7 @@ description: Sets up a Model Router that sends thinking work to a planner model 
 
 These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one do-it-all model don't need this skill.
 
-> Setting up from scratch? Start with the **context-skills-hub-setup** skill from guava-hub. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no AI Context Hub.
+> Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no AI Context Hub.
 
 ## 1. Pick the AI setup
 If hub setup already saved one in the hub's Stack settings, use it. Otherwise ask which AI plans the owner pays for and offer these, with the default marked as recommended:

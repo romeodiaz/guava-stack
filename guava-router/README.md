@@ -15,6 +15,6 @@ Works best with [guava-hub](../guava-hub/), since both tools load your AI Contex
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 
-- Skill: [model-router-setup](skills/model-router-setup/SKILL.md), with details for each setup in [setups.md](skills/model-router-setup/setups.md)
+- Skill: [guava-router](skills/guava-router/SKILL.md), with details for each setup in [setups.md](skills/guava-router/setups.md)
 - Claude Code: `/plugin install guava-router --marketplace romeodiaz/guava-stack`
 - Install: see [Start here](../README.md#start-here) in the stack README.

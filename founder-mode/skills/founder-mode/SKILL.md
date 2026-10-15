@@ -1,5 +1,5 @@
 ---
-name: founder-mode-rules
+name: founder-mode
 description: Installs, updates or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the Agent Rules page in their AI Context Hub. Use when the owner says "turn on founder-mode", "update founder-mode" or asks to see the rules.
 ---
 

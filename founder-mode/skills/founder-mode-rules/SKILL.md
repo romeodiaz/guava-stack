@@ -9,7 +9,7 @@ Your AI assistant works like humans do: it handles the safe work on its own, che
 
 ## How to install or update (for your AI assistant)
 1. Use this file as installed. The version number is in its title. To get a newer version, the owner updates the plugin (`/plugin update`, or reinstall it).
-2. Ask before saving anything. Find the "Agent Rules" page (or document or file) in the owner's AI Context Hub, wherever it lives: Notion, Google Drive, OneDrive/SharePoint or a local folder. If you can't find it, ask where to put the rules.
+2. Ask before saving anything. Find the "Agent Rules" page (or document or file) in the owner's AI Context Hub, wherever it lives: Notion, Google Drive or OneDrive/SharePoint. If you can't find it, ask where to put the rules.
 3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
 4. If a "How to work with me" section with a version number is already there (older versions used a different name), compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using CHANGELOG.md in the repo.
 5. Follow these rules on every task from now on. If another rule on the Agent Rules page is stricter, the stricter one wins.

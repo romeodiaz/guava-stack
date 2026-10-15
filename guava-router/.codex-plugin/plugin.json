@@ -1,7 +1,7 @@
 {
   "name": "guava-router",
   "version": "1.1.0",
-  "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a worker model through their CLIs, on the plans you already pay for. Defaults to Claude Opus 5.5 + GPT-6.1 Sol; also works with ChatGPT only, Claude only, or tools like Cursor, Droid and Amp. Part of the Guava Stack.",
+  "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a worker model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Defaults to Claude Opus 5.5 + GPT-6.1 Sol; also works with ChatGPT only, Claude only, or tools like Cursor, Droid and Amp. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",
     "url": "https://workwithguava.com"

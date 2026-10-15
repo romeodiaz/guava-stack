@@ -11,7 +11,7 @@ Pick where your hub lives:
 | **Notion** (default) | [backends/notion.md](skills/context-skills-hub-setup/backends/notion.md) |
 | Google Drive | [backends/google-drive.md](skills/context-skills-hub-setup/backends/google-drive.md) |
 | OneDrive / SharePoint | [backends/onedrive-sharepoint.md](skills/context-skills-hub-setup/backends/onedrive-sharepoint.md) |
-| Obsidian / local Markdown | [backends/local-markdown.md](skills/context-skills-hub-setup/backends/local-markdown.md) |
+| Obsidian / local Markdown | Coming soon |
 
 Every hub has the same three parts (Profile & Context, Agent Rules and Skills), so you can switch backends later without changing anything else.
 

@@ -1,6 +1,6 @@
 ---
 name: model-router-setup
-description: Sets up a Model Router that sends thinking work to a planner model and doing work to a worker model through their command-line tools, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as worker, and also supports ChatGPT only, Claude only, and other tools like Cursor, Devin, Droid and Amp. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
+description: Sets up a Model Router that sends thinking work to a planner model and doing work to a worker model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as worker, and also supports ChatGPT only, Claude only, and other tools like Cursor, Devin, Droid and Amp. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
@@ -23,6 +23,10 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 
 [setups.md](setups.md) has the model IDs, commands and notes for each. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
+Then pick how it routes, from the owner's day-to-day assistant:
+- **CLI routing:** Grok Bot, Muse, Claude Code, Codex or another tool that can run commands. Follow steps 2 to 7.
+- **App routing:** the owner works in the Claude or ChatGPT app (web, desktop or mobile) and doesn't have or want Grok Bot or Muse. Skip steps 2 to 4, follow the **App routing** step below, then steps 6 and 7.
+
 ## 2. Install the command-line tools
 Only the tools the setup uses.
 - Check first, without asking (these only read): `claude --version`, `codex --version`, or the other tool's version command. Skip the install for any tool that answers with a version, and tell the owner it's already there.
@@ -39,7 +43,6 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 - **Google Drive or OneDrive/SharePoint:**
   - Claude Code picks up the Google Drive or Microsoft 365 connector from the Claude app when it's signed in with the same account. Check `claude mcp list` shows it.
   - Codex and other tools don't share the ChatGPT app's connectors. Add an official MCP server from Google or Microsoft if one exists for the tool; otherwise skip it and rely on the hand-off rule in step 5.
-- **Obsidian or local Markdown:** nothing to connect. Put the hub folder's full path in the instructions below; for non-interactive Claude runs, see step 4.
 
 Test each tool with a quick non-interactive run that reads the Agent Rules from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
@@ -52,7 +55,6 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - Under `permissions.allow`, add only the hub's read-only tools, with the exact prefix `claude mcp list` shows:
   - Notion: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill` (for example `mcp__claude_ai_Notion__notion-fetch`).
   - Google Drive or Microsoft 365: the connector's search, fetch and read tools.
-  - Local Markdown: add the hub folder to `permissions.additionalDirectories` and allow `Read(<hub folder>/**)`.
 - Do the same for Codex or other tools if needed.
 - Never pre-approve write or delete tools.
 - Test it with a non-interactive run and confirm the skills load.
@@ -68,6 +70,22 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 
 Save these routing rules as a standing instruction, with the owner's planner and worker named, if hub setup hasn't already. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
 
+## App routing (no CLIs)
+An app can't hand work to another model by itself, so the app's instructions do the routing: they tell the assistant which model fits each job, have it say when to switch, and make it hand off cleanly between planning and execution.
+
+1. Map the planner and worker to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
+2. Fill in the instruction below and show it to the owner. Then walk them through adding it to each app they use, under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and mobile apps.
+   ```
+   Model routing: plan with <planner, and its app>. Execute with <worker, and its app>.
+   Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.
+   If this chat isn't on the right model for the job, say in one line which app and model to switch to, then carry on unless I switch.
+   When a plan is ready, end with a short hand-off I can paste into a new chat with the worker: the goal, the steps, what done looks like, and which hub skills to load.
+   For important work, remind me to bring the result back to the planner for a check.
+   ```
+   With the defaults, the first line reads: "Model routing: plan with Claude Opus 5.5 in the Claude app. Execute with GPT-6.1 Sol in the ChatGPT app."
+3. Test it: start a new chat on the planner and ask for something to plan, then for something to execute. It passes if the plan ends with a hand-off and the execution request gets a one-line nudge to switch to the worker. If the worker is in a different app, check that app also follows the hub and routing instructions.
+4. Save the routing to Stack settings, naming the apps.
+
 ## 6. Stay inside each provider's terms
 For Claude Code on a Claude plan:
 - Use the official Claude Code CLI with your own login only.
@@ -81,5 +99,5 @@ For Codex and every other tool, follow that provider's current terms for its pla
 
 ## 7. Final checks
 - Check the current terms for each provider in the setup.
-- Test each slot with a quick prompt and tell the owner which model actually answered. Don't call setup done until both pass.
+- CLI routing: test each slot with a quick prompt and tell the owner which model actually answered. App routing: the App routing test above. Don't call setup done until both slots pass.
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.

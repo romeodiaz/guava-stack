@@ -2,7 +2,7 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking to a **planner** model and heavy lifting to a **worker** model through their command-line tools, on the plans you already pay for. Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
+Part of the [Guava Stack](../README.md). Sends hard thinking to a **planner** model and heavy lifting to a **worker** model, on the plans you already pay for. With Grok Bot, Muse or a coding tool, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so the app tells you which model fits each job and hands off between them. Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
 
 | You pay for | Planner | Worker |
 |---|---|---|

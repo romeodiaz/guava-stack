@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
 
-# Guava Stack: AI Context & Skills Hub, Model Router and Owner Mode
+# Guava Stack: AI Context & Skills Hub, Model Router and guava-mode
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
@@ -12,9 +12,9 @@ For business owners and solo operators. The stack has three pieces that live tog
 |---|---|---|
 | **[guava-hub](guava-hub/)** | A shared AI Context & Skills Hub in Notion, so Grok Bot, Claude and ChatGPT share your context, rules and skills. | [context-skills-hub-setup](guava-hub/skills/context-skills-hub-setup/SKILL.md) |
 | **[guava-router](guava-router/)** | Routes hard thinking to Claude Opus 5.5 and heavy lifting to GPT-6.1 Sol through their CLIs, on the plans you already pay for. | [model-router-setup](guava-router/skills/model-router-setup/SKILL.md) |
-| **[guava-mode](guava-mode/)** (optional) | Owner Mode: 26 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. | [owner-mode-rules](guava-mode/skills/owner-mode-rules/SKILL.md) |
+| **[guava-mode](guava-mode/)** (optional) | 26 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. | [guava-mode-rules](guava-mode/skills/guava-mode-rules/SKILL.md) |
 
-Setup starts with the hub, then the router, then offers Owner Mode. You can turn on Owner Mode at the end of setup or anytime later.
+Setup starts with the hub, then the router, then offers guava-mode. You can turn on guava-mode at the end of setup or anytime later.
 
 ## Why install it
 **Every AI tool starts from scratch.** You explain your business again in each one, and switching tools means starting over.
@@ -31,7 +31,7 @@ Setup starts with the hub, then the router, then offers Owner Mode. You can turn
 
 **AI writing sounds like AI slop.**
 
-**The fix:** Owner Mode checks final copy against the [humanizer's principles](https://github.com/blader/humanizer), so posts and emails lose the usual AI writing tells.
+**The fix:** guava-mode checks final copy against the [humanizer's principles](https://github.com/blader/humanizer), so posts and emails lose the usual AI writing tells.
 
 **Setup tools can overwrite your stuff.**
 
@@ -47,12 +47,12 @@ Your context and skills live in your own Notion, not inside one AI company's app
 Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 ```
 
-**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/context-skills-hub-setup/SKILL.md](guava-hub/skills/context-skills-hub-setup/SKILL.md) from step 1. It builds the hub, hands off to the router, offers Owner Mode and wraps up.
+**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/context-skills-hub-setup/SKILL.md](guava-hub/skills/context-skills-hub-setup/SKILL.md) from step 1. It builds the hub, hands off to the router, offers guava-mode and wraps up.
 
 ## What's inside
 - **[guava-hub](guava-hub/)**: one shared place in Notion where Grok Bot, Claude and ChatGPT read your context, rules and skills.
 - **[guava-router](guava-router/)**: Claude Opus 5.5 for thinking work, GPT-6.1 Sol for execution work.
-- **[guava-mode](guava-mode/)**: the Owner Mode rules and their [changelog](guava-mode/CHANGELOG.md).
+- **[guava-mode](guava-mode/)**: the guava-mode rules and their [changelog](guava-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: per-assistant notes on what to skip or change.
 
 ## How to use it
@@ -110,7 +110,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 For the rules only:
 
 ```
-Install Owner Mode from github.com/romeodiaz/guava-stack
+Install guava-mode from github.com/romeodiaz/guava-stack
 ```
 
 </details>
@@ -118,7 +118,7 @@ Install Owner Mode from github.com/romeodiaz/guava-stack
 That's it, you're ready. Try one of the example prompts below to see it work.
 
 ## How to update
-Tell your assistant **"update Owner Mode"**. It checks the version number, only updates if there's something newer, and tells you what changed. See [guava-mode/CHANGELOG.md](guava-mode/CHANGELOG.md).
+Tell your assistant **"update guava-mode"**. It checks the version number, only updates if there's something newer, and tells you what changed. See [guava-mode/CHANGELOG.md](guava-mode/CHANGELOG.md).
 
 ## What this changes
 Setup asks for a yes before each of these:
@@ -136,7 +136,7 @@ Setup asks for a yes before each of these:
 
 ## Example prompts
 1. "Set me up by following the Start here steps in the Guava Stack."
-2. "Turn on Owner Mode."
+2. "Turn on guava-mode."
 3. "Import my existing CLAUDE.md and skills into my AI Context Hub."
 
 ## Support & privacy

@@ -1,21 +1,21 @@
 ---
-name: owner-mode-rules
-description: Installs, updates or shows Owner Mode, the owner's 26 working rules for their AI assistant, saved to their Notion Agent Rules page. Use when the owner says "turn on Owner Mode", "update Owner Mode" or asks to see the rules.
+name: guava-mode-rules
+description: Installs, updates or shows guava-mode, the owner's 26 working rules for their AI assistant, saved to their Notion Agent Rules page. Use when the owner says "turn on guava-mode", "update guava-mode" or asks to see the rules.
 ---
 
-# Owner Mode v2.0.0
+# guava-mode v2.0.0
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
 ## How to install or update (for your AI assistant)
 1. Use this file as installed. The version number is in its title. To get a newer version, the owner updates the plugin (`/plugin update`, or reinstall it).
 2. Ask before saving anything. Find the "Agent Rules" page in the owner's Notion AI Context Hub. If you can't find it, ask where to put the rules.
-3. If Owner Mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
-4. If it's already there, compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using CHANGELOG.md in the repo.
+3. If guava-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
+4. If a "How to work with me" section with a version number is already there (older versions used a different name), compare versions and only replace the rules if this version is newer. Then explain in plain words what changed, using CHANGELOG.md in the repo.
 5. Follow these rules on every task from now on. If another rule on the Agent Rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.
 
-**People:** paste this into your AI assistant: "Install (or update) Owner Mode from github.com/romeodiaz/guava-stack."
+**People:** paste this into your AI assistant: "Install (or update) guava-mode from github.com/romeodiaz/guava-stack."
 
 ## The rules
 

@@ -6,7 +6,7 @@
   ```
   Before any substantive task, load my Notion AI Context Hub first (Profile & Context, Agent Rules and Skills) and treat it as the source of truth.
   Model routing: Claude Opus 5.5 High via Claude CLI (`claude -p`) for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI (`codex exec`) for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; quick replies and connector lookups stay with you; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open. Run routed work through the CLI without being asked, and mention which one you used.
-  When I say "update Owner Mode", follow guava-mode/skills/owner-mode-rules/SKILL.md from github.com/romeodiaz/guava-stack.
+  When I say "update guava-mode", follow guava-mode/skills/guava-mode-rules/SKILL.md from github.com/romeodiaz/guava-stack.
   ```
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.
 - **Verify:** start a new chat and ask "Write a short intro about my business." It passes if the intro uses details from the hub.

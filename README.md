@@ -123,11 +123,17 @@ Tell your assistant **"update Owner Mode"**. It checks the version number, only 
 
 ## What this changes
 Setup asks for a yes before each of these:
+
+<details>
+<summary><strong>See exactly what setup touches</strong></summary>
+
 - **Files edited:** appends a short section to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` (never replaces what's there). Optional step 2b backs up `~/.claude/settings.json` and adds four read-only Notion tools to `permissions.allow`.
 - **Commands run:** `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, a quick test prompt in each, and optionally Cisco Skill Scanner on third-party skills.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
 - **Saved:** pages and a Skills database in your Notion, and standing instructions in your assistant's memory.
 - **External services:** Notion, Anthropic (Claude Code), OpenAI (Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions.
+
+</details>
 
 ## Example prompts
 1. "Set me up by following the Start here steps in the guava-mode plugin."

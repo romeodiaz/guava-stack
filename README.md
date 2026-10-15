@@ -10,19 +10,19 @@ For business owners and solo operators. Setup happens in two steps:
 2. **[Owner Mode](skills/owner-mode-rules/SKILL.md) (optional).** 23 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
 
 ## Why install it
-**Every AI tool starts from scratch.** You explain your business again in each one, and switching tools means starting over.
+**Every AI tool starts from scratch.** You explain your business again in each one, and switching tools means starting over.<br>
 **The fix:** one shared brain for your AI context. Your profile, rules and skills live in your own Notion, and Grok Bot, Claude, ChatGPT and other tools all read from it.
 
-**You're paying for AI plans you don't fully use.**
+**You're paying for AI plans you don't fully use.**<br>
 **The fix:** hard thinking goes to Claude Opus 5.5 and heavy lifting goes to GPT-6.1 Sol, through the Claude and ChatGPT plans you already pay for.
 
-**Skills from strangers can be risky.**
+**Skills from strangers can be risky.**<br>
 **The fix:** third-party skills get scanned with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) before they're installed, and you see anything it flags.
 
-**AI writing sounds like AI slop.**
+**AI writing sounds like AI slop.**<br>
 **The fix:** Owner Mode checks final copy against the [humanizer's principles](https://github.com/blader/humanizer), so posts and emails lose the usual AI writing tells.
 
-**Setup tools can overwrite your stuff.**
+**Setup tools can overwrite your stuff.**<br>
 **The fix:** nothing gets wiped. Your existing instructions and files are only added to, and the assistant shows you each change before making it.
 
 ## Start here

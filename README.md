@@ -26,7 +26,11 @@ For business owners and solo operators. Setup happens in two steps:
 **The fix:** nothing gets wiped. Your existing instructions and files are only added to, and the assistant shows you each change before making it.
 
 ## Start here
-**People:** paste this into your AI assistant: "Set me up by following the Start here steps in github.com/romeodiaz/guava-mode."
+**People:** paste this into your AI assistant:
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
+```
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped.
 
@@ -60,28 +64,50 @@ Install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfW
 <details>
 <summary><strong>Claude</strong></summary>
 
-Paste the line under Start here, or see the [Claude guide](assistants/claude.md).
+Paste this, or see the [Claude guide](assistants/claude.md):
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
+```
 
 </details>
 
 <details>
 <summary><strong>ChatGPT Dots</strong></summary>
 
-Paste the line under Start here, or see the [ChatGPT guide](assistants/chatgpt.md).
+Paste this, or see the [ChatGPT guide](assistants/chatgpt.md):
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
+```
 
 </details>
 
 <details>
 <summary><strong>Meta Muse Bot</strong></summary>
 
-Paste the line under Start here, or see the [Muse Bot guide](assistants/muse.md).
+Paste this, or see the [Muse Bot guide](assistants/muse.md):
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
+```
 
 </details>
 
 <details>
 <summary><strong>Any other AI assistant</strong></summary>
 
-Paste the line under Start here, or say "Install Owner Mode from github.com/romeodiaz/guava-mode" for the rules only.
+Paste this:
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
+```
+
+For the rules only:
+
+```
+Install Owner Mode from github.com/romeodiaz/guava-mode
+```
 
 </details>
 

@@ -43,7 +43,9 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 
 ## 3. Model routing
 - **Claude Opus 5.5 (High)**: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.
-- **GPT-6.1 Sol (High) via Codex**: bulk execution, coding, sub-agent tasks, worker threads, computer use, long-running jobs.
+- **GPT-6.1 Sol (High) via Codex**: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.
+- **Browser and desktop tasks**: keep using the assistant's own computer tools.
+- **If either CLI fails**: do the task yourself and say so.
 
 ## 3b. Stay inside Anthropic's terms
 - Use the official Claude Code CLI with your own login only.
@@ -53,10 +55,10 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - Never use outputs to train competing models.
 - For heavy or always-on Claude automation, use an Anthropic API key, or do it by hand in Claude Desktop.
 
-## 4. Standing instruction
-Save a standing instruction for your assistant to load the hub before any real work.
+## 4. Standing instructions
+Save a standing instruction for your assistant to load the hub before any real work. Save the model routing rules too. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save both there so every current and future bot follows them.
 
 ## 5. Final checks
 - Check the current Anthropic and OpenAI terms.
-- Test each CLI.
+- Test each CLI with a quick prompt and tell the owner which model actually answered in each. Don't call setup done until both pass.
 - Add the Notion connector in the Claude and ChatGPT apps, with a custom instruction: "Load my Notion AI Context Hub first."

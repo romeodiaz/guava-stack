@@ -29,6 +29,8 @@ For business owners and solo operators. Setup happens in two steps:
 
 ## How to use it
 - **Grok Bot**: install the Owner Mode template, which sets everything up for you.
+- **Claude Code**: `/plugin marketplace add romeodiaz/guava-mode`, then `/plugin install guava-mode@guava`.
+- **Grok Bot and Cursor plugin marketplace**: listing pending review.
 - **Any other AI assistant**: paste the line under Start here, or "Install Owner Mode from github.com/romeodiaz/guava-mode" for the rules only.
 
 ## How to update

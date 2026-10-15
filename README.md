@@ -2,6 +2,8 @@
 
 # AI Context & Skills Hub + Model Router, with optional Owner Mode
 
+<p align="center"><a href="https://skills.sh/romeodiaz/guava-mode"><img src="https://skills.sh/b/romeodiaz/guava-mode" alt="skills.sh"></a></p>
+
 The setup I use every day to run Guava, so all my AI assistants share one brain and work like humans do.
 
 For business owners and solo operators. Setup happens in two steps:

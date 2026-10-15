@@ -41,10 +41,16 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 
 Setup saves your choices in your hub, so every assistant follows the same setup. Change any of them later by telling your assistant.
 
+**Every setup works on your computer, laptop and phone.** Your hub and instructions live in your own accounts, not on one device. Grok Bot and Muse run in the cloud, so you can message them from your phone. The Claude and ChatGPT phone apps pick up your hub and routing instructions automatically. And with Remote Control, the Claude phone app opens your Code tab sessions while your computer is on.
+
 ## Why install it
 **Every AI tool starts from scratch.** You explain your business again in each one, and switching tools means starting over.
 
 **The fix:** one shared brain for your AI context. Your profile, rules and skills live in your own Notion, Google Drive or OneDrive/SharePoint, and Grok Bot, Claude, ChatGPT and other tools all read from it.
+
+**Your AI setup is stuck on one device.**
+
+**The fix:** your hub and instructions live in your own accounts, so the same assistant, context and routing go with you from your desk to your laptop to your phone.
 
 **You're paying for AI plans you don't fully use.**
 

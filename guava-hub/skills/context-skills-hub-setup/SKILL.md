@@ -26,11 +26,13 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 
 **Day-to-day assistant: who the owner talks to.** This decides how routing works. Default: the assistant running this setup.
 
-| Assistant | How routing works |
-|---|---|
-| **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. |
-| Claude or ChatGPT chat (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
-| The Claude desktop app's Code tab | For owners with both plans who'd rather not use Grok Bot or Muse. No terminal needed: Claude plans, and OpenAI's Codex plugin for Claude Code hands execution to Codex. |
+| Assistant | How routing works | On the phone |
+|---|---|---|
+| **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. | It runs in the cloud, so the owner can message it from their phone too. |
+| Claude or ChatGPT chat (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. | The Claude and ChatGPT phone apps pick up the hub connector and instructions from the owner's account, so nothing is set up twice. |
+| The Claude desktop app's Code tab | For owners with both plans who'd rather not use Grok Bot or Muse. No terminal needed: Claude plans, and OpenAI's Codex plugin for Claude Code hands execution to Codex. | Remote Control opens the computer's Code tab sessions from the Claude phone app while the computer is on. When it's off, chat on the phone still has the hub and the routing instruction. |
+
+Every setup works across the owner's computer, laptop and phone, because the hub and the instructions live in their own accounts, not on one device. Say so when offering the choices: for many owners it's the main reason to set this up.
 
 See `assistants/` for notes on each.
 
@@ -94,7 +96,9 @@ Check each answer. It passes if it mentions the owner's profile or hub pages. If
 - No option for the connector, or Connect is greyed out: it may be the plan or a work admin setting. Ask which plan they're on. On a work account, their admin has to turn the connector on.
 - Ignored the instruction: check it saved, then start a fresh chat.
 
-Don't call setup done until every connected app passes.
+Then the phone: have the owner install the Claude and ChatGPT phone apps if they don't have them, sign in with the same accounts, and ask "What's in my AI Context Hub?" in a new chat. Connectors and instructions follow the account, so there's nothing to set up again; in Claude, turn the hub connector on in that chat if it's off. If adding or turning on a connector on the phone doesn't work, finish it on the computer first; phone support for connectors is still rolling out.
+
+Don't call setup done until every connected app passes, on the computer and on the phone.
 
 ## 5. Set up the Model Router
 Follow the **model-router-setup** skill from guava-router now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and worker CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
@@ -108,6 +112,6 @@ Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 
 ## 7. Wrap up
 End with a short close that starts with "Setup's done 🎉", never just a confirmation:
-- Two or three lines on what's set up: the hub and where it lives, the apps connected and verified, the planner and worker if they set up the router, and founder-mode with its version if they turned it on.
+- Two or three lines on what's set up: the hub and where it lives, the apps connected and verified on the computer and the phone, the planner and worker if they set up the router, and founder-mode with its version if they turned it on. Remind them it all works from their phone too.
 - Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in the hub and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.

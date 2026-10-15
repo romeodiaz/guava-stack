@@ -24,8 +24,8 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 [setups.md](setups.md) has the model IDs, commands and notes for each. If the owner asks about third-party tools, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
 Then pick how it routes, from the owner's day-to-day assistant:
-- **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7.
-- **App routing:** the owner works in the Claude or ChatGPT app (web, desktop or mobile) and doesn't have or want Grok Bot or Muse. Skip steps 2 to 4, follow the **App routing** step below, then steps 6 and 7.
+- **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
+- **App routing:** the owner works in Claude or ChatGPT chat (web, desktop or mobile) and doesn't have or want Grok Bot or Muse. Skip steps 2 to 4, follow the **App routing** step below, then steps 6 and 7.
 
 ## 2. Install the command-line tools
 Only the tools the setup uses.
@@ -34,6 +34,7 @@ Only the tools the setup uses.
 - Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise sign in with the owner's own subscription: `claude auth login` and `codex login --device-auth`.
 - Set each slot's model and effort as [setups.md](setups.md) shows.
 - **Claude desktop app's Code tab as the day-to-day assistant (Claude + ChatGPT setup):** also install OpenAI's official [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc), so Claude hands jobs to Codex natively. Use a local session. Run `claude plugin marketplace add openai/codex-plugin-cc` and `claude plugin install codex@openai-codex` as shell commands in the session (with a yes), or add the marketplace that way and install from **+ > Plugins > Add plugin**. Then start a new session and run `/codex:setup` to check it. It uses the Codex CLI and ChatGPT sign-in from above. Leave its review gate off (it stays off unless someone runs `/codex:setup --enable-review-gate`): it can loop and drain usage limits, and it's the kind of unattended Claude loop step 6 rules out.
+- **Code tab from the phone:** offer to turn on **Connect new sessions to Remote Control** in the desktop app's Settings, then Claude Code. The owner can then open any Code tab session from the Claude phone app (tap Code, then pick the session with the green dot) while the computer is on and the app is open. It needs a Pro or Max plan, or an admin turning it on for Team and Enterprise.
 
 ## 3. Connect them to the hub
 Check what's already connected first (`claude mcp list`, `codex mcp list`) and skip anything that already shows the hub.
@@ -76,7 +77,7 @@ Save these routing rules as a standing instruction, with the owner's planner and
 An app can't hand work to another model by itself, so the app's instructions do the routing before any work starts: every new chat sizes up the first request, and if it belongs on the other model, the app names that model and gives a ready-to-paste prompt instead of starting.
 
 1. Map the planner and worker to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
-2. Fill in the instruction below with the planner and worker models and show it to the owner. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and mobile apps.
+2. Fill in the instruction below with the planner and worker models and show it to the owner. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
    ```
    Model routing: plan with <planner model>. Execute with <worker model>.
    Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.

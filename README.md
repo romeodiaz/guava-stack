@@ -41,7 +41,7 @@ For business owners and solo operators. Setup happens in two steps:
 - **Claude**: see the [Claude guide](assistants/claude.md), or paste the line under Start here.
 - **Grok Bot and Cursor plugin marketplace**: listing pending review.
 - **ChatGPT Dots**: see the [ChatGPT guide](assistants/chatgpt.md), or paste the line under Start here.
-- **Meta Muse Bot**: paste the line under Start here.
+- **Meta Muse Bot**: see the [Muse Bot guide](assistants/muse.md), or paste the line under Start here.
 - **Any other AI assistant**: paste the line under Start here, or "Install Owner Mode from github.com/romeodiaz/guava-mode" for the rules only.
 
 ## How to update

@@ -43,7 +43,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-mode.
 2. Ask one at a time, and save the answers:
    - What should I call you, and what's your business and audience in a sentence or two?
    - Is Notion connected here? If not, help connect it.
-   - Do you have a Claude plan (Pro or Max) and a ChatGPT plan (Plus or Pro)?
+   - Do you pay for Claude and ChatGPT? Any paid plan works.
 3. Show the owner these standing instructions and, once they say yes, save them to your memory, custom instructions or system prompt (to shared memory across all the owner's assistants if your platform has it):
    - Model routing: Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; browser and desktop tasks stay with your own computer tools; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.

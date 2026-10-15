@@ -73,7 +73,7 @@ Required. Every owner uses these apps, so walk them through it; don't leave it a
 
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
 1. "Open claude.ai/customize/connectors, or in the desktop app click Customize in the sidebar, then Connectors."
-2. "Click Discover, search Notion, then click Connect to Claude."
+2. "Click Discover, then Search (the magnifying glass icon), and search for Notion. Pick the Notion connector, not the Notion plugin, then click Connect to Claude."
 3. "Sign in to Notion and click Allow. Pick the workspace with your AI Context Hub."
 4. "Click your initials in the bottom left, then Settings, then Account. Under Instructions for Claude, paste this and save:" then show:
 ```
@@ -82,10 +82,10 @@ Load my Notion AI Context Hub first.
 5. "Start a new chat. Click + and check Notion is turned on under Connectors. Then ask: What's in my AI Context Hub? Paste or describe the answer here."
 
 ChatGPT:
-1. "In ChatGPT, click your profile icon, then Settings, then Plugins (Apps on some accounts)."
+1. "Now open the ChatGPT desktop app, or chatgpt.com on the web. Click your profile icon in the lower left, then Settings, then Plugins under Integrations."
 2. "Find Notion and click Connect (or Install plugin, then Connect)."
 3. "Sign in to Notion, pick the workspace with your AI Context Hub, and approve."
-4. "In Settings, open Personalization and find Custom Instructions. Paste this and save:" then show the same code block. If they see Codex instructions (which edits AGENTS.md on their computer) instead of an Enable customization toggle, add the line there; that's the newer ChatGPT desktop app.
+4. "Click your profile icon, then Settings. Under Personal, open Personalization, then Custom Instructions, then Codex Instructions. Paste this and save:" then show the same code block.
 5. "Start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
 
 Check each answer. It passes if it mentions the owner's profile or hub pages. If it fails:
@@ -103,7 +103,7 @@ Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 - Not now (tell them they can say "turn on Owner Mode" anytime)
 
 ## 8. Wrap up
-End with a short close, never just a confirmation:
+End with a short close that starts with "Setup's done 🎉", never just a confirmation:
 - Two or three lines on what's set up: the Notion hub, both CLIs and the model routing, both apps connected and verified, and Owner Mode with its version if they turned it on.
 - Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in Notion and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.

@@ -18,6 +18,7 @@
   ],
   "icon": "./assets/logo.png",
   "documentationUrl": "https://github.com/romeodiaz/guava-mode",
-  "supportUrl": "mailto:romeo@workwithguava.com",
-  "privacyPolicyUrl": "https://workwithguava.com/privacy"
+  "supportUrl": "https://workwithguava.com/privacy",
+  "privacyPolicyUrl": "https://workwithguava.com/privacy",
+  "termsOfServiceUrl": "https://workwithguava.com/terms"
 }

@@ -39,7 +39,7 @@ Your plans decide the pair. Prefer one do-it-all model? Pick it and skip routing
 | You pay for | Head chef | Line cook |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) | GPT-6.1 Sol (High) |
-| ChatGPT only | Astra (High) | GPT-6.1 Sol (High) |
+| ChatGPT only | GPT-6 Astra (High) | GPT-6.1 Sol (High) |
 | Claude only | Claude Opus 5.5 (High) | Claude Sonnet 5.5 (High) |
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 

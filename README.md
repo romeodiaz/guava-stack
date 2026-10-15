@@ -32,6 +32,9 @@ For business owners and solo operators. Setup happens in two steps:
 
 **The fix:** nothing gets wiped. Your existing instructions and files are only added to, and the assistant shows you each change before making it.
 
+## Zero lock-in
+Your context and skills live in your own Notion, not inside one AI company's app. A neutral assistant like Grok Bot or Muse drives both your Claude and ChatGPT plans, so each job goes to the best model. Switch or drop any of them anytime and you keep everything: just connect the new one to your hub.
+
 ## Start here
 **People:** paste this into your AI assistant:
 

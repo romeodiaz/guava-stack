@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
 
-# Guava Stack: one shared brain for all your AI
+# guava-stack: AI brain + router + rules
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 

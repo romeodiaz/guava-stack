@@ -1,0 +1,4 @@
+Guava Stack (guava-hub plugin): before substantive work in this session, load the owner's AI Context Hub through whichever connector holds it (Notion, Google Drive or Microsoft 365): their Agent Rules, Profile & Context (which starts with Stack settings) and enabled skills. Treat the hub as the source of truth.
+- Model routing: follow the Planner and Builder in Stack settings, read fresh each session, through the tool each one names. If Stack settings names one model, there is no routing.
+- If the owner asks to change their setup ("change my setup", "apply my Stack settings", "check for newer models"), follow the Change your setup step in the guava-hub skill. If they say "update founder-mode", follow the founder-mode skill.
+- If the hub can't be found or reached, say so once and carry on. If the owner has no hub yet, they can say "set me up".

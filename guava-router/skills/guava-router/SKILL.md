@@ -52,7 +52,7 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 
 Test each tool with a quick non-interactive run that reads the Agent Rules from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them.
+Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow Stack settings.
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:

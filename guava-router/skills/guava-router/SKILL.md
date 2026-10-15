@@ -1,6 +1,6 @@
 ---
 name: guava-router
-description: Sets up a Model Router that sends thinking work to a planner model and doing work to a builder model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Defaults to Claude Opus 5.5 (Claude Code) as planner and GPT-6.1 Sol (Codex) as builder, and also supports ChatGPT only and Claude only. Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
+description: Sets up a Model Router that sends thinking work to a planner model and doing work to a builder model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Supports Claude + ChatGPT (default), ChatGPT only and Claude only, with each setup's models in models.yaml. Also use when the owner says "check for newer models". Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
@@ -14,14 +14,16 @@ These steps send each kind of work to the model that's best at it, through the p
 ## 1. Pick the AI setup
 If hub setup already saved one in the hub's Stack settings, use it. Otherwise ask which AI plans the owner pays for and offer these, with the default marked as recommended:
 
+<!-- models:table first="They pay for" head="Planner + reviewer" line="Builder" -->
 | They pay for | Planner + reviewer | Builder |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
+<!-- /models -->
 
-[setups.md](setups.md) has the model IDs, commands and notes for each. If the owner asks about third-party tools, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. If the owner asks about third-party tools, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
@@ -34,7 +36,7 @@ Only the tools the setup uses.
 - Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise sign in with the owner's own subscription: `claude auth login` and `codex login --device-auth`.
 - Set each slot's model and effort as [setups.md](setups.md) shows.
 - **Claude desktop app's Code tab as the day-to-day assistant (Claude + ChatGPT setup):** also install OpenAI's official [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc), so Claude hands jobs to Codex natively. Use a local session. Run `claude plugin marketplace add openai/codex-plugin-cc` and `claude plugin install codex@openai-codex` as shell commands in the session (with a yes), or add the marketplace that way and install from **+ > Plugins > Add plugin**. Then start a new session and run `/codex:setup` to check it. It uses the Codex CLI and ChatGPT sign-in from above. Leave its review gate off (it stays off unless someone runs `/codex:setup --enable-review-gate`): it can loop and drain usage limits, and it's the kind of unattended Claude loop step 6 rules out.
-- **Claude desktop app's Code tab in the Claude-only setup:** no extra install. Set the model to `opusplan` as [setups.md](setups.md) shows, so Opus 5.5 plans in Plan mode and Sonnet 5.5 builds after the owner approves the plan.
+- **Claude desktop app's Code tab in the Claude-only setup:** no extra install. Set the model to `opusplan` as [setups.md](setups.md) shows, so Opus plans in Plan mode and Sonnet builds after the owner approves the plan.
 - **Code tab from the phone:** offer to turn on **Connect new sessions to Remote Control** in the desktop app's Settings, then Claude Code. The owner can then open any Code tab session from the Claude phone app (tap Code, then pick the session with the green dot) while the computer is on and the app is open. It needs a Pro or Max plan, or an admin turning it on for Team and Enterprise.
 - **Code tab cloud sessions:** they reach the hub through the owner's connectors but have no Codex plugin or ChatGPT sign-in. There, follow the App routing hand-off instead: Claude plans, then gives a ready-to-paste prompt for a new chat with the builder.
 
@@ -70,7 +72,7 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - **Hand-off rule**: if a tool can't reach the hub, the planner (or you) loads what the job needs from the hub and puts it in that tool's prompt.
 - **If either fails**: do the task yourself and say so.
 - **If you are the planner or the builder** (say, Claude Code in a Claude setup), do that slot's work yourself and send only the other slot's work out.
-- **Code tab with the Codex plugin:** hand builder jobs to the `codex:codex-rescue` subagent with the builder's model and effort (the owner can also type `/codex:rescue --model gpt-6.1-sol --effort high ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
+- **Code tab with the Codex plugin:** hand builder jobs to the `codex:codex-rescue` subagent with the builder's model and effort (the owner can also type `/codex:rescue --model <builder model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
 Save these routing rules as a standing instruction, with the owner's planner and builder named, if hub setup hasn't already. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
@@ -90,7 +92,7 @@ An app can't hand work to another model by itself, so the app's instructions do 
    When a plan is ready, end with a hand-off I can paste into a new chat with the builder: the goal, the steps, what done looks like, and which hub skills to load.
    For important work, remind me to bring the result back to the planner for a check.
    ```
-   With the defaults, the first line reads: "Model routing: plan with Claude Opus 5.5. Execute with GPT-6.1 Sol."
+   With the default setup, the first line reads: "<!-- models:app-routing-example -->Model routing: plan with Claude Opus 5.5. Execute with GPT-6.1 Sol.<!-- /models -->"
 3. Test it in a new chat on the planner: ask for something to execute. It passes if the app doesn't start, names the builder, and gives a ready-to-paste prompt. Then, in another new chat, ask for something to plan. It passes if it does the work and ends with a hand-off. If the builder is in a different app, check that app routes planning requests back the same way.
 4. Save the routing to Stack settings, noting which app holds each model.
 
@@ -109,3 +111,11 @@ For Codex and every other tool, follow that provider's current terms for its pla
 - Check the current terms for each provider in the setup.
 - CLI routing: test each slot with a quick prompt and tell the owner which model actually answered. App routing: the App routing test above. Don't call setup done until both slots pass.
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.
+
+## Check for newer models
+When the owner says "check for newer models" (or "update guava-router"):
+1. Read [models.yaml](../../models.yaml): the installed copy, or the one in github.com/romeodiaz/guava-stack if the owner set up by pasting the Start here line. To get the newest installed copy, the owner updates the plugin first (`/plugin update`, or reinstall it).
+2. Compare its head chef and line cook for the owner's AI setup with the Planner and Builder in Stack settings. If they match, say the owner is on the newest picks and stop. If the owner picked a model by hand that isn't in models.yaml, leave that slot alone and only mention the new pick.
+3. Show each change as old model, then new model, and wait for a yes.
+4. On a yes, update every place the old model is named, one change at a time: Stack settings, the standing instructions in your memory, the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` if they name models, and the model routing instruction in each Claude and ChatGPT app (show the new first line for the owner to paste). Never replace anything else.
+5. Test each changed slot as in step 7.

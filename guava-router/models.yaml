@@ -1,0 +1,74 @@
+# Guava Stack model picks: the one place to change when better models come out.
+#
+# Each setup names a head chef (plans, researches, writes, reviews) and a line cook
+# (does the bulk work), based on which AI plans the owner pays for.
+#
+# To swap in a newer model:
+#   1. Change its name, id and effort below.
+#   2. Run: python3 scripts/sync-models.py
+#      It copies these picks into every README and skill that shows them.
+#   3. Owners who are already set up say "check for newer models" to their assistant.
+#
+# Fields:
+#   name:   what people see, such as "Claude Opus 5.5"
+#   id:     the model ID the command-line tool takes
+#   effort: thinking effort (low, medium, high, xhigh or max where the tool supports it)
+#   tool:   claude-code or codex (the command-line tool that runs it)
+#   app:    claude or chatgpt (the app where people pick this model in chat)
+
+updated: 2026-10-15
+
+setups:
+  claude-chatgpt:
+    label: Claude + ChatGPT
+    pays_for: Claude and ChatGPT
+    default: true
+    head_chef:
+      name: Claude Opus 5.5
+      id: claude-opus-5-5
+      effort: high
+      tool: claude-code
+      app: claude
+    line_cook:
+      name: GPT-6.1 Sol
+      id: gpt-6.1-sol
+      effort: high
+      tool: codex
+      app: chatgpt
+
+  chatgpt-only:
+    label: ChatGPT only
+    pays_for: ChatGPT only
+    head_chef:
+      name: GPT-6 Astra
+      id: gpt-6-astra
+      effort: high
+      tool: codex
+      app: chatgpt
+    line_cook:
+      name: GPT-6.1 Sol
+      id: gpt-6.1-sol
+      effort: high
+      tool: codex
+      app: chatgpt
+
+  claude-only:
+    label: Claude only
+    pays_for: Claude only
+    head_chef:
+      name: Claude Opus 5.5
+      id: claude-opus-5-5
+      effort: high
+      tool: claude-code
+      app: claude
+    line_cook:
+      name: Claude Sonnet 5.5
+      id: claude-sonnet-5-5
+      effort: high
+      tool: claude-code
+      app: claude
+
+# What each role does. Shown under the head chef and line cook in the READMEs.
+roles:
+  head_chef: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems
+  line_cook: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs

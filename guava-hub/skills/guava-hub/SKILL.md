@@ -38,14 +38,16 @@ See `assistants/` for notes on each.
 
 **AI setup: one model or two.** Default: two.
 - **Two models** (recommended): a **planner + reviewer** does the thinking (planning, research, writing) and checks important work before it's called done; a **builder** does the doing (bulk execution, coding, long jobs). The plans they pay for decide the pair, as below. The guava-router skill has the full details for each.
-- **One model**: a single do-it-all model for everything, such as Claude Opus 5.5 or GPT-6.1 Sol. No routing, so skip the Model Router step and the routing line. The hub and founder-mode work the same.
+- **One model**: a single do-it-all model for everything, such as the head chef for the plans they pay for. No routing, so skip the Model Router step and the routing line. The hub and founder-mode work the same.
 
+<!-- models:table first="They pay for" head="Planner + reviewer" line="Builder" -->
 | They pay for | Planner + reviewer | Builder |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
+<!-- /models -->
 
 ## 1. Start
 1. Say in one line: I'll set up a shared AI Context & Skills Hub so your AI assistants share the same context and skills, and route each job to the AI that's best at it.
@@ -61,12 +63,14 @@ See `assistants/` for notes on each.
    - Model routing: `<planner>` for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; `<builder>` for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, `<planner>` reviews the builder's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - (One-model setups leave out the routing line.)
    - When the owner says "update founder-mode", follow founder-mode/skills/founder-mode/SKILL.md from github.com/romeodiaz/guava-stack.
+   - When the owner says "check for newer models", follow the Check for newer models step in guava-router/skills/guava-router/SKILL.md from github.com/romeodiaz/guava-stack.
 
-   With the defaults, the routing line reads: "Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, ...; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, ...". If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
+   With the default setup, the routing line reads: "<!-- models:hub-routing-example -->Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, ...; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, ...<!-- /models -->". If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
 
 ## 2. Build the hub
 Follow **Build the hub** in the backend's file. Every backend holds the same three parts:
 - **Profile & Context**: starts with a short **Stack settings** section so every assistant reads the same setup, then a short interview about the owner and their business. No passwords, keys or other secrets.
+<!-- models:stack-example -->
   ```
   Stack settings
   - Hub: Notion
@@ -75,7 +79,8 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
   - Planner: Claude Opus 5.5 (High) via Claude Code
   - Builder: GPT-6.1 Sol (High) via Codex
   ```
-  For app routing, name the app instead of the CLI, for example "Planner: Claude Opus 5.5 (High) in the Claude app". For one model, use a single line instead of the Planner and Builder lines, such as "Model: Claude Opus 5.5 (High), does everything".
+  <!-- /models -->
+  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". For one model, use a single line instead of the Planner and Builder lines, such as "Model: <model> (High), does everything".
 - **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; follow the model routing in Stack settings; keep a change log.
 - **Skills**: one entry per skill, including a model-routing skill written for their planner and builder. Ask the owner before turning skills on.
 

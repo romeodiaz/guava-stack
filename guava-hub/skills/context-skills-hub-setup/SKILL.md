@@ -30,7 +30,7 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 |---|---|
 | **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. |
 | The Claude or ChatGPT app (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
-| Claude Code or Codex | For owners with both plans who'd rather not use Grok Bot or Muse. It runs on the owner's computer and routes each job through the other CLI. |
+| Claude Code (or Codex) | For owners with both plans who'd rather not use Grok Bot or Muse. Claude Code plans, and OpenAI's Codex plugin for Claude Code hands execution to Codex. Codex can be the assistant too, but it can only reach Claude through plain `claude -p` calls. |
 
 See `assistants/` for notes on each.
 

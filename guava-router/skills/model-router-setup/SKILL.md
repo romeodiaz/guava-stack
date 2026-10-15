@@ -33,6 +33,7 @@ Only the tools the setup uses.
 - Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code`; Codex `npm i -g @openai/codex`.
 - Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise sign in with the owner's own subscription: `claude auth login` and `codex login --device-auth`.
 - Set each slot's model and effort as [setups.md](setups.md) shows.
+- **Claude Code as the day-to-day assistant (Claude + ChatGPT setup):** also install OpenAI's official [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc), so Claude hands jobs to Codex natively instead of through raw `codex exec` calls. In Claude Code: `/plugin marketplace add openai/codex-plugin-cc`, then `/plugin install codex@openai-codex`, then `/reload-plugins`, then `/codex:setup` to check it. It uses the Codex CLI and ChatGPT sign-in from above. Leave its review gate off (it stays off unless someone runs `/codex:setup --enable-review-gate`): it can loop and drain usage limits, and it's the kind of unattended Claude loop step 6 rules out.
 
 ## 3. Connect them to the hub
 Check what's already connected first (`claude mcp list`, `codex mcp list`) and skip anything that already shows the hub.
@@ -66,6 +67,7 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - **Hand-off rule**: if a tool can't reach the hub, the planner (or you) loads what the job needs from the hub and puts it in that tool's prompt.
 - **If either fails**: do the task yourself and say so.
 - **If you are the planner or the worker** (say, Claude Code in a Claude setup), do that slot's work yourself and send only the other slot's work out.
+- **Claude Code with the Codex plugin:** hand worker jobs to the `codex:codex-rescue` subagent with the worker's model and effort (the owner can also type `/codex:rescue --model gpt-6.1-sol --effort high ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
 Save these routing rules as a standing instruction, with the owner's planner and worker named, if hub setup hasn't already. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.

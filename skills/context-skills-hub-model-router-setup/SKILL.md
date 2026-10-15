@@ -18,9 +18,9 @@ Create a page called **AI Context Hub** with:
 - **Skills**: a database for Notion's skill upload, including a model-routing skill. Ask the owner before enabling these skills for external agents and Notion AI.
 
 ## 2. Install the command-line tools
-- Install Claude Code: `npm i -g @anthropic-ai/claude-code`
-- Install Codex: `npm i -g @openai/codex`
-- Sign in with your own subscriptions: `claude auth login` and `codex login --device-auth`
+- Check first, without asking (these only read): `claude --version` and `codex --version`. Skip the install for any tool that answers with a version, and tell the owner it's already there.
+- Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code`; Codex `npm i -g @openai/codex`.
+- Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise sign in with the owner's own subscription: `claude auth login` and `codex login --device-auth`.
 - Defaults: Claude `claude-opus-5-5` with effort high; Codex `gpt-6.1-sol` with `model_reasoning_effort` high.
 - Connect both to Notion. Run `claude mcp list` and `codex mcp list` first and skip any that already show Notion.
   - **Claude Code:** if the owner already connected Notion in the Claude app, Claude Code picks it up automatically. Otherwise run `claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp`, then have the owner type `/mcp` in Claude Code and approve Notion's sign-in page.

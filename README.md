@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
 
-# Guava Stack: one shared brain for all your AI
+# guava-stack: AI brain + router + rules
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
@@ -28,7 +28,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 
 It asks a few simple questions, explains each step before doing it, and checks that everything works at the end. Not sure what to pick? Say "use the defaults" and it chooses a setup that works for most people.
 
-**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/context-skills-hub-setup/SKILL.md](guava-hub/skills/context-skills-hub-setup/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
+**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
 ## What you get
 Three pieces that work together. Start with the hub; the other two are optional.
@@ -159,8 +159,8 @@ Guava collects nothing. Your profile and business details go only to your own hu
 
 ## What's inside
 For the curious:
-- **[guava-hub](guava-hub/)**: hub setup, with steps for each [hub type](guava-hub/skills/context-skills-hub-setup/backends/).
-- **[guava-router](guava-router/)**: model routing, with details for each [AI setup](guava-router/skills/model-router-setup/setups.md).
+- **[guava-hub](guava-hub/)**: hub setup, with steps for each [hub type](guava-hub/skills/guava-hub/backends/).
+- **[guava-router](guava-router/)**: model routing, with details for each [AI setup](guava-router/skills/guava-router/setups.md).
 - **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: notes for each assistant on what to skip or change.
 

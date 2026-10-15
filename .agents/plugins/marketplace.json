@@ -1,0 +1,44 @@
+{
+  "name": "guava",
+  "interface": {
+    "displayName": "Guava Stack"
+  },
+  "plugins": [
+    {
+      "name": "guava-hub",
+      "source": {
+        "source": "local",
+        "path": "./guava-hub"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "guava-router",
+      "source": {
+        "source": "local",
+        "path": "./guava-router"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "founder-mode",
+      "source": {
+        "source": "local",
+        "path": "./founder-mode"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -38,9 +38,9 @@ For business owners and solo operators. Setup happens in two steps:
 
 ## How to use it
 - **Grok Bot**: install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfWqf3wH), which sets everything up for you.
-- **Claude Code**: `/plugin marketplace add romeodiaz/guava-mode`, then `/plugin install guava-mode@guava`.
+- **Claude**: see the [Claude guide](assistants/claude.md), or paste the line under Start here.
 - **Grok Bot and Cursor plugin marketplace**: listing pending review.
-- **ChatGPT and Codex**: see the [ChatGPT and Codex guide](assistants/chatgpt.md), or paste the line under Start here.
+- **ChatGPT Dots**: see the [ChatGPT guide](assistants/chatgpt.md), or paste the line under Start here.
 - **Any other AI assistant**: paste the line under Start here, or "Install Owner Mode from github.com/romeodiaz/guava-mode" for the rules only.
 
 ## How to update

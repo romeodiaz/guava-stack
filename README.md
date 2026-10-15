@@ -11,7 +11,7 @@ For business owners and solo operators. The stack has three pieces that live tog
 | Piece | What it does | Setup |
 |---|---|---|
 | **[guava-hub](guava-hub/)** | A shared AI Context & Skills Hub, so all your AI assistants share your context, rules and skills. Notion by default, or Google Drive or OneDrive/SharePoint. | [context-skills-hub-setup](guava-hub/skills/context-skills-hub-setup/SKILL.md) |
-| **[guava-router](guava-router/)** | Routes hard thinking to a planner model and heavy lifting to a worker model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Claude Opus 5.5 + GPT-6.1 Sol by default. | [model-router-setup](guava-router/skills/model-router-setup/SKILL.md) |
+| **[guava-router](guava-router/)** | Routes hard thinking to a planner model and heavy lifting to a builder model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Claude Opus 5.5 + GPT-6.1 Sol by default. | [model-router-setup](guava-router/skills/model-router-setup/SKILL.md) |
 | **[founder-mode](founder-mode/)** (optional) | 27 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. | [founder-mode-rules](founder-mode/skills/founder-mode-rules/SKILL.md) |
 
 Setup starts with the hub, then the router, then offers founder-mode. You can turn on founder-mode at the end of setup or anytime later.
@@ -30,9 +30,9 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 
 **Your day-to-day assistant:** Grok Bot or Muse by default, since they run both CLIs on their own computer and route each job for you. Don't have or want them? Use your normal Claude or ChatGPT app on web, desktop or mobile: setup adds instructions so every new chat first checks whether your request is planning or execution, and if it's on the wrong model, hands you a ready-to-paste prompt for the right one. Have both plans but don't want Grok Bot or Muse? The Claude desktop app's Code tab can be your assistant, no terminal needed: Claude plans, and OpenAI's [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) hands execution to Codex. Only pay for Claude? The Code tab's built-in `opusplan` mode plans on Opus and builds on Sonnet for you. Third-party tools like Cursor are coming soon. See [How to use it](#how-to-use-it).
 
-**Your AI plans**, which decide the planner (thinking) and the worker (doing):
+**Your AI models:** two by default, a planner that also reviews (thinking and checking) and a builder (doing). Your plans decide the pair. Prefer one do-it-all model? Pick it and skip routing; the hub and founder-mode work the same.
 
-| You pay for | Planner | Worker |
+| You pay for | Planner + reviewer | Builder |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) | GPT-6.1 Sol (High) |
 | ChatGPT only | Astra (High) | GPT-6.1 Sol (High) |
@@ -54,7 +54,7 @@ Setup saves your choices in your hub, so every assistant follows the same setup.
 
 **You're paying for AI plans you don't fully use.**
 
-**The fix:** hard thinking goes to your best planner model and heavy lifting goes to a fast worker model, through the plans you already pay for. With Claude and ChatGPT, that's Claude Opus 5.5 and GPT-6.1 Sol.
+**The fix:** hard thinking goes to your best planner model and heavy lifting goes to a fast builder model, through the plans you already pay for. With Claude and ChatGPT, that's Claude Opus 5.5 and GPT-6.1 Sol.
 
 **Skills from strangers can be risky.**
 
@@ -82,7 +82,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 
 ## What's inside
 - **[guava-hub](guava-hub/)**: one shared place where all your AI assistants read your context, rules and skills, with setup steps for each [hub backend](guava-hub/skills/context-skills-hub-setup/backends/).
-- **[guava-router](guava-router/)**: a planner model for thinking work and a worker model for execution work, with details for each [AI setup](guava-router/skills/model-router-setup/setups.md).
+- **[guava-router](guava-router/)**: a planner model for thinking work and a builder model for execution work, with details for each [AI setup](guava-router/skills/model-router-setup/setups.md).
 - **[founder-mode](founder-mode/)**: the founder-mode rules and their [changelog](founder-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: per-assistant notes on what to skip or change.
 

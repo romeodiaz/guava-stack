@@ -53,4 +53,4 @@ Save these routing rules as a standing instruction if hub setup hasn't already. 
 ## 6. Final checks
 - Check the current Anthropic and OpenAI terms.
 - Test each CLI with a quick prompt and tell the owner which model actually answered in each. Don't call setup done until both pass.
-- Running this as part of hub setup? Go back to the hub setup skill's Owner Mode step.
+- Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.

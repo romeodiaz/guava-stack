@@ -1,13 +1,13 @@
 ---
 name: context-skills-hub-setup
-description: Sets up the owner's shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share their context, rules and skills, then hands off to the Model Router and Owner Mode. Use when the owner says "set me up", asks for the AI Context Hub, or starts Guava setup.
+description: Sets up the owner's shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share their context, rules and skills, then hands off to the Model Router and founder-mode. Use when the owner says "set me up", asks for the AI Context Hub, or starts Guava setup.
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
 
 # AI Context & Skills Hub: setup
 
-These steps give Grok Bot, Claude and ChatGPT one shared place for your context, rules and skills. This is the first step of Guava setup: once the hub works, it hands off to the Model Router (guava-router) and offers Owner Mode (guava-mode).
+These steps give Grok Bot, Claude and ChatGPT one shared place for your context, rules and skills. This is the first step of Guava setup: once the hub works, it hands off to the Model Router (guava-router) and offers founder-mode.
 
 > **AI assistants:** first check `assistants/<your assistant>.md` in the guava-stack repo for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped.
 
@@ -20,7 +20,7 @@ These steps give Grok Bot, Claude and ChatGPT one shared place for your context,
 3. Show the owner these standing instructions and, once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them:
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.
    - Model routing: Claude Opus 5.5 High via Claude CLI for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; browser and desktop tasks stay with your own computer tools; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
-   - When the owner says "update Owner Mode", follow guava-mode/skills/owner-mode-rules/SKILL.md from github.com/romeodiaz/guava-stack.
+   - When the owner says "update founder-mode", follow founder-mode/skills/founder-mode-rules/SKILL.md from github.com/romeodiaz/guava-stack.
 
 ## 2. Build the Notion hub
 Create a page called **AI Context Hub** with:
@@ -68,15 +68,15 @@ Don't call setup done until both apps pass.
 ## 5. Set up the Model Router
 If the owner pays for Claude and ChatGPT and your platform can run command-line tools, follow the **model-router-setup** skill from guava-router now. It installs Claude Code and Codex, connects them to this hub and routes each kind of work to the model that's best at it. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
 
-## 6. Offer Owner Mode
+## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
-"Ready to turn on Owner Mode? It's 23 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
-- Turn it on (follow the **owner-mode-rules** skill from guava-mode)
-- Show me the 23 rules first (show them in plain words, then ask again)
-- Not now (tell them they can say "turn on Owner Mode" anytime)
+"Ready to turn on founder-mode? It's 27 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
+- Turn it on (follow the **founder-mode-rules** skill from founder-mode)
+- Show me the 27 rules first (show them in plain words, then ask again)
+- Not now (tell them they can say "turn on founder-mode" anytime)
 
 ## 7. Wrap up
 End with a short close that starts with "Setup's done 🎉", never just a confirmation:
-- Two or three lines on what's set up: the Notion hub, both apps connected and verified, both CLIs and the model routing if they set up the router, and Owner Mode with its version if they turned it on.
+- Two or three lines on what's set up: the Notion hub, both apps connected and verified, both CLIs and the model routing if they set up the router, and founder-mode with its version if they turned it on.
 - Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in Notion and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.

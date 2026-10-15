@@ -1,0 +1,14 @@
+# Changelog
+
+founder-mode version history.
+
+- v2.0.0 (2026-10-15): Rebuilt from a fresh read of five agent setups ([pstack](https://github.com/cursor/plugins/tree/main/pstack) with poteto-mode, [superpowers](https://github.com/obra/superpowers), [Matt Pocock's skills](https://github.com/mattpocock/skills) and [gstack](https://github.com/garrytan/gstack)) plus Paul Graham's [Founder Mode](https://paulgraham.com/foundermode.html) essay, translated for business owners. The plugin, its folder and the rules are now called founder-mode, and the skill is founder-mode-rules. 27 rules in five groups, led by three that never bend: ask before anything you can't take back ("sounds good" isn't a yes to send), check the real result (helpers' reports included), and say how you know things. New ideas include a checkable definition of done, pushing for specifics (interest isn't demand), finding out why before fixing, never lowering the bar, a fresh second check on anything customers or money touch, hand-offs that mark what was checked versus assumed, and (from Founder Mode) no black-box work, leading with bad news, and weighing the owner's own results over standard advice. Setup now saves the rules word for word, and a stricter Agent Rule wins.
+- 2026-10-15 (repo only): The repo is now the Guava Stack (github.com/romeodiaz/guava-stack). The rules live in their own plugin folder, the Notion hub setup in guava-hub/ and the model router in guava-router/. The founder-mode rules are unchanged.
+- 2026-10-14 (setup only): Setup now walks owners step by step through connecting Notion and adding the hub instruction in the Claude and ChatGPT apps, then checks both work. The founder-mode rules are unchanged.
+- v1.7.0 (2026-10-14): The plugin now uses only its own bundled files: no live fetching of instructions. Rule 17 summarizes humanizer principles and links blader's humanizer skill instead of fetching it. Setup asks before every edit or install and asks the owner to paste or export context from other AI tools. Changelog moved here.
+- v1.6.1 (2026-10-14): Moved the files into the skills/ folder. The rules are unchanged.
+- v1.6.0 (2026-10-14): Rule 21 now scans third-party skills with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) before installing them.
+- v1.5.0 (2026-10-14): Rule 17 now runs final copy through the live [humanizer skill](https://github.com/blader/humanizer) by blader, fetched fresh each time.
+- v1.4.0 (2026-10-14): Rule 4 now asks for all decisions at once as a numbered list with a recommended answer for each. New rule 23 keeps passwords, keys and personal details out of notes and handoffs. Both ideas come from [Matt Pocock's skills](https://github.com/mattpocock/skills).
+- v1.3.0 (2026-10-14): Simplified the repo to a few files. The rules haven't changed since v1.0.0.
+- v1.0.0 (2026-10-14): First release of the 22 rules, adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack).

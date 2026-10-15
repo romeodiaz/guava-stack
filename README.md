@@ -36,7 +36,7 @@ Three choices, each with a default. Say "use the defaults" and you get a Notion 
 
 Your plans decide the pair. Prefer one do-it-all model? Pick it and skip routing; the hub and founder-mode work the same.
 
-| You pay for | Planner + reviewer | Builder |
+| You pay for | Head chef | Line cook |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) | GPT-6.1 Sol (High) |
 | ChatGPT only | Astra (High) | GPT-6.1 Sol (High) |

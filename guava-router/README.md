@@ -8,7 +8,7 @@ Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **
 
 Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
 
-| You pay for | Planner + reviewer | Builder |
+| You pay for | Head chef | Line cook |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |

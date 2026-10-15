@@ -164,8 +164,6 @@ For the curious:
 - **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: notes for each assistant on what to skip or change.
 
-Found a bug or have an idea? Open an issue or a pull request. Contributions are welcome.
-
 ## Support & privacy
 - Support: [romeo@workwithguava.com](mailto:romeo@workwithguava.com)
 - Privacy: https://workwithguava.com/privacy. Guava collects no data; everything stays in your own hub, computer and AI accounts.

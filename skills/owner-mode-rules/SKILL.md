@@ -5,7 +5,7 @@ description: Installs, updates or shows Owner Mode, the owner's 23 working rules
 
 # Owner Mode v1.7.0
 
-Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone.
+Your AI assistant works like humans do: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone.
 
 ## How to install or update (for your AI assistant)
 1. Use this file as installed. The version number is in its title. To get a newer version, the owner updates the plugin (`/plugin update`, or reinstall it).

@@ -7,7 +7,7 @@ The setup I use every day to run Guava, so all my AI assistants share one brain 
 For business owners and solo operators. Setup happens in two steps:
 
 1. **[AI Context & Skills Hub and Model Router](skills/context-skills-hub-model-router-setup/SKILL.md).** Sets up a shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share your context and skills, and routes work to Claude Opus 5.5 and GPT-6.1 Sol through their CLIs.
-2. **[Owner Mode](skills/owner-mode-rules/SKILL.md) (optional).** 23 working rules so your AI assistant works like it owns the result. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
+2. **[Owner Mode](skills/owner-mode-rules/SKILL.md) (optional).** 23 working rules so your AI assistant works like humans do. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
 
 ## Why install it
 **Every AI tool starts from scratch.** You explain your business again in each one, and switching tools means starting over.
@@ -40,7 +40,7 @@ For business owners and solo operators. Setup happens in two steps:
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled Notion skills from their Notion AI Context Hub, and treat Notion as the source of truth.
    - When the owner says "update Owner Mode", follow skills/owner-mode-rules/SKILL.md from github.com/romeodiaz/guava-mode.
 4. Follow [skills/context-skills-hub-model-router-setup/SKILL.md](skills/context-skills-hub-model-router-setup/SKILL.md).
-5. Offer Owner Mode: "Ready to turn on Owner Mode? Your AI assistant works like it owns the result: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [skills/owner-mode-rules/SKILL.md](skills/owner-mode-rules/SKILL.md). If not, tell them they can say "turn on Owner Mode" anytime.
+5. Offer Owner Mode: "Ready to turn on Owner Mode? Your AI assistant works like humans do: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Or would you like to see the full list of rules first?" If they want the list, show the rules, then ask again. If yes, follow [skills/owner-mode-rules/SKILL.md](skills/owner-mode-rules/SKILL.md). If not, tell them they can say "turn on Owner Mode" anytime.
 
 ## What's inside
 - **AI Context & Skills Hub (Notion)**: one shared place where Grok Bot, Claude and ChatGPT read your context, rules and skills.

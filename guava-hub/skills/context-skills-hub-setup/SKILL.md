@@ -29,8 +29,8 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 | Assistant | How routing works |
 |---|---|
 | **Grok Bot or Muse** (recommended) | It runs the planner and worker CLIs on its own computer and routes each job for the owner. |
-| The Claude or ChatGPT app (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
-| Claude Code (or Codex) | For owners with both plans who'd rather not use Grok Bot or Muse. Use the Claude desktop app's Code tab for owners who don't want a terminal. Claude Code plans, and OpenAI's Codex plugin for Claude Code hands execution to Codex. Codex can be the assistant too, but it can only reach Claude through plain `claude -p` calls. |
+| Claude or ChatGPT chat (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. |
+| The Claude desktop app's Code tab | For owners with both plans who'd rather not use Grok Bot or Muse. No terminal needed: Claude plans, and OpenAI's Codex plugin for Claude Code hands execution to Codex. |
 
 See `assistants/` for notes on each.
 
@@ -97,7 +97,7 @@ Check each answer. It passes if it mentions the owner's profile or hub pages. If
 Don't call setup done until every connected app passes.
 
 ## 5. Set up the Model Router
-Follow the **model-router-setup** skill from guava-router now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, Claude Code, Codex), it installs the planner and worker CLIs, connects them to this hub and routes each kind of work to the right one. If it's the Claude or ChatGPT app, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
+Follow the **model-router-setup** skill from guava-router now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and worker CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
 
 ## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:

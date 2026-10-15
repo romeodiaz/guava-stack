@@ -22,7 +22,10 @@ Create a page called **AI Context Hub** with:
 - Install Codex: `npm i -g @openai/codex`
 - Sign in with your own subscriptions: `claude auth login` and `codex login --device-auth`
 - Defaults: Claude `claude-opus-5-5` with effort high; Codex `gpt-6.1-sol` with `model_reasoning_effort` high.
-- Connect both to Notion.
+- Connect both to Notion. Run `claude mcp list` and `codex mcp list` first and skip any that already show Notion.
+  - **Claude Code:** if the owner already connected Notion in the Claude app, Claude Code picks it up automatically. Otherwise run `claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp`, then have the owner type `/mcp` in Claude Code and approve Notion's sign-in page.
+  - **Codex:** run `codex mcp add notion --url https://mcp.notion.com/mcp`, then `codex mcp login notion` and have the owner approve Notion's sign-in page.
+  - Test each with a quick non-interactive run that searches Notion for "AI Context Hub", for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`. Add `< /dev/null` so neither waits for input.
 - Add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` (create them if they don't exist) telling them to load your enabled Notion skills, Agent Rules and Profile & Context at the start of each session. Never replace or delete what's already in those files.
 
 ## 2b. Never skip Notion (optional)

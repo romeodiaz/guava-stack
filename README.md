@@ -67,6 +67,7 @@ Every part is swappable. Pick what fits you today and change it later by telling
 
 Keep it simple with one do-it-all model, or split the work like a kitchen:
 
+<!-- models:kitchen -->
 <table>
 <tr>
 <td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
@@ -77,17 +78,20 @@ Keep it simple with one do-it-all model, or split the work like a kitchen:
 <td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
 </tr>
 </table>
+<!-- /models -->
 
 The plans you pay for decide who's in the kitchen:
 
+<!-- models:table style=simple -->
 | You pay for | Head chef | Line cook |
 |---|---|---|
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
 | Claude only | Claude Opus 5.5 | Claude Sonnet 5.5 |
 | Cursor, Devin, Droid, Amp and others | Coming soon | Coming soon |
+<!-- /models -->
 
-AI models change fast. When a better one comes out, tell your assistant to swap it in. Your hub stays the same.
+AI models change fast. When better ones come out, the picks above get updated here. Say "check for newer models" and your assistant offers to swap them in. Your hub stays the same.
 
 **On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
 

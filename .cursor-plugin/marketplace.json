@@ -16,7 +16,7 @@
     {
       "name": "guava-router",
       "source": "guava-router",
-      "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a builder model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Defaults to Claude Opus 5.5 + GPT-6.1 Sol; also works with ChatGPT only or Claude only. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a builder model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only or Claude only, and newer models swap in with a one-line change. Part of the Guava Stack."
     },
     {
       "name": "founder-mode",

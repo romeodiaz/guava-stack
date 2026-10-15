@@ -19,12 +19,10 @@ For owners who only pay for ChatGPT. Both slots run through Codex; skip Claude C
 
 | Slot | Model | Tool | Run it |
 |---|---|---|---|
-| Planner | Astra, reasoning effort high | Codex | `codex exec -m <Astra model ID> -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
+| Planner | GPT-6 Astra, reasoning effort high (`gpt-6-astra`) | Codex | `codex exec -m gpt-6-astra -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
 | Builder | GPT-6.1 Sol, reasoning effort high (`gpt-6.1-sol`) | Codex | as in the default setup |
 
-Find Astra's exact model ID in Codex's `/model` menu and use what it shows. Don't guess it.
-
-**In the apps:** both in the ChatGPT app. Plan on Astra and execute on GPT-6.1 Sol, each in its own new chat.
+**In the apps:** both in the ChatGPT app. Plan on GPT-6 Astra and execute on GPT-6.1 Sol, each in its own new chat.
 
 ## Claude only
 For owners who only pay for Claude. Both slots run through Claude Code; skip Codex.

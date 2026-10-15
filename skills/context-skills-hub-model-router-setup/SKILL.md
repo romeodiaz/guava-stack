@@ -69,10 +69,10 @@ Save a standing instruction for your assistant to load the hub before any real w
 - Test each CLI with a quick prompt and tell the owner which model actually answered in each. Don't call setup done until both pass.
 
 ## 6. Connect the Claude and ChatGPT apps
-Required. Every owner uses these apps, so walk them through it; don't leave it as a note or a menu. Don't ask whether the apps are already connected. Start the walkthrough right away; if a step is already done, the owner can say so and you move on. Do Claude first, then ChatGPT. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
+Required. Every owner uses these apps, so walk them through it; don't leave it as a note or a menu. Don't ask whether the apps are already connected. Start the walkthrough right away; if a step is already done, the owner can say so and you move on. Do Claude first, then ChatGPT. Use the quoted wording as written. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
 
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
-1. "Open claude.ai/customize/connectors, or in the desktop app click Customize in the sidebar, then Connectors."
+1. "Open [Claude Connectors](https://claude.ai/customize/connectors)."
 2. "Click Discover, then Search (the magnifying glass icon), and search for Notion. Pick the Notion connector, not the Notion plugin, then click Connect to Claude."
 3. "Sign in to Notion and click Allow. Pick the workspace with your AI Context Hub."
 4. "Click your initials in the bottom left, then Settings, then Account. Under Instructions for Claude, paste this and save:" then show:
@@ -82,11 +82,11 @@ Load my Notion AI Context Hub first.
 5. "Start a new chat. Click + and check Notion is turned on under Connectors. Then ask: What's in my AI Context Hub? Paste or describe the answer here."
 
 ChatGPT:
-1. "Now ChatGPT, on the web (it works better than the desktop app here). Go to chatgpt.com, click your profile icon in the lower left, then Settings, then Plugins under Integrations."
+1. "Now ChatGPT. Open [ChatGPT Plugins](https://chatgpt.com/plugins). Tell me when you're there."
 2. "Find Notion and click Connect (or Install plugin, then Connect)."
 3. "Sign in to Notion, pick the workspace with your AI Context Hub, and approve."
 4. "Open [ChatGPT Personalization](https://chatgpt.com/settings/personalization). Under Custom Instructions, paste this in both the ChatGPT box and the Codex box, then save:" then show the same code block.
-5. "Start a new chat on chatgpt.com and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
+5. "Last step: start a new chat and ask: What's in my AI Context Hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
 
 Check each answer. It passes if it mentions the owner's profile or hub pages. If it fails:
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.

@@ -2,7 +2,7 @@
 
 # AI Context & Skills Hub + Model Router, with optional Owner Mode
 
-The setup I use every day to run Guava, so all my AI assistants share one brain and work like they own the result.
+The setup I use every day to run Guava, so all my AI assistants share one brain and work like humans do.
 
 For business owners and solo operators. Setup happens in two steps:
 

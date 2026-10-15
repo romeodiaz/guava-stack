@@ -1,8 +1,8 @@
 # Meta Muse Bot adapter
 
-- **Connect Notion:** tell Muse "Connect my Notion" and approve access to your AI Context Hub. Start with just the hub pages, not your whole workspace.
-- Muse doesn't let you upload your own skills, so don't install them as files. Keep the skills in the Notion hub and have Muse read the matching one from there when a task needs it.
-- **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. Also save the README's model-routing instruction there:
+- **Connect your hub:** tell Muse "Connect my Notion" (or the app your hub lives in, if Muse offers it) and approve access to your AI Context Hub. Start with just the hub, not your whole workspace.
+- Muse doesn't let you upload your own skills, so don't install them as files. Keep the skills in the hub and have Muse read the matching one from there when a task needs it.
+- **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. These are the default lines; swap in the owner's hub, planner and builder from Stack settings if they picked something else:
   ```
   Before any substantive task, load my Notion AI Context Hub first (Profile & Context, Agent Rules and Skills) and treat it as the source of truth.
   Model routing: Claude Opus 5.5 High via Claude CLI (`claude -p`) for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; GPT-6.1 Sol High via Codex CLI (`codex exec`) for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; quick replies and connector lookups stay with you; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open. Run routed work through the CLI without being asked, and mention which one you used.

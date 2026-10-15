@@ -4,8 +4,8 @@
 
 For business owners and solo operators. Setup happens in two steps:
 
-1. **AI Context & Skills Hub and Model Router.** Sets up a shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share your context and skills, and routes work to Claude Opus 5.5 and GPT-6.1 Sol through their CLIs.
-2. **Owner Mode (optional).** 23 working rules so your AI assistant works like it owns the result. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
+1. **[AI Context & Skills Hub and Model Router](skills/hub-setup/SKILL.md).** Sets up a shared AI Context & Skills Hub in Notion so Grok Bot, Claude and ChatGPT share your context and skills, and routes work to Claude Opus 5.5 and GPT-6.1 Sol through their CLIs.
+2. **[Owner Mode](skills/owner-mode/SKILL.md) (optional).** 23 working rules so your AI assistant works like it owns the result. It handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. You can turn it on at the end of setup or anytime later.
 
 ## Start here
 **People:** paste this into your AI assistant: "Set me up by following the Start here steps in github.com/romeodiaz/guava-mode."

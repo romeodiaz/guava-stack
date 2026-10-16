@@ -24,13 +24,13 @@ ChatGPT:
 2. "Find Notion and click Connect (or Install plugin, then Connect)."
 3. "Sign in to Notion, pick the workspace with your guava-hub, and approve."
 4. "Open [ChatGPT Personalization](https://chatgpt.com/settings/personalization). Under Custom Instructions, paste this in both the ChatGPT box and the Codex box, then save:" then show the hub instruction line in a code block.
-5. "Last step: start a new chat and ask: What's in my guava-hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
+5. "Last step: start a new chat and ask: What's in my guava-hub? Paste or describe the answer here." Test only local chats and tabs. Codex cloud tasks aren't supported.
 
 Claude on the computer (the desktop app's Code tab and Claude Code, with the guava-hub plugin):
 1. Back up `~/.claude/settings.json`, then add the local copy's full path (`/Users/<name>/.guava-hub` on a Mac, or `C:\Users\<name>\.guava-hub` on Windows) under `permissions.additionalDirectories`, so sessions can keep the copy up to date without asking. Show the exact lines first.
 
 ## Local copy
-Notion calls are slow, so assistants on the owner's computer keep a copy of the hub in `~/.guava-hub` and read that instead. Nothing to set up beyond the step above: the first Local session in the Code tab or Claude Code builds it. Notion stays the source of truth, and assistants that can't reach the computer (Grok Bot, Muse, the chat apps, cloud sessions) keep reading Notion directly.
+Notion calls are slow, so assistants on the owner's computer keep a copy of the hub in `~/.guava-hub` and read that instead. Nothing to set up beyond the step above: the first Local session in the Code tab or Claude Code builds it. Notion stays the source of truth, and assistants that can't reach the computer (Grok Bot, Muse and the chat apps) keep reading Notion directly.
 - **What's in it:** `context.md`, `rules.md`, one file per skill in `skills/`, `sync.md` with the page IDs and when it was last refreshed, and `checked.md` with the guava-stack settings section as it was last checked. No images, and no changelog.
 - **At start-up:** the plugin's start-up hook puts the copy's context, rules and skill list straight into each new session, so it starts without a Notion call. A skill's full text is read only when a task needs it.
 - **Keeping it fresh:** at the start of each task and before each hand-off, if the copy is 15 minutes old or more, the session runs one Notion search that lists every hub page with its last-edited time, fetches only the pages that changed, and follows the new versions from then on. So any edit made in Notion, from any device, reaches open sessions within 15 minutes. Say "refresh my hub" to pick it up right away.

@@ -164,7 +164,7 @@ Show the whole plan first, in your message text, as one numbered list: each comm
 ### 1. Get the newest files
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub; for "update guava-stack", every one installed):
-- **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session. A Code tab **cloud** session can't update plugins: say so, and ask the owner to say the same thing in a Local session.
+- **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
 - **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.

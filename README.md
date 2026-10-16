@@ -92,9 +92,12 @@ Every part is swappable. Your choices live in a short **guava-stack settings** s
 | Local Markdown / Obsidian | Want it on your computer only, such as for private client work. Code tab, Claude Code and Codex. |
 
 **💬 Who you talk to**
+
+On your computer, your assistant keeps a copy of your hub, so it starts instantly and passes work between Claude and ChatGPT for you. Everywhere else (your phone, the web, Grok Bot, Muse), it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
+
 - **Claude or ChatGPT app** (web, desktop, phone): each new chat checks it's on the right model, or hands you a prompt for the right one.
 - **Grok Bot or Muse**: cloud assistants that hand each job to the right AI, even from your phone.
-- **Claude desktop app, Code tab**: Claude hands off work itself. No terminal needed.
+- **Claude desktop app, Code tab** (Local sessions): Claude hands off work itself. No terminal needed.
 - **Local models**: *coming soon*.
 
 **👩‍🍳 head-chef and line-cook**

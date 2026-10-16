@@ -55,7 +55,11 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 
 Test each tool with a quick non-interactive run that reads the Context page from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, the Rules page and the Context page from the hub at the start of each session, and to follow the model routing in guava-stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow guava-stack settings. A local hub is the exception: keep its hub instruction line there, since only that line says where the folder is.
+Then add a short Guava block to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling each tool to load the enabled skills, the Rules page and the Context page from the hub at the start of each session, and to follow the model routing in guava-stack settings, following the rule below. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow guava-stack settings. A local hub is the exception: keep its hub instruction line there, since only that line says where the folder is.
+
+<!-- guava-block: keep this paragraph the same in the guava-hub and guava-router skills -->
+**Local instruction files** (`~/.codex/AGENTS.md`, and `~/.claude/CLAUDE.md` when it needs Guava lines): keep everything Guava adds in one block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->`. Back the file up to `<file>.bak-<date>` first and create it if it doesn't exist. Replace only what's between the markers, or add the block at the end of the file if there are none yet. Move Guava lines left outside the markers by an older setup, such as `Load my Notion AI Context Hub first.`, into the block. Never change anything else in the file. Show the owner the change to every file together and ask once.
+<!-- /guava-block -->
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
@@ -119,7 +123,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 ## Changing the setup later
 To swap models, use one model in both slots, or apply a hand-edited guava-stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
 
-Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
+Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing lines in the Guava block of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 
 ## Update
 Use this when the owner says **"update guava-router"**, or when the guava-hub skill's Update step sends you here. Show the whole plan first as one numbered list (each command, and each change as old, then new); the owner can approve it with one yes or pick numbers. Then apply it in order.

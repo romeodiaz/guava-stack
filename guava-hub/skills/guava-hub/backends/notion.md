@@ -8,7 +8,7 @@ The recommended hub. Notion has a native skills feature, and Claude, ChatGPT, Gr
 Create a page called **guava-hub**, with the 8-bit brain as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/brain-hub.png`), holding:
 - **Context**: a page with the guava logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/logo.png`). Start it with the Stack settings section from the setup skill, then the owner's interview answers.
 - **Rules**: a page with the founder-mode 8-bit logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/founder-mode.png`), whichever rules skills the owner turns on.
-- **Skills**: a database for Notion's skill upload. Ask the owner before enabling skills for external agents and Notion AI.
+- **Skills**: a database with the 📖 icon, for Notion's skill upload. Ask the owner before enabling skills for external agents and Notion AI.
 
 ## Connect the apps
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):

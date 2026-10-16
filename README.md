@@ -81,6 +81,16 @@ Any other agent that takes skill files (Cursor, Cline, Grok Bot and 40-plus more
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
 
+## What only you can do
+Setup and updates handle everything on your computer. These live in your app accounts, where no assistant can reach, so setup walks you through each one and every update ends by listing any that changed. If an assistant seems to ignore your hub, check these first:
+- **Claude app:** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.` Replace any older Guava line there, such as one naming an "AI Context Hub".
+- **ChatGPT:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
+- **Codex:** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
+- **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
+- **Notion:** the skills database icon (hover its title, Add icon, Link).
+
+With a Google Drive, OneDrive or local hub, the line names that hub instead, and setup gives you the exact text. If the Claude or ChatGPT app is your day-to-day assistant, its routing line goes in the same box.
+
 ## Make it yours
 Every part is swappable. Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. Typos get caught with a suggested fix. For bigger changes, say "change my setup".
 

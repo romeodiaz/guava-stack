@@ -76,7 +76,7 @@ As plugins, in Claude Code: `claude plugin marketplace add romeodiaz/guava-stack
 Any other agent that takes skill files (Cursor, Cline, Grok Bot and 40-plus more): `npx skills add romeodiaz/guava-stack`, or add `--skill <name>` for one piece. Only the Claude Code and Codex plugins carry guava-hub's start-up hook.
 
 **▶️ Try it:**
-1. "Set me up with a Google Drive hub. I only pay for Claude."
+1. "Set me up. I only pay for Claude."
 2. "Import my existing instructions and skills into my guava-hub."
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
@@ -89,8 +89,8 @@ Every part is swappable. Your choices live in a short **guava-stack settings** s
 | Hub | Good if you |
 |---|---|
 | Notion | Want the easiest start. Works with every assistant, with a local copy for speed. |
-| Google Drive | Use Google Workspace or Gmail |
-| OneDrive / SharePoint | Use Microsoft 365 |
+| Google Drive (coming soon) | Use Google Workspace or Gmail |
+| OneDrive / SharePoint (coming soon) | Use Microsoft 365 |
 | Local Markdown / Obsidian | Want it on your computer only, such as for private client work. Code tab, Claude Code and Codex. |
 
 **💬 Who you talk to**

@@ -49,10 +49,11 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 - **Google Drive or OneDrive/SharePoint:**
   - Claude Code picks up the Google Drive or Microsoft 365 connector from the Claude app when it's signed in with the same account. Check `claude mcp list` shows it.
   - Codex doesn't share the ChatGPT app's connectors. Add an official MCP server from Google or Microsoft if one exists for the tool; otherwise skip it and rely on the hand-off rule in step 5.
+- **Local Markdown or Obsidian:** no connectors. Both tools read the folder directly; follow **Connect the apps** in the hub's [local-markdown.md](../../../guava-hub/skills/guava-hub/backends/local-markdown.md) if hub setup hasn't already (it adds the folder to Claude Code's `permissions.additionalDirectories` and the hub instruction line, with the folder's path, to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`).
 
 Test each tool with a quick non-interactive run that reads the Agent Rules from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow Stack settings.
+Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, Agent Rules and Profile & Context from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow Stack settings. A local hub is the exception: keep its hub instruction line there, since only that line says where the folder is.
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
@@ -61,6 +62,7 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - Under `permissions.allow`, add only the hub's read-only tools, with the exact prefix `claude mcp list` shows:
   - Notion: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill` (for example `mcp__claude_ai_Notion__notion-fetch`).
   - Google Drive or Microsoft 365: the connector's search, fetch and read tools.
+  - Local Markdown or Obsidian: nothing to add. The folder in `permissions.additionalDirectories` is already readable without asking.
 - Do the same for Codex if needed.
 - Never pre-approve write or delete tools.
 - Test it with a non-interactive run and confirm the skills load.

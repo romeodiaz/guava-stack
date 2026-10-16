@@ -5,13 +5,13 @@
     "url": "https://workwithguava.com"
   },
   "metadata": {
-    "description": "The Guava Stack for business owners and solo operators: a shared AI context hub (Notion, Google Drive or OneDrive/SharePoint), a planner + builder model router, and founder-mode."
+    "description": "The Guava Stack for business owners and solo operators: a shared AI context hub (Notion, Google Drive, OneDrive/SharePoint or a local folder), a planner + builder model router, and founder-mode."
   },
   "plugins": [
     {
       "name": "guava-hub",
       "source": "./guava-hub",
-      "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion, Google Drive or OneDrive/SharePoint, so all your AI assistants share your context, rules and skills. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder, so all your AI assistants share your context, rules and skills. Part of the Guava Stack."
     },
     {
       "name": "guava-router",

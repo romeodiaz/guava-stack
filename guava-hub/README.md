@@ -11,7 +11,7 @@ Pick where your hub lives:
 | **Notion** (default) | [backends/notion.md](skills/guava-hub/backends/notion.md) |
 | Google Drive | [backends/google-drive.md](skills/guava-hub/backends/google-drive.md) |
 | OneDrive / SharePoint | [backends/onedrive-sharepoint.md](skills/guava-hub/backends/onedrive-sharepoint.md) |
-| Obsidian / local Markdown | Coming soon |
+| Local Markdown / Obsidian | [backends/local-markdown.md](skills/guava-hub/backends/local-markdown.md) |
 
 Every hub has the same three parts (Profile & Context, Agent Rules and Skills), so you can switch backends later without changing anything else.
 

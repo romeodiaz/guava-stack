@@ -55,7 +55,7 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 | Notion | Want the easiest start. Works with every assistant here. |
 | Google Drive | Use Google Workspace or Gmail |
 | OneDrive / SharePoint | Use Microsoft 365 |
-| Obsidian / local Markdown | Coming soon |
+| Local Markdown / Obsidian | Want it only on your own computer, such as for private client work. Works with the Claude desktop app's Code tab, Claude Code and Codex. |
 
 **Which assistant you talk to**
 - **The Claude or ChatGPT app you already use**, on web, desktop or phone. Setup adds a few instructions so each new chat checks it's on the right model, and if not, hands you a ready-to-paste prompt for the right one.
@@ -182,11 +182,11 @@ Guava collects nothing. Your profile and business details go only to your own hu
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** appends a short section to `~/.codex/AGENTS.md` and, if the guava-hub plugin isn't installed in Claude Code, `~/.claude/CLAUDE.md`, or the instructions file of the tools in your AI setup (never replaces what's there). The guava-hub plugin's start-up hook adds a short "load my hub" note to each new Claude Code session; it reads only its own file and changes nothing. The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions.
+- **Files edited:** appends a short section to `~/.codex/AGENTS.md` and, if the guava-hub plugin isn't installed in Claude Code or your hub is a local folder, `~/.claude/CLAUDE.md`, or the instructions file of the tools in your AI setup (never replaces what's there). The guava-hub plugin's start-up hook adds a short "load my hub" note to each new Claude Code session; it reads only its own file and changes nothing. The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions. A local hub backs up the same file and adds only your hub folder to its readable folders.
 - **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Claude desktop app's Code tab is your assistant, a quick test prompt in each, and optionally [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) on third-party skills.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
-- **Saved:** your hub (pages and a Skills database in Notion, or documents in Google Drive or OneDrive/SharePoint), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.
-- **External services:** your hub's service (Notion, Google or Microsoft), the AI providers in your setup (Anthropic for Claude, OpenAI for ChatGPT and Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
+- **Saved:** your hub (pages and a Skills database in Notion, documents in Google Drive or OneDrive/SharePoint, or Markdown files in a folder on your computer), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.
+- **External services:** your hub's service (Notion, Google or Microsoft; none for a local hub), the AI providers in your setup (Anthropic for Claude, OpenAI for ChatGPT and Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
 
 </details>
 

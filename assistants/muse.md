@@ -1,6 +1,6 @@
 # Meta Muse Bot adapter
 
-- **Connect your hub:** tell Muse "Connect my Notion" (or the app your hub lives in, if Muse offers it) and approve access to your AI Context Hub. Start with just the hub, not your whole workspace.
+- **Connect your hub:** tell Muse "Connect my Notion" (or the app your hub lives in, if Muse offers it) and approve access to your guava-hub. Start with just the hub, not your whole workspace.
 - Muse doesn't let you upload your own skills, so don't install them as files. Keep the skills in the hub and have Muse read the matching one from there when a task needs it.
 - **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. Fill in the owner's hub. The routing line reads the models from Stack settings, so swapping one there needs no change here:
   ```

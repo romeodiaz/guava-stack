@@ -9,7 +9,7 @@ description: Sets up a Model Router that sends thinking work to a planner model 
 
 These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one model for everything put it in both slots.
 
-> Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no AI Context Hub.
+> Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no guava-hub.
 
 ## 1. Pick the AI setup
 If hub setup already saved one in the hub's Stack settings, use it. Otherwise ask which AI plans the owner pays for and offer these, with the default marked as recommended:
@@ -87,7 +87,7 @@ An app can't hand work to another model by itself, so the app's instructions do 
 1. Map the planner and builder to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
 2. Show the owner the instruction below. With a hub, use the first line as written, so it reads the models from Stack settings and a swap there needs no new paste; without a hub, replace it with the models' names. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
    ```
-   Model routing: plan with the Planner in my Stack settings and execute with the Builder. Read them from my AI Context Hub at the start of each chat; if you can't, ask me which model to use.
+   Model routing: plan with the Planner in my Stack settings and execute with the Builder. Read them from my guava-hub at the start of each chat; if you can't, ask me which model to use.
    Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.
    Route first. At the start of every new chat, before doing anything else, decide whether my request is planning or execution.
    - Right model, or a quick question: go ahead.

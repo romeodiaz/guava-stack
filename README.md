@@ -172,7 +172,7 @@ The hub alone gives every assistant your context, rules and skills. The router a
 
 That's it. Try one of these to see it work:
 1. "Set me up with a Google Drive hub. I only pay for Claude."
-2. "Import my existing instructions and skills into my AI Context Hub."
+2. "Import my existing instructions and skills into my guava-hub."
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
 

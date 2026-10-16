@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo.png" alt="Pixel-art brain" width="120"></p>
 
-# guava-hub: AI Context & Skills Hub
+# guava-hub: one home for your AI context and skills
 
 Part of the [Guava Stack](../README.md). Sets up one shared place for your profile, rules and skills, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
 

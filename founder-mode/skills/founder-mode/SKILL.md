@@ -62,7 +62,7 @@ Only for the Guava plugins the owner has (for "update founder-mode", just founde
 ### Remembering and improving
 24. For long jobs, keep a short log of what you decided and why. When handing off, write what's done, what was checked versus assumed, and the next step, so anyone can pick it up.
 25. When corrected, fix the cause so it doesn't happen again. A template, checklist or required field beats another written rule. Update the relevant skill or the Rules page, and show the owner the change first.
-26. When the owner keeps repeating an instruction, or keeps doing by hand something you could do, offer to turn it into a skill or routine. Before installing any third-party skill, look it up on skills.sh. If it's listed there, show the owner its security audit results, and don't install it if any audit flags it. If it isn't, have the head chef read the whole skill and tell the owner in plain words what it makes the assistant do, especially anything that sends data, runs commands or changes access.
+26. When the owner keeps repeating an instruction, or keeps doing by hand something you could do, offer to turn it into a skill or routine. Before installing any third-party skill, look it up on skills.sh. If it's listed there, show the owner its security audit results, and don't install it if any audit flags it. If it isn't, have the head-chef read the whole skill and tell the owner in plain words what it makes the assistant do, especially anything that sends data, runs commands or changes access.
 27. Never put passwords, keys or personal details into notes, summaries or handoffs. Search the web with general terms, not the owner's private plans or product names.
 
 ## What changed

@@ -64,15 +64,15 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 - **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
 - **Local models on your own computer**, for work that can't leave the building: *coming soon*.
 
-**Head chef and line cook**
+**head-chef and line-cook**
 
-Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line cook a lower effort if you like.
+Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line-cook a lower effort if you like.
 
 <!-- models:kitchen -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>Line cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
@@ -84,7 +84,7 @@ Split the work like a kitchen. Want one model for everything? Put the same one i
 The plans you pay for decide who's in the kitchen:
 
 <!-- models:table style=simple -->
-| You pay for | Head chef | Line cook |
+| You pay for | head-chef | line-cook |
 |---|---|---|
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
@@ -92,7 +92,7 @@ The plans you pay for decide who's in the kitchen:
 | Local models on your own computer | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
-These are suggestions. Any model your plans can run works as head chef or line cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
+These are suggestions. Any model your plans can run works as head-chef or line-cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
 
 **On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
 
@@ -168,7 +168,7 @@ Install guava-router from github.com/romeodiaz/guava-stack
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-The hub alone gives every assistant your context, rules and skills. The router alone routes between your head chef and line cook without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
+The hub alone gives every assistant your context, rules and skills. The router alone routes between your head-chef and line-cook without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
 
 That's it. Try one of these to see it work:
 1. "Set me up with a Google Drive hub. I only pay for Claude."

@@ -42,8 +42,7 @@ def table(args):
     simple = args.get("style") == "simple"
     head = args.get("head", "head-chef")
     line = args.get("line", "line-cook")
-    first = "You pay for" if simple else args.get("first", "You pay for")
-    rows = [f"| {first} | {head} | {line} |", "|---|---|---|"]
+    rows = [f"| {args.get('first', 'You pay for')} | {head} | {line} |", "|---|---|---|"]
     for s in SETUPS.values():
         if simple:
             rows.append(f"| {s['pays_for']} | {s['head_chef']['name']} | {s['line_cook']['name']} |")
@@ -60,11 +59,12 @@ def kitchen(args):
     pre_h = "Plans and reviews. " if args.get("roles") == "yes" else ""
     pre_l = "Does the work. " if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
+    img = args.get("assets", "assets")
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {head['name']}</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {line['name']}</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {head['name']}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {line['name']}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>

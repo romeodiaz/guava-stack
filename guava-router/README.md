@@ -25,7 +25,6 @@ Works best with [guava-hub](../guava-hub/), since both tools load your AI Contex
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 | Local models on your own hardware (Ollama, LM Studio and others) | Coming soon | Coming soon |
 <!-- /models -->
 

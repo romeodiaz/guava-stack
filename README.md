@@ -61,7 +61,6 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 - **The Claude or ChatGPT app you already use**, on web, desktop or phone. Setup adds a few instructions so each new chat checks it's on the right model, and if not, hands you a ready-to-paste prompt for the right one.
 - **Grok Bot or Muse**, assistants that run in the cloud and hand each job to the right AI for you, even from your phone.
 - **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
-- **Cursor and other tools**: coming soon.
 - **Local models on your own computer**, for work that can't leave the building: coming soon.
 
 **One AI model or two**
@@ -89,7 +88,6 @@ The plans you pay for decide who's in the kitchen:
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
 | Claude only | Claude Opus 5.5 | Claude Sonnet 5.5 |
-| Cursor, Devin, Droid, Amp and others | Coming soon | Coming soon |
 | Local models on your own computer | Coming soon | Coming soon |
 <!-- /models -->
 

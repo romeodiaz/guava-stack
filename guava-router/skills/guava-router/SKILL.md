@@ -20,11 +20,10 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
 | Local models on your own hardware (Ollama, LM Studio and others) | Coming soon | Coming soon |
 <!-- /models -->
 
-The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about third-party tools, another provider's models or local models on their own hardware, say support is coming soon and set up the closest of the other three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.

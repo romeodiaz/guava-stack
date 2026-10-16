@@ -103,7 +103,9 @@ def stack_example(args):
   - founder-mode
   ### head-chef and line-cook
   - head-chef: {detailed(h)}
+    - Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, and fuzzy and hard problems. On important work, checks the line-cook's result before it's called done.
   - line-cook: {detailed(l)}
+    - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
   ```
   """
 

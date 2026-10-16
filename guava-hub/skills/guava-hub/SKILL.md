@@ -1,6 +1,6 @@
 ---
 name: guava-hub
-description: Sets up the owner's guava-hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date, or takes it all off again. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, says "update guava-stack", "update guava-hub", "uninstall guava-stack" or "uninstall guava-hub", says "import my memories", or asks to change their setup ("change my setup", "make Sonnet my line-cook", "apply my guava-stack settings", "check for newer models").
+description: Sets up the owner's guava-hub (Notion by default, or a local Markdown or Obsidian folder; Google Drive and OneDrive/SharePoint are coming soon) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date, or takes it all off again. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, says "update guava-stack", "update guava-hub", "uninstall guava-stack" or "uninstall guava-hub", says "import my memories", or asks to change their setup ("change my setup", "make Sonnet my line-cook", "apply my guava-stack settings", "check for newer models").
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
@@ -21,9 +21,11 @@ Every Guava setup is three choices. Each has a default, so an owner who doesn't 
 | Hub | Best for | Steps |
 |---|---|---|
 | **Notion** (default) | Most owners. Native skills, and every assistant here connects to it. | [backends/notion.md](backends/notion.md) |
-| Google Drive | Owners on Google Workspace or Gmail | [backends/google-drive.md](backends/google-drive.md) |
-| OneDrive / SharePoint | Owners on Microsoft 365 | [backends/onedrive-sharepoint.md](backends/onedrive-sharepoint.md) |
+| Google Drive (coming soon) | Owners on Google Workspace or Gmail | Not offered yet |
+| OneDrive / SharePoint (coming soon) | Owners on Microsoft 365 | Not offered yet |
 | Local Markdown or Obsidian | Owners who want the hub only on their own computer, such as for private client work | [backends/local-markdown.md](backends/local-markdown.md) |
+
+Google Drive and OneDrive/SharePoint are coming soon: don't offer them. If the owner asks for one, say it's coming soon and offer Notion (or a local hub).
 
 A local hub can only be read by assistants on the owner's computer: the Claude desktop app's Code tab, Claude Code and Codex. Grok Bot, Muse and the Claude and ChatGPT chat apps can't reach it. Its file has the full trade-offs; go through them with the owner before building it.
 

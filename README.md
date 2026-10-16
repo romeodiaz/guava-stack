@@ -47,7 +47,7 @@ It asks a few simple questions, explains each step before doing it, and checks t
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
 ## Make it yours
-Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short guava-stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like a new day-to-day assistant, say "change my setup".
+Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short guava-stack settings section in your hub: edit a model there and every assistant uses it from its next hand-off, even in a chat that's already open. For bigger changes, like a new day-to-day assistant, say "change my setup".
 
 **Where your hub lives**
 

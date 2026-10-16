@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates, uninstalls or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v2.1.6
+# founder-mode v2.1.7
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
@@ -12,10 +12,10 @@ Your AI assistant works like humans do: it handles the safe work on its own, che
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "update founder-mode", just founder-mode):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
-- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
+- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
-- **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills update -g -y`.
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "rules" page (or document or file) in the owner's guava-hub, wherever it lives: Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder. If you can't find it, ask where to put the rules.
@@ -30,14 +30,14 @@ Use this when the owner says "uninstall founder-mode", or when the guava-hub ski
 <!-- uninstall-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "uninstall founder-mode", just founder-mode; for "uninstall guava-stack", every one installed):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there. It applies in a new session.
-- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. If the skills were installed with Codex's skill installer instead, delete their folders in `~/.codex/skills/`, and check with `ls ~/.codex/skills`. It applies in a new chat.
+- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. It applies in a new chat.
 - **Claude chat (web, desktop and phone):** ask the owner whether they uploaded the Guava skills there, and if so, have them delete each one.
 - **ChatGPT and ChatGPT Dots:** delete the Guava plugin made with Plugin Creator, or rebuild it without the skills being removed.
-- **Grok Bot, and any assistant that keeps the skills as files:** delete each skill's folder.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "How to work with me" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete `- founder-mode` under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. If the hub has a changelog page, add a dated line there. Without a hub, delete the rules from wherever they were saved.
-3. Check that `claude plugin list` and `codex plugin list` (or `ls ~/.codex/skills`) no longer show founder-mode and that the rules page has no "How to work with me" section, then confirm in two lines what you removed, and that new sessions and chats no longer follow the rules.
+3. Check that `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show founder-mode and that the rules page has no "How to work with me" section, then confirm in two lines what you removed, and that new sessions and chats no longer follow the rules.
 
 **People:** paste this into your AI assistant: "Install (or update, or uninstall) founder-mode from github.com/romeodiaz/guava-stack."
 

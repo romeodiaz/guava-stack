@@ -70,7 +70,7 @@ See `assistants/` for notes on each.
    <!-- guava-block: keep this paragraph the same in the guava-hub and guava-router skills -->
    **Local instruction files** (`~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, when they need Guava lines): keep everything Guava adds in one block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->`. Back the file up first, as **Backups** below says, and create it if it doesn't exist. Replace only what's between the markers, or add the block at the end of the file if there are none yet. Never change anything else in the file. Show the owner the change to every file together and ask once.
 
-   **Backups:** whenever a step says to back up a file, copy it to `<file>.bak-<local date and time>`, such as `settings.json.bak-2026-10-15-2122`. The first time Guava changes a file, also copy it to `<file>.pre-guava`, or create that copy empty if the file doesn't exist yet, and never overwrite it: uninstalling puts the file back from it.
+   **Backups:** whenever a step says to back up a file, copy it to `<file>.bak-<local date and time>`, such as `settings.json.bak-2026-10-15-2122`. The first time Guava changes a file, also copy it to `<file>.pre-guava`, or create that copy empty if the file doesn't exist yet, and never overwrite it: uninstalling puts the file back from it. Entries the plugin commands wrote before it, such as `enabledPlugins`, can already be in it; the uninstall commands remove those themselves.
    <!-- /guava-block -->
 
 ## 2. Build the hub
@@ -134,6 +134,7 @@ Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 ## 7. Wrap up
 End with a short close that starts with "Setup's done 🎉", never just a confirmation:
 - Two or three lines on what's set up: the hub and where it lives, the apps connected and verified on the computer and the phone, the head-chef and line-cook if they set up the router, and founder-mode with its version if they turned it on. Remind them it all works from their phone too (with a local hub, through Remote Control while the computer is on).
+- If Codex has the guava-hub plugin, tell them to open a new Codex chat and approve its three start-up hooks (guava-stack: hub instructions, hub context and hub rules). Until then Codex runs without the hub and doesn't say so.
 - Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in the hub and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.
 
@@ -167,10 +168,10 @@ Show the whole plan first, in your message text, as one numbered list: each comm
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub; for "update guava-stack", every one installed):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
-- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
+- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
-- **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills update -g -y`.
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 
@@ -199,10 +200,10 @@ Check without asking (these only read): `claude plugin list`, `codex plugin list
 <!-- uninstall-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "uninstall guava-hub", just guava-hub; for "uninstall guava-stack", every one installed):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there. It applies in a new session.
-- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. If the skills were installed with Codex's skill installer instead, delete their folders in `~/.codex/skills/`, and check with `ls ~/.codex/skills`. It applies in a new chat.
+- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. It applies in a new chat.
 - **Claude chat (web, desktop and phone):** ask the owner whether they uploaded the Guava skills there, and if so, have them delete each one.
 - **ChatGPT and ChatGPT Dots:** delete the Guava plugin made with Plugin Creator, or rebuild it without the skills being removed.
-- **Grok Bot, and any assistant that keeps the skills as files:** delete each skill's folder.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 

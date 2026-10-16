@@ -23,7 +23,7 @@ If hub setup already saved one in the hub's guava-stack settings, use it. Otherw
 | Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
-The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own head-chef or line-cook: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in guava-stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to guava-stack settings on the context page if the owner has a hub.
+The picks for each setup come from [models.yaml](https://github.com/romeodiaz/guava-stack/blob/main/guava-router/models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own head-chef or line-cook: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in guava-stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to guava-stack settings on the context page if the owner has a hub.
 
 **Same model in both slots:** install and sign in only that model's tool in step 2. Each slot keeps its own effort, so the same model can plan on High and build on Medium: line-cook jobs still go out through that tool at the line-cook's effort (for example `claude -p --model <id> --effort medium`). Only when the model and the effort both match is there nothing to route: then skip the hand-offs in step 5 and the App routing instruction (the hub instruction line is enough).
 
@@ -51,7 +51,7 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 - **Google Drive or OneDrive/SharePoint:**
   - Claude Code picks up the Google Drive or Microsoft 365 connector from the Claude app when it's signed in with the same account. Check `claude mcp list` shows it.
   - Codex doesn't share the ChatGPT app's connectors. Add an official MCP server from Google or Microsoft if one exists for the tool; otherwise skip it and rely on the hand-off rule in step 5.
-- **Local Markdown or Obsidian:** no connectors. Both tools read the folder directly; follow **Connect the apps** in the hub's [local-markdown.md](../../../guava-hub/skills/guava-hub/backends/local-markdown.md) if hub setup hasn't already (it adds the folder to Claude Code's `permissions.additionalDirectories` and the hub instruction line, with the folder's path, to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`).
+- **Local Markdown or Obsidian:** no connectors. Both tools read the folder directly; follow **Connect the apps** in the hub's [local-markdown.md](https://github.com/romeodiaz/guava-stack/blob/main/guava-hub/skills/guava-hub/backends/local-markdown.md) if hub setup hasn't already (it adds the folder to Claude Code's `permissions.additionalDirectories` and the hub instruction line, with the folder's path, to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`).
 
 Test each tool with a quick non-interactive run that reads the context page from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
@@ -60,7 +60,7 @@ Then add a short Guava block to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` t
 <!-- guava-block: keep this paragraph the same in the guava-hub and guava-router skills -->
 **Local instruction files** (`~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, when they need Guava lines): keep everything Guava adds in one block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->`. Back the file up first, as **Backups** below says, and create it if it doesn't exist. Replace only what's between the markers, or add the block at the end of the file if there are none yet. Never change anything else in the file. Show the owner the change to every file together and ask once.
 
-**Backups:** whenever a step says to back up a file, copy it to `<file>.bak-<local date and time>`, such as `settings.json.bak-2026-10-15-2122`. The first time Guava changes a file, also copy it to `<file>.pre-guava`, or create that copy empty if the file doesn't exist yet, and never overwrite it: uninstalling puts the file back from it.
+**Backups:** whenever a step says to back up a file, copy it to `<file>.bak-<local date and time>`, such as `settings.json.bak-2026-10-15-2122`. The first time Guava changes a file, also copy it to `<file>.pre-guava`, or create that copy empty if the file doesn't exist yet, and never overwrite it: uninstalling puts the file back from it. Entries the plugin commands wrote before it, such as `enabledPlugins`, can already be in it; the uninstall commands remove those themselves.
 <!-- /guava-block -->
 
 ## 4. Never skip the hub (optional)
@@ -126,7 +126,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 ## Changing the setup later
 To swap models, use one model in both slots, or apply a hand-edited guava-stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
 
-Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing lines in the Guava block of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
+Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](https://github.com/romeodiaz/guava-stack/blob/main/guava-router/models.yaml), show each change as old, then new, and on a yes update the routing lines in the Guava block of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 
 ## Update
 Use this when the owner says **"update guava-router"**, or when the guava-hub skill's Update step sends you here. Show the whole plan first, in your message text, as one numbered list (each command, and each change as old, then new); the owner can approve it with one yes or pick numbers. Then apply it in order.
@@ -135,10 +135,10 @@ Use this when the owner says **"update guava-router"**, or when the guava-hub sk
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "update guava-router", just guava-router):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
-- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. If the skills were installed with Codex's skill installer instead, install them again from github.com/romeodiaz/guava-stack, replacing the old folders. Updates apply in a new chat.
+- **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Claude chat (web, desktop and phone):** replace each uploaded Guava skill with the new copy from `<plugin>/skills/<plugin>/` in the repo.
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
-- **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills update -g -y`.
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models". Without a hub, follow the by-hand steps under **Changing the setup later** above.
@@ -156,10 +156,10 @@ Use this when the owner says **"uninstall guava-router"**, or when the guava-hub
 <!-- uninstall-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "uninstall guava-router", just guava-router; for "uninstall guava-stack", every one installed):
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there. It applies in a new session.
-- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. If the skills were installed with Codex's skill installer instead, delete their folders in `~/.codex/skills/`, and check with `ls ~/.codex/skills`. It applies in a new chat.
+- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. It applies in a new chat.
 - **Claude chat (web, desktop and phone):** ask the owner whether they uploaded the Guava skills there, and if so, have them delete each one.
 - **ChatGPT and ChatGPT Dots:** delete the Guava plugin made with Plugin Creator, or rebuild it without the skills being removed.
-- **Grok Bot, and any assistant that keeps the skills as files:** delete each skill's folder.
+- **Grok Bot, and any other assistant that keeps the skills as files:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. **Put the computer back**, following **Putting files back** above:
@@ -170,4 +170,4 @@ Only for the Guava plugins the owner has (for "uninstall guava-router", just gua
 3. **Take routing out of the apps:** wherever setup added them, remove the app routing instruction from Claude's Instructions for Claude and ChatGPT's Custom Instructions (both the ChatGPT box and the Codex box), the routing preference from ChatGPT Dots, the routing line from Muse's SOUL.md and the routing memories from Grok Bot, shared user memory included. Show the exact text to delete, one app per message, and wait for done.
 4. **Turn routing off in the hub** (skip this when uninstalling the whole stack, since the hub then stays as it is): in guava-stack settings, remove the AI setup line and the head-chef and line-cook heading, with its two lines, their sub-bullets and, in Notion, its images. With no head-chef or line-cook named, the guava-hub start-up hook and the standing instructions do the work in one place, with no hand-offs. If the hub has a changelog page, add a dated line there.
 5. **Offer the rest as their own numbered items**, left out of a plain yes, since they're the owner's own tools and other work may use them: the Notion MCP servers router setup added (`claude mcp remove notion -s user`, `codex mcp remove notion`), and the CLIs it installed, with their sign-ins (`codex logout` and `npm rm -g @openai/codex`; `claude auth logout` and `npm rm -g @anthropic-ai/claude-code`). Never remove the tool this is running in.
-6. **Check and wrap up:** `claude plugin list` and `codex plugin list` (or `ls ~/.codex/skills`) no longer show guava-router (or the Codex plugin, if it was removed), and nothing from step 2 is left in those files. With the hub kept (not for the whole stack), run `claude -p --permission-mode plan "Which head-chef and line-cook are in my guava-stack settings?" < /dev/null`: it should find none. Confirm in two or three lines what was removed and what stayed, with the backups' paths.
+6. **Check and wrap up:** `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show guava-router (or the Codex plugin, if it was removed), and nothing from step 2 is left in those files. With the hub kept (not for the whole stack), run `claude -p --permission-mode plan "Which head-chef and line-cook are in my guava-stack settings?" < /dev/null`: it should find none. Confirm in two or three lines what was removed and what stayed, with the backups' paths.

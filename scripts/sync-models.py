@@ -100,7 +100,7 @@ def stack_example(args):
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
   ### Rules
-  - Rules: founder-mode
+  - founder-mode
   ### head-chef and line-cook
   - head-chef: {detailed(h)}
   - line-cook: {detailed(l)}

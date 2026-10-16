@@ -7,7 +7,7 @@ description: Sets up a Model Router that sends thinking work to a planner model 
 
 # Model Router: setup
 
-These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one do-it-all model don't need this skill.
+These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one model for everything put it in both slots.
 
 > Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no AI Context Hub.
 
@@ -20,10 +20,12 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Local models on your own hardware (Ollama, LM Studio and others) | Coming soon | Coming soon |
+| Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
 The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+
+**Same model in both slots:** when the planner and builder are the same model, there's nothing to route. Install and sign in only that model's tool in step 2, skip the hand-offs in step 5, and skip the App routing instruction (the hub instruction line is enough).
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
@@ -115,7 +117,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.
 
 ## Changing the setup later
-To swap models, switch between one and two models, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
+To swap models, use one model in both slots, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
 
 Without a hub, do the same by hand: compare the planner and builder with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 
@@ -131,8 +133,7 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
 - **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
 - **Muse:** no skill files, so nothing to download.
-- **Older copies:** look for Guava pieces under their old names: the `guava-mode` plugin (`claude plugin list`) and skill folders named `owner-mode-rules`, `founder-mode-rules`, `context-skills-hub-setup`, `context-skills-hub-model-router-setup` or `model-router-setup` in `~/.claude/skills`, `~/.agents/skills` and `~/.codex/skills`. They run old instructions next to the new ones. Offer to uninstall the old plugin (`claude plugin uninstall guava-mode@guava`) and move the old folders into a dated backup folder. Never delete them.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models". Without a hub, follow the by-hand steps under **Changing the setup later** above.
-3. **Check the routing still runs:** each tool in Stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off. Routing instructions that still name models or old paths get the replacement offer from step 2 of the guava-hub Update step.
+3. **Check the routing still runs:** each tool in Stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off.
 4. **Test** each slot with a quick prompt, as in step 7, and confirm in two or three lines: guava-router's version before and after, any model change, and anything left for the owner.

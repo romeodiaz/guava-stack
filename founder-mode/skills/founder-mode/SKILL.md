@@ -17,11 +17,10 @@ Only for the Guava plugins the owner has (for "update founder-mode", just founde
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
 - **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
 - **Muse:** no skill files, so nothing to download.
-- **Older copies:** look for Guava pieces under their old names: the `guava-mode` plugin (`claude plugin list`) and skill folders named `owner-mode-rules`, `founder-mode-rules`, `context-skills-hub-setup`, `context-skills-hub-model-router-setup` or `model-router-setup` in `~/.claude/skills`, `~/.agents/skills` and `~/.codex/skills`. They run old instructions next to the new ones. Offer to uninstall the old plugin (`claude plugin uninstall guava-mode@guava`) and move the old folders into a dated backup folder. Never delete them.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "Agent Rules" page (or document or file) in the owner's AI Context Hub, wherever it lives: Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder. If you can't find it, ask where to put the rules.
 3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
-4. If a "How to work with me" section with a version number is already there (older versions were called Owner Mode), compare versions. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. If only setup steps changed, update the version number and say the rules are the same.
+4. If a "How to work with me" section with a version number is already there, compare versions. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. If only setup steps changed, update the version number and say the rules are the same.
 5. Follow these rules on every task from now on. If another rule on the Agent Rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.
 

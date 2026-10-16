@@ -51,7 +51,7 @@ def table(args):
             label = f"**{s['label']}** (default)" if s.get("default") else s["label"]
             rows.append(f"| {label} | {detailed(s['head_chef'])} | {detailed(s['line_cook'])} |")
     local = "Local models on your own computer" if simple else LOCAL
-    rows.append(f"| {local} | Coming soon | Coming soon |")
+    rows.append(f"| {local} | *Coming soon* | *Coming soon* |")
     return "\n" + "\n".join(rows) + "\n"
 
 

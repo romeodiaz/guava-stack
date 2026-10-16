@@ -7,17 +7,20 @@
           {
             "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" start",
-            "timeout": 10
+            "timeout": 10,
+            "statusMessage": "guava-stack: hub instructions"
           },
           {
             "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" context",
-            "timeout": 10
+            "timeout": 10,
+            "statusMessage": "guava-stack: hub context"
           },
           {
             "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" rules",
-            "timeout": 10
+            "timeout": 10,
+            "statusMessage": "guava-stack: hub rules"
           }
         ]
       }

@@ -1,0 +1,25 @@
+{
+  "name": "guava-hub",
+  "displayName": "Guava Hub",
+  "version": "1.4.0",
+  "description": "For business owners and solo operators. Sets up a shared AI Context & Skills Hub in Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder, so all your AI assistants share your context, rules and skills. Part of the Guava Stack.",
+  "author": {
+    "name": "Romeo Diaz"
+  },
+  "homepage": "https://workwithguava.com",
+  "repository": "https://github.com/romeodiaz/guava-stack",
+  "license": "MIT",
+  "keywords": [
+    "notion",
+    "google-drive",
+    "onedrive",
+    "sharepoint",
+    "obsidian",
+    "markdown",
+    "context",
+    "skills",
+    "hub"
+  ],
+  "skills": "./skills/",
+  "logo": "assets/logo.png"
+}

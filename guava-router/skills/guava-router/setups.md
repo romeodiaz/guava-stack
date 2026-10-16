@@ -10,7 +10,7 @@ For owners who pay for both. Each job goes to the model that's best at it, and t
 <!-- models:setup name=claude-chatgpt -->
 | Slot | Model | Tool | Run it |
 |---|---|---|---|
-| Planner | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 "<task>" < /dev/null` |
+| Planner | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 --effort high "<task>" < /dev/null` |
 | Builder | GPT-6.1 Sol, effort high (`gpt-6.1-sol`) | Codex | `codex exec -m gpt-6.1-sol -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
 
 **In the apps:** plan in the Claude app on Claude Opus 5.5; execute in the ChatGPT app on GPT-6.1 Sol. The hand-off moves the plan from one app to the other.
@@ -34,8 +34,8 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 <!-- models:setup name=claude-only -->
 | Slot | Model | Tool | Run it |
 |---|---|---|---|
-| Planner | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 "<task>" < /dev/null` |
-| Builder | Claude Sonnet 5.5, effort high (`claude-sonnet-5-5`) | Claude Code | `claude -p --model claude-sonnet-5-5 "<task>" < /dev/null` |
+| Planner | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 --effort high "<task>" < /dev/null` |
+| Builder | Claude Sonnet 5.5, effort high (`claude-sonnet-5-5`) | Claude Code | `claude -p --model claude-sonnet-5-5 --effort high "<task>" < /dev/null` |
 
 **In the apps:** both in the Claude app. Plan on Claude Opus 5.5 and execute on Claude Sonnet 5.5, each in its own new chat.
 <!-- /models -->

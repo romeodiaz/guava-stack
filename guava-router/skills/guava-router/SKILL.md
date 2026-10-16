@@ -25,7 +25,7 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 
 The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
 
-**Same model in both slots:** when the planner and builder are the same model, there's nothing to route. Install and sign in only that model's tool in step 2, skip the hand-offs in step 5, and skip the App routing instruction (the hub instruction line is enough).
+**Same model in both slots:** install and sign in only that model's tool in step 2. Each slot keeps its own effort, so the same model can plan on High and build on Medium: builder jobs still go out through that tool at the builder's effort (for example `claude -p --model <id> --effort medium`). Only when the model and the effort both match is there nothing to route: then skip the hand-offs in step 5 and the App routing instruction (the hub instruction line is enough).
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
@@ -91,7 +91,7 @@ An app can't hand work to another model by itself, so the app's instructions do 
    Planning is research, planning, brainstorming, writing, review, checking work and hard problems. Execution is drafting at volume, coding, data work, and bulk or long jobs.
    Route first. At the start of every new chat, before doing anything else, decide whether my request is planning or execution.
    - Right model, or a quick question: go ahead.
-   - Wrong model: don't start. Reply with one line naming the model to use, then my request rewritten as a ready-to-paste prompt for a new chat on it, with the hub skills it should load.
+   - Wrong model or effort: don't start. Reply with one line naming the model and effort to use, then my request rewritten as a ready-to-paste prompt for a new chat on it, with the hub skills it should load.
    - If I say "stay here", do it on this model.
    When a plan is ready, end with a hand-off I can paste into a new chat with the builder: the goal, the steps, what done looks like, and which hub skills to load.
    For important work, remind me to bring the result back to the planner for a check.

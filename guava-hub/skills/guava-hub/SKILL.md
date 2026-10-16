@@ -3,7 +3,7 @@ name: guava-hub
 description: Sets up the owner's guava-hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
 ---
 
-**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
+**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
 
 # guava-hub: setup
 
@@ -156,7 +156,7 @@ A head-chef or line-cook swap is only an edit to guava-stack settings, since eve
 ## Update
 Use this when the owner says **"update guava-stack"** or **"update guava-hub"**. ("update guava-router" and "update founder-mode" have their own Update steps in those skills; "update guava-stack" runs all of them.)
 
-Show the whole plan first as one numbered list: each command, and each change as old, then new. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
+Show the whole plan first, in your message text, as one numbered list: each command, and each change as old, then new. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
 
 ### 1. Get the newest files
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->

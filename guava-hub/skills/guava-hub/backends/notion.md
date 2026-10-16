@@ -8,7 +8,7 @@ The recommended hub. Notion has a native skills feature, and Claude, ChatGPT, Gr
 Create a page called **guava-hub**, with the 8-bit brain as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/brain-hub.png`), holding:
 - **Context**: a page with the guava logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/logo.png`). Start it with the guava-stack settings section from the setup skill. Under its **Rules** heading, put the founder-mode 8-bit image (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/founder-mode.png`, captioned "Rules") in a narrow column, with the Rules line right under it, whichever rules skills the owner turns on. Under its **head-chef and line-cook** heading, put the two 8-bit images side by side in narrow columns, `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/head-chef.png` captioned "head-chef: plans and reviews" and `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/line-cook.png` captioned "line-cook: does the work", with the head-chef and line-cook lines right under them. Then add the owner's interview answers.
 - **Rules**: a page with the founder-mode 8-bit logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/founder-mode.png`), whichever rules skills the owner turns on.
-- **Skills**: a database with the 📖 icon, for Notion's skill upload. Ask the owner before enabling skills for external agents and Notion AI.
+- **Skills**: a database with the 📚 icon, for Notion's skill upload. Ask the owner before enabling skills for external agents and Notion AI.
 
 ## Connect the apps
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):

@@ -15,7 +15,7 @@ Pick where your hub lives:
 
 Every hub has the same three parts (Context, Rules and Skills), so you can switch backends later without changing anything else.
 
-- Start-up hook: in Claude Code and the Claude desktop app's Code tab, the plugin reminds every new session to load your hub and follow your Stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add.
+- Start-up hook: in Claude Code and the Claude desktop app's Code tab, the plugin reminds every new session to load your hub and follow your guava-stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add.
 - Skill: [guava-hub](skills/guava-hub/SKILL.md)
 - Claude Code: `/plugin install guava-hub --marketplace romeodiaz/guava-stack`
 - Update: say "update guava-hub", or "update guava-stack" for every piece.

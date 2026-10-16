@@ -64,15 +64,15 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 - **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
 - **Local models on your own computer**, for work that can't leave the building: *coming soon*.
 
-**Head chef and line cook**
+**head-chef and line-cook**
 
-Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line cook a lower effort if you like.
+Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line-cook a lower effort if you like.
 
 <!-- models:kitchen -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>Line cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
@@ -84,7 +84,7 @@ Split the work like a kitchen. Want one model for everything? Put the same one i
 The plans you pay for decide who's in the kitchen:
 
 <!-- models:table style=simple -->
-| You pay for | Head chef | Line cook |
+| You pay for | head-chef | line-cook |
 |---|---|---|
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
@@ -92,7 +92,7 @@ The plans you pay for decide who's in the kitchen:
 | Local models on your own computer | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
-These are suggestions. Any model your plans can run works as head chef or line cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
+These are suggestions. Any model your plans can run works as head-chef or line-cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
 
 **On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
 
@@ -168,7 +168,7 @@ Install guava-router from github.com/romeodiaz/guava-stack
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-The hub alone gives every assistant your context, rules and skills. The router alone routes between your planner and builder without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
+The hub alone gives every assistant your context, rules and skills. The router alone routes between your head-chef and line-cook without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
 
 That's it. Try one of these to see it work:
 1. "Set me up with a Google Drive hub. I only pay for Claude."
@@ -188,7 +188,7 @@ Guava collects nothing. Your profile and business details go only to your own hu
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** appends a short section to `~/.codex/AGENTS.md` and, if the guava-hub plugin isn't installed in Claude Code or your hub is a local folder, `~/.claude/CLAUDE.md`, or the instructions file of the tools in your AI setup (never replaces what's there). The guava-hub plugin's start-up hook adds a short "load my hub" note to each new Claude Code session; it reads only its own file and changes nothing. The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions. A local hub backs up the same file and adds only your hub folder to its readable folders.
-- **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Claude desktop app's Code tab is your assistant, a quick test prompt in each, and optionally [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) on third-party skills.
+- **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Claude desktop app's Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
 - **Saved:** your hub (pages and a Skills database in Notion, documents in Google Drive or OneDrive/SharePoint, or Markdown files in a folder on your computer), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.
 - **External services:** your hub's service (Notion, Google or Microsoft; none for a local hub), the AI providers in your setup (Anthropic for Claude, OpenAI for ChatGPT and Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).

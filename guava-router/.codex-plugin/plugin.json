@@ -1,7 +1,7 @@
 {
   "name": "guava-router",
-  "version": "1.4.4",
-  "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a builder model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only or Claude only, and newer models swap in with a one-line change. Part of the Guava Stack.",
+  "version": "1.4.5",
+  "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only or Claude only, and newer models swap in with a one-line change. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",
     "url": "https://workwithguava.com"
@@ -11,8 +11,8 @@
   "license": "MIT",
   "keywords": [
     "model-router",
-    "planner",
-    "builder",
+    "head-chef",
+    "line-cook",
     "claude-code",
     "codex",
     "cli"

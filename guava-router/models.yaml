@@ -1,6 +1,6 @@
 # Guava Stack model picks: the one place to change when better models come out.
 #
-# Each setup names a head chef (plans, researches, writes, reviews) and a line cook
+# Each setup names a head-chef (plans, researches, writes, reviews) and a line-cook
 # (does the bulk work), based on which AI plans the owner pays for.
 #
 # To swap in a newer model:
@@ -68,7 +68,7 @@ setups:
       tool: claude-code
       app: claude
 
-# What each role does. Shown under the head chef and line cook in the READMEs.
+# What each role does. Shown under the head-chef and line-cook in the READMEs.
 roles:
   head_chef: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems
   line_cook: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs

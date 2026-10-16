@@ -2,13 +2,13 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **planner + reviewer** model and heavy lifting to a **builder** model, on the plans you already pay for. With Grok Bot, Muse or the Claude desktop app's Code tab, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so every new chat checks your first request and sends you to the right model with a ready-to-paste prompt. Think of it as a kitchen:
+Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on the plans you already pay for. With Grok Bot, Muse or the Claude desktop app's Code tab, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so every new chat checks your first request and sends you to the right model with a ready-to-paste prompt. Think of it as a kitchen:
 
 <!-- models:kitchen roles=yes -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>Planner + reviewer. Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>Line cook</strong><br><sub>Builder. Today's best: GPT-6.1 Sol</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Plans and reviews. Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Does the work. Today's best: GPT-6.1 Sol</sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
@@ -20,7 +20,7 @@ Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **
 Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 
 <!-- models:table -->
-| You pay for | Head chef | Line cook |
+| You pay for | head-chef | line-cook |
 |---|---|---|
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |

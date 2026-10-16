@@ -40,8 +40,8 @@ def command(slot):
 
 def table(args):
     simple = args.get("style") == "simple"
-    head = args.get("head", "Head chef")
-    line = args.get("line", "Line cook")
+    head = args.get("head", "head-chef")
+    line = args.get("line", "line-cook")
     first = "You pay for" if simple else args.get("first", "You pay for")
     rows = [f"| {first} | {head} | {line} |", "|---|---|---|"]
     for s in SETUPS.values():
@@ -57,14 +57,14 @@ def table(args):
 
 def kitchen(args):
     head, line = DEFAULT["head_chef"], DEFAULT["line_cook"]
-    pre_h = "Planner + reviewer. " if args.get("roles") == "yes" else ""
-    pre_l = "Builder. " if args.get("roles") == "yes" else ""
+    pre_h = "Plans and reviews. " if args.get("roles") == "yes" else ""
+    pre_l = "Does the work. " if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>Head chef</strong><br><sub>{pre_h}Today's best: {head['name']}</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>Line cook</strong><br><sub>{pre_l}Today's best: {line['name']}</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {head['name']}</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {line['name']}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>
@@ -77,7 +77,7 @@ def kitchen(args):
 def setup(args):
     s = SETUPS[args["name"]]
     rows = ["| Slot | Model | Tool | Run it |", "|---|---|---|---|"]
-    for slot_name, key in (("Planner", "head_chef"), ("Builder", "line_cook")):
+    for slot_name, key in (("head-chef", "head_chef"), ("line-cook", "line_cook")):
         m = s[key]
         rows.append(f"| {slot_name} | {m['name']}, effort {m['effort']} (`{m['id']}`) | "
                     f"{TOOLS[m['tool']]} | `{command(m)}` |")
@@ -99,8 +99,8 @@ def stack_example(args):
   - Hub: Notion
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
-  - Planner: {detailed(h)}
-  - Builder: {detailed(l)}
+  - head-chef: {detailed(h)}
+  - line-cook: {detailed(l)}
   - Rules: founder-mode
   ```
   """

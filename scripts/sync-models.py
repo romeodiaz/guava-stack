@@ -100,7 +100,6 @@ def stack_example(args):
     return f"""
   ```
   ## guava-stack settings
-  - Hub: Notion
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
   ### Rules

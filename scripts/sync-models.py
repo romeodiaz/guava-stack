@@ -95,10 +95,11 @@ def stack_example(args):
     h, l = DEFAULT["head_chef"], DEFAULT["line_cook"]
     return f"""
   ```
-  ## Stack settings
+  ## guava-stack settings
   - Hub: Notion
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
+  ### Rules
   - Rules: founder-mode
   ### head-chef and line-cook
   - head-chef: {detailed(h)}

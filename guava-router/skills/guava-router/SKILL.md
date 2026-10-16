@@ -12,7 +12,7 @@ These steps send each kind of work to the model that's best at it, through the p
 > Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no guava-hub.
 
 ## 1. Pick the AI setup
-If hub setup already saved one in the hub's Stack settings, use it. Otherwise ask which AI plans the owner pays for and offer these, with the default marked as recommended:
+If hub setup already saved one in the hub's guava-stack settings, use it. Otherwise ask which AI plans the owner pays for and offer these, with the default marked as recommended:
 
 <!-- models:table first="They pay for" head="head-chef" line="line-cook" -->
 | They pay for | head-chef | line-cook |
@@ -23,7 +23,7 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 | Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
-The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own head-chef or line-cook: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to Stack settings on the Context page if the owner has a hub.
+The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own head-chef or line-cook: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in guava-stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to guava-stack settings on the Context page if the owner has a hub.
 
 **Same model in both slots:** install and sign in only that model's tool in step 2. Each slot keeps its own effort, so the same model can plan on High and build on Medium: line-cook jobs still go out through that tool at the line-cook's effort (for example `claude -p --model <id> --effort medium`). Only when the model and the effort both match is there nothing to route: then skip the hand-offs in step 5 and the App routing instruction (the hub instruction line is enough).
 
@@ -55,7 +55,7 @@ Check what's already connected first (`claude mcp list`, `codex mcp list`) and s
 
 Test each tool with a quick non-interactive run that reads the Context page from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 
-Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, the Rules page and the Context page from the hub at the start of each session, and to follow the model routing in Stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow Stack settings. A local hub is the exception: keep its hub instruction line there, since only that line says where the folder is.
+Then add a short section to the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` telling it to load the enabled skills, the Rules page and the Context page from the hub at the start of each session, and to follow the model routing in guava-stack settings. Create the files if they don't exist. Never replace or delete what's already in them. Skip `~/.claude/CLAUDE.md` when the guava-hub plugin is installed in Claude Code (including the Claude desktop app's Code tab): its start-up hook already tells every new session to load the hub and follow guava-stack settings. A local hub is the exception: keep its hub instruction line there, since only that line says where the folder is.
 
 ## 4. Never skip the hub (optional)
 Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
@@ -76,18 +76,18 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - **Hand-off rule**: if a tool can't reach the hub, the head-chef (or you) loads what the job needs from the hub and puts it in that tool's prompt.
 - **If either fails**: do the task yourself and say so.
 - **If you are the head-chef or the line-cook** (say, Claude Code in a Claude setup), do that slot's work yourself and send only the other slot's work out.
-- **Code tab with the Codex plugin:** hand line-cook jobs to the `codex:codex-rescue` subagent with the line-cook's model and effort from Stack settings (the owner can also type `/codex:rescue --model <line-cook model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
+- **Code tab with the Codex plugin:** hand line-cook jobs to the `codex:codex-rescue` subagent with the line-cook's model and effort from guava-stack settings (the owner can also type `/codex:rescue --model <line-cook model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
-Save these routing rules as a standing instruction if hub setup hasn't already. With a hub, point it at the head-chef and line-cook in Stack settings instead of naming models, so the owner can swap a model by editing Stack settings; without one, name the models. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
+Save these routing rules as a standing instruction if hub setup hasn't already. With a hub, point it at the head-chef and line-cook in guava-stack settings instead of naming models, so the owner can swap a model by editing guava-stack settings; without one, name the models. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them.
 
 ## App routing (no CLIs)
 An app can't hand work to another model by itself, so the app's instructions do the routing before any work starts: every new chat sizes up the first request, and if it belongs on the other model, the app names that model and gives a ready-to-paste prompt instead of starting.
 
 1. Map the head-chef and line-cook to apps, using the **In the apps** line for the owner's setup in [setups.md](setups.md). In each app, pick the highest thinking or effort option it offers.
-2. Show the owner the instruction below. With a hub, use the first line as written, so it reads the models from Stack settings and a swap there needs no new paste; without a hub, replace it with the models' names. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
+2. Show the owner the instruction below. With a hub, use the first line as written, so it reads the models from guava-stack settings and a swap there needs no new paste; without a hub, replace it with the models' names. It names models only, never apps: the owner knows where each model lives, so the same text works in every app. Walk them through adding a copy to each app they use (each copy can then be tweaked on its own), under the hub instruction line, in the same place the hub setup used (Claude: Settings, then Account, then Instructions for Claude; ChatGPT: [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions). Add to what's there; never replace it. Send one small step per message and wait for done. These instructions follow the owner's account onto the desktop and phone apps; check them on the phone too.
    ```
-   Model routing: plan with the head-chef in my Stack settings and hand the doing to the line-cook. Read them from my guava-hub at the start of each chat; if you can't, ask me which model to use.
+   Model routing: plan with the head-chef in my guava-stack settings and hand the doing to the line-cook. Read them from my guava-hub at the start of each chat; if you can't, ask me which model to use.
    head-chef work is research, planning, brainstorming, writing, review, checking work and hard problems. line-cook work is drafting at volume, coding, data work, and bulk or long jobs.
    Route first. At the start of every new chat, before doing anything else, decide whether my request is head-chef work or line-cook work.
    - Right model, or a quick question: go ahead.
@@ -98,7 +98,7 @@ An app can't hand work to another model by itself, so the app's instructions do 
    ```
    Without a hub, with the default setup, the first line reads: "<!-- models:app-routing-example -->Model routing: plan with Claude Opus 5.5. Execute with GPT-6.1 Sol.<!-- /models -->"
 3. Test it in a new chat on the head-chef: ask for something to execute. It passes if the app doesn't start, names the line-cook, and gives a ready-to-paste prompt. Then, in another new chat, ask for something to plan. It passes if it does the work and ends with a hand-off. If the line-cook is in a different app, check that app routes planning requests back the same way.
-4. Save the routing to Stack settings, noting which app holds each model.
+4. Save the routing to guava-stack settings, noting which app holds each model.
 
 ## 6. Stay inside each provider's terms
 For Claude Code on a Claude plan:
@@ -117,7 +117,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.
 
 ## Changing the setup later
-To swap models, use one model in both slots, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
+To swap models, use one model in both slots, or apply a hand-edited guava-stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
 
 Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 
@@ -135,5 +135,5 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models". Without a hub, follow the by-hand steps under **Changing the setup later** above.
-3. **Check the routing still runs:** each tool in Stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off.
+3. **Check the routing still runs:** each tool in guava-stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off.
 4. **Test** each slot with a quick prompt, as in step 7, and confirm in two or three lines: guava-router's version before and after, any model change, and anything left for the owner.

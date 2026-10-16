@@ -16,7 +16,7 @@ You need to be running on the owner's computer to build this hub: the Code tab i
 1. Ask where the folder should go. Default: `~/Documents/guava-hub`. If the owner already has an Obsidian vault, offer to put the folder inside it instead.
 2. Keep it out of cloud-synced folders (iCloud Drive, Dropbox, OneDrive, Google Drive) unless the owner wants it synced between their own computers and is fine with that service holding a copy. Never put it inside a folder that's shared, published or pushed to GitHub.
 3. Create the folder with:
-   - **`Context.md`**: start it with the Stack settings section from the setup skill, then the owner's interview answers. In Stack settings, write the hub line as `- Hub: Local Markdown (<path>)`, or `- Hub: Obsidian (<path>)` if they use Obsidian.
+   - **`Context.md`**: start it with the guava-stack settings section from the setup skill, then the owner's interview answers. In guava-stack settings, write the hub line as `- Hub: Local Markdown (<path>)`, or `- Hub: Obsidian (<path>)` if they use Obsidian.
    - **`Rules.md`**
    - **`Skills/`**: one Markdown file per skill, named after the skill (for example `Skills/humanizer.md`). Start each with a short header, then the steps:
      ```

@@ -2,7 +2,7 @@
 
 The head-chef does the thinking and reviews important results; the line-cook does the doing. Each setup fills those two slots with a model and the command-line tool that runs it. Install and sign in only the tools the owner's setup uses.
 
-The models come from [models.yaml](../../models.yaml); don't edit the tables here by hand, since `scripts/sync-models.py` rewrites them. Commands below are templates for CLI routing. Add `< /dev/null` so neither CLI waits for input. The **In the apps** line under each setup is for app routing, when the owner works in the Claude or ChatGPT app without Grok Bot or Muse.
+The models come from [models.yaml](https://github.com/romeodiaz/guava-stack/blob/main/guava-router/models.yaml); don't edit the tables here by hand, since `scripts/sync-models.py` rewrites them. Commands below are templates for CLI routing. Add `< /dev/null` so neither CLI waits for input. The **In the apps** line under each setup is for app routing, when the owner works in the Claude or ChatGPT app without Grok Bot or Muse.
 
 ## Claude + ChatGPT (default)
 For owners who pay for both. Each job goes to the model that's best at it, and the work is spread across two plans.

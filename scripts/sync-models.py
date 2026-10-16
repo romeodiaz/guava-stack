@@ -20,6 +20,7 @@ DEFAULT = next(s for s in SETUPS.values() if s.get("default"))
 TOOLS = {"claude-code": "Claude Code", "codex": "Codex"}
 APPS = {"claude": "Claude app", "chatgpt": "ChatGPT app"}
 THIRD_PARTY = "Third-party tools (Cursor, Devin, Droid, Amp and others)"
+LOCAL = "Local models on your own hardware (Ollama, LM Studio and others)"
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
 
 
@@ -52,6 +53,8 @@ def table(args):
             rows.append(f"| {label} | {detailed(s['head_chef'])} | {detailed(s['line_cook'])} |")
     third = "Cursor, Devin, Droid, Amp and others" if simple else THIRD_PARTY
     rows.append(f"| {third} | Coming soon | Coming soon |")
+    local = "Local models on your own computer" if simple else LOCAL
+    rows.append(f"| {local} | Coming soon | Coming soon |")
     return "\n" + "\n".join(rows) + "\n"
 
 

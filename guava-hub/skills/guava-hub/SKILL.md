@@ -50,6 +50,7 @@ See `assistants/` for notes on each.
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
 | Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
+| Local models on your own hardware (Ollama, LM Studio and others) | Coming soon | Coming soon |
 <!-- /models -->
 
 ## 1. Start
@@ -59,7 +60,7 @@ See `assistants/` for notes on each.
    - Where should your hub live? Offer the four hubs above, Notion marked as recommended. If they're unsure, use Notion. If they pick local Markdown or Obsidian, go through the trade-offs in its file now.
    - Which assistant will you use day to day? Offer the three kinds above, Grok Bot or Muse marked as recommended. Owners who don't have or want Grok Bot or Muse pick their Claude or ChatGPT app. With a local hub, offer only the Claude desktop app's Code tab (or Claude Code or Codex, if they already use them).
    - One model for everything, or two (a planner that also reviews, and a builder)? Recommend two. For one model, ask which model they want and skip the next question.
-   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead. Any paid plan works. If they ask about third-party tools, say support is coming soon and set up the closest of the three for now.
+   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead. Any paid plan works. If they ask about third-party tools or local models, say support is coming soon and set up the closest of the three for now.
    - Is the hub connected here? If not, help connect it, following the backend's file. For a local hub, this means you can read the folder.
 3. Show the owner these standing instructions, filled in with their hub, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them. In Claude Code or the Claude desktop app's Code tab with the guava-hub plugin installed, the plugin's start-up hook already gives every new session these instructions, so there's nothing to save there (a local hub still needs its hub instruction line in `~/.claude/CLAUDE.md`, as its file says):
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.

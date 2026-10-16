@@ -49,3 +49,6 @@ Owners can put any model in either slot that a tool in their setup can run: any 
 
 ## Third-party tools (coming soon)
 Support for Cursor, Devin, Factory's Droid, Amp and other tools, as planner, builder or day-to-day assistant, is coming soon. Until then, set up the closest of the three setups above.
+
+## Local models (coming soon)
+Support for models that run on the owner's own hardware (through tools like Ollama or LM Studio), so nothing leaves the computer, is coming soon. It pairs with a local Markdown or Obsidian hub for clients that need to stay offline. Until then, say so plainly, and set up the closest of the three setups above if the owner still wants routing.

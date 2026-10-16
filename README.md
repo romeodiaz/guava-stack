@@ -177,7 +177,7 @@ That's it. Try one of these to see it work:
 4. "Write this week's LinkedIn post in my voice."
 
 ## How to update
-Tell your assistant **"update guava-stack"**. It gets the newest version of every Guava piece you have, brings your hub up to date (hubs set up before Stack settings get it added), offers any newer models, updates founder-mode, and tells you what changed. It shows the whole plan first, so one yes covers it.
+Tell your assistant **"update guava-stack"**. It gets the newest version of every Guava piece you have, brings your hub up to date, offers any newer models, updates founder-mode, and tells you what changed. It shows the whole plan first, so one yes covers it.
 
 To update one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, say it in a Local Code tab session, not a cloud one. See the [changelog](founder-mode/CHANGELOG.md).
 

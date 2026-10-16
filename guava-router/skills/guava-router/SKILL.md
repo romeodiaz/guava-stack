@@ -131,8 +131,7 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 - **ChatGPT and ChatGPT Dots:** rebuild the plugin with Plugin Creator from the skill folders, since a published plugin is a snapshot.
 - **Grok Bot, and any assistant that keeps the skills as files:** replace them with the newest copies from the repo.
 - **Muse:** no skill files, so nothing to download.
-- **Older copies:** look for Guava pieces under their old names: the `guava-mode` plugin (`claude plugin list`) and skill folders named `owner-mode-rules`, `founder-mode-rules`, `context-skills-hub-setup`, `context-skills-hub-model-router-setup` or `model-router-setup` in `~/.claude/skills`, `~/.agents/skills` and `~/.codex/skills`. They run old instructions next to the new ones. Offer to uninstall the old plugin (`claude plugin uninstall guava-mode@guava`) and move the old folders into a dated backup folder. Never delete them.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models". Without a hub, follow the by-hand steps under **Changing the setup later** above.
-3. **Check the routing still runs:** each tool in Stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off. Routing instructions that still name models or old paths get the replacement offer from step 2 of the guava-hub Update step.
+3. **Check the routing still runs:** each tool in Stack settings is installed and signed in (step 2 of setup, checking first). In the Code tab with Claude + ChatGPT, the Codex plugin is installed and `/codex:setup` reports ready with the review gate off.
 4. **Test** each slot with a quick prompt, as in step 7, and confirm in two or three lines: guava-router's version before and after, any model change, and anything left for the owner.

@@ -153,7 +153,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. Codex asks you once to approve its three start-up hooks, named "guava-stack: hub instructions", "hub context" and "hub rules". In the ChatGPT desktop app that's a small yellow notice with a hook icon in the bar under the message box, easy to miss, so click it and approve all three.
 - **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, Antigravity CLI's install script for the Google-only setup, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
-- **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.
+- **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions. With a Notion hub, assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** your hub's service (none for a local hub), your AI providers, and GitHub. Nothing goes to Guava, and the plugin fetches no remote instructions. [Privacy](https://workwithguava.com/privacy)
 
@@ -164,7 +164,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🔀 **[guava-router](guava-router/)**: model routing for each [AI setup](guava-router/skills/guava-router/setups.md).
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 🤖 **[assistants/](assistants/)**: what each assistant skips or changes.
-- 🛠️ **Know agent files?** context ≈ USER.md + TOOLS.md. rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. No SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md: each assistant keeps its own persona, memory and check-ins.
+- 🛠️ **Know agent files?** context ≈ USER.md + TOOLS.md. rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. MEMORY.md ≈ Notion Memory with a Notion hub: what assistants learn goes there, outside the hub, and is looked up only when a task needs it. No SOUL.md, IDENTITY.md or HEARTBEAT.md: each assistant keeps its own persona and check-ins.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

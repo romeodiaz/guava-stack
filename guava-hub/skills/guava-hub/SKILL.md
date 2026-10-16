@@ -33,7 +33,7 @@ A local hub can only be read by assistants on the owner's computer: the Claude d
 |---|---|---|
 | **Grok Bot or Muse** (recommended) | It runs the head-chef and line-cook CLIs on its own computer and routes each job for the owner. | It runs in the cloud, so the owner can message it from their phone too. |
 | Claude or ChatGPT chat (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. | The Claude and ChatGPT phone apps pick up the hub connector and instructions from the owner's account, so nothing is set up twice. |
-| The Claude desktop app's Code tab | For owners who'd rather not use Grok Bot or Muse. No terminal needed. With both plans, Claude plans and OpenAI's Codex plugin for Claude Code hands line-cook work to Codex. With Claude only, Claude's built-in `opusplan` mode plans on Opus and builds on Sonnet automatically. | Remote Control opens the computer's Code tab sessions from the Claude phone app while the computer is on. When it's off, chat on the phone still has the hub and the routing instruction. |
+| The Claude desktop app's Code tab | For owners who'd rather not use Grok Bot or Muse. No terminal needed. With both plans, Claude plans and OpenAI's Codex plugin for Claude Code hands line-cook work to Codex. With Claude only, Claude plans on the head-chef and hands line-cook work to a subagent on the line-cook. | Remote Control opens the computer's Code tab sessions from the Claude phone app while the computer is on. When it's off, chat on the phone still has the hub and the routing instruction. |
 
 Every setup with a cloud hub works across the owner's computer, laptop and phone, because the hub and the instructions live in their own accounts, not on one device. Say so when offering the choices: for many owners it's the main reason to set this up. A local hub trades that for privacy: the phone reaches it only through Remote Control.
 
@@ -148,7 +148,7 @@ A head-chef or line-cook swap is only an edit to guava-stack settings, since eve
    - **Where the hub lives:** moving the hub to another app isn't supported yet. Say it's coming later, and offer to list what they'd need to copy by hand.
 3. **Show the plan:** each change as old, then new, and every place it will be updated. Wait for a yes.
 4. **Apply it one change at a time**, guava-stack settings first, then only the places that hold a setting of their own:
-   - The Code tab's `opusplan` setting: keep it only while the Claude-only head-chef and line-cook are an Opus and a Sonnet; otherwise set the model to the head-chef.
+   - The Code tab's model setting: set it to the head-chef.
    - Changing the day-to-day assistant: add the routing lines there and run the steps from step 2.
    Only edit what setup added; never touch anything else in those places.
 5. **Test it** the way setup does: each changed slot answers from the right model, and a new chat in each connected app still finds the hub. Then confirm in two or three lines what changed.

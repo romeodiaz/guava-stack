@@ -40,7 +40,7 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 **In the apps:** both in the Claude app. Plan on Claude Opus 5.5 and execute on Claude Sonnet 5.5, each in its own new chat.
 <!-- /models -->
 
-**In the Claude desktop app's Code tab:** routing is built in. Set the model to `opusplan` (type `/model opusplan`, or set `"model": "opusplan"` in `~/.claude/settings.json`): Claude uses Opus while in Plan mode and switches to Sonnet on its own once the owner approves the plan. `opusplan` always uses Anthropic's current Opus and Sonnet, so it fits as long as the Claude-only picks in models.yaml are an Opus and a Sonnet. Teach the owner one habit: start real work in Plan mode. It works in Local and Remote Control sessions; in Cloud sessions, type `/model opusplan` at the start, since they don't read the computer's settings. Anthropic's docs don't say whether `opusplan` shows in the Code tab's model menu, so set it by command if it doesn't.
+**In the Claude desktop app's Code tab:** set the model to the head-chef (type `/model <head-chef model ID>`, or set it as `"model"` in `~/.claude/settings.json`), and hand line-cook jobs to a subagent on the line-cook's model and effort from guava-stack settings (Claude Code's subagents take both). It works the same way as every other setup, so a swap in guava-stack settings applies at the next hand-off. In Cloud sessions, type the `/model` command at the start, since they don't read the computer's settings.
 
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude line-cook for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 

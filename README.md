@@ -201,6 +201,7 @@ For the curious:
 - **[guava-router](guava-router/)**: model routing, with details for each [AI setup](guava-router/skills/guava-router/setups.md).
 - **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: notes for each assistant on what to skip or change.
+- **If you know agent files:** your hub has three parts. **Context** is close to USER.md plus TOOLS.md: who you are, how your business works and the tools you use. **Rules** is like the rules in AGENTS.md or CLAUDE.md, but every assistant shares them. **Skills** is the skills folder. guava-hub has no SOUL.md, IDENTITY.md or MEMORY.md, because each assistant keeps its own persona and memory.
 
 ## Support & privacy
 - Support: [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

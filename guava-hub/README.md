@@ -2,7 +2,7 @@
 
 # guava-hub: one home for your AI context and skills
 
-Part of the [Guava Stack](../README.md). Sets up one shared place for your profile, rules and skills, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
+Part of the [Guava Stack](../README.md). Sets up one shared place for your context, rules and skills, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
 
 Pick where your hub lives:
 

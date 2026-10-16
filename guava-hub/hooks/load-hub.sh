@@ -17,7 +17,8 @@ show() {
 
 case "$1" in
 start)
-  cat "$(dirname "$0")/load-hub.md"
+  skill=$(cd "$(dirname "$0")/../skills/guava-hub" && pwd)
+  sed "s|<skill>|$skill|g" "$(dirname "$0")/load-hub.md"
   echo
   if [ ! -f "$copy/sync.md" ]; then
     echo "Local copy of a Notion guava-hub: none yet at $copy."

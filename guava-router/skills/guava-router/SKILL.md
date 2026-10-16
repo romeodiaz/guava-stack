@@ -7,7 +7,7 @@ description: Sets up a Model Router that sends thinking work to a planner model 
 
 # Model Router: setup
 
-These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one do-it-all model don't need this skill.
+These steps send each kind of work to the model that's best at it, through the plans the owner already pays for: thinking and reviewing to a **planner + reviewer**, and heavy lifting to a **builder**. Owners who want one model for everything put it in both slots.
 
 > Setting up from scratch? Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step. This skill works on its own too; skip step 3 if the owner has no AI Context Hub.
 
@@ -24,6 +24,8 @@ If hub setup already saved one in the hub's Stack settings, use it. Otherwise as
 <!-- /models -->
 
 The picks for each setup come from [models.yaml](../../models.yaml), the one place they're kept; [setups.md](setups.md) has the model IDs, commands and notes for each. The owner can also pick their own planner or builder: any model a tool in their setup can run (Claude Code runs Claude models, Codex runs OpenAI models), marked "(own pick)" in Stack settings. If the owner asks about local models on their own hardware, say support is coming soon. For other tools or another provider's models, say they aren't supported. Either way, set up the closest of the three for now. Save the choice to Stack settings in Profile & Context if the owner has a hub.
+
+**Same model in both slots:** when the planner and builder are the same model, there's nothing to route. Install and sign in only that model's tool in step 2, skip the hand-offs in step 5, and skip the App routing instruction (the hub instruction line is enough).
 
 Then pick how it routes, from the owner's day-to-day assistant:
 - **CLI routing:** Grok Bot, Muse, or the Claude desktop app's Code tab. Follow steps 2 to 7. For the Code tab, also do the **App routing** step, so Claude and ChatGPT chat on the owner's phone route the same way when they're away from the computer.
@@ -115,7 +117,7 @@ For Codex and every other tool, follow that provider's current terms for its pla
 - Running this as part of hub setup? Go back to the hub setup skill's founder-mode step.
 
 ## Changing the setup later
-To swap models, switch between one and two models, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
+To swap models, use one model in both slots, or apply a hand-edited Stack settings section, follow **Change your setup** in the guava-hub skill. "Check for newer models" goes there too.
 
 Without a hub, do the same by hand: compare the planner and builder with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing section in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 

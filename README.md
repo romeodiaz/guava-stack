@@ -47,7 +47,7 @@ It asks a few simple questions, explains each step before doing it, and checks t
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
 ## Make it yours
-Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short Stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like going from one model to two, say "change my setup".
+Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short Stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like a new day-to-day assistant, say "change my setup".
 
 **Where your hub lives**
 
@@ -64,9 +64,9 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 - **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
 - **Local models on your own computer**, for work that can't leave the building: *coming soon*.
 
-**One AI model or two**
+**Head chef and line cook**
 
-Keep it simple with one do-it-all model, or split the work like a kitchen:
+Split the work like a kitchen. Want one model for everything? Put the same one in both spots.
 
 <!-- models:kitchen -->
 <table>

@@ -11,7 +11,7 @@ These steps give all of the owner's AI assistants one shared place for their con
 
 > **AI assistants:** first check `assistants/<your assistant>.md` in the guava-stack repo for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped.
 
-> **Just the hub?** If the owner asked for guava-hub on its own, do steps 1 to 4 and 7. Skip the one-or-two-models and AI plans questions, write Stack settings with only the Hub and Day-to-day assistant lines, and leave the routing line out of the standing instructions. Tell them they can add guava-router or founder-mode later.
+> **Just the hub?** If the owner asked for guava-hub on its own, do steps 1 to 4 and 7. Skip the AI plans question, write Stack settings with only the Hub and Day-to-day assistant lines, and leave the routing line out of the standing instructions. Tell them they can add guava-router or founder-mode later.
 
 ## The three choices
 Every Guava setup is three choices. Each has a default, so an owner who doesn't care can just say "use the defaults".
@@ -39,9 +39,7 @@ Every setup with a cloud hub works across the owner's computer, laptop and phone
 
 See `assistants/` for notes on each.
 
-**AI setup: one model or two.** Default: two.
-- **Two models** (recommended): a **planner + reviewer** does the thinking (planning, research, writing) and checks important work before it's called done; a **builder** does the doing (bulk execution, coding, long jobs). The plans they pay for suggest the pair below, and owners can pick their own: any model a tool in their setup can run works in either slot. The guava-router skill has the full details for each.
-- **One model**: a single do-it-all model for everything, such as the head chef for the plans they pay for. No routing, so skip the Model Router step and the routing line. The hub and founder-mode work the same.
+**AI setup: the planner and the builder.** A **planner + reviewer** does the thinking (planning, research, writing) and checks important work before it's called done; a **builder** does the doing (bulk execution, coding, long jobs). The plans they pay for suggest the pair below, and owners can pick their own: any model a tool in their setup can run works in either slot. For one model that does everything, put the same model in both slots; there's then nothing to hand off, and the router sets up only that model's tool. The guava-router skill has the full details for each.
 
 <!-- models:table first="They pay for" head="Planner + reviewer" line="Builder" -->
 | They pay for | Planner + reviewer | Builder |
@@ -58,13 +56,11 @@ See `assistants/` for notes on each.
    - What should I call you, and what's your business and audience in a sentence or two?
    - Where should your hub live? Offer the four hubs above, Notion marked as recommended. If they're unsure, use Notion. If they pick local Markdown or Obsidian, go through the trade-offs in its file now.
    - Which assistant will you use day to day? Offer the three kinds above, Grok Bot or Muse marked as recommended. Owners who don't have or want Grok Bot or Muse pick their Claude or ChatGPT app. With a local hub, offer only the Claude desktop app's Code tab (or Claude Code or Codex, if they already use them).
-   - One model for everything, or two (a planner that also reviews, and a builder)? Recommend two. For one model, ask which model they want and skip the next question.
-   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead. Any paid plan works. If they ask about local models, say support is coming soon and set up the closest of the three for now.
+   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead, or use the same model for both. Any paid plan works. If they ask about local models, say support is coming soon and set up the closest of the three for now.
    - Is the hub connected here? If not, help connect it, following the backend's file. For a local hub, this means you can read the folder.
 3. Show the owner these standing instructions, filled in with their hub, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them. In Claude Code or the Claude desktop app's Code tab with the guava-hub plugin installed, the plugin's start-up hook already gives every new session these instructions, so there's nothing to save there (a local hub still needs its hub instruction line in `~/.claude/CLAUDE.md`, as its file says):
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.
    - Model routing: use the Planner and Builder named in Stack settings, read fresh each session, through the tool it names: the planner for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the builder for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, the planner reviews the builder's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
-   - (One-model setups leave out the routing line.)
    - When the owner says "update guava-stack", "update guava-hub", "update guava-router" or "update founder-mode", follow the Update step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "update guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
    - When the owner asks to change their setup (for example "change my setup", "make Sonnet my builder", "apply my Stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
 
@@ -83,11 +79,11 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
   - Builder: GPT-6.1 Sol (High) via Codex
   ```
   <!-- /models -->
-  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". For one model, use a single line instead of the Planner and Builder lines, such as "Model: <model> (High), does everything".
+  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". For one model, name it on both lines.
 - **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; follow the model routing in Stack settings; keep a change log.
 - **Skills**: one entry per skill, including a model-routing skill written for their planner and builder. Ask the owner before turning skills on.
 
-Stack settings is the owner's own settings page, and assistants read it live. When the owner edits the Planner or Builder by hand, the change applies the next time an assistant loads the hub, with nothing to re-run. Bigger changes (one model or two, a new day-to-day assistant) need the steps in **Change your setup** below. Mark a planner or builder the owner picked themselves, rather than one from the table above, with "(own pick)".
+Stack settings is the owner's own settings page, and assistants read it live. When the owner edits the Planner or Builder by hand, the change applies the next time an assistant loads the hub, with nothing to re-run. Bigger changes (a new day-to-day assistant, or a model that needs a tool they haven't set up) need the steps in **Change your setup** below. Mark a planner or builder the owner picked themselves, rather than one from the table above, with "(own pick)".
 
 ## 3. Bring in what they already have
 Many owners already keep context and skills in other AI tools. Gather it into the hub so nothing is lost:
@@ -113,7 +109,7 @@ Then the phone: have the owner install the Claude and ChatGPT phone apps if they
 Don't call setup done until every connected app passes, on the computer and on the phone.
 
 ## 5. Set up the Model Router
-Skip this step for one-model setups. Otherwise, follow the **guava-router** skill now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and builder CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
+Follow the **guava-router** skill now. If the day-to-day assistant can run command-line tools (Grok Bot, Muse, or the Claude desktop app's Code tab), it installs the planner and builder CLIs, connects them to this hub and routes each kind of work to the right one. If it's Claude or ChatGPT chat, follow its **App routing** step instead, which needs no CLIs. If that skill isn't installed, tell the owner to add the guava-router plugin from github.com/romeodiaz/guava-stack. If you skip it, say why.
 
 ## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
@@ -129,7 +125,7 @@ End with a short close that starts with "Setup's done 🎉", never just a confir
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in the hub and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.
 
 ## Change your setup
-Use this whenever the owner wants something different from what setup chose: "change my setup", a specific ask like "make Sonnet my builder" or "switch to one model", "apply my Stack settings" after editing that section by hand, or "check for newer models".
+Use this whenever the owner wants something different from what setup chose: "change my setup", a specific ask like "make Sonnet my builder" or "use Opus for everything", "apply my Stack settings" after editing that section by hand, or "check for newer models".
 
 A planner or builder swap is only an edit to Stack settings, since every assistant reads it live. The steps below make sure the new model can actually run, and cover the few places that hold a setting of their own.
 
@@ -139,14 +135,14 @@ A planner or builder swap is only an edit to Stack settings, since every assista
    - "Check for newer models": compare the Planner and Builder with the picks for their AI setup in guava-router's `models.yaml` (the installed copy, or the one in github.com/romeodiaz/guava-stack). Leave slots marked "(own pick)" alone and only mention the newer pick.
 2. **Check the change works** before showing it:
    - **Planner or builder:** any model works if a tool in their setup can run it. Claude Code runs Claude models and Codex runs OpenAI models; for app routing, the model has to be one they can pick in that app. A model from another provider isn't supported: say so and offer the closest model they can run today.
-   - **One model or two:** going to one model removes the routing; going to two adds it by running guava-router.
+   - **Same model in both slots:** routing stops handing work off, with nothing to remove. Going back to two different models needs the new model's tool, so run guava-router's CLI steps for it.
    - **Day-to-day assistant:** follow the new assistant's file in `assistants/`, add the standing instructions there, and for Grok Bot, Muse or the Code tab, run guava-router's CLI steps.
    - **Where the hub lives:** moving the hub to another app isn't supported yet. Say it's coming later, and offer to list what they'd need to copy by hand.
 3. **Show the plan:** each change as old, then new, and every place it will be updated. Wait for a yes.
 4. **Apply it one change at a time**, Stack settings first, then only the places that hold a setting of their own:
    - The Code tab's `opusplan` setting: keep it only while the Claude-only planner and builder are an Opus and a Sonnet; otherwise set the model to the planner.
-   - Going from one model to two, or changing the day-to-day assistant: add or remove the routing lines and run the steps from step 2.
-   Only edit what setup added. Removing routing when going to one model means taking out the routing lines setup added, after a yes; never touch anything else in those places.
+   - Changing the day-to-day assistant: add the routing lines there and run the steps from step 2.
+   Only edit what setup added; never touch anything else in those places.
 5. **Test it** the way setup does: each changed slot answers from the right model, and a new chat in each connected app still finds the hub. Then confirm in two or three lines what changed.
 
 ## Update

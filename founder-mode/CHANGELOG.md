@@ -2,6 +2,7 @@
 
 founder-mode version history.
 
+- 2026-10-16 (setup only): Notion's connector can't set the Skills database icon, so setup now asks you to click Add icon and pick 📚. The founder-mode rules are unchanged from v2.1.0.
 - v2.1.2 (2026-10-16, setup only): The word Rules appears once in guava-stack settings, as the heading. Under it, each rules skill that's on gets its own line by name, such as `- founder-mode`, and in Notion the founder-mode image has no caption. The head-chef and line-cook lines each get a sub-bullet with the full list of their jobs, and their images lose their captions too. The founder-mode rules are unchanged from v2.1.0.
 - 2026-10-16 (setup only): The Skills database in Notion gets the 📚 icon. The founder-mode rules are unchanged from v2.1.0.
 - 2026-10-16 (setup only): With a Notion hub, Claude Code and the Code tab keep a local copy of the hub in `~/.guava-hub` and read that instead of calling Notion each time. Each new session gets your Context, Rules and skill list from it at start-up, reads a skill's full text only when a task needs it, and refreshes only the pages that changed once the copy is 15 minutes old, with one Notion search. A head-chef or line-cook swap reaches the computer at the next hand-off within 15 minutes, or right away if you say "refresh my hub". The change log now lives on its own Change log page, which assistants never load. Notion stays the source of truth, and Grok Bot, Muse, the chat apps and cloud sessions read it as before. The founder-mode rules are unchanged from v2.1.0.

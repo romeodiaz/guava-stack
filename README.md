@@ -47,13 +47,13 @@ It asks a few simple questions, explains each step before doing it, and checks t
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
 ## Make it yours
-Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short guava-stack settings section in your hub: edit a model there and every assistant uses it from its next hand-off, even in a chat that's already open. For bigger changes, like a new day-to-day assistant, say "change my setup".
+Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short guava-stack settings section in your hub: edit a model there and every assistant uses it from its next hand-off, even in a chat that's already open (on your computer, within 15 minutes). For bigger changes, like a new day-to-day assistant, say "change my setup".
 
 **Where your hub lives**
 
 | Hub | Good if you |
 |---|---|
-| Notion | Want the easiest start. Works with every assistant here. |
+| Notion | Want the easiest start. Works with every assistant here, and assistants on your computer keep a local copy so they don't wait on Notion. |
 | Google Drive | Use Google Workspace or Gmail |
 | OneDrive / SharePoint | Use Microsoft 365 |
 | Local Markdown / Obsidian | Want it only on your own computer, such as for private client work. Works with the Claude desktop app's Code tab, Claude Code and Codex. |

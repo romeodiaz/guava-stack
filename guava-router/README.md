@@ -32,4 +32,5 @@ Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 - Skill: [guava-router](skills/guava-router/SKILL.md), with details for each setup in [setups.md](skills/guava-router/setups.md)
 - Claude Code: `/plugin install guava-router --marketplace romeodiaz/guava-stack`
 - Update: say "update guava-router", or "update guava-stack" for every piece.
+- Uninstall: say "uninstall guava-router", or "uninstall guava-stack" for every piece.
 - Install: see [Start here](../README.md#start-here) in the stack README.

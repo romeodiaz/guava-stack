@@ -1,6 +1,6 @@
 ---
 name: guava-hub
-description: Sets up the owner's guava-hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
+description: Sets up the owner's guava-hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date, or takes it all off again. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, or says "update guava-stack", "update guava-hub", "uninstall guava-stack" or "uninstall guava-hub".
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
@@ -62,7 +62,7 @@ See `assistants/` for notes on each.
    - Before substantive work, load the owner's rules page, context page and enabled skills from their guava-hub in `<hub>`, and treat the hub as the source of truth. At the start of each new task, if you last loaded it 15 minutes ago or more, reload any of those pages edited since and follow the new version, so the owner's edits apply within 15 minutes, even mid-session. With a Notion hub, assistants on the owner's computer read its local copy in `~/.guava-hub` when it's there (see **Local copy** in the Notion backend's file); whichever assistant finds it due refreshes it, and Claude makes hub edits, or Codex when Claude isn't in their AI setup.
    - Model routing: use the head-chef and line-cook named in guava-stack settings, re-reading those two lines from the hub right before each hand-off, through the tool and at the effort each one names: the head-chef for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the line-cook for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, the head-chef reviews the line-cook's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - Settings check: whenever guava-stack settings differ from the last version you checked, check each line before relying on it, ignoring case and notes in brackets. The head-chef and line-cook each need a tool in their setup (Claude Code, Codex, or an app for app routing), an effort of Low, Medium, High, xhigh or Max, and a model that tool accepts: where the tool is installed, run one tiny prompt on it (`claude -p --model <ID> "Reply OK"` or `codex exec -m <ID> "Reply OK"`), taking the ID from guava-router's `models.yaml` or the tool's own naming. Hub must be Notion, Google Drive, OneDrive / SharePoint or Local Markdown / Obsidian; AI setup one of the setups in `models.yaml`; the day-to-day assistant one this setup supports (Grok Bot, Muse, the Claude or ChatGPT app, the Claude desktop app's Code tab, Claude Code or Codex); and each line under Rules a section on the rules page. If a line doesn't pass, tell the owner once, naming the closest match from the tool's model names, `models.yaml` or those lists (for example "head-chef says Claude Opsu 5.5. Did you mean Claude Opus 5.5?"), and offer to fix it in the hub. Change nothing without a yes. Until it's fixed, use the closest match if there's exactly one, or do the work yourself. On the owner's computer, keep the last version you checked in `~/.guava-hub/checked.md`, and save the section there once every line passes or the owner has answered.
-   - When the owner says "update guava-stack", "update guava-hub", "update guava-router" or "update founder-mode", follow the Update step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "update guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
+   - When the owner says "update" or "uninstall" with "guava-stack", "guava-hub", "guava-router" or "founder-mode", follow the Update or Uninstall step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
    - When the owner asks to change their setup (for example "change my setup", "make Sonnet my line-cook", "apply my guava-stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
 
    The standing instructions point at the hub instead of copying it, so when the owner edits anything there (a model, a rule, their context or a skill), every assistant picks it up within 15 minutes, even in a session that's already open, and a model swap applies at the next hand-off after that. In Claude Code and the Code tab, the plugin's start-up hook also checks the session's own model against the head-chef and offers the one-line fix. If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
@@ -180,3 +180,56 @@ For "update guava-stack", follow the Update step in the **guava-router** skill, 
 
 ### 4. Check and wrap up
 In a new session or chat, ask "What's in my guava-hub?" and "Which head-chef and line-cook are in my guava-stack settings?". Both should answer from the hub. Then confirm in a few lines: each plugin's version before and after (from `claude plugin list`, `codex plugin list` or each skill's title), what changed in the hub, and anything left for the owner, such as starting a new session or pasting an app instruction.
+
+## Uninstall
+Use this when the owner says **"uninstall guava-stack"** or **"uninstall guava-hub"**. ("uninstall guava-router" and "uninstall founder-mode" have their own Uninstall steps in those skills; "uninstall guava-stack" runs all of them.) It puts every assistant back the way it was before Guava. The hub itself stays as it is: it's the owner's data.
+
+Show the whole plan first, in your message text, as one numbered list: each command, each file change as old, then new, and each app step. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
+
+<!-- guava-restore: keep this paragraph the same in the guava-hub and guava-router skills -->
+**Putting files back** (`~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, `~/.claude/settings.json` and `~/.codex/config.toml`): the oldest Guava backup next to each file (`<file>.bak-<date>`) shows how it was before Guava. In the instruction files, remove only the lines you're taking off from the block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->`; once the block is empty, remove it with its markers, and the file too if nothing else is in it. Run the plugin commands first, since they rewrite these files and remove their own entries. Then, for only the settings the Uninstall step lists, put each one back to its value in that backup, or remove it if the backup doesn't have it; if the owner has changed it since Guava set it, ask instead. Drop any section left empty that the backup doesn't have, such as an empty `enabledPlugins`. Never copy a backup over the file, since that would undo every change the owner made since, and never change anything else. With no backup, remove only what Guava added and ask about any value it may have replaced. Leave the backups where they are and list them in the wrap-up, so the owner can delete them once they're happy.
+<!-- /guava-restore -->
+
+### 1. See what's there
+Check without asking (these only read): `claude plugin list`, `codex plugin list`, the four files above and their backups, and `~/.guava-hub`. Read guava-stack settings from the hub for the hub, the day-to-day assistant and the AI setup: together they say which apps, memories and files hold Guava lines. For "uninstall guava-stack", also follow the Uninstall steps in the **guava-router** and **founder-mode** skills for whichever the owner has, skipping their plugin step (step 2 below does it) and their hub edits (the hub stays as it is), so the owner sees one plan.
+
+### 2. Remove the plugins
+<!-- uninstall-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
+Only for the Guava plugins the owner has (for "uninstall guava-hub", just guava-hub; for "uninstall guava-stack", every one installed):
+- **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there. It applies in a new session.
+- **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there. If the skills were installed with Codex's skill installer instead, delete their folders in `~/.codex/skills/`, and check with `ls ~/.codex/skills`. It applies in a new chat.
+- **Claude chat (web, desktop and phone):** ask the owner whether they uploaded the Guava skills there, and if so, have them delete each one.
+- **ChatGPT and ChatGPT Dots:** delete the Guava plugin made with Plugin Creator, or rebuild it without the skills being removed.
+- **Grok Bot, and any assistant that keeps the skills as files:** delete each skill's folder.
+- **Muse:** no skill files, so nothing to delete.
+<!-- /uninstall-steps -->
+
+### 3. Put the computer back
+Following **Putting files back** above:
+- `~/.codex/config.toml`: delete each `[hooks.state."guava-hub@guava:…"]` table. Codex saves one for each start-up hook the owner approved, and keeps them after the plugin is gone.
+- `~/.claude/settings.json`: take the local copy (`…/.guava-hub`) or the local hub folder out of `permissions.additionalDirectories`, and the hub's read-only tools out of `permissions.allow` (from guava-router's **Never skip the hub**). Do the same for any hub approvals added in `~/.codex/config.toml`.
+- The Guava blocks in `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`: remove the hub instruction line and every standing instruction except the routing line, which belongs to guava-router.
+- Delete `~/.guava-hub`, the local copy of a Notion hub. It's only a copy: the hub stays in Notion.
+- Ask in the plan whether setup step 3 added the hub instruction line where the owner's old context or skills live (such as another AI tool's instructions), and remove it there if so.
+
+### 4. Take it out of the apps and memories
+Remove the hub instruction line and the standing instructions everywhere they were saved. Show the exact text to delete, one app per message, and wait for done. Leave everything else in place, including the app routing instruction unless guava-router is being removed too.
+- **Claude:** Settings, then Account, then Instructions for Claude.
+- **ChatGPT:** [Personalization](https://chatgpt.com/settings/personalization), then Custom Instructions, in both the ChatGPT box and the Codex box.
+- **ChatGPT Dots:** have the owner send their Dot "Forget my standing preference to load my guava-hub first.", then check with "What preferences do you remember about me?"
+- **Grok Bot:** delete the Guava memories, in shared user memory too.
+- **Muse:** delete the Guava lines at the end of SOUL.md (the bot's avatar, then the Fingerprint tab).
+- **Your own memory or custom instructions**, if you saved them there.
+
+### 5. What stays
+- **The hub:** every page or file stays exactly as it is, and nothing loads it anymore. Tell the owner where it is (the guava-hub page in Notion, or the guava-hub folder) and that they can delete it themselves anytime. In Notion, skills they turned on for Notion AI and external agents stay on until they turn them off.
+- **Connectors:** offer removing the hub's connector in Claude and ChatGPT (Notion, Google Drive or Microsoft 365) as its own numbered item, left out of a plain yes. It reaches the owner's own data, and other work may use it.
+- **Backups:** list them, as **Putting files back** says.
+
+### 6. When guava-router or founder-mode stay
+Only for "uninstall guava-hub" when the owner keeps another Guava piece. Both read from the hub, so say that and offer two choices:
+- Remove them too (recommended): run "uninstall guava-stack" instead.
+- Keep them without a hub: for guava-router, write the routing line naming the head-chef and line-cook (read them from guava-stack settings now) into the Guava blocks and the app routing instruction, as guava-router does for an owner without a hub. For founder-mode, save its rules word for word where the owner picks, such as the Guava block or their app instructions.
+
+### 7. Check and wrap up
+`claude plugin list` and `codex plugin list` show no Guava plugin you removed, `~/.guava-hub` is gone, and nothing Guava is left in the four files. Then run `claude -p "Did your start-up context mention guava-hub? Reply yes or no." < /dev/null` and `codex exec --skip-git-repo-check "Did your start-up context mention guava-hub? Reply yes or no." < /dev/null` for whichever tools are installed: both should answer no. Confirm in a few lines what was removed, what stayed (the hub, any connectors and tools the owner kept, and the backups with their paths), and that sessions and chats already open keep the old instructions until the owner starts new ones.

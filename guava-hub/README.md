@@ -13,7 +13,7 @@ Pick where your hub lives:
 | OneDrive / SharePoint | [backends/onedrive-sharepoint.md](skills/guava-hub/backends/onedrive-sharepoint.md) |
 | Local Markdown / Obsidian | [backends/local-markdown.md](skills/guava-hub/backends/local-markdown.md) |
 
-Every hub has the same three parts (Profile & Context, Agent Rules and Skills), so you can switch backends later without changing anything else.
+Every hub has the same three parts (Profile & Context, Rules and Skills), so you can switch backends later without changing anything else.
 
 - Start-up hook: in Claude Code and the Claude desktop app's Code tab, the plugin reminds every new session to load your hub and follow your Stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add.
 - Skill: [guava-hub](skills/guava-hub/SKILL.md)

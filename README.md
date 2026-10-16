@@ -133,6 +133,13 @@ Any model your plans can run works. Say "check for newer models" to swap in bett
 ## How to update
 Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)
 
+## How to uninstall
+Say **"uninstall guava-stack"** to take every piece off and put each assistant back the way it was. For one piece, say **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"**. It shows the plan first, removes only what Guava added (using the backups setup made), and leaves your hub's pages and files alone, since they're yours. If your assistant doesn't know the command, paste this:
+
+```
+Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/guava-stack.
+```
+
 ## Your data stays yours
 🔒 Guava collects nothing. Your details go only to your own hub, and your AI work only to the AI services you already use. Setup asks before every change.
 
@@ -144,6 +151,7 @@ Say **"update guava-stack"**. It updates every piece and your hub, offers newer 
 - **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
 - **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.
+- **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** your hub's service (none for a local hub), your AI providers, and GitHub. Nothing goes to Guava, and the plugin fetches no remote instructions. [Privacy](https://workwithguava.com/privacy)
 
 </details>

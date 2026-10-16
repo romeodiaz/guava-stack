@@ -66,6 +66,10 @@ See `assistants/` for notes on each.
 
    The standing instructions point at guava-stack settings instead of naming models, so when the owner changes a model there, every assistant picks it up the next time it loads the hub. If the day-to-day assistant is the Claude or ChatGPT app, use the app routing instruction from the guava-router skill instead of this routing line.
 
+   <!-- guava-block: keep this paragraph the same in the guava-hub and guava-router skills -->
+   **Local instruction files** (`~/.codex/AGENTS.md`, and `~/.claude/CLAUDE.md` when it needs Guava lines): keep everything Guava adds in one block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->`. Back the file up to `<file>.bak-<date>` first and create it if it doesn't exist. Replace only what's between the markers, or add the block at the end of the file if there are none yet. Move Guava lines left outside the markers by an older setup, such as `Load my Notion AI Context Hub first.`, into the block. Never change anything else in the file. Show the owner the change to every file together and ask once.
+   <!-- /guava-block -->
+
 ## 2. Build the hub
 Follow **Build the hub** in the backend's file. Every backend holds the same three parts:
 - **Context**: starts with a short **guava-stack settings** section so every assistant reads the same setup, then a short interview about the owner and their business. No passwords, keys or other secrets.
@@ -166,7 +170,7 @@ Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub
 <!-- /update-steps -->
 
 ### 2. Bring the hub up to date
-Read the hub and every saved copy of the standing instructions (your memory, shared user memory on Grok Bot, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, Muse's SOUL.md and the Claude and ChatGPT app instructions), and compare them with steps 1 and 2 of setup in this version. Offer to change anything that differs. Say which local files you'll read before reading them, and walk the owner through app instructions one app per message. If the Rules page keeps a change log, add a dated line for each hub edit.
+Read the hub and every saved copy of the standing instructions (your memory, shared user memory on Grok Bot, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, Muse's SOUL.md and the Claude and ChatGPT app instructions), and compare them with steps 1 and 2 of setup in this version. Offer to change anything that differs, updating local files as **Local instruction files** in setup step 1 says. Say which local files you'll read before reading them, and walk the owner through app instructions one app per message. If the Rules page keeps a change log, add a dated line for each hub edit.
 
 ### 3. Run the other updates
 For "update guava-stack", follow the Update step in the **guava-router** skill, then in the **founder-mode** skill, for whichever the owner has. Skip their "get the newest files" step, since step 1 above already did it.

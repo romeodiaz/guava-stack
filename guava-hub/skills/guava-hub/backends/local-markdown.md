@@ -29,15 +29,15 @@ You need to be running on the owner's computer to build this hub: the Code tab i
 4. **Obsidian (optional):** if the owner wants it, have them install Obsidian from obsidian.md, choose **Open folder as vault** and pick the hub folder (or their existing vault). Skip community plugins for this vault, and leave Obsidian Sync and Publish off unless they ask for them.
 
 ## Connect the apps
-There are no connectors. Each assistant on the computer reads the folder directly, so this step gives each one permission and the hub instruction line. Do Claude first, then Codex, one step at a time, showing each change and waiting for a yes.
+There are no connectors. Each assistant on the computer reads the folder directly, so this step gives each one permission and the hub instruction line. Do Claude first, then Codex, one step at a time, showing each change and waiting for a yes. The Guava blocks in both instruction files share one yes.
 
 Claude (the desktop app's Code tab and Claude Code):
 1. Back up `~/.claude/settings.json`, then add the hub folder's full path (for example `/Users/<name>/Documents/guava-hub` on a Mac, or `C:\Users\<name>\Documents\guava-hub` on Windows) under `permissions.additionalDirectories` so every session can read it without asking. Show the exact lines first.
-2. Add the hub instruction line, with the real path, in a short section at the end of `~/.claude/CLAUDE.md`, even with the guava-hub plugin installed: its start-up hook tells each session to load the hub, but only this line says where the folder is. Without the plugin, add the rest of the standing instructions there too. Never replace what's already in the file.
+2. Add the hub instruction line, with the real path, to the Guava block in `~/.claude/CLAUDE.md` (see **Local instruction files** in the setup skill), even with the guava-hub plugin installed: its start-up hook tells each session to load the hub, but only this line says where the folder is. Without the plugin, add the rest of the standing instructions there too.
 3. "Start a new Local session in the Code tab and ask: What's in my guava-hub? Paste or describe the answer here."
 
 Codex (only if it's in the owner's AI setup):
-1. Add the hub instruction line, with the real path, in a short section at the end of `~/.codex/AGENTS.md`. Create the file if it doesn't exist; never replace what's in it.
+1. Add the hub instruction line, with the real path, to the Guava block in `~/.codex/AGENTS.md`, the same way.
 2. Test it with `codex exec --skip-git-repo-check "What's in my guava-hub?" < /dev/null`. Codex can read the folder; leave hub edits to Claude or the owner.
 
 Skip the Claude and ChatGPT app steps and the phone chat check in setup step 4: those apps can't reach this hub. If the owner wants the phone, set up Remote Control (see `assistants/claude.md`) and check one session from the Claude phone app.

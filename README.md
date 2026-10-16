@@ -17,6 +17,7 @@ You don't need to code or open a terminal. Paste one line into the AI assistant 
 - **No lock-in.** Your stuff lives in your own account, not inside one AI company's app. Change your hub, your assistant or your AI plan anytime and keep everything.
 - **Free and open source.** MIT licensed. Read every line, change anything, share it with anyone.
 - **Private.** Guava never sees your data. It goes only to your own hub and the AI services you already use.
+- **Safe for your AI accounts.** Guava never shares, pools or reroutes your logins, unlike the proxy tools AI companies have cut off. Each AI runs in its own official app or tool, signed in as you, on your own plan.
 - **Safe by default.** Setup shows you each change before making it, never overwrites what you have, and scans skills from strangers before installing them.
 
 ## Start here

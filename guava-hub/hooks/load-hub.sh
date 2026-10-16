@@ -29,23 +29,23 @@ start)
   echo "Local copy of the Notion guava-hub: $copy, refreshed $age minutes ago, so it's $state."
   ;;
 context)
-  [ -f "$copy/Context.md" ] || exit 0
-  show "guava-hub Context page, local copy" "$copy/Context.md"
-  index=$(for f in "$copy"/Skills/*.md; do
+  [ -f "$copy/context.md" ] || exit 0
+  show "guava-hub context page, local copy" "$copy/context.md"
+  index=$(for f in "$copy"/skills/*.md; do
     [ -f "$f" ] && awk 'NR == 1 && $0 != "---" { exit }
       /^name: / { n = substr($0, 7) }
       /^description: / { d = substr($0, 14) }
       NR > 1 && /^---$/ { print "- " n ": " d; exit }' "$f"
   done)
   [ -n "$index" ] || exit 0
-  if [ $(( $(wc -c < "$copy/Context.md") + ${#index} )) -le "$cap" ]; then
-    printf '\nguava-hub skills, local copy (read %s/Skills/<name>.md when a task needs one):\n%s\n' "$copy" "$index"
+  if [ $(( $(wc -c < "$copy/context.md") + ${#index} )) -le "$cap" ]; then
+    printf '\nguava-hub skills, local copy (read %s/skills/<name>.md when a task needs one):\n%s\n' "$copy" "$index"
   else
-    printf '\nguava-hub skills: list %s/Skills/ and read a skill there when a task needs one.\n' "$copy"
+    printf '\nguava-hub skills: list %s/skills/ and read a skill there when a task needs one.\n' "$copy"
   fi
   ;;
 rules)
-  [ -f "$copy/Rules.md" ] && show "guava-hub Rules page, local copy" "$copy/Rules.md"
+  [ -f "$copy/rules.md" ] && show "guava-hub rules page, local copy" "$copy/rules.md"
   ;;
 esac
 exit 0

@@ -28,9 +28,9 @@ Your hub has three parts:
 
 <table>
 <tr>
-<td align="center" width="33%"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>Context</strong><br><sub>Who you are, your business, your tools</sub></td>
-<td align="center" width="33%"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>Rules</strong><br><sub>How your AI should work for you</sub></td>
-<td align="center" width="33%"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>Skills</strong><br><sub>Step-by-step instructions your AI reuses</sub></td>
+<td align="center" width="33%"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are, your business, your tools</sub></td>
+<td align="center" width="33%"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI should work for you</sub></td>
+<td align="center" width="33%"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>Step-by-step instructions your AI reuses</sub></td>
 </tr>
 </table>
 
@@ -150,7 +150,7 @@ Say **"update guava-stack"**. It updates every piece and your hub, offers newer 
 - 🔀 **[guava-router](guava-router/)**: model routing for each [AI setup](guava-router/skills/guava-router/setups.md).
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 🤖 **[assistants/](assistants/)**: what each assistant skips or changes.
-- 🛠️ **Know agent files?** Context ≈ USER.md + TOOLS.md. Rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. Skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. No SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md: each assistant keeps its own persona, memory and check-ins.
+- 🛠️ **Know agent files?** context ≈ USER.md + TOOLS.md. rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. No SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md: each assistant keeps its own persona, memory and check-ins.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

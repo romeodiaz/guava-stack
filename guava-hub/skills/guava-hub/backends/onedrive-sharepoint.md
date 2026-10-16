@@ -6,9 +6,9 @@ For owners who run their business on Microsoft 365. Use OneDrive for a hub only 
 
 ## Build the hub
 Ask whether the hub goes in OneDrive or in a SharePoint site (and which site). Create a folder called **guava-hub** there with:
-- **Context**: a Word document. Start it with the guava-stack settings section from the setup skill, then the owner's interview answers.
-- **Rules**: a Word document.
-- **Skills**: a folder with one Word document per skill, named after the skill and holding its full text (name, one-line description, then the steps). Every skill in this folder counts as turned on. To turn one off, move it to a sibling folder called **Skills (off)**.
+- **context**: a Word document. Start it with the guava-stack settings section from the setup skill, then the owner's interview answers.
+- **rules**: a Word document.
+- **skills**: a folder with one Word document per skill, named after the skill and holding its full text (name, one-line description, then the steps). Every skill in this folder counts as turned on. To turn one off, move it to a sibling folder called **skills (off)**.
 
 Keep the folder private to the owner, or to the site's members, unless they ask to share it more widely.
 

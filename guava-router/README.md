@@ -25,6 +25,7 @@ Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
+| Google only | Gemini 4 Argon (High) via Antigravity CLI | Gemini 3.8 Flash (High) via Antigravity CLI |
 | Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
 <!-- /models -->
 

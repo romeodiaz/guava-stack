@@ -38,7 +38,7 @@ Claude (the desktop app's Code tab and Claude Code):
 
 Codex (only if it's in the owner's AI setup):
 1. Add the hub instruction line, with the real path, to the Guava block in `~/.codex/AGENTS.md`, the same way.
-2. Test it with `codex exec --skip-git-repo-check "What's in my guava-hub?" < /dev/null`. Codex can read the folder; leave hub edits to Claude or the owner.
+2. Test it with `codex exec --skip-git-repo-check "What's in my guava-hub?" < /dev/null`. Codex can read the folder; leave hub edits to Claude or the owner, unless Claude isn't in the AI setup, in which case Codex makes them, after the owner's yes.
 
 Skip the Claude and ChatGPT app steps and the phone chat check in setup step 4: those apps can't reach this hub. If the owner wants the phone, set up Remote Control (see `assistants/claude.md`) and check one session from the Claude phone app.
 

@@ -31,11 +31,11 @@ Claude on the computer (the desktop app's Code tab and Claude Code, with the gua
 
 ## Local copy
 Notion calls are slow, so assistants on the owner's computer keep a copy of the hub in `~/.guava-hub` and read that instead. Nothing to set up beyond the step above: the first Local session in the Code tab or Claude Code builds it. Notion stays the source of truth, and assistants that can't reach the computer (Grok Bot, Muse, the chat apps, cloud sessions) keep reading Notion directly.
-- **What's in it:** `context.md`, `rules.md`, one file per skill in `skills/`, and `sync.md` with the page IDs and when it was last refreshed. No images, and no changelog.
+- **What's in it:** `context.md`, `rules.md`, one file per skill in `skills/`, `sync.md` with the page IDs and when it was last refreshed, and `checked.md` with the guava-stack settings section as it was last checked. No images, and no changelog.
 - **At start-up:** the plugin's start-up hook puts the copy's context, rules and skill list straight into each new session, so it starts without a Notion call. A skill's full text is read only when a task needs it.
 - **Keeping it fresh:** at the start of each task and before each hand-off, if the copy is 15 minutes old or more, the session runs one Notion search that lists every hub page with its last-edited time, fetches only the pages that changed, and follows the new versions from then on. So any edit made in Notion, from any device, reaches open sessions within 15 minutes. Say "refresh my hub" to pick it up right away.
 - **Edits** still go to Notion first, and the session refreshes that page in the copy right after.
-- **Codex** reads the same copy, and leaves refreshing and hub edits to Claude.
+- **Codex** reads the same copy, and leaves refreshing and hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex builds and refreshes the copy and makes hub edits itself, such as a fix the owner approves after a settings check.
 
 ## If a check fails
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.

@@ -80,7 +80,7 @@ As Claude Code plugins: `claude plugin marketplace add romeodiaz/guava-stack`, t
 4. "Write this week's LinkedIn post in my voice."
 
 ## Make it yours
-Every part is swappable. Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. For bigger changes, say "change my setup".
+Every part is swappable. Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. Typos get caught with a suggested fix. For bigger changes, say "change my setup".
 
 **🗂️ Where your hub lives**
 

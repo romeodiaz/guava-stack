@@ -1,6 +1,6 @@
 {
   "name": "guava-hub",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "For business owners and solo operators. Sets up guava-hub, one shared home for your context, rules and skills in Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder, so all your AI assistants share them. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",
@@ -22,7 +22,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Guava Hub",
+    "displayName": "guava-hub",
     "logo": "./assets/logo.png"
   },
   "privacyPolicyUrl": "https://workwithguava.com/privacy",

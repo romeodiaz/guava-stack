@@ -92,9 +92,12 @@ Every part is swappable. Your choices live in a short **guava-stack settings** s
 | Local Markdown / Obsidian | Want it on your computer only, such as for private client work. Code tab, Claude Code and Codex. |
 
 **💬 Who you talk to**
+
+On your computer, your assistant keeps a copy of your hub, so it starts instantly and passes work between Claude and ChatGPT for you. Everywhere else (your phone, the web, Grok Bot, Muse), it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
+
 - **Claude or ChatGPT app** (web, desktop, phone): each new chat checks it's on the right model, or hands you a prompt for the right one.
 - **Grok Bot or Muse**: cloud assistants that hand each job to the right AI, even from your phone.
-- **Claude desktop app, Code tab**: Claude hands off work itself. No terminal needed.
+- **Claude desktop app, Code tab** (Local sessions): Claude hands off work itself. No terminal needed.
 - **Local models**: *coming soon*.
 
 **👩‍🍳 head-chef and line-cook**
@@ -136,8 +139,8 @@ Say **"update guava-stack"**. It updates every piece and your hub, offers newer 
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` in `~/.codex/AGENTS.md`, and in `~/.claude/CLAUDE.md` if the guava-hub plugin isn't installed or your hub is a local folder (or your AI tools' own instructions files). Each file is backed up first, and nothing outside the markers changes. The optional "Never skip the hub" step, and a local hub, back up `~/.claude/settings.json` and add only your hub's read-only tools or folder.
-- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code session. It changes nothing.
+- **Files edited:** a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` in `~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md`, only if the guava-hub plugin isn't installed in that tool or your hub is a local folder (or your AI tools' own instructions files). Each file is backed up first, and nothing outside the markers changes. The optional "Never skip the hub" step, and a local hub, back up `~/.claude/settings.json` and add only your hub's read-only tools or folder.
+- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. Codex asks you once to approve its three start-up hooks.
 - **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
 - **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.

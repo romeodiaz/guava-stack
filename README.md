@@ -6,12 +6,10 @@
 
 **Free, open source, and yours to keep.**
 
-Guava Stack keeps your business context, rules and skills in one place you already own, like Notion, Google Drive or OneDrive. Every AI assistant you use reads from that one place, on your computer, your laptop and your phone. Switch assistants or AI plans whenever you like, and nothing gets lost.
-
-You don't need to code or open a terminal. Paste one line into the AI assistant you already use, and it walks you through the rest.
+Your business context, rules and skills in one place you already own. Every AI assistant reads from it, on every device. No code needed: paste one line and your assistant sets it up.
 
 ## What you get
-Three pieces that work together. Start with the hub; the other two are optional.
+Start with the hub. The other two are optional.
 
 <table>
 <tr>
@@ -19,54 +17,89 @@ Three pieces that work together. Start with the hub; the other two are optional.
 <td align="center" width="33%"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router (optional)</sub></td>
 <td align="center" width="33%"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode (optional)</sub></td>
 </tr>
+<tr>
+<td>One home for your context, rules and skills. Every assistant you connect reads it.</td>
+<td>Sends each job to the best AI model on the plans you already pay for.</td>
+<td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+</tr>
 </table>
 
-1. **[A shared hub](guava-hub/)**: one home for your profile, your rules for how AI should work for you, and your skills (step-by-step instructions your AI can reuse). Every assistant you connect reads from it.
-2. **[Model routing](guava-router/)** (optional): sends each job to the AI model that's best at it, using the plans you already have.
-3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
+Your hub has three parts:
+
+<table>
+<tr>
+<td align="center" width="33%"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>Context</strong><br><sub>Who you are, your business, your tools</sub></td>
+<td align="center" width="33%"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>Rules</strong><br><sub>How your AI should work for you</sub></td>
+<td align="center" width="33%"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>Skills</strong><br><sub>Step-by-step instructions your AI reuses</sub></td>
+</tr>
+</table>
 
 ## Why people use it
-- **Explain your business once.** No more re-introducing yourself to every AI app.
-- **Use what you already have.** Claude, ChatGPT, Grok Bot, Muse and others, on the AI plans you already pay for. Nothing new to buy.
-- **Take it everywhere.** The same assistant, context and rules on your desk, laptop and phone.
-- **No lock-in.** Your stuff lives in your own account, not inside one AI company's app. Change your hub, your assistant or your AI plan anytime and keep everything.
-- **Free and open source.** MIT licensed. Read every line, change anything, share it with anyone.
-- **Private.** Guava never sees your data. It goes only to your own hub and the AI services you already use.
-- **Safe for your AI accounts.** Guava never shares, pools or reroutes your logins, unlike the proxy tools AI companies have banned. Each AI runs in its own official app or tool, signed in as you, on your own plan.
-- **Safe by default.** Setup shows you each change before making it, never overwrites what you have, and scans skills from strangers before installing them.
+- 🗣️ **Explain your business once.** Every assistant already knows it.
+- 💳 **Nothing new to buy.** Claude, ChatGPT, Grok Bot, Muse and more, on the plans you already have.
+- 📱 **Everywhere.** The same context and rules on your desk, laptop and phone.
+- 🔓 **No lock-in.** It lives in your own account. Switch hub, assistant or plan anytime.
+- 🆓 **Free and open source.** MIT licensed.
+- 🔒 **Private.** Guava never sees your data.
+- 🛡️ **Safe for your AI accounts.** No shared or proxied logins. Each AI runs in its official app, signed in as you.
+- ✅ **Safe by default.** Shows every change first, never overwrites, and scans outside skills before installing.
 
 ## Start here
-Paste this into your AI assistant:
+Paste this into any AI assistant:
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 ```
 
-It asks a few simple questions, explains each step before doing it, and checks that everything works at the end. Not sure what to pick? Say "use the defaults" and it chooses a setup that works for most people.
+It asks a few questions, explains each step, and checks that everything works. Unsure? Say "use the defaults".
+
+Each assistant follows its own guide: [Claude](assistants/claude.md) · [ChatGPT](assistants/chatgpt.md) · [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
-## Make it yours
-Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short guava-stack settings section in your hub: edit a model there and every assistant uses it from its next hand-off, even in a chat that's already open (on your computer, within 15 minutes). For bigger changes, like a new day-to-day assistant, say "change my setup".
+**🧩 Just want one piece?** Each works on its own:
 
-**Where your hub lives**
+```
+Install guava-hub from github.com/romeodiaz/guava-stack
+```
+
+```
+Install guava-router from github.com/romeodiaz/guava-stack
+```
+
+```
+Install founder-mode from github.com/romeodiaz/guava-stack
+```
+
+As Claude Code plugins: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install <name>@guava`.
+
+**▶️ Try it:**
+1. "Set me up with a Google Drive hub. I only pay for Claude."
+2. "Import my existing instructions and skills into my guava-hub."
+3. "Turn on founder-mode."
+4. "Write this week's LinkedIn post in my voice."
+
+## Make it yours
+Every part is swappable. Your choices live in a short **guava-stack settings** section in your hub. Change a model there and every assistant uses it from its next hand-off (on your computer, within 15 minutes). For bigger changes, say "change my setup".
+
+**🗂️ Where your hub lives**
 
 | Hub | Good if you |
 |---|---|
-| Notion | Want the easiest start. Works with every assistant here, and assistants on your computer keep a local copy so they don't wait on Notion. |
+| Notion | Want the easiest start. Works with every assistant, with a local copy for speed. |
 | Google Drive | Use Google Workspace or Gmail |
 | OneDrive / SharePoint | Use Microsoft 365 |
-| Local Markdown / Obsidian | Want it only on your own computer, such as for private client work. Works with the Claude desktop app's Code tab, Claude Code and Codex. |
+| Local Markdown / Obsidian | Want it on your computer only, such as for private client work. Code tab, Claude Code and Codex. |
 
-**Which assistant you talk to**
-- **The Claude or ChatGPT app you already use**, on web, desktop or phone. Setup adds a few instructions so each new chat checks it's on the right model, and if not, hands you a ready-to-paste prompt for the right one.
-- **Grok Bot or Muse**, assistants that run in the cloud and hand each job to the right AI for you, even from your phone.
-- **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
-- **Local models on your own computer**, for work that can't leave the building: *coming soon*.
+**💬 Who you talk to**
+- **Claude or ChatGPT app** (web, desktop, phone): each new chat checks it's on the right model, or hands you a prompt for the right one.
+- **Grok Bot or Muse**: cloud assistants that hand each job to the right AI, even from your phone.
+- **Claude desktop app, Code tab**: Claude hands off work itself. No terminal needed.
+- **Local models**: *coming soon*.
 
-**head-chef and line-cook**
+**👩‍🍳 head-chef and line-cook**
 
-Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line-cook a lower effort if you like.
+Split the work like a kitchen. One model for everything? Put it in both spots.
 
 <!-- models:kitchen -->
 <table>
@@ -81,7 +114,7 @@ Split the work like a kitchen. Want one model for everything? Put the same one i
 </table>
 <!-- /models -->
 
-The plans you pay for decide who's in the kitchen:
+Today's picks for the plans you pay for:
 
 <!-- models:table style=simple -->
 | You pay for | head-chef | line-cook |
@@ -92,123 +125,37 @@ The plans you pay for decide who's in the kitchen:
 | Local models on your own computer | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
-These are suggestions. Any model your plans can run works as head-chef or line-cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.
-
-**On every device.** Your hub and instructions live in your own accounts, not on one computer, so everything follows you. The Claude and ChatGPT phone apps pick up your hub automatically, Grok Bot and Muse answer from your phone, and the Claude phone app can open your Code tab sessions while your computer is on.
-
-## How to use it
-Pick the assistant you use.
-
-<details>
-<summary><strong>Claude</strong></summary>
-
-Paste this. Your assistant follows the [Claude guide](assistants/claude.md) automatically.
-
-```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
-```
-
-</details>
-
-<details>
-<summary><strong>ChatGPT Dots</strong></summary>
-
-Paste this. Your assistant follows the [ChatGPT guide](assistants/chatgpt.md) automatically.
-
-```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
-```
-
-</details>
-
-<details>
-<summary><strong>Grok Bot</strong></summary>
-
-Paste this. Your assistant follows the [Grok Bot guide](assistants/grok.md) automatically.
-
-```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
-```
-
-</details>
-
-<details>
-<summary><strong>Meta Muse Bot</strong></summary>
-
-Paste this. Your assistant follows the [Muse Bot guide](assistants/muse.md) automatically.
-
-```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
-```
-
-</details>
-
-<details>
-<summary><strong>Any other AI assistant</strong></summary>
-
-Paste this:
-
-```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
-```
-
-</details>
-
-**Just want one piece?** Each one installs and works on its own. Paste one of these:
-
-```
-Install guava-hub from github.com/romeodiaz/guava-stack
-```
-
-```
-Install guava-router from github.com/romeodiaz/guava-stack
-```
-
-```
-Install founder-mode from github.com/romeodiaz/guava-stack
-```
-
-The hub alone gives every assistant your context, rules and skills. The router alone routes between your head-chef and line-cook without a hub. founder-mode alone saves the rules wherever you keep your assistant's instructions. In Claude Code or the Code tab, the plugin version is `/plugin install <name>@guava` after `claude plugin marketplace add romeodiaz/guava-stack`.
-
-That's it. Try one of these to see it work:
-1. "Set me up with a Google Drive hub. I only pay for Claude."
-2. "Import my existing instructions and skills into my guava-hub."
-3. "Turn on founder-mode."
-4. "Write this week's LinkedIn post in my voice."
+Any model your plans can run works. Say "check for newer models" to swap in better ones as they come out.
 
 ## How to update
-Tell your assistant **"update guava-stack"**. It gets the newest version of every Guava piece you have, brings your hub up to date, offers any newer models, updates founder-mode, and tells you what changed. It shows the whole plan first, so one yes covers it.
-
-To update one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, say it in a Local Code tab session, not a cloud one. See the [changelog](founder-mode/CHANGELOG.md).
+Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)
 
 ## Your data stays yours
-Guava collects nothing. Your profile and business details go only to your own hub, and your AI work goes only to the AI services you already use, under your own plans. Setup asks for a yes before every change.
+🔒 Guava collects nothing. Your details go only to your own hub, and your AI work only to the AI services you already use. Setup asks before every change.
 
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** adds a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` to `~/.codex/AGENTS.md` and, if the guava-hub plugin isn't installed in Claude Code or your hub is a local folder, `~/.claude/CLAUDE.md`, or the instructions file of the tools in your AI setup. It backs each file up first, and updates change only what's between the markers, so the rest of the file is never touched. The guava-hub plugin's start-up hook adds a short "load my hub" note to each new Claude Code session; it reads only its own file and changes nothing. The router's optional "Never skip the hub" step backs up `~/.claude/settings.json` and adds only your hub's read-only tools to its permissions. A local hub backs up the same file and adds only your hub folder to its readable folders.
-- **Commands run:** only for the tools your AI setup uses: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Claude desktop app's Code tab is your assistant, and a quick test prompt in each.
-- **Files read:** only the local instruction, skill or notes files you approve. It never reads your Claude or ChatGPT memories or chats; you paste or export what you want.
-- **Saved:** your hub (pages and a Skills database in Notion, documents in Google Drive or OneDrive/SharePoint, or Markdown files in a folder on your computer), and standing instructions in your assistant's memory or your Claude and ChatGPT app instructions.
-- **External services:** your hub's service (Notion, Google or Microsoft; none for a local hub), the AI providers in your setup (Anthropic for Claude, OpenAI for ChatGPT and Codex), GitHub (this repo). Nothing is sent to Guava, and the plugin fetches no remote instructions. See [Privacy](https://workwithguava.com/privacy).
+- **Files edited:** a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` in `~/.codex/AGENTS.md`, and in `~/.claude/CLAUDE.md` if the guava-hub plugin isn't installed or your hub is a local folder (or your AI tools' own instructions files). Each file is backed up first, and nothing outside the markers changes. The optional "Never skip the hub" step, and a local hub, back up `~/.claude/settings.json` and add only your hub's read-only tools or folder.
+- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code session. It changes nothing.
+- **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
+- **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
+- **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.
+- **External services:** your hub's service (none for a local hub), your AI providers, and GitHub. Nothing goes to Guava, and the plugin fetches no remote instructions. [Privacy](https://workwithguava.com/privacy)
 
 </details>
 
 ## What's inside
-For the curious:
-- **[guava-hub](guava-hub/)**: hub setup, with steps for each [hub type](guava-hub/skills/guava-hub/backends/).
-- **[guava-router](guava-router/)**: model routing, with details for each [AI setup](guava-router/skills/guava-router/setups.md).
-- **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
-- **[assistants/](assistants/)**: notes for each assistant on what to skip or change.
-- **If you know agent files:** your hub has three parts. **Context** is close to USER.md plus TOOLS.md: who you are, how your business works and the tools you use. **Rules** is like the rules in AGENTS.md or CLAUDE.md, but every assistant shares them. **Skills** is the `skills/` folder. The guava-hub setup skill does the job of BOOTSTRAP.md, once. guava-hub has no SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md, because each assistant keeps its own persona, memory and scheduled check-ins.
+- 🧠 **[guava-hub](guava-hub/)**: hub setup for each [hub type](guava-hub/skills/guava-hub/backends/).
+- 🔀 **[guava-router](guava-router/)**: model routing for each [AI setup](guava-router/skills/guava-router/setups.md).
+- 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
+- 🤖 **[assistants/](assistants/)**: what each assistant skips or changes.
+- 🛠️ **Know agent files?** Context ≈ USER.md + TOOLS.md. Rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. Skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. No SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md: each assistant keeps its own persona, memory and check-ins.
 
-## Support & privacy
-- Support: [romeo@workwithguava.com](mailto:romeo@workwithguava.com)
-- Privacy: https://workwithguava.com/privacy. Guava collects no data; everything stays in your own hub, computer and AI accounts.
-
-## Want it for your whole team?
-For a multiplayer version for your team or org, book a call: https://workwithguava.com/talk
+## Support
+- ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)
+- 🔒 [Privacy](https://workwithguava.com/privacy)
+- 👥 Want it for your whole team? [Book a call](https://workwithguava.com/talk)
 
 ## Credits
 Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto, from [Matt Pocock's skills](https://github.com/mattpocock/skills) and the [humanizer skill](https://github.com/blader/humanizer) by blader.

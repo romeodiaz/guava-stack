@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the Rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v2.1.0
+# founder-mode v2.1.1
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
@@ -19,7 +19,7 @@ Only for the Guava plugins the owner has (for "update founder-mode", just founde
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "Rules" page (or document or file) in the owner's guava-hub, wherever it lives: Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder. If you can't find it, ask where to put the rules.
-3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me". Add `founder-mode` and its version, such as `founder-mode v2.0.6`, to the list of rule sets at the top of the page, starting the list if there isn't one. That line is the only place the version is written. Don't paraphrase them: the next update compares against this text. If the Context page has a Stack settings section, add founder-mode to its Rules line, or add `- Rules: founder-mode` at its end if there's no Rules line yet. Leave any other rules skills on that line in place.
+3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me". Add `founder-mode` and its version, such as `founder-mode v2.0.6`, to the list of rule sets at the top of the page, starting the list if there isn't one. That line is the only place the version is written. Don't paraphrase them: the next update compares against this text. If the Context page has a Stack settings section, add founder-mode to its Rules line, or add `- Rules: founder-mode` after its AI setup line if there's no Rules line yet. Leave any other rules skills on that line in place.
 4. If a "How to work with me" section is already there, compare this version with the one on the founder-mode line at the top of the page. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. Either way, update the version on that line. If only setup steps changed, say the rules are the same.
 5. Follow these rules on every task from now on. If another rule on the Rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.

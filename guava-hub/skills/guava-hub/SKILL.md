@@ -71,16 +71,17 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
 - **Context**: starts with a short **Stack settings** section so every assistant reads the same setup, then a short interview about the owner and their business. No passwords, keys or other secrets.
 <!-- models:stack-example -->
   ```
-  Stack settings
+  ## Stack settings
   - Hub: Notion
   - Day-to-day assistant: Grok Bot
   - AI setup: Claude + ChatGPT
+  - Rules: founder-mode
+  ### head-chef and line-cook
   - head-chef: Claude Opus 5.5 (High) via Claude Code
   - line-cook: GPT-6.1 Sol (High) via Codex
-  - Rules: founder-mode
   ```
   <!-- /models -->
-  For app routing, name the app instead of the CLI, for example "head-chef: <head-chef> (High) in the Claude app". The Rules line lists every rules skill that's on, comma-separated, with founder-mode as the default; leave it out until the owner turns one on. A rules skill can cover all work, or one kind of work named in brackets, such as `Rules: founder-mode, <coding rules> (coding), <design rules> (design)`. Each one is saved word for word in its own section of the Rules page, and its name and version go only in the list at the top of that page. When two rules disagree, the owner's own rules (such as an import) come first, then the stricter of the others, and the assistant says which one it followed. For one model, name it on both lines, each with its own effort, such as "head-chef: Claude Opus 5.5 (High) via Claude Code" and "line-cook: Claude Opus 5.5 (Medium) via Claude Code".
+  Stack settings ends with its own **head-chef and line-cook** heading over the two model lines, so the owner can find and swap them at a glance. For app routing, name the app instead of the CLI, for example "head-chef: <head-chef> (High) in the Claude app". The Rules line lists every rules skill that's on, comma-separated, with founder-mode as the default; leave it out until the owner turns one on. A rules skill can cover all work, or one kind of work named in brackets, such as `Rules: founder-mode, <coding rules> (coding), <design rules> (design)`. Each one is saved word for word in its own section of the Rules page, and its name and version go only in the list at the top of that page. When two rules disagree, the owner's own rules (such as an import) come first, then the stricter of the others, and the assistant says which one it followed. For one model, name it on both lines, each with its own effort, such as "head-chef: Claude Opus 5.5 (High) via Claude Code" and "line-cook: Claude Opus 5.5 (Medium) via Claude Code".
 - **Rules**: only the owner's own rules and the rules skills they turn on, such as founder-mode. Each set is saved word for word in its own section. Rules brought in during step 3 are one set, named for the day they came in, such as `Oct 15 import`. Start the page with a list of the sets on it, one line each with its name and version where it has one, such as `founder-mode v2.0.6` or `Oct 15 import`, in the same order as their sections. Setup adds no rules of its own, so leave the page empty if they have none. Routing and hub loading come from the standing instructions and Stack settings, not from this page.
 - **Skills**: one entry per skill, including a model-routing skill written for their head-chef and line-cook. Ask the owner before turning skills on.
 

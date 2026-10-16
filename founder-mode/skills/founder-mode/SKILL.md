@@ -19,7 +19,7 @@ Only for the Guava plugins the owner has (for "update founder-mode", just founde
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "Agent Rules" page (or document or file) in the owner's AI Context Hub, wherever it lives: Notion, Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder. If you can't find it, ask where to put the rules.
-3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text.
+3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "How to work with me", with the version number. Don't paraphrase them: the next update compares against this text. If Profile & Context has a Stack settings section, add `- Rules: founder-mode` at its end.
 4. If a "How to work with me" section with a version number is already there, compare versions. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. If only setup steps changed, update the version number and say the rules are the same.
 5. Follow these rules on every task from now on. If another rule on the Agent Rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.

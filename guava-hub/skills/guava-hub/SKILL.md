@@ -77,9 +77,10 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
   - AI setup: Claude + ChatGPT
   - Planner: Claude Opus 5.5 (High) via Claude Code
   - Builder: GPT-6.1 Sol (High) via Codex
+  - Rules: founder-mode
   ```
   <!-- /models -->
-  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". For one model, name it on both lines, each with its own effort, such as "Planner: Claude Opus 5.5 (High) via Claude Code" and "Builder: Claude Opus 5.5 (Medium) via Claude Code".
+  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". The Rules line names the rules skill that's on (founder-mode by default); leave it out until the owner turns one on. For one model, name it on both lines, each with its own effort, such as "Planner: Claude Opus 5.5 (High) via Claude Code" and "Builder: Claude Opus 5.5 (Medium) via Claude Code".
 - **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; follow the model routing in Stack settings; keep a change log.
 - **Skills**: one entry per skill, including a model-routing skill written for their planner and builder. Ask the owner before turning skills on.
 

@@ -17,7 +17,7 @@ Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **
 </table>
 <!-- /models -->
 
-Works best with [guava-hub](../guava-hub/), since both tools load your AI Context Hub.
+Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 
 <!-- models:table -->
 | You pay for | Head chef | Line cook |

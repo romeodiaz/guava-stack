@@ -172,7 +172,7 @@ The hub alone gives every assistant your context, rules and skills. The router a
 
 That's it. Try one of these to see it work:
 1. "Set me up with a Google Drive hub. I only pay for Claude."
-2. "Import my existing instructions and skills into my AI Context Hub."
+2. "Import my existing instructions and skills into my guava-hub."
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
 
@@ -201,6 +201,7 @@ For the curious:
 - **[guava-router](guava-router/)**: model routing, with details for each [AI setup](guava-router/skills/guava-router/setups.md).
 - **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - **[assistants/](assistants/)**: notes for each assistant on what to skip or change.
+- **If you know agent files:** your hub has three parts. **Context** is close to USER.md plus TOOLS.md: who you are, how your business works and the tools you use. **Rules** is like the rules in AGENTS.md or CLAUDE.md, but every assistant shares them. **Skills** is the `skills/` folder. The guava-hub setup skill does the job of BOOTSTRAP.md, once. guava-hub has no SOUL.md, IDENTITY.md, MEMORY.md or HEARTBEAT.md, because each assistant keeps its own persona, memory and scheduled check-ins.
 
 ## Support & privacy
 - Support: [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

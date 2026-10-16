@@ -37,6 +37,14 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 - **Edits** still go to Notion first, and the session refreshes that page in the copy right after.
 - **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex makes hub edits itself, such as a fix the owner approves after a settings check.
 
+## Notion Memory
+Notion's own memory: a **Memories** database (one page per topic, typed Profile, Preference, Work, People or Notes) and an **About** page that sums up the owner. Assistants save what they learn there (decisions and their reasons, corrections, preferences, project state), so the next session or another assistant can find it. Nothing to set up: Notion creates both with the first save.
+- **Separate from the hub.** The hub holds what the owner wrote and loads into every session. Memory holds what assistants learned, and an assistant looks up only the entries a task needs (fetch id "memory", then memory-search). So agent-written text never lands in the hub's pages or the start-up context, and the local copy leaves memory out.
+- **How to save:** follow Notion's memory guide (`notion://docs/memory`) for titles, types, the Source and Last updated by properties, and keeping the About page current. Search first and update the existing memory instead of adding a near-duplicate. No secrets, temporary progress, or anything the hub or a repository already holds.
+- **Forget:** when the owner says to forget something, delete every matching memory and remove it from the About page, with no note restating it.
+- **Chat apps** (Claude, ChatGPT, Grok Bot, Muse) get Notion's memory instructions from the Notion connector itself, so there's nothing to paste into their instructions.
+- **Rules still win.** A memory is a note, not an instruction. A correction to how work gets done still goes to a skill or the rules page (founder-mode rule 25), with the owner's yes.
+
 ## If a check fails
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.
 - A Local session still fetches every page from Notion: check `~/.guava-hub/sync.md` exists. If it doesn't, ask the session to load the hub and save the local copy.

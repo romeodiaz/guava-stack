@@ -1,6 +1,6 @@
 ---
 name: guava-hub
-description: Sets up the owner's shared AI Context & Skills Hub (Notion by default, or Google Drive or OneDrive/SharePoint) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for the AI Context Hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
+description: Sets up the owner's shared AI Context & Skills Hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for the AI Context Hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
 ---
 
 **Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
@@ -23,8 +23,9 @@ Every Guava setup is three choices. Each has a default, so an owner who doesn't 
 | **Notion** (default) | Most owners. Native skills, and every assistant here connects to it. | [backends/notion.md](backends/notion.md) |
 | Google Drive | Owners on Google Workspace or Gmail | [backends/google-drive.md](backends/google-drive.md) |
 | OneDrive / SharePoint | Owners on Microsoft 365 | [backends/onedrive-sharepoint.md](backends/onedrive-sharepoint.md) |
+| Local Markdown or Obsidian | Owners who want the hub only on their own computer, such as for private client work | [backends/local-markdown.md](backends/local-markdown.md) |
 
-Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say so and offer a cloud hub for now: a folder on their computer can't be reached by cloud assistants like Grok Bot, Muse or the Claude and ChatGPT apps.
+A local hub can only be read by assistants on the owner's computer: the Claude desktop app's Code tab, Claude Code and Codex. Grok Bot, Muse and the Claude and ChatGPT chat apps can't reach it. Its file has the full trade-offs; go through them with the owner before building it.
 
 **Day-to-day assistant: who the owner talks to.** This decides how routing works. Default: the assistant running this setup.
 
@@ -34,7 +35,7 @@ Obsidian and local Markdown hubs are coming soon. If the owner asks for one, say
 | Claude or ChatGPT chat (web, desktop or mobile) | No extra assistant needed. The app's instructions make every new chat check its first request and, if it's on the wrong model, send the owner to the right one with a ready-to-paste prompt. | The Claude and ChatGPT phone apps pick up the hub connector and instructions from the owner's account, so nothing is set up twice. |
 | The Claude desktop app's Code tab | For owners who'd rather not use Grok Bot or Muse. No terminal needed. With both plans, Claude plans and OpenAI's Codex plugin for Claude Code hands execution to Codex. With Claude only, Claude's built-in `opusplan` mode plans on Opus and builds on Sonnet automatically. | Remote Control opens the computer's Code tab sessions from the Claude phone app while the computer is on. When it's off, chat on the phone still has the hub and the routing instruction. |
 
-Every setup works across the owner's computer, laptop and phone, because the hub and the instructions live in their own accounts, not on one device. Say so when offering the choices: for many owners it's the main reason to set this up.
+Every setup with a cloud hub works across the owner's computer, laptop and phone, because the hub and the instructions live in their own accounts, not on one device. Say so when offering the choices: for many owners it's the main reason to set this up. A local hub trades that for privacy: the phone reaches it only through Remote Control.
 
 See `assistants/` for notes on each.
 
@@ -48,19 +49,19 @@ See `assistants/` for notes on each.
 | **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
 | ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 | Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Third-party tools (Cursor, Devin, Droid, Amp and others) | Coming soon | Coming soon |
+| Local models on your own hardware (Ollama, LM Studio and others) | Coming soon | Coming soon |
 <!-- /models -->
 
 ## 1. Start
 1. Say in one line: I'll set up a shared AI Context & Skills Hub so your AI assistants share the same context and skills, and route each job to the AI that's best at it.
 2. Ask one at a time, and save the answers:
    - What should I call you, and what's your business and audience in a sentence or two?
-   - Where should your hub live? Offer the three hubs above, Notion marked as recommended. If they're unsure, use Notion.
-   - Which assistant will you use day to day? Offer the three kinds above, Grok Bot or Muse marked as recommended. Owners who don't have or want Grok Bot or Muse pick their Claude or ChatGPT app.
+   - Where should your hub live? Offer the four hubs above, Notion marked as recommended. If they're unsure, use Notion. If they pick local Markdown or Obsidian, go through the trade-offs in its file now.
+   - Which assistant will you use day to day? Offer the three kinds above, Grok Bot or Muse marked as recommended. Owners who don't have or want Grok Bot or Muse pick their Claude or ChatGPT app. With a local hub, offer only the Claude desktop app's Code tab (or Claude Code or Codex, if they already use them).
    - One model for everything, or two (a planner that also reviews, and a builder)? Recommend two. For one model, ask which model they want and skip the next question.
-   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead. Any paid plan works. If they ask about third-party tools, say support is coming soon and set up the closest of the three for now.
-   - Is the hub connected here? If not, help connect it, following the backend's file.
-3. Show the owner these standing instructions, filled in with their hub, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them. In Claude Code or the Claude desktop app's Code tab with the guava-hub plugin installed, the plugin's start-up hook already gives every new session these instructions, so there's nothing to save there:
+   - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own planner or builder instead. Any paid plan works. If they ask about local models, say support is coming soon and set up the closest of the three for now.
+   - Is the hub connected here? If not, help connect it, following the backend's file. For a local hub, this means you can read the folder.
+3. Show the owner these standing instructions, filled in with their hub, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them. In Claude Code or the Claude desktop app's Code tab with the guava-hub plugin installed, the plugin's start-up hook already gives every new session these instructions, so there's nothing to save there (a local hub still needs its hub instruction line in `~/.claude/CLAUDE.md`, as its file says):
    - Before substantive work, load the owner's Agent Rules, Profile & Context and enabled skills from their AI Context Hub in `<hub>`, and treat the hub as the source of truth.
    - Model routing: use the Planner and Builder named in Stack settings, read fresh each session, through the tool it names: the planner for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the builder for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, the planner reviews the builder's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - (One-model setups leave out the routing line.)
@@ -99,7 +100,7 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my Notion AI Context Hub first."
 
 ## 4. Connect the apps
-Required for every app in the owner's AI setup: Claude, ChatGPT or both. Follow **Connect the apps** in the backend's file.
+Required for every app in the owner's AI setup: Claude, ChatGPT or both. Follow **Connect the apps** in the backend's file. For a local hub, that file replaces the app and phone steps below with steps for the assistants on the computer, and its own checks count as passing.
 
 Walk them through it; don't leave it as a note or a menu. Don't ask whether the apps are already connected. Start the walkthrough right away; if a step is already done, the owner can say so and you move on. Do Claude first, then ChatGPT. Use the quoted wording in the backend's file as written. Send one small step per message and wait for the owner to say done before the next. If a link doesn't open the right page, give the menu path. If a button name doesn't match what they see, ask them to describe the screen. Never ask to read their chats or memories in those apps.
 
@@ -123,7 +124,7 @@ Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 
 ## 7. Wrap up
 End with a short close that starts with "Setup's done 🎉", never just a confirmation:
-- Two or three lines on what's set up: the hub and where it lives, the apps connected and verified on the computer and the phone, the planner and builder if they set up the router, and founder-mode with its version if they turned it on. Remind them it all works from their phone too.
+- Two or three lines on what's set up: the hub and where it lives, the apps connected and verified on the computer and the phone, the planner and builder if they set up the router, and founder-mode with its version if they turned it on. Remind them it all works from their phone too (with a local hub, through Remote Control while the computer is on).
 - Three things to try next, fitted to their business. For example: "Write this week's LinkedIn post in my voice," "Turn how I onboard a client into a skill," and "Research my top three competitors."
 - Where this bot fits. If they already have a main Grok bot, say this one was only for setup. Everything lives in the hub and shared memory, so they can delete it from the sidebar (right-click it, then Delete) and keep working with their main bot. If this is their only bot, say it's ready to be their everyday assistant.
 
@@ -137,7 +138,7 @@ A planner or builder swap is only an edit to Stack settings, since every assista
    - "Apply my Stack settings": they edited it by hand. Check it against step 2 and the places listed in step 4, and list anything that still needs doing.
    - "Check for newer models": compare the Planner and Builder with the picks for their AI setup in guava-router's `models.yaml` (the installed copy, or the one in github.com/romeodiaz/guava-stack). Leave slots marked "(own pick)" alone and only mention the newer pick.
 2. **Check the change works** before showing it:
-   - **Planner or builder:** any model works if a tool in their setup can run it. Claude Code runs Claude models and Codex runs OpenAI models; for app routing, the model has to be one they can pick in that app. A model from another provider needs a third-party tool, which is coming soon: say so and offer the closest model they can run today.
+   - **Planner or builder:** any model works if a tool in their setup can run it. Claude Code runs Claude models and Codex runs OpenAI models; for app routing, the model has to be one they can pick in that app. A model from another provider isn't supported: say so and offer the closest model they can run today.
    - **One model or two:** going to one model removes the routing; going to two adds it by running guava-router.
    - **Day-to-day assistant:** follow the new assistant's file in `assistants/`, add the standing instructions there, and for Grok Bot, Muse or the Code tab, run guava-router's CLI steps.
    - **Where the hub lives:** moving the hub to another app isn't supported yet. Say it's coming later, and offer to list what they'd need to copy by hand.

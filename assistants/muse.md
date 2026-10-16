@@ -13,3 +13,4 @@
 - **Verify:** start a new chat and ask "Write a short intro about my business." It passes if the intro uses details from the hub.
 - **Run the CLI steps and model router in Muse's own terminal.** Muse can install Claude Code with npm and usually has Codex already; follow step 1 of the Model Router setup in guava-router (it checks and skips what's installed). For sign-in, the owner opens the link and signs in with their own account, then pastes any code straight into Muse, never anywhere else. When Muse asks to share information with anthropic.com or openai.com, choose Allow once, not Always allow.
 - Muse asks before important actions like sending email. Keep those approvals on.
+- A local Markdown or Obsidian hub doesn't work with Muse, since it can't reach a folder on the owner's computer. Owners who want one use the Claude desktop app's Code tab instead (see `guava-hub/skills/guava-hub/backends/local-markdown.md`).

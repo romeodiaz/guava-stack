@@ -16,16 +16,16 @@ You need to be running on the owner's computer to build this hub: the Code tab i
 1. Ask where the folder should go. Default: `~/Documents/guava-hub`. If the owner already has an Obsidian vault, offer to put the folder inside it instead.
 2. Keep it out of cloud-synced folders (iCloud Drive, Dropbox, OneDrive, Google Drive) unless the owner wants it synced between their own computers and is fine with that service holding a copy. Never put it inside a folder that's shared, published or pushed to GitHub.
 3. Create the folder with:
-   - **`Context.md`**: start it with the guava-stack settings section from the setup skill, then the owner's interview answers. In guava-stack settings, write the hub line as `- Hub: Local Markdown (<path>)`, or `- Hub: Obsidian (<path>)` if they use Obsidian.
-   - **`Rules.md`**
-   - **`Skills/`**: one Markdown file per skill, named after the skill (for example `Skills/humanizer.md`). Start each with a short header, then the steps:
+   - **`context.md`**: start it with the guava-stack settings section from the setup skill, then the owner's interview answers. In guava-stack settings, write the hub line as `- Hub: Local Markdown (<path>)`, or `- Hub: Obsidian (<path>)` if they use Obsidian.
+   - **`rules.md`**
+   - **`skills/`**: one Markdown file per skill, named after the skill (for example `skills/humanizer.md`). Start each with a short header, then the steps:
      ```
      ---
      name: humanizer
      description: One line on when to use it.
      ---
      ```
-     Every skill in this folder counts as turned on. To turn one off, move it to a sibling folder called **`Skills (off)`**.
+     Every skill in this folder counts as turned on. To turn one off, move it to a sibling folder called **`skills (off)`**.
 4. **Obsidian (optional):** if the owner wants it, have them install Obsidian from obsidian.md, choose **Open folder as vault** and pick the hub folder (or their existing vault). Skip community plugins for this vault, and leave Obsidian Sync and Publish off unless they ask for them.
 
 ## Connect the apps
@@ -43,7 +43,7 @@ Codex (only if it's in the owner's AI setup):
 Skip the Claude and ChatGPT app steps and the phone chat check in setup step 4: those apps can't reach this hub. If the owner wants the phone, set up Remote Control (see `assistants/claude.md`) and check one session from the Claude phone app.
 
 ## If a check fails
-- Says it can't find the hub: check the path in the hub instruction line matches the folder exactly, including spaces and capitals, and that the folder holds `Context.md`.
+- Says it can't find the hub: check the path in the hub instruction line matches the folder exactly, including spaces and capitals, and that the folder holds `context.md`.
 - Asks permission to read the folder every time: the `additionalDirectories` line is missing or has a different path. Fix it and start a new session.
 - Works in a Local session but not a cloud one: expected. Cloud sessions can't see the computer's files.
-- Obsidian shows the files but the assistant doesn't: the vault and the hub may be different folders. Point the hub instruction line at the folder that holds `Context.md`.
+- Obsidian shows the files but the assistant doesn't: the vault and the hub may be different folders. Point the hub instruction line at the folder that holds `context.md`.

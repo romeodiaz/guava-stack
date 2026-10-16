@@ -10,6 +10,21 @@ Guava Stack keeps your business context, rules and skills in one place you alrea
 
 You don't need to code or open a terminal. Paste one line into the AI assistant you already use, and it walks you through the rest.
 
+## What you get
+Three pieces that work together. Start with the hub; the other two are optional.
+
+<table>
+<tr>
+<td align="center" width="33%"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub</sub></td>
+<td align="center" width="33%"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router (optional)</sub></td>
+<td align="center" width="33%"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode (optional)</sub></td>
+</tr>
+</table>
+
+1. **[A shared hub](guava-hub/)**: one home for your profile, your rules for how AI should work for you, and your skills (step-by-step instructions your AI can reuse). Every assistant you connect reads from it.
+2. **[Model routing](guava-router/)** (optional): sends each job to the AI model that's best at it, using the plans you already have.
+3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
+
 ## Why people use it
 - **Explain your business once.** No more re-introducing yourself to every AI app.
 - **Use what you already have.** Claude, ChatGPT, Grok Bot, Muse and others, on the AI plans you already pay for. Nothing new to buy.
@@ -31,21 +46,6 @@ It asks a few simple questions, explains each step before doing it, and checks t
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, do what your platform supports and tell the owner what you skipped. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
-## What you get
-Three pieces that work together. Start with the hub; the other two are optional.
-
-<table>
-<tr>
-<td align="center" width="33%"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub</sub></td>
-<td align="center" width="33%"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router (optional)</sub></td>
-<td align="center" width="33%"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode (optional)</sub></td>
-</tr>
-</table>
-
-1. **[A shared hub](guava-hub/)**: one home for your profile, your rules for how AI should work for you, and your skills (step-by-step instructions your AI can reuse). Every assistant you connect reads from it.
-2. **[Model routing](guava-router/)** (optional): sends each job to the AI model that's best at it, using the plans you already have.
-3. **[founder-mode](founder-mode/)** (optional): 27 working rules so your AI works like a thoughtful teammate. It handles the safe work on its own, writes like a human instead of a robot, and always checks with you before anything that could cost you money or can't be undone.
-
 ## Make it yours
 Every part is swappable. Pick what fits you today, and change it anytime. Your choices sit in a short Stack settings section in your hub: edit a model there and every assistant uses it the next time it starts. For bigger changes, like going from one model to two, say "change my setup".
 
@@ -62,7 +62,7 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 - **The Claude or ChatGPT app you already use**, on web, desktop or phone. Setup adds a few instructions so each new chat checks it's on the right model, and if not, hands you a ready-to-paste prompt for the right one.
 - **Grok Bot or Muse**, assistants that run in the cloud and hand each job to the right AI for you, even from your phone.
 - **The Claude desktop app's Code tab**, if you want Claude to hand work off for you without a separate assistant. No terminal needed.
-- **Local models on your own computer**, for work that can't leave the building: coming soon.
+- **Local models on your own computer**, for work that can't leave the building: *coming soon*.
 
 **One AI model or two**
 
@@ -89,7 +89,7 @@ The plans you pay for decide who's in the kitchen:
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
 | Claude only | Claude Opus 5.5 | Claude Sonnet 5.5 |
-| Local models on your own computer | Coming soon | Coming soon |
+| Local models on your own computer | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
 These are suggestions. Any model your plans can run works as head chef or line cook, so pick your own if you like. AI models change fast: when better ones come out, the picks above get updated here, and saying "check for newer models" has your assistant offer to swap them in. Your hub stays the same.

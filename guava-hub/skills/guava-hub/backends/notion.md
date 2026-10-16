@@ -35,7 +35,7 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 - **At start-up:** the plugin's start-up hook puts the copy's context, rules and skill list straight into each new session, so it starts without a Notion call. A skill's full text is read only when a task needs it.
 - **Keeping it fresh:** at the start of each task and before each hand-off, if the copy is 15 minutes old or more, the session runs one Notion search that lists every hub page with its last-edited time, fetches only the pages that changed, and follows the new versions from then on. So any edit made in Notion, from any device, reaches open sessions within 15 minutes. Say "refresh my hub" to pick it up right away.
 - **Edits** still go to Notion first, and the session refreshes that page in the copy right after.
-- **Codex** reads the same copy, and leaves refreshing and hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex builds and refreshes the copy and makes hub edits itself, such as a fix the owner approves after a settings check.
+- **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex makes hub edits itself, such as a fix the owner approves after a settings check.
 
 ## If a check fails
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.

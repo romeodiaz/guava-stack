@@ -23,7 +23,7 @@ Every hub has the same three parts, so you can switch backends later without cha
 </tr>
 </table>
 
-- Start-up hook: in Claude Code and the Claude desktop app's Code tab, the plugin reminds every new session to load your hub and follow your guava-stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add. With a Notion hub, it also hands each session your context, rules and skill list from a local copy in `~/.guava-hub`, so sessions start without waiting on Notion ([Local copy](skills/guava-hub/backends/notion.md#local-copy)).
+- Start-up hook: in Claude Code, the Claude desktop app's Code tab and Codex, the plugin reminds every new session to load your hub and follow your guava-stack settings ([hooks/load-hub.md](hooks/load-hub.md)), so there's no `CLAUDE.md` line to add. With a Notion hub, it also hands each session your context, rules and skill list from a local copy in `~/.guava-hub`, so sessions start without waiting on Notion ([Local copy](skills/guava-hub/backends/notion.md#local-copy)).
 - Skill: [guava-hub](skills/guava-hub/SKILL.md)
 - Claude Code: `/plugin install guava-hub --marketplace romeodiaz/guava-stack`
 - Update: say "update guava-hub", or "update guava-stack" for every piece.

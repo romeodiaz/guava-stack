@@ -22,7 +22,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Guava Hub",
+    "displayName": "guava-hub",
     "logo": "./assets/logo.png"
   },
   "privacyPolicyUrl": "https://workwithguava.com/privacy",

@@ -1,6 +1,6 @@
 {
   "name": "guava-router",
-  "version": "1.4.18",
+  "version": "1.4.19",
   "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only, Claude only or Google only, and newer models swap in with a one-line change. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",

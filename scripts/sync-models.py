@@ -5,6 +5,7 @@ Files mark generated parts with HTML comments:
     <!-- models:KIND key="value" ... -->  generated text  <!-- /models -->
 Run from anywhere: python3 scripts/sync-models.py  (add --check to only report stale files)
 """
+import json
 import re
 import shlex
 import sys
@@ -17,6 +18,7 @@ CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 SETUPS = CONFIG["setups"]
 ROLES = CONFIG["roles"]
 DEFAULT = next(s for s in SETUPS.values() if s.get("default"))
+FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
 TOOLS = {"claude-code": "Claude Code", "codex": "Codex", "antigravity": "Antigravity CLI"}
 APPS = {"claude": "Claude app", "chatgpt": "ChatGPT app", "gemini": "Gemini app"}
 LOCAL = "Local models on your own hardware (Ollama, LM Studio and others)"
@@ -102,8 +104,8 @@ def stack_example(args):
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
   ### Rules
-  - founder-mode
-  ### head-chef and line-cook
+  - founder-mode v{FOUNDER_MODE}
+  ### guava-router
   - head-chef: {detailed(h)}
     - Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, and fuzzy and hard problems. On important work, checks the line-cook's result before it's called done.
   - line-cook: {detailed(l)}

@@ -123,7 +123,11 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 <details>
 <summary><strong>Grok Bot</strong></summary>
 
-Install the [AI Context & Skills Hub template](https://x.ai/bot/rAhhI5cD__CnejfWqf3wH) in one click. It sets everything up with the recommended choices. Want a different hub or AI plan? Paste the Start here line instead. The Grok Bot and Cursor plugin marketplace listing is pending review.
+Paste this. Your assistant follows the [Grok Bot guide](assistants/grok.md) automatically.
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
+```
 
 </details>
 

@@ -127,6 +127,7 @@ Today's picks for the plans you pay for:
 | Claude and ChatGPT | Claude Opus 5.5 | GPT-6.1 Sol |
 | ChatGPT only | GPT-6 Astra | GPT-6.1 Sol |
 | Claude only | Claude Opus 5.5 | Claude Sonnet 5.5 |
+| Google AI Pro or Ultra | Gemini 4 Argon | Gemini 3.8 Flash |
 | Local models on your own computer | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
@@ -150,7 +151,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 
 - **Files edited:** a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` in `~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md`, only if the guava-hub plugin isn't installed in that tool or your hub is a local folder (or your AI tools' own instructions files). Each file is backed up first, with a `.pre-guava` copy kept from before Guava's first change, and nothing outside the markers changes. A Notion or local hub backs up `~/.claude/settings.json` and adds only the hub's folder (for Notion, its local copy in `~/.guava-hub`), and the optional "Never skip the hub" step adds only its read-only tools.
 - **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. Codex asks you once to approve its three start-up hooks, named "guava-stack: hub instructions", "hub context" and "hub rules". In the ChatGPT desktop app that's a small yellow notice with a hook icon in the bar under the message box, easy to miss, so click it and approve all three.
-- **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
+- **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, Antigravity CLI's install script for the Google-only setup, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
 - **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.

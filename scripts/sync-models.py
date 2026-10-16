@@ -17,8 +17,8 @@ CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 SETUPS = CONFIG["setups"]
 ROLES = CONFIG["roles"]
 DEFAULT = next(s for s in SETUPS.values() if s.get("default"))
-TOOLS = {"claude-code": "Claude Code", "codex": "Codex"}
-APPS = {"claude": "Claude app", "chatgpt": "ChatGPT app"}
+TOOLS = {"claude-code": "Claude Code", "codex": "Codex", "antigravity": "Antigravity CLI"}
+APPS = {"claude": "Claude app", "chatgpt": "ChatGPT app", "gemini": "Gemini app"}
 LOCAL = "Local models on your own hardware (Ollama, LM Studio and others)"
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
 
@@ -34,6 +34,8 @@ def detailed(slot):
 def command(slot):
     if slot["tool"] == "claude-code":
         return f'claude -p --model {slot["id"]} --effort {slot["effort"]} "<task>" < /dev/null'
+    if slot["tool"] == "antigravity":
+        return f'agy -p --model {slot["id"]}-{slot["effort"]} "<task>" < /dev/null'
     return (f'codex exec -m {slot["id"]} -c model_reasoning_effort={slot["effort"]} '
             f'--skip-git-repo-check "<task>" < /dev/null')
 

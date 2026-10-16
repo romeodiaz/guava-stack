@@ -44,8 +44,24 @@ For owners who only pay for Claude. Both slots run through Claude Code; skip Cod
 
 Both slots share one Claude plan, so it hits usage limits sooner. There's no non-Claude line-cook for unattended or always-on jobs: those need an Anthropic API key or get done by hand (see the terms step in the skill).
 
+## Google only
+For owners who pay for Google AI Pro or Ultra. Both slots run through Google's Antigravity CLI (`agy`), which replaced Gemini CLI for Google AI plans; skip Claude Code and Codex.
+
+<!-- models:setup name=google-only -->
+| Slot | Model | Tool | Run it |
+|---|---|---|---|
+| head-chef | Gemini 4 Argon, effort high (`gemini-4-argon`) | Antigravity CLI | `agy -p --model gemini-4-argon-high "<task>" < /dev/null` |
+| line-cook | Gemini 3.8 Flash, effort high (`gemini-3.8-flash`) | Antigravity CLI | `agy -p --model gemini-3.8-flash-high "<task>" < /dev/null` |
+
+**In the apps:** both in the Gemini app. Plan on Gemini 4 Argon and execute on Gemini 3.8 Flash, each in its own new chat.
+<!-- /models -->
+
+Antigravity CLI names each model with its effort on the end, such as `gemini-4-argon-high`; run `agy models` to see the names the owner's plan offers. Gemini 4 Argon needs Google AI Pro or Ultra, and Gemini 3.8 Flash is on every plan. Both slots share one plan's quota, which refreshes every five hours up to a weekly limit, so long line-cook jobs use it up fastest; `/usage` in `agy` shows what's left.
+
+The Claude desktop app's Code tab isn't an option here, since it needs a Claude plan: route from Grok Bot or Muse. App routing in the Gemini app works the same way once the hub is connected there, but guava-stack has no Gemini app guide yet, so set up CLI routing.
+
 ## Your own picks
-Owners can put any model in either slot that a tool in their setup can run: any Claude model through Claude Code, any OpenAI model through Codex. Use the same commands as above with that model's ID and effort, and mark it "(own pick)" in guava-stack settings so "check for newer models" leaves it alone. For app routing, pick a model the app offers.
+Owners can put any model in either slot that a tool in their setup can run: any Claude model through Claude Code, any OpenAI model through Codex, any Gemini model through Antigravity CLI. Use the same commands as above with that model's ID and effort, and mark it "(own pick)" in guava-stack settings so "check for newer models" leaves it alone. For app routing, pick a model the app offers.
 
 ## Local models (*coming soon*)
-Support for models that run on the owner's own hardware (through tools like Ollama or LM Studio), so nothing leaves the computer, is coming soon. It pairs with a local Markdown or Obsidian hub for clients that need to stay offline. Until then, say so plainly, and set up the closest of the three setups above if the owner still wants routing.
+Support for models that run on the owner's own hardware (through tools like Ollama or LM Studio), so nothing leaves the computer, is coming soon. It pairs with a local Markdown or Obsidian hub for clients that need to stay offline. Until then, say so plainly, and set up the closest of the four setups above if the owner still wants routing.

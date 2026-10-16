@@ -11,6 +11,8 @@ Create a page called **guava-hub**, with the 8-bit brain as its icon (`https://r
 - **skills**: a database for Notion's skill upload, with the 8-bit books as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/skills.png`). Notion's connector reports success on a database icon but doesn't set it, so ask the owner to hover the database's title, click **Add icon**, choose **Link** and paste that URL. Ask the owner before enabling skills for external agents and Notion AI.
 - **changelog**: an empty page where assistants add a dated line for each hub edit. It's for the owner, so assistants never load it.
 
+Then set up **Notion Memory** (below) and link it from the hub: save the owner's role from the interview as their first memory (Type Profile), which makes Notion create the Memories database and the About page. Fetch id "memory" for their links, then add one line under the guava-hub page's intro: `Notion Memory (what your assistants learned, kept outside the hub):` followed by mentions of Memories and the About page. Notion keeps both at the workspace's top level, where they can't be added to the sidebar or Favorites, so this line is how the owner finds them.
+
 ## Connect the apps
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
 1. "Open [Claude Connectors](https://claude.ai/customize/connectors)."
@@ -39,7 +41,7 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 - **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex makes hub edits itself, such as a fix the owner approves after a settings check.
 
 ## Notion Memory
-Notion's own memory: a **Memories** database (one page per topic, typed Profile, Preference, Work, People or Notes) and an **About** page that sums up the owner. Assistants save what they learn there (decisions and their reasons, corrections, preferences, project state), so the next session or another assistant can find it. Nothing to set up: Notion creates both with the first save.
+Notion's own memory: a **Memories** database (one page per topic, typed Profile, Preference, Work, People or Notes) and an **About** page that sums up the owner. Assistants save what they learn there (decisions and their reasons, corrections, preferences, project state), so the next session or another assistant can find it. Notion creates both with the first save, which setup makes when it builds the hub.
 - **Separate from the hub.** The hub holds what the owner wrote and loads into every session. Memory holds what assistants learned, and an assistant looks up only the entries a task needs (fetch id "memory", then memory-search). So agent-written text never lands in the hub's pages or the start-up context, and the local copy leaves memory out.
 - **How to save:** follow Notion's memory guide (`notion://docs/memory`) for titles, types, the Source and Last updated by properties, and keeping the About page current. Search first and update the existing memory instead of adding a near-duplicate. No secrets, temporary progress, or anything the hub or a repository already holds.
 - **Forget:** when the owner says to forget something, delete every matching memory and remove it from the About page, with no note restating it.

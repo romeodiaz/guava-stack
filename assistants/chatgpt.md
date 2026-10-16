@@ -2,7 +2,7 @@
 
 - **ChatGPT and ChatGPT Dots:** build the plugin with Plugin Creator (Plugins, then Add, then Create Plugin) from the three skills in `guava-hub/skills/`, `guava-router/skills/` and `founder-mode/skills/`. Rebuild it when the repo changes, since a published plugin is a snapshot.
 - The standing instructions in the README go in ChatGPT's custom instructions. Add to what's there; never replace it.
-- Connect the hub's connector (Notion by default) and add the hub instruction line from the backend's file as a custom instruction, such as "Load my Notion AI Context Hub first."
+- Connect the hub's connector (Notion by default) and add the hub instruction line from the backend's file as a custom instruction, such as "Load my guava-hub in Notion first."
 - **ChatGPT Dots doesn't read custom instructions.** After the hub is connected, have the owner send their Dot this once: "From now on, before any substantive task, load my AI Context Hub first (Profile & Context, Agent Rules and Skills) and treat it as the source of truth. Save this as a standing preference." Approve the save if a card shows. To verify, ask the Dot "What preferences do you remember about me?" and then "Write a short intro about my business."; it passes if the intro uses details from the hub.
 - ChatGPT can't install CLIs, so set up the Model Router's **App routing** step (guava-router) instead: it adds custom instructions that tell ChatGPT which model plans and which executes. ChatGPT Dots doesn't read custom instructions, so send the routing instruction to the Dot as a standing preference, the same way as the hub instruction.
 - To import existing context, ask the owner to paste or export it.

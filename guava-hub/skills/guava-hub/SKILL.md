@@ -94,7 +94,7 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - Show a short list of what you found and where each piece would go (Profile & Context, Agent Rules or Skills). Import only what they approve.
 - Before importing or installing any third-party skill, scan it with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) and show the owner anything it flags. A clean scan doesn't prove a skill is safe.
 - Merge duplicates and ask when two sources conflict. Leave out passwords, keys and other secrets.
-- Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my Notion AI Context Hub first."
+- Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my guava-hub in Notion first."
 
 ## 4. Connect the apps
 Required for every app in the owner's AI setup: Claude, ChatGPT or both. Follow **Connect the apps** in the backend's file. For a local hub, that file replaces the app and phone steps below with steps for the assistants on the computer, and its own checks count as passing.

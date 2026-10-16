@@ -29,6 +29,8 @@ Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 | Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
 <!-- /models -->
 
+*Coming soon:* more agents, such as Grok Build, Cursor, Copilot and OpenCode, through [acpx](https://github.com/openclaw/acpx).
+
 - Model picks: [models.yaml](models.yaml) is the one place they're kept. To swap in a newer model, change it there and run `python3 scripts/sync-models.py` from the repo root, which updates every README and skill that shows them. Owners already set up say "check for newer models".
 - Skill: [guava-router](skills/guava-router/SKILL.md), with details for each setup in [setups.md](skills/guava-router/setups.md)
 - Claude Code: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install guava-router@guava`

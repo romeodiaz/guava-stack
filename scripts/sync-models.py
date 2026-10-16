@@ -101,6 +101,7 @@ def stack_example(args):
   - AI setup: {DEFAULT['label']}
   - Planner: {detailed(h)}
   - Builder: {detailed(l)}
+  - Rules: founder-mode
   ```
   """
 

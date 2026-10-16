@@ -77,10 +77,11 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
   - AI setup: Claude + ChatGPT
   - Planner: Claude Opus 5.5 (High) via Claude Code
   - Builder: GPT-6.1 Sol (High) via Codex
+  - Rules: founder-mode
   ```
   <!-- /models -->
-  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". For one model, name it on both lines, each with its own effort, such as "Planner: Claude Opus 5.5 (High) via Claude Code" and "Builder: Claude Opus 5.5 (Medium) via Claude Code".
-- **Agent Rules**: never send, post or email without explicit approval; never store secrets; read-only by default on external accounts; follow the model routing in Stack settings; keep a change log.
+  For app routing, name the app instead of the CLI, for example "Planner: <head chef> (High) in the Claude app". The Rules line lists every rules skill that's on, comma-separated, with founder-mode as the default; leave it out until the owner turns one on. A rules skill can cover all work, or one kind of work named in brackets, such as `Rules: founder-mode, <coding rules> (coding), <design rules> (design)`. Each one is saved word for word in its own section of Agent Rules, headed with its name and version. When two rules disagree, the owner's own numbered Agent Rules come first, then the stricter of the others, and the assistant says which one it followed. For one model, name it on both lines, each with its own effort, such as "Planner: Claude Opus 5.5 (High) via Claude Code" and "Builder: Claude Opus 5.5 (Medium) via Claude Code".
+- **Agent Rules**: only the owner's own rules (brought in during step 3, or added later) and the rules skills they turn on, such as founder-mode. Setup adds no rules of its own, so leave the page empty if they have none. Routing and hub loading come from the standing instructions and Stack settings, not from this page.
 - **Skills**: one entry per skill, including a model-routing skill written for their planner and builder. Ask the owner before turning skills on.
 
 Stack settings is the owner's own settings page, and assistants read it live. When the owner edits the Planner or Builder by hand, the change applies the next time an assistant loads the hub, with nothing to re-run. Bigger changes (a new day-to-day assistant, or a model that needs a tool they haven't set up) need the steps in **Change your setup** below. Mark a planner or builder the owner picked themselves, rather than one from the table above, with "(own pick)".
@@ -93,7 +94,7 @@ Many owners already keep context and skills in other AI tools. Gather it into th
 - Show a short list of what you found and where each piece would go (Profile & Context, Agent Rules or Skills). Import only what they approve.
 - Before importing or installing any third-party skill, scan it with [Cisco Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner) and show the owner anything it flags. A clean scan doesn't prove a skill is safe.
 - Merge duplicates and ask when two sources conflict. Leave out passwords, keys and other secrets.
-- Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my Notion AI Context Hub first."
+- Copy, never move: leave the originals untouched. Only after they say yes, add the backend's hub instruction line in the old place, such as "Load my guava-hub in Notion first."
 
 ## 4. Connect the apps
 Required for every app in the owner's AI setup: Claude, ChatGPT or both. Follow **Connect the apps** in the backend's file. For a local hub, that file replaces the app and phone steps below with steps for the assistants on the computer, and its own checks count as passing.

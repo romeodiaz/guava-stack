@@ -66,7 +66,7 @@ Every part is swappable. Pick what fits you today, and change it anytime. Your c
 
 **Head chef and line cook**
 
-Split the work like a kitchen. Want one model for everything? Put the same one in both spots.
+Split the work like a kitchen. Want one model for everything? Put the same one in both spots, and give the line cook a lower effort if you like.
 
 <!-- models:kitchen -->
 <table>

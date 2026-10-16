@@ -33,7 +33,7 @@ def detailed(slot):
 
 def command(slot):
     if slot["tool"] == "claude-code":
-        return f'claude -p --model {slot["id"]} "<task>" < /dev/null'
+        return f'claude -p --model {slot["id"]} --effort {slot["effort"]} "<task>" < /dev/null'
     return (f'codex exec -m {slot["id"]} -c model_reasoning_effort={slot["effort"]} '
             f'--skip-git-repo-check "<task>" < /dev/null')
 

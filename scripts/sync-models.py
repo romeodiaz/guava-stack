@@ -57,8 +57,8 @@ def table(args):
 
 def kitchen(args):
     head, line = DEFAULT["head_chef"], DEFAULT["line_cook"]
-    pre_h = "Planner + reviewer. " if args.get("roles") == "yes" else ""
-    pre_l = "Builder. " if args.get("roles") == "yes" else ""
+    pre_h = "Plans and reviews. " if args.get("roles") == "yes" else ""
+    pre_l = "Does the work. " if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
     return f"""
 <table>
@@ -77,7 +77,7 @@ def kitchen(args):
 def setup(args):
     s = SETUPS[args["name"]]
     rows = ["| Slot | Model | Tool | Run it |", "|---|---|---|---|"]
-    for slot_name, key in (("Planner", "head_chef"), ("Builder", "line_cook")):
+    for slot_name, key in (("Head chef", "head_chef"), ("Line cook", "line_cook")):
         m = s[key]
         rows.append(f"| {slot_name} | {m['name']}, effort {m['effort']} (`{m['id']}`) | "
                     f"{TOOLS[m['tool']]} | `{command(m)}` |")
@@ -99,8 +99,8 @@ def stack_example(args):
   - Hub: Notion
   - Day-to-day assistant: Grok Bot
   - AI setup: {DEFAULT['label']}
-  - Planner: {detailed(h)}
-  - Builder: {detailed(l)}
+  - Head chef: {detailed(h)}
+  - Line cook: {detailed(l)}
   - Rules: founder-mode
   ```
   """

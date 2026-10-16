@@ -5,7 +5,7 @@
     "url": "https://workwithguava.com"
   },
   "metadata": {
-    "description": "The Guava Stack for business owners and solo operators: guava-hub, one shared home for your AI context (Notion, Google Drive, OneDrive/SharePoint or a local folder), a planner + builder model router, and founder-mode."
+    "description": "The Guava Stack for business owners and solo operators: guava-hub, one shared home for your AI context (Notion, Google Drive, OneDrive/SharePoint or a local folder), a head chef + line cook model router, and founder-mode."
   },
   "plugins": [
     {
@@ -16,7 +16,7 @@
     {
       "name": "guava-router",
       "source": "./guava-router",
-      "description": "For business owners and solo operators. Routes thinking work to a planner model and doing work to a builder model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only or Claude only, and newer models swap in with a one-line change. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Routes thinking work to a head chef model and doing work to a line cook model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only or Claude only, and newer models swap in with a one-line change. Part of the Guava Stack."
     },
     {
       "name": "founder-mode",

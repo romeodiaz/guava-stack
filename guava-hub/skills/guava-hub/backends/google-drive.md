@@ -6,7 +6,7 @@ For owners who already run their business in Google Workspace or Gmail.
 
 ## Build the hub
 In the owner's Google Drive (My Drive, or a shared drive if their team will use it), create a folder called **guava-hub** with:
-- **Profile & Context**: a Google Doc. Start it with the Stack settings section from the setup skill, then the owner's interview answers.
+- **Context**: a Google Doc. Start it with the Stack settings section from the setup skill, then the owner's interview answers.
 - **Rules**: a Google Doc.
 - **Skills**: a folder with one Google Doc per skill, named after the skill and holding its full text (name, one-line description, then the steps). Every skill in this folder counts as turned on. To turn one off, move it to a sibling folder called **Skills (off)**.
 

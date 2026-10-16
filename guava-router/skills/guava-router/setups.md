@@ -65,3 +65,6 @@ Owners can put any model in either slot that a tool in their setup can run: any 
 
 ## Local models (*coming soon*)
 Support for models that run on the owner's own hardware (through tools like Ollama or LM Studio), so nothing leaves the computer, is coming soon. It pairs with a local Markdown or Obsidian hub for clients that need to stay offline. Until then, say so plainly, and set up the closest of the four setups above if the owner still wants routing.
+
+## More agents through acpx (*coming soon*)
+Support for more coding agents, such as Grok Build, Cursor, Copilot and OpenCode, through [acpx](https://github.com/openclaw/acpx) is coming soon. Until then, say so plainly, and set up the closest of the four setups above.

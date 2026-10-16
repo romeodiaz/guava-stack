@@ -3,7 +3,7 @@ name: guava-hub
 description: Sets up the owner's guava-hub (Notion by default, or Google Drive, OneDrive/SharePoint or a local Markdown or Obsidian folder) so all their AI assistants share one set of context, rules and skills, then hands off to the Model Router and founder-mode. Also brings everything up to date. Use when the owner says "set me up", asks for guava-hub, starts Guava setup, or says "update guava-stack" or "update guava-hub".
 ---
 
-**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
+**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
 
 # guava-hub: setup
 
@@ -59,7 +59,7 @@ See `assistants/` for notes on each.
    - Which AI plans do you pay for? Offer the first three AI setups above, Claude + ChatGPT marked as recommended, and say they can name their own head-chef or line-cook instead, or use the same model for both. Any paid plan works. If they ask about local models, say support is coming soon and set up the closest of the three for now.
    - Is the hub connected here? If not, help connect it, following the backend's file. For a local hub, this means you can read the folder.
 3. Show the owner these standing instructions, filled in with their hub, and once they say yes, save them to your memory, custom instructions or system prompt. If your platform has memory shared across all of the owner's assistants (on Grok Bot, shared user memory), save them there so every current and future bot follows them. In Claude Code or the Claude desktop app's Code tab with the guava-hub plugin installed, the plugin's start-up hook already gives every new session these instructions, so there's nothing to save there (a local hub still needs its hub instruction line in `~/.claude/CLAUDE.md`, as its file says):
-   - Before substantive work, load the owner's Rules page, Context page and enabled skills from their guava-hub in `<hub>`, and treat the hub as the source of truth.
+   - Before substantive work, load the owner's Rules page, Context page and enabled skills from their guava-hub in `<hub>`, and treat the hub as the source of truth. With a Notion hub, assistants on the owner's computer read its local copy in `~/.guava-hub` when it's there (see **Local copy** in the Notion backend's file); only Claude refreshes it.
    - Model routing: use the head-chef and line-cook named in guava-stack settings, re-reading those two lines from the hub right before each hand-off, through the tool and at the effort each one names: the head-chef for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the line-cook for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; for important work, the head-chef reviews the line-cook's result before it's called done; browser and desktop tasks stay with your own computer tools; if either fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open.
    - When the owner says "update guava-stack", "update guava-hub", "update guava-router" or "update founder-mode", follow the Update step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "update guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md.
    - When the owner asks to change their setup (for example "change my setup", "make Sonnet my line-cook", "apply my guava-stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
@@ -90,7 +90,7 @@ Follow **Build the hub** in the backend's file. Every backend holds the same thr
 - **Rules**: only the owner's own rules and the rules skills they turn on, such as founder-mode. Each set is saved word for word in its own section. Rules brought in during step 3 are one set, named for the day they came in, such as `Oct 15 import`. Start the page with a list of the sets on it, one line each with its name and version where it has one, such as `founder-mode v2.0.6` or `Oct 15 import`, in the same order as their sections. Setup adds no rules of its own, so leave the page empty if they have none. Routing and hub loading come from the standing instructions and guava-stack settings, not from this page.
 - **Skills**: one entry per skill, including a model-routing skill written for their head-chef and line-cook. Ask the owner before turning skills on.
 
-guava-stack settings is the owner's own settings page, and assistants read it live. When the owner edits the head-chef or line-cook by hand, the change applies at each assistant's next hand-off, with nothing to re-run. Bigger changes (a new day-to-day assistant, or a model that needs a tool they haven't set up) need the steps in **Change your setup** below. Mark a head-chef or line-cook the owner picked themselves, rather than one from the table above, with "(own pick)".
+guava-stack settings is the owner's own settings page, and assistants read it live. When the owner edits the head-chef or line-cook by hand, the change applies at each assistant's next hand-off, with nothing to re-run. Assistants reading a Notion hub's local copy pick it up once the copy is due for a refresh, within 15 minutes, or right away if the owner says "refresh my hub". Bigger changes (a new day-to-day assistant, or a model that needs a tool they haven't set up) need the steps in **Change your setup** below. Mark a head-chef or line-cook the owner picked themselves, rather than one from the table above, with "(own pick)".
 
 ## 3. Bring in what they already have
 Many owners already keep context and skills in other AI tools. Gather it into the hub so nothing is lost:
@@ -156,7 +156,7 @@ A head-chef or line-cook swap is only an edit to guava-stack settings, since eve
 ## Update
 Use this when the owner says **"update guava-stack"** or **"update guava-hub"**. ("update guava-router" and "update founder-mode" have their own Update steps in those skills; "update guava-stack" runs all of them.)
 
-Show the whole plan first as one numbered list: each command, and each change as old, then new. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
+Show the whole plan first, in your message text, as one numbered list: each command, and each change as old, then new. The owner can approve it with one yes or pick numbers. Then apply it in order and report as you go.
 
 ### 1. Get the newest files
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
@@ -170,7 +170,7 @@ Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub
 <!-- /update-steps -->
 
 ### 2. Bring the hub up to date
-Read the hub and every saved copy of the standing instructions (your memory, shared user memory on Grok Bot, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, Muse's SOUL.md and the Claude and ChatGPT app instructions), and compare them with steps 1 and 2 of setup in this version. Offer to change anything that differs, updating local files as **Local instruction files** in setup step 1 says. Say which local files you'll read before reading them, and walk the owner through app instructions one app per message. If the Rules page keeps a change log, add a dated line for each hub edit.
+Read the hub and every saved copy of the standing instructions (your memory, shared user memory on Grok Bot, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, Muse's SOUL.md and the Claude and ChatGPT app instructions), and compare them with steps 1 and 2 of setup in this version. Offer to change anything that differs, updating local files as **Local instruction files** in setup step 1 says. Say which local files you'll read before reading them, and walk the owner through app instructions one app per message. If the hub has a Change log page, add a dated line there for each hub edit.
 
 ### 3. Run the other updates
 For "update guava-stack", follow the Update step in the **guava-router** skill, then in the **founder-mode** skill, for whichever the owner has. Skip their "get the newest files" step, since step 1 above already did it.

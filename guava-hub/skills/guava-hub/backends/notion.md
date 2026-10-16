@@ -9,6 +9,7 @@ Create a page called **guava-hub**, with the 8-bit brain as its icon (`https://r
 - **Context**: a page with the guava logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/logo.png`). Start it with the guava-stack settings section from the setup skill. Under its **Rules** heading, put the founder-mode 8-bit image (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/founder-mode.png`, captioned "Rules") in a narrow column, with the Rules line right under it, whichever rules skills the owner turns on. Under its **head-chef and line-cook** heading, put the two 8-bit images side by side in narrow columns, `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/head-chef.png` captioned "head-chef: plans and reviews" and `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/line-cook.png` captioned "line-cook: does the work", with the head-chef and line-cook lines right under them. Then add the owner's interview answers.
 - **Rules**: a page with the founder-mode 8-bit logo as its icon (`https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/founder-mode.png`), whichever rules skills the owner turns on.
 - **Skills**: a database with the 📚 icon, for Notion's skill upload. Ask the owner before enabling skills for external agents and Notion AI.
+- **Change log**: an empty page where assistants add a dated line for each hub edit. It's for the owner, so assistants never load it.
 
 ## Connect the apps
 Claude (covers the desktop app, claude.ai and Claude Code, since they share the account):
@@ -25,6 +26,18 @@ ChatGPT:
 4. "Open [ChatGPT Personalization](https://chatgpt.com/settings/personalization). Under Custom Instructions, paste this in both the ChatGPT box and the Codex box, then save:" then show the hub instruction line in a code block.
 5. "Last step: start a new chat and ask: What's in my guava-hub? Paste or describe the answer here." Test only local chats and tabs. Skip cloud tasks: they need a GitHub-connected cloud environment, which is too technical for this setup and doesn't pick up custom instructions yet. If the owner asks, tell them cloud tasks can still find the hub through Notion, just more slowly.
 
+Claude on the computer (the desktop app's Code tab and Claude Code, with the guava-hub plugin):
+1. Back up `~/.claude/settings.json`, then add the local copy's full path (`/Users/<name>/.guava-hub` on a Mac, or `C:\Users\<name>\.guava-hub` on Windows) under `permissions.additionalDirectories`, so sessions can keep the copy up to date without asking. Show the exact lines first.
+
+## Local copy
+Notion calls are slow, so assistants on the owner's computer keep a copy of the hub in `~/.guava-hub` and read that instead. Nothing to set up beyond the step above: the first Local session in the Code tab or Claude Code builds it. Notion stays the source of truth, and assistants that can't reach the computer (Grok Bot, Muse, the chat apps, cloud sessions) keep reading Notion directly.
+- **What's in it:** `Context.md`, `Rules.md`, one file per skill in `Skills/`, and `sync.md` with the page IDs and when it was last refreshed. No images, and no Change log.
+- **At start-up:** the plugin's start-up hook puts the copy's Context, Rules and skill list straight into each new session, so it starts without a Notion call. A skill's full text is read only when a task needs it.
+- **Keeping it fresh:** when the copy is 15 minutes old or more, the session runs one Notion search that lists every hub page with its last-edited time, and fetches only the pages that changed. The same goes before each hand-off, so a head-chef or line-cook swap made in Notion, from any device, applies at the next hand-off once the copy is due for a refresh. Say "refresh my hub" to pick it up right away.
+- **Edits** still go to Notion first, and the session refreshes that page in the copy right after.
+- **Codex** reads the same copy, and leaves refreshing and hub edits to Claude.
+
 ## If a check fails
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.
+- A Local session still fetches every page from Notion: check `~/.guava-hub/sync.md` exists. If it doesn't, ask the session to load the hub and save the local copy.
 - Didn't use Notion: in Claude, turn Notion on under + > Connectors in that chat. In ChatGPT, say "use Notion" in the question.

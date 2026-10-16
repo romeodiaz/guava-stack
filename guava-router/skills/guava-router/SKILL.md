@@ -3,7 +3,7 @@ name: guava-router
 description: Sets up a Model Router that sends thinking work to a head-chef model and doing work to a line-cook model through their command-line tools, or through instructions in the Claude and ChatGPT apps for owners without Grok Bot or Muse, on the owner's own plans. Supports Claude + ChatGPT (default), ChatGPT only and Claude only, with each setup's models in models.yaml. Also use when the owner says "check for newer models" or "update guava-router". Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
-**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.**
+**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
 
 # Model Router: setup
 
@@ -127,7 +127,7 @@ To swap models, use one model in both slots, or apply a hand-edited guava-stack 
 Without a hub, do the same by hand: compare the head-chef and line-cook with [models.yaml](../../models.yaml), show each change as old, then new, and on a yes update the routing lines in the Guava block of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` and the routing instruction in each app. Then test each changed slot as in step 7.
 
 ## Update
-Use this when the owner says **"update guava-router"**, or when the guava-hub skill's Update step sends you here. Show the whole plan first as one numbered list (each command, and each change as old, then new); the owner can approve it with one yes or pick numbers. Then apply it in order.
+Use this when the owner says **"update guava-router"**, or when the guava-hub skill's Update step sends you here. Show the whole plan first, in your message text, as one numbered list (each command, and each change as old, then new); the owner can approve it with one yes or pick numbers. Then apply it in order.
 
 1. **Get the newest files** (skip this when the guava-hub Update step already did it):
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->

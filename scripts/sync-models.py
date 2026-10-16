@@ -106,9 +106,11 @@ def stack_example(args):
   ### Rules
   - founder-mode v{FOUNDER_MODE}
   ### guava-router
-  - head-chef: {detailed(h)}
+  head-chef
+  - {detailed(h)}
     - Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, and fuzzy and hard problems. On important work, checks the line-cook's result before it's called done.
-  - line-cook: {detailed(l)}
+  line-cook
+  - {detailed(l)}
     - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
   ```
   """

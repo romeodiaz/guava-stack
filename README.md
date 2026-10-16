@@ -147,7 +147,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** a short block between `<!-- guava-stack:start -->` and `<!-- guava-stack:end -->` in `~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md`, only if the guava-hub plugin isn't installed in that tool or your hub is a local folder (or your AI tools' own instructions files). Each file is backed up first, with a `.pre-guava` copy kept from before Guava's first change, and nothing outside the markers changes. The optional "Never skip the hub" step, and a local hub, back up `~/.claude/settings.json` and add only your hub's read-only tools or folder.
-- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. Codex asks you once to approve its three start-up hooks.
+- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. Codex asks you once to approve its three start-up hooks, named "guava-stack: hub instructions", "hub context" and "hub rules".
 - **Commands run:** only for your AI setup: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc) if the Code tab is your assistant, and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats.
 - **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions.

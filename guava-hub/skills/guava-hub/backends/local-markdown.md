@@ -32,7 +32,7 @@ You need to be running on the owner's computer to build this hub: the Code tab i
 There are no connectors. Each assistant on the computer reads the folder directly, so this step gives each one permission and the hub instruction line. Do Claude first, then Codex, one step at a time, showing each change and waiting for a yes. The Guava blocks in both instruction files share one yes.
 
 Claude (the desktop app's Code tab and Claude Code):
-1. Back up `~/.claude/settings.json`, then add the hub folder's full path (for example `/Users/<name>/Documents/guava-hub` on a Mac, or `C:\Users\<name>\Documents\guava-hub` on Windows) under `permissions.additionalDirectories` so every session can read it without asking. Show the exact lines first.
+1. Back up `~/.claude/settings.json` (see **Backups** in the setup skill), then add the hub folder's full path (for example `/Users/<name>/Documents/guava-hub` on a Mac, or `C:\Users\<name>\Documents\guava-hub` on Windows) under `permissions.additionalDirectories` so every session can read it without asking. Show the exact lines first.
 2. Add the hub instruction line, with the real path, to the Guava block in `~/.claude/CLAUDE.md` (see **Local instruction files** in the setup skill), even with the guava-hub plugin installed: its start-up hook tells each session to load the hub, but only this line says where the folder is. Without the plugin, add the rest of the standing instructions there too.
 3. "Start a new Local session in the Code tab and ask: What's in my guava-hub? Paste or describe the answer here."
 

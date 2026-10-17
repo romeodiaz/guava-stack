@@ -2,7 +2,7 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. In the Claude desktop app's Code tab and on Grok Bot or Muse, it routes through Claude Code and Codex. Think of it as a kitchen:
+Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. Grok Bot or Muse routes each job through Claude Code and Codex on its own computer. Think of it as a kitchen:
 
 <!-- models:kitchen roles=yes assets=../assets -->
 <table>
@@ -30,7 +30,7 @@ Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 
 - Model picks: [models.yaml](models.yaml) is the one place they're kept. To swap in a newer model, change it there and run `python3 scripts/sync-models.py` from the repo root, which updates every README and skill that shows them. Owners already set up say "check for newer models".
 - Skill: [guava-router](skills/guava-router/SKILL.md)
-- Claude Code: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install guava-router@guava`
+- Power users, as a Claude Code plugin: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install guava-router@guava`
 - Update: say "update guava-router", or "update guava-stack" for every piece.
 - Uninstall: say "uninstall guava-router", or "uninstall guava-stack" for every piece.
 - Install: see [Start here](../README.md#start-here) in the stack README.

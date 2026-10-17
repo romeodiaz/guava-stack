@@ -29,28 +29,28 @@ Your Notion guava-hub has four parts:
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
+<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
 <td>Your guava-stack settings come first: the rules you've turned on, and your head-chef and line-cook. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
+<td align="center" width="200"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
 <td>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
+<td align="center" width="200"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
 <td>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/memories.svg" width="120" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
+<td align="center" width="200"><img src="assets/memories.svg" width="80" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
 <td>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
@@ -63,11 +63,11 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-<!-- models:kitchen -->
+<!-- models:kitchen size=80 -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="80" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="80" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>

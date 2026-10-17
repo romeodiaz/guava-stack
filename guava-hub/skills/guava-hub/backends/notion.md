@@ -1,6 +1,6 @@
-# Hub backend: Notion (default)
+# Hub backend: Notion
 
-The recommended hub. Notion has a native skills feature, and Claude, ChatGPT, Grok Bot and Muse all connect to it.
+The hub Guava supports. Notion has a native skills feature, and Claude, ChatGPT, Grok Bot and Muse all connect to it. The free plan is enough.
 
 **Hub instruction line:** `Load my guava-hub in Notion first.`
 
@@ -46,7 +46,7 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 - **At start-up:** the plugin's start-up hook puts the copy's context, rules, skill list and About page straight into each new session, so it starts without a Notion call. A skill's full text is read only when a task needs it.
 - **Keeping it fresh:** at the start of each task and before each hand-off, if the copy is 15 minutes old or more, the session runs one Notion search that lists every hub page with its last-edited time, fetches only the pages that changed plus the About page (it isn't under the hub, so the search doesn't list it), and follows the new versions from then on. So any edit made in Notion, from any device, reaches open sessions within 15 minutes. Say "refresh my hub" to pick it up right away.
 - **Edits** still go to Notion first, and the session refreshes that page in the copy right after.
-- **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude. In a ChatGPT-only setup there's no Claude, so Codex makes hub edits itself, such as a fix the owner approves after a settings check.
+- **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude.
 
 ## Notion Memory
 Notion's own memory: a **Memories** database (one page per topic, typed Profile, Preference, Work, People or Notes) and an **About** page that sums up the owner. Assistants save what they learn there (decisions and their reasons, corrections, preferences, project state), so the next session or another assistant can find it. Notion creates both with the first save, which setup makes when it builds the hub. It's the one memory every assistant shares, so it wins over any assistant's own memory (Claude's, ChatGPT's, Grok Bot's, Muse's, Claude Code's or Codex's): when they disagree, follow Notion Memory and update the other where you can.

@@ -1,7 +1,8 @@
 # Guava Stack model picks: the one place to change when better models come out.
 #
-# Each setup names a head-chef (plans, researches, writes, reviews) and a line-cook
-# (does the bulk work), based on which AI plans the owner pays for.
+# The head-chef (plans, researches, writes, reviews) runs through Claude Code on the
+# owner's Claude plan, and the line-cook (does the bulk work) through Codex on their
+# ChatGPT plan.
 #
 # To swap in a newer model:
 #   1. Change its name, id and effort below.
@@ -12,78 +13,19 @@
 # Fields:
 #   name:   what people see, such as "Claude Opus 5.5"
 #   id:     the model ID the command-line tool takes
-#   effort: thinking effort (low, medium, high, xhigh or max where the tool supports it;
-#           Antigravity CLI takes low, medium or high)
-#   tool:   claude-code, codex or antigravity (the command-line tool that runs it)
-#   app:    claude, chatgpt or gemini (the app where people pick this model in chat)
+#   effort: thinking effort (low, medium, high, xhigh or max)
 
 updated: 2026-10-16
 
-setups:
-  claude-chatgpt:
-    label: Claude + ChatGPT
-    pays_for: Claude and ChatGPT
-    default: true
-    head_chef:
-      name: Claude Opus 5.5
-      id: claude-opus-5-5
-      effort: high
-      tool: claude-code
-      app: claude
-    line_cook:
-      name: GPT-6.1 Sol
-      id: gpt-6.1-sol
-      effort: high
-      tool: codex
-      app: chatgpt
+head_chef:
+  name: Claude Opus 5.5
+  id: claude-opus-5-5
+  effort: high
 
-  chatgpt-only:
-    label: ChatGPT only
-    pays_for: ChatGPT only
-    head_chef:
-      name: GPT-6 Astra
-      id: gpt-6-astra
-      effort: high
-      tool: codex
-      app: chatgpt
-    line_cook:
-      name: GPT-6.1 Sol
-      id: gpt-6.1-sol
-      effort: high
-      tool: codex
-      app: chatgpt
-
-  claude-only:
-    label: Claude only
-    pays_for: Claude only
-    head_chef:
-      name: Claude Opus 5.5
-      id: claude-opus-5-5
-      effort: high
-      tool: claude-code
-      app: claude
-    line_cook:
-      name: Claude Sonnet 5.5
-      id: claude-sonnet-5-5
-      effort: high
-      tool: claude-code
-      app: claude
-
-  google-only:
-    label: Google only
-    pays_for: Google AI Pro or Ultra
-    head_chef:
-      name: Gemini 4 Argon
-      id: gemini-4-argon
-      effort: high
-      tool: antigravity
-      app: gemini
-    line_cook:
-      name: Gemini 3.8 Flash
-      id: gemini-3.8-flash
-      effort: high
-      tool: antigravity
-      app: gemini
+line_cook:
+  name: GPT-6.1 Sol
+  id: gpt-6.1-sol
+  effort: high
 
 # What each role does. Shown under the head-chef and line-cook in the READMEs.
 roles:

@@ -60,7 +60,7 @@ rules)
   [ -f "$copy/rules.md" ] && show "guava-hub rules page, local copy" "$copy/rules.md"
   ;;
 save)
-  # Notion hubs only. Asks once per 60 new transcript lines, about 25 tool
+  # Asks once per 60 new transcript lines, about 25 tool
   # calls, so short chats are never interrupted, and never twice in a row.
   [ -f "$copy/sync.md" ] || exit 0
   input=$(cat)

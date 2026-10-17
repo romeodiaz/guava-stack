@@ -19,17 +19,16 @@ Your business context, rules, skills and AI memories in one place you already ow
 
 ## What you get
 
-### 🧠 AI brain
+### 1) AI brain
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a> <img src="assets/notion.svg" width="40" alt="Notion logo"><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
+<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
 <td>One home in your own Notion workspace for your context, rules, skills and memories. Every assistant you connect reads it and remembers into it, and your computer keeps a copy so sessions start instantly.</td>
 </tr>
 </table>
 
 Your Notion guava-hub has four parts:
 
-### context
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
@@ -37,7 +36,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### rules
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
@@ -45,7 +43,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### skills
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
@@ -53,7 +50,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### memories
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/memories.svg" width="96" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
@@ -61,7 +57,7 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### 🔀 Router
+### 2) Router
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
@@ -84,7 +80,7 @@ Your Notion guava-hub has four parts:
 
 Any Claude model works as head-chef and any OpenAI model as line-cook. Say "check for newer models" to swap in better ones as they come out.
 
-### 🎤 Rules
+### 3) Rules
 <table>
 <tr>
 <td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>
@@ -129,9 +125,27 @@ Install guava-router from github.com/romeodiaz/guava-stack
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-As plugins, in Claude Code: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install <name>@guava`. In Codex: `codex plugin marketplace add romeodiaz/guava-stack`, then `codex plugin add <name>@guava`.
+As plugins, in Claude Code:
 
-On Grok Bot: `npx skills add romeodiaz/guava-stack -g -y`, or add `--skill <name>` for one piece.
+```
+claude plugin marketplace add romeodiaz/guava-stack
+/plugin install <name>@guava
+```
+
+In Codex:
+
+```
+codex plugin marketplace add romeodiaz/guava-stack
+codex plugin add <name>@guava
+```
+
+On Grok Bot:
+
+```
+npx skills add romeodiaz/guava-stack -g -y
+```
+
+For one piece, add `--skill <name>`.
 
 **▶️ Try it:**
 1. "Set me up."
@@ -139,26 +153,12 @@ On Grok Bot: `npx skills add romeodiaz/guava-stack -g -y`, or add `--skill <name
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
 
-## What only you can do
+## Some Manual Setup Needed
 Setup and updates handle everything on your computer. These live in your app accounts, where no assistant can reach, so setup walks you through each one and every update ends by listing any that changed. If an assistant seems to ignore your hub, check these first:
-- **Claude app:** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.` Replace any older Guava line there, such as one naming an "AI Context Hub".
-- **ChatGPT:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
-- **Codex:** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
+- **Claude app:** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.`
+- **ChatGPT.com:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
+- **ChatGPT desktop app:** in Codex, approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
 - **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
-- **Notion:** the skills database icon (hover its title, Add icon, Link).
-
-## Make it yours
-Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. Typos get caught with a suggested fix. For bigger changes, say "change my setup".
-
-**💬 Who you talk to**
-
-- **Claude desktop app, Code tab** (Local sessions): where you work. Claude plans and hands work to Codex itself. No terminal needed, and Remote Control opens your sessions from the Claude phone app.
-- **Grok Bot or Muse** (optional): cloud assistants that hand each job to the right AI when you're away from your computer. Muse is free.
-- **Claude and ChatGPT apps** (web, desktop, phone): read the same hub, on whatever model you pick.
-
-On your computer, your assistant keeps a copy of your hub, so it starts instantly. Everywhere else, it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
-
-*Coming soon:* Google Drive and OneDrive hubs, Claude-only and ChatGPT-only plans, local models, and more agents through [acpx](https://github.com/openclaw/acpx).
 
 ## How to update
 Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)
@@ -191,7 +191,14 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex.
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 🤖 **[assistants/](assistants/)**: what each assistant skips or changes.
-- 🛠️ **Know agent files?** context ≈ USER.md + TOOLS.md. rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant. skills = the `skills/` folder. Setup does BOOTSTRAP.md's job, once. MEMORY.md ≈ Notion Memory: what assistants learn goes there, outside the hub. Its short About page loads at start-up, and the rest is looked up when a task needs it. No SOUL.md, IDENTITY.md or HEARTBEAT.md: each assistant keeps its own persona and check-ins.
+- 🛠️ **Know agent files?**
+  - context ≈ USER.md + TOOLS.md.
+  - rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant.
+  - skills = the `skills/` folder.
+  - Setup does BOOTSTRAP.md's job, once.
+  - MEMORY.md ≈ Notion Memory: what assistants learn goes there, outside the hub.
+  - Its short About page loads at start-up, and the rest is looked up when a task needs it.
+  - No SOUL.md, IDENTITY.md or HEARTBEAT.md: each assistant keeps its own persona and check-ins.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

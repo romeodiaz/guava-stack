@@ -127,7 +127,7 @@ On Grok Bot:
 npx skills add romeodiaz/guava-stack -g -y
 ```
 
-For one piece, add `--skill <name>`.
+For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
 
 **▶️ Try it:**
 1. "Set me up."
@@ -142,7 +142,7 @@ Setup walks you through each of these, since your bot can't do them for you. If 
 - **Updates:** say "update guava-stack" in each bot you use, since only it can change its own memory.
 
 ## How to update
-Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models. 📜 [Changelog](founder-mode/CHANGELOG.md)
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models.
 
 ## How to uninstall
 Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Grok Bot or Muse Bot. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your bot doesn't know the command, paste this:

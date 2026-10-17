@@ -55,7 +55,7 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### 2) Router
+### 2) router
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong></td>
@@ -76,7 +76,7 @@ Your Notion guava-hub has four parts:
 </table>
 <!-- /models -->
 
-### 3) Rules
+### 3) rules
 <table>
 <tr>
 <td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>

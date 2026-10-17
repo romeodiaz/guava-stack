@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates, uninstalls or shows founder-mode, the owner's 16 working rules for their AI assistant, saved to the rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v3.0.1
+# founder-mode v3.0.2
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
@@ -17,8 +17,8 @@ Only for the Guava plugins the owner has (for "update founder-mode", just founde
 - **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "rules" page in the owner's guava-hub in Notion. If you can't find it, ask where it is, or set up the hub first with the guava-hub skill.
-3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "16 Commandments". Add `founder-mode` and its version, such as `founder-mode v2.0.6`, to the list of rule sets at the top of the page, starting the list if there isn't one. Don't paraphrase them: the next update compares against this text. In the context page's guava-stack settings section, add `- founder-mode` and its version, such as `- founder-mode v2.0.6`, under its **Rules** heading, or, if there's no Rules heading yet, add one with that line under it, right above the guava-router heading (in Notion, linked to the rules page, with the founder-mode image the guava-hub Notion setup describes). Leave any other rules skills listed there in place.
-4. If a "16 Commandments" section is already there, compare this version with the one on the founder-mode line at the top of the page. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. Either way, update the version on that line and on the founder-mode line under **Rules** in guava-stack settings. If only setup steps changed, say the rules are the same.
+3. If founder-mode isn't there yet, show the owner what you'll add and, once they say yes, save the rules below word for word, with their group headings and numbers, in a section called "16 Commandments on How to work with me". Add `founder-mode` and its version, such as `founder-mode v2.0.6`, to the list of rule sets at the top of the page, starting the list if there isn't one. Don't paraphrase them: the next update compares against this text. In the context page's guava-stack settings section, add `- founder-mode` and its version, such as `- founder-mode v2.0.6`, under its **Rules** heading, or, if there's no Rules heading yet, add one with that line under it, right above the guava-router heading (in Notion, linked to the rules page, with the founder-mode image the guava-hub Notion setup describes). Leave any other rules skills listed there in place.
+4. If a "16 Commandments on How to work with me" section is already there, compare this version with the one on the founder-mode line at the top of the page. If this version is newer, check CHANGELOG.md in this plugin's folder: replace the rules only if they changed since the saved version, and explain in plain words what changed. Either way, update the version on that line and on the founder-mode line under **Rules** in guava-stack settings. If only setup steps changed, say the rules are the same.
 5. Follow these rules on every task from now on. If another rule on the rules page is stricter, the stricter one wins.
 6. Confirm with a 3-line summary: what you installed, which version, and where you saved it. If this was part of hub setup, go on to the setup skill's wrap-up step.
 
@@ -32,8 +32,8 @@ Only for the Guava plugins the owner has (for "uninstall founder-mode", just fou
 - **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
-2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "16 Commandments" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete the founder-mode line under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. Add a dated line to the hub's changelog page.
-3. Check that `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show founder-mode and that the rules page has no "16 Commandments" section, then confirm in two lines what you removed, and that new sessions and chats no longer follow the rules.
+2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "16 Commandments on How to work with me" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete the founder-mode line under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. Add a dated line to the hub's changelog page.
+3. Check that `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show founder-mode and that the rules page has no "16 Commandments on How to work with me" section, then confirm in two lines what you removed, and that new sessions and chats no longer follow the rules.
 
 **People:** paste this into your AI assistant: "Install (or update, or uninstall) founder-mode from github.com/romeodiaz/guava-stack."
 

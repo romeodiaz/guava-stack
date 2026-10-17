@@ -160,19 +160,6 @@ Setup and updates handle everything on your computer. These live in your app acc
 - **Codex:** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
 - **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
 
-## Make it yours
-Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. Typos get caught with a suggested fix. For bigger changes, say "change my setup".
-
-**💬 Who you talk to**
-
-- **Claude desktop app, Code tab** (Local sessions): where you work. Claude plans and hands work to Codex itself. No terminal needed, and Remote Control opens your sessions from the Claude phone app.
-- **Grok Bot or Muse** (optional): cloud assistants that hand each job to the right AI when you're away from your computer. Muse is free.
-- **Claude and ChatGPT apps** (web, desktop, phone): read the same hub, on whatever model you pick.
-
-On your computer, your assistant keeps a copy of your hub, so it starts instantly. Everywhere else, it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
-
-*Coming soon:* Google Drive and OneDrive hubs, Claude-only and ChatGPT-only plans, local models, and more agents through [acpx](https://github.com/openclaw/acpx).
-
 ## How to update
 Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)
 

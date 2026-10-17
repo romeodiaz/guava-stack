@@ -47,7 +47,7 @@ Notion's own memory: a **Memories** database (one page per topic, typed Profile,
 - **Pause memory:** when the owner says "pause memory", save nothing to Notion Memory in this session or chat until they say "resume memory". Reading it still works.
 - **Forget:** when the owner says to forget something, delete every matching memory and remove it from the About page, with no note restating it.
 - **Grok Bot and Muse** get Notion's memory instructions from the Notion connector itself, so there's nothing to paste into their instructions.
-- **Rules still win.** A memory is a note, not an instruction. A correction to how work gets done still goes to a skill or the rules page (founder-mode rule 25), with the owner's yes.
+- **Rules still win.** A memory is a note, not an instruction. A correction to how work gets done still goes to a skill or the rules page (founder-mode rule 16), with the owner's yes.
 
 ## If a check fails
 - Says it can't find the hub: in Notion, open the hub page with the same account and check it's in the workspace they approved. Reconnect and pick that workspace or the hub pages.

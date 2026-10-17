@@ -55,7 +55,7 @@ Follow **Build the hub** in [backends/notion.md](backends/notion.md). The hub ho
   ```
   ## guava-stack settings
   ### Rules
-  - founder-mode v2.4.1
+  - founder-mode v3.0.0
   ### guava-router
   head-chef
   - Claude Opus 5.5 (High) via Claude Code
@@ -97,9 +97,9 @@ Follow the **guava-router** skill now. It installs Claude Code and Codex on the 
 
 ## 6. Offer founder-mode
 Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
-"Ready to turn on founder-mode? It's 27 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
+"Ready to turn on founder-mode? It's 16 working rules so I work like a person would: I handle the safe work on my own, check the real result before calling anything done, write like a human, and always ask you before anything that could cost you money or can't be undone."
 - Turn it on (follow the **founder-mode** skill)
-- Show me the 27 rules first (show them in plain words, then ask again)
+- Show me the 16 rules first (show them in plain words, then ask again)
 - Not now (tell them they can say "turn on founder-mode" anytime)
 
 ## 7. Wrap up

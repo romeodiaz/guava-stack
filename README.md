@@ -82,7 +82,7 @@ Your Notion guava-hub has four parts:
 <table>
 <tr>
 <td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a></td>
-<td><ins>founder-mode</ins><br>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+<td><ins>founder-mode</ins><br>16 commandments. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
 

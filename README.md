@@ -22,7 +22,7 @@ Your business context, rules, skills and AI memories in one place you already ow
 ### 🧠 AI brain
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a> <img src="assets/notion.svg" width="40" alt="Notion logo"><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
+<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
 <td>One home in your own Notion workspace for your context, rules, skills and memories. Every assistant you connect reads it and remembers into it, and your computer keeps a copy so sessions start instantly.</td>
 </tr>
 </table>

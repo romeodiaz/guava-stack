@@ -11,9 +11,9 @@ Your business context, rules, skills and AI memories in one place you already ow
 **🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
 
 **🔑 You'll need:**
-- Grok Bot ($30 plan or higher) or Muse Bot, which is free
+- Grok Bot ($30 plan or higher) or Muse Bot (Free)
 - Claude Pro or ChatGPT Plus ($20 plan or higher). Your bot can run both behind the scenes
-- Notion Free
+- Notion (Free)
 
 ## What you get
 

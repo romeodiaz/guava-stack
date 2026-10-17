@@ -12,7 +12,7 @@ Your business context, rules, skills and AI memories in one place you already ow
 
 **🔑 You'll need:**
 - Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">
-- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher). Your bot can run both behind the scenes
+- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher)<br>Your bot can run both behind the scenes
 - Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
 
 ## What you get
@@ -20,8 +20,8 @@ Your business context, rules, skills and AI memories in one place you already ow
 ### 1) AI brain
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><sub>guava-hub (Notion)</sub></td>
-<td>One home in your own Notion workspace for your context, rules, skills and memories. Your bot reads it and remembers into it, and so does any other assistant you connect.</td>
+<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a></td>
+<td><ins>guava-hub (Notion)</ins><br>One home in your own Notion workspace for your context, rules, skills and memories. Your bot reads it and remembers into it, and so does any other assistant you connect.</td>
 </tr>
 </table>
 
@@ -29,37 +29,37 @@ Your Notion guava-hub has four parts:
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"> <img src="assets/model-router.png" width="80" alt="Pixel-art router"><br><strong>context</strong><br><sub>Your settings and who you are</sub></td>
-<td>Starts with your guava-stack settings, where guava-router lives: your head-chef and line-cook models, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
+<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"> <img src="assets/model-router.png" width="80" alt="Pixel-art router"><br><strong>context</strong></td>
+<td><ins>Your settings and who you are</ins><br>Starts with your guava-stack settings, where guava-router lives: your head-chef and line-cook models, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
-<td>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
+<td align="center" width="200"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
+<td><ins>How your AI works for you</ins><br>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
-<td>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
+<td align="center" width="200"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong></td>
+<td><ins>What your AI reuses</ins><br>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/memories.svg" width="80" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
-<td>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
+<td align="center" width="200"><img src="assets/memories.svg" width="80" alt="Notion Memory thought cloud"><br><strong>memories</strong></td>
+<td><ins>What your AI learned</ins><br>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
 
-### 2) Router
+### 2) router
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
-<td>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
+<td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a></td>
+<td><ins>guava-router</ins><br>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
 </tr>
 </table>
 
@@ -76,11 +76,11 @@ Your Notion guava-hub has four parts:
 </table>
 <!-- /models -->
 
-### 3) Rules
+### 3) rules
 <table>
 <tr>
-<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>
-<td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a></td>
+<td><ins>founder-mode</ins><br>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
 

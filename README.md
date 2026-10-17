@@ -9,7 +9,7 @@ Your business context, rules, skills and AI memories in one place you already ow
 No coding needed: paste the following and your bot sets it up:
 
 ```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
+Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 **🔑 You'll need:**
@@ -100,7 +100,7 @@ Your Notion guava-hub has four parts:
 Paste this into Grok Bot or Muse:
 
 ```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
+Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 It asks a few questions, explains each step, and checks that everything works. Unsure? Say "use the defaults".

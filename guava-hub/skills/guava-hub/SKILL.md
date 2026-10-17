@@ -55,7 +55,7 @@ Follow **Build the hub** in [backends/notion.md](backends/notion.md). The hub ho
   ```
   ## guava-stack settings
   ### Rules
-  - founder-mode v3.0.0
+  - founder-mode v3.0.1
   ### guava-router
   head-chef
   - Claude Opus 5.5 (High) via Claude Code

@@ -37,8 +37,8 @@ def kitchen(args):
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {HEAD['name']}</sub></td>
-<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {LINE['name']}</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"> <img src="{img}/claude.svg" width="48" alt="Claude logo"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {HEAD['name']}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"> <img src="{img}/chatgpt.svg" width="48" alt="ChatGPT logo"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {LINE['name']}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>

@@ -2,11 +2,11 @@
 
 # guava-hub: one home for your AI context and skills
 
-Part of the [Guava Stack](../README.md). Sets up one shared place for your context, rules and skills, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
+Part of the [Guava Stack](../README.md). Sets up one shared place for your context, rules, skills and memories, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
 
 The hub lives in Notion ([steps](skills/guava-hub/backends/notion.md)); the free plan is enough. *Coming soon:* Google Drive and OneDrive hubs.
 
-It has three parts:
+It has three parts, plus Notion Memory for what your assistants learn:
 
 <table>
 <tr>

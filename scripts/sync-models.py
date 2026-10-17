@@ -16,6 +16,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
+HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 ROLES = CONFIG["roles"]
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
@@ -29,6 +30,25 @@ def detailed(slot, tool):
     return f"{slot['name']} ({effort(slot)}) via {tool}"
 
 
+def company(slot):
+    return "Claude" if slot["name"].startswith("Claude") else "ChatGPT"
+
+
+def tool(slot):
+    return "Claude Code" if company(slot) == "Claude" else "Codex"
+
+
+def pick(slot, plan):
+    """The slot's model for an owner who pays for only one plan."""
+    return slot if company(slot) == plan else slot["next_best"]
+
+
+def run(slot):
+    if tool(slot) == "Claude Code":
+        return f'claude -p --model {slot["id"]} --effort {slot["effort"]} "<task>" < /dev/null'
+    return f'codex exec -m {slot["id"]} -c model_reasoning_effort={slot["effort"]} --skip-git-repo-check "<task>" < /dev/null'
+
+
 def logo(img, name):
     if name.startswith("Claude"):
         return f'<img src="{img}/claude.svg" width="20" alt="Claude logo">'
@@ -37,17 +57,18 @@ def logo(img, name):
 
 def picks(img, slot):
     return (f"Today's best: {slot['name']} {logo(img, slot['name'])}<br>"
-            f"Next best: {slot['next_best']} {logo(img, slot['next_best'])}")
+            f"Next best: {slot['next_best']['name']} {logo(img, slot['next_best']['name'])}")
 
 
 def kitchen(args):
     cap = lambda t: t[0].upper() + t[1:] + "."
     img = args.get("assets", "assets")
+    size = args.get("size", "120")
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
-<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="{size}" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="{size}" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>
@@ -58,13 +79,30 @@ def kitchen(args):
 
 
 def commands(args):
-    h, l = HEAD, LINE
-    return f"""
-| Slot | Model | Tool | Run it |
-|---|---|---|---|
-| head-chef | {h['name']}, effort {h['effort']} (`{h['id']}`) | Claude Code | `claude -p --model {h['id']} --effort {h['effort']} "<task>" < /dev/null` |
-| line-cook | {l['name']}, effort {l['effort']} (`{l['id']}`) | Codex | `codex exec -m {l['id']} -c model_reasoning_effort={l['effort']} --skip-git-repo-check "<task>" < /dev/null` |
-"""
+    row = lambda label, s: f"| {label} | {s['name']}, effort {s['effort']} (`{s['id']}`) | {tool(s)} | `{run(s)}` |"
+    return "\n" + "\n".join([
+        "| Slot | Model | Tool | Run it |",
+        "|---|---|---|---|",
+        row("head-chef", HEAD),
+        row("line-cook", LINE),
+        row(f"head-chef, {company(HEAD_NEXT)} only", HEAD_NEXT),
+        row(f"line-cook, {company(LINE_NEXT)} only", LINE_NEXT),
+    ]) + "\n"
+
+
+def plans(args):
+    row = lambda label, h, l: f"| {label} | {detailed(h, tool(h))} | {detailed(l, tool(l))} |"
+    return "\n" + "\n".join([
+        "| You pay for | head-chef | line-cook |",
+        "|---|---|---|",
+        row("Claude and ChatGPT (best)", HEAD, LINE),
+        *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
+    ]) + "\n"
+
+
+def one_plan(args):
+    return (f"{LINE_NEXT['name']} as line-cook on {company(LINE_NEXT)} only, "
+            f"and {HEAD_NEXT['name']} as head-chef on {company(HEAD_NEXT)} only")
 
 
 def stack_example(args):
@@ -88,7 +126,7 @@ def default_pair(args):
     return f"{HEAD['name']} and {LINE['name']}"
 
 
-KINDS = {"kitchen": kitchen, "commands": commands,
+KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
          "stack-example": stack_example, "default-pair": default_pair}
 
 

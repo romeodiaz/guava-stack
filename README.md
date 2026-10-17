@@ -11,18 +11,16 @@ Your business context, rules, skills and AI memories in one place you already ow
 **🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
 
 **🔑 You'll need:**
-- Grok Bot, on a $30 a month xAI or Cursor plan, or Meta's Muse Bot, which is free. This is where you work
-- Claude Pro and ChatGPT Plus ($20 a month each) or higher. Your bot runs both behind the scenes
-- Notion Free\*
-
-<sub>\* Notion's free plan is all you need.</sub>
+- Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">
+- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher). Your bot can run both behind the scenes
+- Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
 
 ## What you get
 
 ### 1) AI brain
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
+<td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><sub>guava-hub (Notion)</sub></td>
 <td>One home in your own Notion workspace for your context, rules, skills and memories. Your bot reads it and remembers into it, and so does any other assistant you connect.</td>
 </tr>
 </table>
@@ -31,28 +29,28 @@ Your Notion guava-hub has four parts:
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
+<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
 <td>Your guava-stack settings come first: the rules you've turned on, and your head-chef and line-cook. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
+<td align="center" width="200"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
 <td>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
+<td align="center" width="200"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
 <td>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/memories.svg" width="96" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
+<td align="center" width="200"><img src="assets/memories.svg" width="80" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
 <td>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
@@ -65,11 +63,11 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-<!-- models:kitchen -->
+<!-- models:kitchen size=80 -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="80" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="80" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
@@ -81,14 +79,14 @@ Your Notion guava-hub has four parts:
 ### 3) Rules
 <table>
 <tr>
-<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>
+<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>
 <td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
-- 💳 **Uses the plans you have.** Your Claude and ChatGPT plans do the work, and Muse is free.
+- 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, and Muse is free.
 - 📱 **Everywhere.** Your bot works the same on your desk, laptop and phone.
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.

@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates, uninstalls or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v2.3.0
+# founder-mode v2.4.0
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 

@@ -19,6 +19,7 @@ Your business context, rules, skills and AI memories in one place you already ow
 
 ## What you get
 
+### 1) AI brain
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
@@ -56,7 +57,7 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### 🔀 Router
+### 2) Router
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
@@ -79,7 +80,7 @@ Your Notion guava-hub has four parts:
 
 Any Claude model works as head-chef and any OpenAI model as line-cook. Say "check for newer models" to swap in better ones as they come out.
 
-### 🎤 Rules
+### 3) Rules
 <table>
 <tr>
 <td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>

@@ -2,7 +2,8 @@
 #
 # The head-chef (plans, researches, writes, reviews) runs through Claude Code on the
 # owner's Claude plan, and the line-cook (does the bulk work) through Codex on their
-# ChatGPT plan.
+# ChatGPT plan. An owner with only one of the two plans gets that company's next_best
+# in the other slot, so both slots run on the one plan.
 #
 # To swap in a newer model:
 #   1. Change its name, id and effort below.
@@ -14,7 +15,8 @@
 #   name:   what people see, such as "Claude Opus 5.5"
 #   id:     the model ID the command-line tool takes
 #   effort: thinking effort (low, medium, high, xhigh or max)
-#   next_best: the runner-up for the slot, shown in the READMEs
+#   next_best: the slot's pick from the other company (name, id and effort), used
+#              when the owner pays for only that company's plan
 
 updated: 2026-10-16
 
@@ -22,13 +24,19 @@ head_chef:
   name: Claude Opus 5.5
   id: claude-opus-5-5
   effort: high
-  next_best: GPT-6 Astra
+  next_best:
+    name: GPT-6 Astra
+    id: gpt-6-astra
+    effort: high
 
 line_cook:
   name: GPT-6.1 Sol
   id: gpt-6.1-sol
   effort: high
-  next_best: Claude Sonnet 5.5
+  next_best:
+    name: Claude Sonnet 5.5
+    id: claude-sonnet-5-5
+    effort: high
 
 # What each role does. Shown under the head-chef and line-cook in the READMEs.
 roles:

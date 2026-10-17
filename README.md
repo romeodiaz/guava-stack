@@ -11,7 +11,7 @@ Your business context, rules, skills and AI memories in one place you already ow
 **🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
 
 **🔑 You'll need:**
-- Grok Bot, on a $30 a month xAI or Cursor plan, or Muse Bot, which is free
+- Grok Bot ($30 plan or higher) or Muse Bot, which is free
 - Claude Pro or ChatGPT Plus ($20 plan or higher). Your bot can run both behind the scenes
 - Notion Free
 
@@ -50,7 +50,7 @@ Your Notion guava-hub has four parts:
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/memories.svg" width="96" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
+<td align="center" width="200"><img src="assets/memories.svg" width="120" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
 <td>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
@@ -86,7 +86,7 @@ Your Notion guava-hub has four parts:
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
-- 💳 **Uses the plans you have.** Your Claude and ChatGPT plans do the work, and Muse is free.
+- 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, and Muse is free.
 - 📱 **Everywhere.** Your bot works the same on your desk, laptop and phone.
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.

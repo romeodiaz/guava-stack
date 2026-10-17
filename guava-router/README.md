@@ -2,7 +2,7 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on the plans you already pay for. With Grok Bot, Muse or the Claude desktop app's Code tab, it routes through each model's command-line tool. With just the Claude or ChatGPT app (web, desktop or mobile), it adds instructions so every new chat checks your first request and sends you to the right model with a ready-to-paste prompt. Think of it as a kitchen:
+Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. In the Claude desktop app's Code tab and on Grok Bot, it routes through Claude Code and Codex. Think of it as a kitchen:
 
 <!-- models:kitchen roles=yes assets=../assets -->
 <table>
@@ -19,20 +19,17 @@ Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **
 
 Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 
-<!-- models:table -->
-| You pay for | head-chef | line-cook |
-|---|---|---|
-| **Claude + ChatGPT** (default) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
-| ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
-| Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
-| Google only | Gemini 4 Argon (High) via Antigravity CLI | Gemini 3.8 Flash (High) via Antigravity CLI |
-| Local models on your own hardware (Ollama, LM Studio and others) | *Coming soon* | *Coming soon* |
+<!-- models:commands -->
+| Slot | Model | Tool | Run it |
+|---|---|---|---|
+| head-chef | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 --effort high "<task>" < /dev/null` |
+| line-cook | GPT-6.1 Sol, effort high (`gpt-6.1-sol`) | Codex | `codex exec -m gpt-6.1-sol -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
 <!-- /models -->
 
-*Coming soon:* more agents, such as Grok Build, Cursor, Copilot and OpenCode, through [acpx](https://github.com/openclaw/acpx).
+*Coming soon:* Claude-only and ChatGPT-only plans, local models, and more agents, such as Grok Build, Cursor, Copilot and OpenCode, through [acpx](https://github.com/openclaw/acpx).
 
 - Model picks: [models.yaml](models.yaml) is the one place they're kept. To swap in a newer model, change it there and run `python3 scripts/sync-models.py` from the repo root, which updates every README and skill that shows them. Owners already set up say "check for newer models".
-- Skill: [guava-router](skills/guava-router/SKILL.md), with details for each setup in [setups.md](skills/guava-router/setups.md)
+- Skill: [guava-router](skills/guava-router/SKILL.md)
 - Claude Code: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install guava-router@guava`
 - Update: say "update guava-router", or "update guava-stack" for every piece.
 - Uninstall: say "uninstall guava-router", or "uninstall guava-stack" for every piece.

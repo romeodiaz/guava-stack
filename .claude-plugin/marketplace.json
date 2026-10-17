@@ -5,18 +5,18 @@
     "url": "https://workwithguava.com"
   },
   "metadata": {
-    "description": "The Guava Stack for business owners and solo operators: guava-hub, one shared home for your AI context (Notion or a local folder; Google Drive and OneDrive/SharePoint coming soon), a head-chef + line-cook model router, and founder-mode."
+    "description": "The Guava Stack for business owners and solo operators: guava-hub, one shared home in Notion for your AI context, a head-chef + line-cook model router through Claude Code and Codex, and founder-mode."
   },
   "plugins": [
     {
       "name": "guava-hub",
       "source": "./guava-hub",
-      "description": "For business owners and solo operators. Sets up guava-hub, one shared home for your context, rules and skills in Notion or a local Markdown or Obsidian folder (Google Drive and OneDrive/SharePoint coming soon), so all your AI assistants share them. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules and skills, so Claude Code, Codex, Grok Bot and the Claude and ChatGPT apps share them. Part of the Guava Stack."
     },
     {
       "name": "guava-router",
       "source": "./guava-router",
-      "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model, through their CLIs or right in your Claude and ChatGPT apps, on the plans you already pay for. Works with Claude + ChatGPT, ChatGPT only, Claude only or Google only, and newer models swap in with a one-line change. Part of the Guava Stack."
+      "description": "For business owners and solo operators. Routes thinking work to a head-chef model through Claude Code and doing work to a line-cook model through Codex, on your Claude Pro and ChatGPT Plus plans or higher, and newer models swap in with a one-line change. Part of the Guava Stack."
     },
     {
       "name": "founder-mode",

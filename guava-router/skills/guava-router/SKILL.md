@@ -54,14 +54,12 @@ The bot loads the hub and puts what each job needs into the tool's prompt (the h
 **Backups:** whenever a step says to back up a file, copy it to `<file>.bak-<local date and time>`, such as `settings.json.bak-2026-10-15-2122`. The first time Guava changes a file, also copy it to `<file>.pre-guava`, or create that copy empty if the file doesn't exist yet, and never overwrite it: uninstalling puts the file back from it. Entries the plugin commands wrote before it, such as `enabledPlugins`, can already be in it; the uninstall commands remove those themselves.
 <!-- /guava-block -->
 
-## 4. Never skip the hub (optional)
-Only if the owner wants it. When nobody is at the keyboard, Claude Code skips tools that need approval, so the hub never loads. Fix it:
-- Explain that this changes Claude Code's permission settings, show the exact lines you'll add, and get a yes.
+## 4. Let the tools read the hub
+The bot runs Claude Code and Codex with nobody at the keyboard, and Claude Code then skips any tool that needs approval, so it can't read the hub. Pre-approve Notion's read-only tools, as part of the plan the owner says yes to:
 - Back up `~/.claude/settings.json` first (see **Backups** above).
-- Under `permissions.allow`, add only Notion's read-only tools, with the exact prefix `claude mcp list` shows: `notion-get-enabled-skills`, `notion-fetch`, `notion-search`, `notion-download-skill` (for example `mcp__claude_ai_Notion__notion-fetch`).
-- Do the same for Codex if needed.
-- Never pre-approve write or delete tools.
-- Test it with a non-interactive run and confirm the skills load.
+- Under `permissions.allow`, add only `notion-get-enabled-skills`, `notion-fetch`, `notion-search` and `notion-download-skill`, with the exact prefix `claude mcp list` shows (for example `mcp__claude_ai_Notion__notion-fetch`). Never pre-approve write or delete tools.
+- If Codex's test run in step 3 couldn't read the hub, approve the same four tools for Codex.
+- Test it with a non-interactive run that reads the context page.
 
 ## 5. Model routing
 - **head-chef**: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems. For important work, it also checks the line-cook's result before anything is called done.

@@ -55,7 +55,7 @@ Follow **Build the hub** in [backends/notion.md](backends/notion.md). The hub ho
   ```
   ## guava-stack settings
   ### Rules
-  - founder-mode v2.4.0
+  - founder-mode v2.4.1
   ### guava-router
   head-chef
   - Claude Opus 5.5 (High) via Claude Code
@@ -180,7 +180,7 @@ Only for the Guava plugins the owner has (for "uninstall guava-hub", just guava-
 ### 3. Put the computer back
 Following **Putting files back** above:
 - `~/.codex/config.toml`: delete each `[hooks.state."guava-hub@guava:…"]` table. Codex saves one for each start-up hook the owner approved, and keeps them after the plugin is gone.
-- `~/.claude/settings.json`: take the local copy (`…/.guava-hub`) out of `permissions.additionalDirectories`, and the hub's read-only tools out of `permissions.allow` (from guava-router's **Never skip the hub**). Do the same for any hub approvals added in `~/.codex/config.toml`.
+- `~/.claude/settings.json`: take the local copy (`…/.guava-hub`) out of `permissions.additionalDirectories`, and the hub's read-only tools out of `permissions.allow` (from guava-router's **Let the tools read the hub**). Do the same for any hub approvals added in `~/.codex/config.toml`.
 - Delete `~/.guava-hub`, the local copy of a Notion hub. It's only a copy: the hub stays in Notion. If your safety check won't let you delete it, move it into `~/guava-uninstalled/` instead and list it in the wrap-up.
 - Ask in the plan whether setup step 3 added the hub instruction line where the owner's old context or skills live (such as another AI tool's instructions), and remove it there if so.
 

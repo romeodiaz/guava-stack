@@ -157,7 +157,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** on your bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and, if you want it, the hub's read-only tools from the optional "Never skip the hub" step.
+- **Files edited:** on your bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
 - **Commands run:** only what's missing for your plans, on your bot's computer: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
 - **Files read:** only the instruction, skill or notes files you approve. Never your bot's memories or chats. Each bot can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in your bot's memory (Grok Bot) or SOUL.md (Muse). Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.

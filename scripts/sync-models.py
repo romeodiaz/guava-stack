@@ -41,15 +41,13 @@ def picks(img, slot):
 
 
 def kitchen(args):
-    pre_h = "Plans and reviews.<br>" if args.get("roles") == "yes" else ""
-    pre_l = "Does the work.<br>" if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
     img = args.get("assets", "assets")
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{pre_h}{picks(img, HEAD)}</sub></td>
-<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{pre_l}{picks(img, LINE)}</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>

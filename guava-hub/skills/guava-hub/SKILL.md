@@ -159,7 +159,7 @@ Read the hub and every saved copy of the standing instructions (your memory, sha
 For "update guava-stack", follow the Update step in the **guava-router** skill, then in the **founder-mode** skill, for whichever the owner has. Skip their "get the newest files" step, since step 1 above already did it.
 
 ### 4. Check and wrap up
-In a new session or chat, ask "What's in my guava-hub?" and "Which head-chef and line-cook are in my guava-stack settings?". Both should answer from the hub. Then confirm in a few lines: each plugin's version before and after (from `claude plugin list`, `codex plugin list` or each skill's title), what changed in the hub, and anything left for the owner, such as starting a new session, approving a new Codex hook or replacing an app instruction (the list in the README's **What only you can do**).
+In a new session or chat, ask "What's in my guava-hub?" and "Which head-chef and line-cook are in my guava-stack settings?". Both should answer from the hub. Then confirm in a few lines: each plugin's version before and after (from `claude plugin list`, `codex plugin list` or each skill's title), what changed in the hub, and anything left for the owner, such as starting a new session, approving a new Codex hook or replacing an app instruction (the list in the README's **Some Manual Setup Needed**).
 
 ## Uninstall
 Use this when the owner says **"uninstall guava-stack"** or **"uninstall guava-hub"**. ("uninstall guava-router" and "uninstall founder-mode" have their own Uninstall steps in those skills; "uninstall guava-stack" runs all of them.) It puts every assistant back the way it was before Guava. The hub itself stays as it is: it's the owner's data.

@@ -152,7 +152,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 ```
 
 ## Your data stays yours
-🔒 Guava collects nothing. Your details go only to your own hub, and your AI work only to the AI services you already use. Setup asks before every change.
+🔒 Guava collects nothing.
 
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>

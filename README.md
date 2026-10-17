@@ -92,7 +92,7 @@ Your Notion guava-hub has four parts:
 - 🆓 **Free and open source.** MIT licensed.
 - 🔒 **Private.** Guava never sees your data.
 - 🛡️ **Safe for your AI accounts.** No shared or proxied logins that could get your accounts banned. Each AI runs in its official tool, signed in as you.
-- ✅ **Safe by default.** Shows every change first, never overwrites, and scans outside skills before installing.
+- ✅ **Safe by default.** Shows every change first, never overwrites, and checks outside skills before installing.
 
 ## Start here
 Paste this into Grok Bot or Muse:

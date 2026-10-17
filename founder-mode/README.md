@@ -6,7 +6,6 @@ Part of the [Guava Stack](../README.md). 27 working rules so your AI assistant w
 
 - Skill: [founder-mode](skills/founder-mode/SKILL.md)
 - Version history: [CHANGELOG.md](CHANGELOG.md)
-- Power users, as a Claude Code plugin: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install founder-mode@guava`
 - Update: say "update founder-mode", or "update guava-stack" for every piece.
 - Uninstall: say "uninstall founder-mode", or "uninstall guava-stack" for every piece.
 - Any other assistant: paste "Install founder-mode from github.com/romeodiaz/guava-stack" into your AI assistant.

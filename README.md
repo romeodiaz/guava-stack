@@ -58,7 +58,7 @@ Your Notion guava-hub has four parts:
 ### 2) router
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong></td>
+<td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a></td>
 <td><ins>guava-router</ins><br>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
 </tr>
 </table>
@@ -79,8 +79,8 @@ Your Notion guava-hub has four parts:
 ### 3) rules
 <table>
 <tr>
-<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>
-<td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a></td>
+<td><ins>founder-mode</ins><br>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
 

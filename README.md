@@ -78,8 +78,6 @@ Your Notion guava-hub has four parts:
 </table>
 <!-- /models -->
 
-Any Claude model works as head-chef and any OpenAI model as line-cook. Say "check for newer models" to swap in better ones as they come out.
-
 ### 3) Rules
 <table>
 <tr>

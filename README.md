@@ -145,7 +145,7 @@ Setup walks you through each of these, since your bot can't do them for you. If 
 Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models. 📜 [Changelog](founder-mode/CHANGELOG.md)
 
 ## How to uninstall
-Say **"uninstall guava-stack"** to take every piece off and put each assistant back the way it was. For one piece, say **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"**. It shows the plan first, removes only what Guava added (using the `.pre-guava` copies setup keeps), and leaves your hub's pages and files alone, since they're yours. If your assistant doesn't know the command, paste this:
+Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Grok Bot or Muse Bot. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your bot doesn't know the command, paste this:
 
 ```
 Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/guava-stack.

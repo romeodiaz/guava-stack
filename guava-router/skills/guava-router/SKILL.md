@@ -60,7 +60,7 @@ Only if the owner wants it. When nobody is at the keyboard, Claude Code skips to
 - **If either fails**: do the task yourself and say so.
 - **If you are the head-chef or the line-cook** (say, Claude Code on the head-chef's model), do that slot's work yourself and send only the other slot's work out.
 - **Code tab with the Codex plugin:** hand line-cook jobs to the `codex:codex-rescue` subagent with the line-cook's model and effort from guava-stack settings (the owner can also type `/codex:rescue --model <line-cook model ID> --effort <its effort> ...`). Run long jobs in the background and check them with `/codex:status` and `/codex:result`. For a second opinion on important work, use `/codex:adversarial-review`.
-- **Grok Bot:** runs Claude Code and Codex on its own computer and hands each job to the CLI its slot names.
+- **Grok Bot and Muse:** run Claude Code and Codex on their own computers and hand each job to the CLI its slot names.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
 Save these routing rules as a standing instruction if hub setup hasn't already, pointing at the head-chef and line-cook in guava-stack settings instead of naming models, so the owner can swap a model by editing guava-stack settings. On Grok Bot, save them to shared user memory too, so every current and future bot follows them.
@@ -95,6 +95,7 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Grok Bot:** `npx skills update -g -y`.
+- **Muse:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models".
 3. **Check the routing still runs:** both tools are installed and signed in (step 2 of setup, checking first), and in the Code tab the Codex plugin is installed and `/codex:setup` reports ready with the review gate off.
@@ -113,12 +114,13 @@ Only for the Guava plugins the owner has (for "uninstall guava-router", just gua
 - **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
 - **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
+- **Muse:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. **Put the computer back**, following **Putting files back** above:
    - `~/.claude/settings.json`: `remoteControlAtStartup` and `model`, which is also the Code tab's model setting. Say which model new sessions will use instead. The hub's read-only tools under `permissions.allow` stay while the hub does: guava-hub's Uninstall step removes them.
    - `~/.codex/config.toml`: `model`, saying which model new chats will use instead.
    - The Codex plugin for Claude Code, if router setup installed it: `claude plugin list` shows `codex@openai-codex` and `~/.claude/settings.json.pre-guava` doesn't list it under `enabledPlugins` (if there's no such copy, ask): `claude plugin uninstall codex@openai-codex`, then `claude plugin marketplace remove openai-codex`, then delete `~/.claude/plugins/cache/openai-codex` if it's still there.
-3. **Take routing out of Grok Bot:** delete the routing memories, shared user memory included. Show the exact text to delete and wait for done.
+3. **Take routing out of Grok Bot and Muse:** on Grok Bot, delete the routing memories, shared user memory included; on Muse, delete the routing line at the end of SOUL.md. Show the exact text to delete and wait for done.
 4. **Turn routing off in the hub** (skip this when uninstalling the whole stack, since the hub then stays as it is): in guava-stack settings, remove the guava-router heading, with the head-chef and line-cook lines, their model lines and sub-bullets and, in Notion, its images. With no head-chef or line-cook named, the guava-hub start-up hook and the standing instructions do the work in one place, with no hand-offs. Add a dated line to the hub's changelog page.
 5. **Offer the rest as their own numbered items**, left out of a plain yes, since they're the owner's own tools and other work may use them: the Notion MCP servers router setup added (`claude mcp remove notion -s user`, `codex mcp remove notion`), and the CLIs it installed, with their sign-ins (`codex logout` and `npm rm -g @openai/codex`; `claude auth logout` and `npm rm -g @anthropic-ai/claude-code`). Never remove the tool this is running in.
 6. **Check and wrap up:** `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show guava-router (or the Codex plugin, if it was removed), and nothing from step 2 is left in those files. With the hub kept (not for the whole stack), run `claude -p --permission-mode plan "Which head-chef and line-cook are in my guava-stack settings?" < /dev/null`: it should find none. Confirm in two or three lines what was removed and what stayed, with the backups' paths.

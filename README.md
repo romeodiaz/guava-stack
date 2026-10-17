@@ -13,7 +13,7 @@ Your business context, rules and skills in one place you already own. Every AI a
 **🔑 You'll need:**
 - Claude Pro and ChatGPT Plus ($20 a month each) or higher
 - Notion Free\*
-- Optional: Grok Bot, on a $30 a month xAI or Cursor plan
+- Optional: Grok Bot, on a $30 a month xAI or Cursor plan, or Meta's Muse Bot, which is free
 
 <sub>\* Notion's free plan is all you need.</sub>
 
@@ -45,7 +45,7 @@ Your hub has three parts:
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
-- 💳 **Nothing new to buy.** Claude, ChatGPT and Notion, on the plans you already have.
+- 💳 **Nothing new to buy.** Claude, ChatGPT and Notion, plus Grok Bot or Muse if you like, on the plans you already have.
 - 📱 **Everywhere.** The same context and rules on your desk, laptop and phone.
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.
@@ -54,7 +54,7 @@ Your hub has three parts:
 - ✅ **Safe by default.** Shows every change first, never overwrites, and scans outside skills before installing.
 
 ## Start here
-Paste this into a Local session in the Claude desktop app's Code tab (or into Grok Bot):
+Paste this into a Local session in the Claude desktop app's Code tab (or into Grok Bot or Muse):
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
@@ -62,7 +62,7 @@ Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
 
 It asks a few questions, explains each step, and checks that everything works. Unsure? Say "use the defaults".
 
-Each assistant follows its own guide: [Claude](assistants/claude.md) · [ChatGPT and Codex](assistants/chatgpt.md) · [Grok Bot](assistants/grok.md).
+Each assistant follows its own guide: [Claude](assistants/claude.md) · [ChatGPT and Codex](assistants/chatgpt.md) · [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, tell the owner Guava doesn't support that assistant yet. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
 
@@ -95,7 +95,7 @@ Setup and updates handle everything on your computer. These live in your app acc
 - **Claude app:** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.` Replace any older Guava line there, such as one naming an "AI Context Hub".
 - **ChatGPT:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
 - **Codex:** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
-- **Grok Bot:** say "update guava-stack" in the bot itself, since only it can change its own memory.
+- **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
 - **Notion:** the skills database icon (hover its title, Add icon, Link).
 
 ## Make it yours
@@ -104,12 +104,12 @@ Your choices live in a short **guava-stack settings** section in your hub. Edit 
 **💬 Who you talk to**
 
 - **Claude desktop app, Code tab** (Local sessions): where you work. Claude plans and hands work to Codex itself. No terminal needed, and Remote Control opens your sessions from the Claude phone app.
-- **Grok Bot** (optional): a cloud assistant that hands each job to the right AI when you're away from your computer.
+- **Grok Bot or Muse** (optional): cloud assistants that hand each job to the right AI when you're away from your computer. Muse is free.
 - **Claude and ChatGPT apps** (web, desktop, phone): read the same hub, on whatever model you pick.
 
 On your computer, your assistant keeps a copy of your hub, so it starts instantly. Everywhere else, it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
 
-*Coming soon:* Google Drive and OneDrive hubs, Claude-only and ChatGPT-only plans, Meta's Muse Bot (free), local models, and more agents through [acpx](https://github.com/openclaw/acpx).
+*Coming soon:* Google Drive and OneDrive hubs, Claude-only and ChatGPT-only plans, local models, and more agents through [acpx](https://github.com/openclaw/acpx).
 
 **👩‍🍳 head-chef and line-cook**
 

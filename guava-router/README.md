@@ -2,7 +2,7 @@
 
 # guava-router: Model Router
 
-Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. In the Claude desktop app's Code tab and on Grok Bot, it routes through Claude Code and Codex. Think of it as a kitchen:
+Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. In the Claude desktop app's Code tab and on Grok Bot or Muse, it routes through Claude Code and Codex. Think of it as a kitchen:
 
 <!-- models:kitchen roles=yes assets=../assets -->
 <table>

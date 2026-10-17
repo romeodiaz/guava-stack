@@ -18,28 +18,69 @@ Your business context, rules and skills in one place you already own. Every AI a
 <sub>\* Notion's free plan is all you need.</sub>
 
 ## What you get
-Start with the hub. The other two are optional.
 
+### 🧠 AI brain
 <table>
 <tr>
-<td align="center" width="33%"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub</sub></td>
-<td align="center" width="33%"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router (optional)</sub></td>
-<td align="center" width="33%"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode (optional)</sub></td>
-</tr>
-<tr>
-<td>One home for your context, rules and skills. Every assistant you connect reads it.</td>
-<td>Sends each job to the best AI model on the plans you already pay for.</td>
-<td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+<td align="center" width="160"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
+<td>One home in your own Notion workspace for your context, rules and skills. Every assistant you connect reads it, and your computer keeps a copy so sessions start instantly.</td>
 </tr>
 </table>
 
-Your hub has three parts:
+Your Notion guava-hub has three parts:
 
+### context
 <table>
 <tr>
-<td align="center" width="33%"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are, your business, your tools</sub></td>
-<td align="center" width="33%"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI should work for you</sub></td>
-<td align="center" width="33%"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>Step-by-step instructions your AI reuses</sub></td>
+<td align="center" width="160"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
+<td>Your guava-stack settings come first: the rules you've turned on, and your head-chef and line-cook. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
+</tr>
+</table>
+
+### rules
+<table>
+<tr>
+<td align="center" width="160"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
+<td>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
+</tr>
+</table>
+
+### skills
+<table>
+<tr>
+<td align="center" width="160"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
+<td>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
+</tr>
+</table>
+
+### 🔀 Router
+<table>
+<tr>
+<td align="center" width="160"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
+<td>Sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
+</tr>
+</table>
+
+<!-- models:kitchen -->
+<table>
+<tr>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
+</tr>
+<tr>
+<td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
+<td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
+</tr>
+</table>
+<!-- /models -->
+
+Any Claude model works as head-chef and any OpenAI model as line-cook. Say "check for newer models" to swap in better ones as they come out.
+
+### 🎤 Rules
+<table>
+<tr>
+<td align="center" width="160"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>
+<td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
 
@@ -110,25 +151,6 @@ Your choices live in a short **guava-stack settings** section in your hub. Edit 
 On your computer, your assistant keeps a copy of your hub, so it starts instantly. Everywhere else, it reads the same hub straight from Notion, so a chat's first reply takes a few seconds longer.
 
 *Coming soon:* Google Drive and OneDrive hubs, Claude-only and ChatGPT-only plans, local models, and more agents through [acpx](https://github.com/openclaw/acpx).
-
-**👩‍🍳 head-chef and line-cook**
-
-Split the work like a kitchen.
-
-<!-- models:kitchen -->
-<table>
-<tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
-</tr>
-<tr>
-<td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
-<td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
-</tr>
-</table>
-<!-- /models -->
-
-Any Claude model works as head-chef and any OpenAI model as line-cook. Say "check for newer models" to swap in better ones as they come out.
 
 ## How to update
 Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)

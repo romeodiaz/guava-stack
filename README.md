@@ -171,14 +171,6 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 🤖 **[assistants/](assistants/)**: what Grok Bot and Muse each skip or change.
-- 🛠️ **Know agent files?**
-  - context ≈ USER.md + TOOLS.md.
-  - rules ≈ the rules in AGENTS.md or CLAUDE.md, shared by every assistant.
-  - skills = the `skills/` folder.
-  - Setup does BOOTSTRAP.md's job, once.
-  - MEMORY.md ≈ Notion Memory: what assistants learn goes there, outside the hub.
-  - It's looked up when a task needs it.
-  - No SOUL.md, IDENTITY.md or HEARTBEAT.md: each bot keeps its own persona and check-ins.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

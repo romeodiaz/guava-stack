@@ -125,7 +125,19 @@ Install guava-router from github.com/romeodiaz/guava-stack
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-As plugins, in Claude Code: `claude plugin marketplace add romeodiaz/guava-stack`, then `/plugin install <name>@guava`. In Codex: `codex plugin marketplace add romeodiaz/guava-stack`, then `codex plugin add <name>@guava`.
+As plugins, in Claude Code:
+
+```
+claude plugin marketplace add romeodiaz/guava-stack
+/plugin install <name>@guava
+```
+
+In Codex:
+
+```
+codex plugin marketplace add romeodiaz/guava-stack
+codex plugin add <name>@guava
+```
 
 On Grok Bot: `npx skills add romeodiaz/guava-stack -g -y`, or add `--skill <name>` for one piece.
 

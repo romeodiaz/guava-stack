@@ -127,7 +127,7 @@ On Grok Bot:
 npx skills add romeodiaz/guava-stack -g -y
 ```
 
-For one piece, add `--skill <name>`.
+For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
 
 **▶️ Try it:**
 1. "Set me up."
@@ -142,7 +142,7 @@ Setup walks you through each of these, since your bot can't do them for you. If 
 - **Updates:** say "update guava-stack" in each bot you use, since only it can change its own memory.
 
 ## How to update
-Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models. 📜 [Changelog](founder-mode/CHANGELOG.md)
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models.
 
 ## How to uninstall
 Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Grok Bot or Muse Bot. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your bot doesn't know the command, paste this:
@@ -158,7 +158,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** on your bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
-- **Commands run:** only what's missing for your plans, on your bot's computer: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
+- **Commands run:** `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
 - **Files read:** only the instruction, skill or notes files you approve. Never your bot's memories or chats. Each bot can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in your bot's memory (Grok Bot) or SOUL.md (Muse). Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.

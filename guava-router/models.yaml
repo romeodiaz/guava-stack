@@ -14,6 +14,7 @@
 #   name:   what people see, such as "Claude Opus 5.5"
 #   id:     the model ID the command-line tool takes
 #   effort: thinking effort (low, medium, high, xhigh or max)
+#   next_best: the runner-up for the slot, shown in the READMEs
 
 updated: 2026-10-16
 
@@ -21,11 +22,13 @@ head_chef:
   name: Claude Opus 5.5
   id: claude-opus-5-5
   effort: high
+  next_best: GPT-6 Astra
 
 line_cook:
   name: GPT-6.1 Sol
   id: gpt-6.1-sol
   effort: high
+  next_best: Claude Sonnet 5.5
 
 # What each role does. Shown under the head-chef and line-cook in the READMEs.
 roles:

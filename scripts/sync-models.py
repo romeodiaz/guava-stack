@@ -29,16 +29,25 @@ def detailed(slot, tool):
     return f"{slot['name']} ({effort(slot)}) via {tool}"
 
 
+def logo(img, name):
+    if name.startswith("Claude"):
+        return f'<img src="{img}/claude.svg" width="20" alt="Claude logo">'
+    return f'<img src="{img}/chatgpt.svg" width="20" alt="ChatGPT logo">'
+
+
+def picks(img, slot):
+    return (f"Today's best: {slot['name']} {logo(img, slot['name'])}<br>"
+            f"Next best: {slot['next_best']} {logo(img, slot['next_best'])}")
+
+
 def kitchen(args):
-    pre_h = "Plans and reviews. " if args.get("roles") == "yes" else ""
-    pre_l = "Does the work. " if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
     img = args.get("assets", "assets")
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"> <img src="{img}/claude.svg" width="48" alt="Claude logo"><br><strong>head-chef</strong><br><sub>{pre_h}Today's best: {HEAD['name']}</sub></td>
-<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"> <img src="{img}/chatgpt.svg" width="48" alt="ChatGPT logo"><br><strong>line-cook</strong><br><sub>{pre_l}Today's best: {LINE['name']}</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>

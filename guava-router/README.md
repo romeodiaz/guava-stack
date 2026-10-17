@@ -4,11 +4,11 @@
 
 Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **head-chef** model and heavy lifting to a **line-cook** model, on your Claude Pro and ChatGPT Plus plans or higher. Grok Bot or Muse routes each job through Claude Code and Codex on its own computer. Think of it as a kitchen:
 
-<!-- models:kitchen roles=yes assets=../assets -->
+<!-- models:kitchen assets=../assets -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="../assets/head-chef.png" width="120" alt="Pixel-art head chef"> <img src="../assets/claude.svg" width="48" alt="Claude logo"><br><strong>head-chef</strong><br><sub>Plans and reviews. Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="../assets/line-cook.png" width="120" alt="Pixel-art line cook"> <img src="../assets/chatgpt.svg" width="48" alt="ChatGPT logo"><br><strong>line-cook</strong><br><sub>Does the work. Today's best: GPT-6.1 Sol</sub></td>
+<td align="center" width="50%"><img src="../assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
+<td align="center" width="50%"><img src="../assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"></sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>

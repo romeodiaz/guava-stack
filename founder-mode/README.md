@@ -2,7 +2,7 @@
 
 # founder-mode
 
-Part of the [Guava Stack](../README.md). 16 working rules so your AI assistant works like humans do: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. The rules are saved to the rules page in your guava-hub.
+Part of the [Guava Stack](../README.md). 16 commandments so your AI assistant works like humans do: it handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. The rules are saved to the rules page in your guava-hub.
 
 - Skill: [founder-mode](skills/founder-mode/SKILL.md)
 - Version history: [CHANGELOG.md](CHANGELOG.md)

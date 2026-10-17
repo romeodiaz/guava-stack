@@ -4,7 +4,13 @@
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
-Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device. No code needed: paste one line into your bot and it sets it up.
+Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device.
+
+No coding needed: paste the following and your bot sets it up:
+
+```
+Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
+```
 
 **🔑 You'll need:**
 - Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">

@@ -19,7 +19,6 @@ Your business context, rules, skills and AI memories in one place you already ow
 
 ## What you get
 
-### 🧠 AI brain
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
@@ -29,7 +28,6 @@ Your business context, rules, skills and AI memories in one place you already ow
 
 Your Notion guava-hub has four parts:
 
-### context
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
@@ -37,7 +35,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### rules
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
@@ -45,7 +42,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### skills
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
@@ -53,7 +49,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### memories
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/memories.svg" width="96" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>

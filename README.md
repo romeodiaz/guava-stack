@@ -6,7 +6,7 @@
 
 **Free, open source, and yours to keep.**
 
-Your business context, rules and skills in one place you already own. Every AI assistant reads from it, on every device. No code needed: paste one line and your assistant sets it up.
+Your business context, rules, skills and AI memories in one place you already own. Every AI assistant reads from it, on every device. No code needed: paste one line and your assistant sets it up.
 
 **🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
 

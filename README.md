@@ -138,7 +138,7 @@ For one piece, add `--skill <name>`.
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your bot can't do them for you. If your bot seems to ignore your hub, check these first:
 - **Sign-ins:** you approve Notion, Claude and ChatGPT in your browser when your bot asks, and paste any code straight back into the bot.
-- **Muse:** the guava lines at the end of SOUL.md (the bot's avatar, then the Fingerprint tab).
+- **Muse:** the guava lines at the end of SOUL.md (click the bot's avatar, then the Fingerprint tab).
 - **Updates:** say "update guava-stack" in each bot you use, since only it can change its own memory.
 
 ## How to update

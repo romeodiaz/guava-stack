@@ -159,7 +159,6 @@ Setup and updates handle everything on your computer. These live in your app acc
 - **ChatGPT:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
 - **Codex:** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
 - **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
-- **Notion:** the skills database icon (hover its title, Add icon, Link).
 
 ## Make it yours
 Your choices live in a short **guava-stack settings** section in your hub. Edit anything in your hub, from a model to a rule, and every assistant picks it up within 15 minutes, even in a chat that's already open. Typos get caught with a suggested fix. For bigger changes, say "change my setup".

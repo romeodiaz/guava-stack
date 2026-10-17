@@ -8,8 +8,6 @@
 
 Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device. No code needed: paste one line into your bot and it sets it up.
 
-**🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
-
 **🔑 You'll need:**
 - Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">
 - Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher)<br>Your bot can run both behind the scenes

@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates, uninstalls or shows founder-mode, the owner's 27 working rules for their AI assistant, saved to the rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v2.2.0
+# founder-mode v2.3.0
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
@@ -11,7 +11,7 @@ Your AI assistant works like humans do: it handles the safe work on its own, che
 1. Use this file as installed. The version number is in its title. When the owner says "update founder-mode", first get the newest copy of this file (skip this when the guava-hub Update step already did it), then use the new copy for the steps below: read it from where it was installed, or start a new session or chat and say "update founder-mode" again.
 <!-- update-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "update founder-mode", just founder-mode):
-- **Claude Code or the Claude desktop app's Code tab:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
+- **Claude Code:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Grok Bot:** `npx skills update -g -y`.
 - **Muse:** no skill files, so nothing to download.
@@ -27,7 +27,7 @@ Use this when the owner says "uninstall founder-mode", or when the guava-hub ski
 1. Remove the plugin (skip this when the guava-hub Uninstall step already did it):
 <!-- uninstall-steps: keep this list the same in the guava-hub, guava-router and founder-mode skills -->
 Only for the Guava plugins the owner has (for "uninstall founder-mode", just founder-mode; for "uninstall guava-stack", every one installed):
-- **Claude Code or the Claude desktop app's Code tab:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
+- **Claude Code:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
 - **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse:** no skill files, so nothing to delete.

@@ -1,7 +1,7 @@
 {
   "name": "guava-hub",
-  "version": "1.8.1",
-  "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules, skills and memories, so Claude Code, Codex, Grok Bot, Muse and the Claude and ChatGPT apps share them. Part of the Guava Stack.",
+  "version": "1.9.0",
+  "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules, skills and memories, so Grok Bot or Muse, and every assistant you connect, share them. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",
     "url": "https://workwithguava.com"

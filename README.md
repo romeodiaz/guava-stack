@@ -98,8 +98,21 @@ Any Claude model works as head-chef and any OpenAI model as line-cook. Say "chec
 - 🛡️ **Safe for your AI accounts.** No shared or proxied logins that could get your accounts banned. Each AI runs in its official app, signed in as you.
 - ✅ **Safe by default.** Shows every change first, never overwrites, and scans outside skills before installing.
 
+## Where it works
+Work in the Local ones. The Chat tabs read your hub but don't route.
+
+| Where | What it does |
+|---|---|
+| **Claude Desktop Code tab (Local)** | Where you work: setup, updates and routing. Claude plans and hands work to Codex |
+| **Claude Desktop Code tab (Local Remote Control to Mobile)** | The same Local sessions, opened from the Claude phone app while your computer is on |
+| **ChatGPT Desktop Codex (Local)** | The line-cook. Loads your hub and sends head-chef work back to Claude |
+| **Claude Web Chat tab (Cloud)** and **Claude Desktop Chat tab (Cloud)** | Read your hub through Notion. No routing |
+| **ChatGPT Web Chat (Cloud)** and **ChatGPT Desktop Chat (Cloud)** | Read your hub through Notion. No routing |
+| **Claude Web Code tab (Cloud)**, **Claude Web Code tab (Cloud Remote Control to Mobile)** and **Claude Desktop Code tab (Cloud)** | Not supported: cloud sessions don't load the plugins, Codex or your sign-ins |
+| **ChatGPT Web Codex (Cloud)** | Not supported, for the same reason |
+
 ## Start here
-Paste this into a Local session in the Claude desktop app's Code tab (or into Grok Bot or Muse):
+Paste this into a new session in **Claude Desktop Code tab (Local)** (or into Grok Bot or Muse):
 
 ```
 Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
@@ -125,14 +138,14 @@ Install guava-router from github.com/romeodiaz/guava-stack
 Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
-As plugins, in Claude Code:
+As plugins, in **Claude Desktop Code tab (Local)**:
 
 ```
 claude plugin marketplace add romeodiaz/guava-stack
 /plugin install <name>@guava
 ```
 
-In Codex:
+In **ChatGPT Desktop Codex (Local)**:
 
 ```
 codex plugin marketplace add romeodiaz/guava-stack
@@ -155,13 +168,13 @@ For one piece, add `--skill <name>`.
 
 ## Some Manual Setup Needed
 Setup and updates handle everything on your computer. These live in your app accounts, where no assistant can reach, so setup walks you through each one and every update ends by listing any that changed. If an assistant seems to ignore your hub, check these first:
-- **Claude app:** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.`
-- **ChatGPT.com:** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box.
-- **ChatGPT desktop app:** in Codex, approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
+- **Claude Web Chat tab (Cloud):** Notion turned on under [Connectors](https://claude.ai/customize/connectors), and Settings → Account → Instructions for Claude holds `Load my guava-hub in Notion first.` These apply to every Claude app.
+- **ChatGPT Web Chat (Cloud):** Notion connected under [Plugins](https://chatgpt.com/plugins), and the same line in [Custom Instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT box and the Codex box. These apply to every ChatGPT app.
+- **ChatGPT Desktop Codex (Local):** approve guava-hub's hooks in the small yellow notice under the message box, and again when an update adds one.
 - **Grok Bot and Muse:** say "update guava-stack" in the bot itself, since only it can change its own memory.
 
 ## How to update
-Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. In the Claude desktop app, use a Local Code tab session. 📜 [Changelog](founder-mode/CHANGELOG.md)
+Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. Run it in **Claude Desktop Code tab (Local)**. 📜 [Changelog](founder-mode/CHANGELOG.md)
 
 ## How to uninstall
 Say **"uninstall guava-stack"** to take every piece off and put each assistant back the way it was. For one piece, say **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"**. It shows the plan first, removes only what Guava added (using the `.pre-guava` copies setup keeps), and leaves your hub's pages and files alone, since they're yours. If your assistant doesn't know the command, paste this:
@@ -177,7 +190,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** `~/.claude/settings.json` and `~/.codex/config.toml`, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only the hub's local copy in `~/.guava-hub`, each tool's model and, if you want it, Remote Control; the optional "Never skip the hub" step adds only the hub's read-only tools.
-- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Code and Codex session. It changes nothing. A fourth hook asks the session to save what it learned to Notion Memory at the end of long work. Codex asks you once to approve them, named "guava-stack: hub instructions", "hub context", "hub rules" and "save to memory". In the ChatGPT desktop app that's a small yellow notice with a hook icon in the bar under the message box, easy to miss, so click it and approve them all.
+- **Start-up hook:** the guava-hub plugin adds a short "load my hub" note to each new Claude Desktop Code tab (Local) and ChatGPT Desktop Codex (Local) session. It changes nothing. A fourth hook asks the session to save what it learned to Notion Memory at the end of long work. Codex asks you once to approve them, named "guava-stack: hub instructions", "hub context", "hub rules" and "save to memory". In ChatGPT Desktop Codex (Local) that's a small yellow notice with a hook icon in the bar under the message box, easy to miss, so click it and approve them all.
 - **Commands run:** only what's missing: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, the [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc), and a quick test prompt in each.
 - **Files read:** only the instruction, skill or notes files you approve. Never your Claude or ChatGPT memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in your assistant's memory or app instructions. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
@@ -188,7 +201,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 
 ## What's inside
 - 🧠 **[guava-hub](guava-hub/)**: hub setup, with the [Notion steps](guava-hub/skills/guava-hub/backends/notion.md).
-- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex.
+- 🔀 **[guava-router](guava-router/)**: model routing through Claude Desktop Code tab (Local) and ChatGPT Desktop Codex (Local).
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 🤖 **[assistants/](assistants/)**: what each assistant skips or changes.
 - 🛠️ **Know agent files?**

@@ -1,6 +1,6 @@
 # Meta Muse Bot adapter
 
-- Optional and free. A second interface for when the owner is away from their computer, like Grok Bot.
+- Free. Where the owner works, like Grok Bot: they drive everything from here, on any device.
 - **Connect your hub:** tell Muse "Connect my Notion" and approve access to your guava-hub. Start with just the hub, not your whole workspace.
 - Muse doesn't let you upload your own skills, so don't install them as files. Keep the skills in the hub and have Muse read the matching one from there when a task needs it.
 - **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. The routing line reads the models from guava-stack settings, so swapping one there needs no change here:

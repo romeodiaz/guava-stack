@@ -179,7 +179,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
   - Setup does BOOTSTRAP.md's job, once.
   - MEMORY.md ≈ Notion Memory: what assistants learn goes there, outside the hub.
   - Its short About page loads at start-up, and the rest is looked up when a task needs it.
-  - No SOUL.md, IDENTITY.md or HEARTBEAT.md: each assistant keeps its own persona and check-ins.
+  - No SOUL.md, IDENTITY.md or HEARTBEAT.md: each bot keeps its own persona and check-ins.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

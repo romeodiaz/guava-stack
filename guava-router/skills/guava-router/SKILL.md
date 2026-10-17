@@ -69,9 +69,19 @@ The bot runs Claude Code and Codex with nobody at the keyboard, and Claude Code 
 - **If either fails**: do the task yourself and say so.
 - **If you are the head-chef or the line-cook** (say, Claude Code on the head-chef's model), do that slot's work yourself and send only the other slot's work out. On one plan, the other slot's work goes to the same tool on the other slot's model.
 - **Grok Bot and Muse:** run Claude Code, Codex or both on their own computers and hand each job to the CLI its slot names.
+- **Long jobs on Grok Bot**: any hand-off that may take more than a few minutes runs in the background, as **Long jobs** below says.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
 Save these routing rules as a standing instruction if hub setup hasn't already, pointing at the head-chef and line-cook in guava-stack settings instead of naming models, so the owner can swap a model by editing guava-stack settings. On Grok Bot, save them to shared user memory too, so every current and future bot follows them.
+
+### Long jobs
+On Grok Bot, one command can wait at most 13 minutes, and the computer pauses between the bot's turns, so a CLI still running when the turn ends stops until the next one. For any hand-off that may take more than a few minutes:
+1. **Start it in the background**, with its answer and log under `/workspace/guava-runs/` (`/workspace` survives a computer recovery). Pick a short job name, and for Claude Code a new session ID (`cat /proc/sys/kernel/random/uuid`):
+   - Codex: `mkdir -p /workspace/guava-runs && nohup codex exec -m <id> -c model_reasoning_effort=<effort> --skip-git-repo-check -o /workspace/guava-runs/<job>.md "<task>" < /dev/null > /workspace/guava-runs/<job>.log 2>&1 &`
+   - Claude Code: `mkdir -p /workspace/guava-runs && nohup claude -p --model <id> --effort <effort> --session-id <uuid> "<task>" < /dev/null > /workspace/guava-runs/<job>.md 2> /workspace/guava-runs/<job>.log &`
+2. **Stay in your turn until it finishes.** Check every few minutes with short commands, such as `sleep 240; tail -n 20 /workspace/guava-runs/<job>.log`, each well under the command limit. Tell the owner it's still running, but never end your turn while a job runs.
+3. **If it stopped without an answer, resume it instead of starting over**, in the background the same way: Codex `codex exec resume <session id> -o /workspace/guava-runs/<job>.md "Continue where you left off." < /dev/null`, with the session ID from the top of `<job>.log`; Claude Code `claude -p --resume <uuid> "Continue where you left off." < /dev/null`. If it fails again, do the task yourself and say so.
+4. **Split big jobs.** The head-chef breaks work that could run for hours into steps the line-cook can finish one at a time, and checks each before the next starts.
 
 ## 6. Stay inside each provider's terms
 For Claude Code on a Claude plan:

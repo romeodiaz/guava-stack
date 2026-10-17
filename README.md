@@ -29,8 +29,8 @@ Your Notion guava-hub has four parts:
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
-<td>Your guava-stack settings come first: the rules you've turned on, and your head-chef and line-cook. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
+<td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"> <img src="assets/model-router.png" width="80" alt="Pixel-art router"><br><strong>context</strong><br><sub>Your settings and who you are</sub></td>
+<td>Starts with your guava-stack settings, where guava-router lives: your head-chef and line-cook models, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 

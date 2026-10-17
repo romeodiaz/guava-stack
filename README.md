@@ -142,7 +142,7 @@ Setup walks you through each of these, since your bot can't do them for you. If 
 - **Updates:** say "update guava-stack" in each bot you use, since only it can change its own memory.
 
 ## How to update
-Say **"update guava-stack"**. It updates every piece and your hub, offers newer models, and shows the plan first. For one piece, say **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"**. Say it in Grok Bot or Muse. 📜 [Changelog](founder-mode/CHANGELOG.md)
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models. 📜 [Changelog](founder-mode/CHANGELOG.md)
 
 ## How to uninstall
 Say **"uninstall guava-stack"** to take every piece off and put each assistant back the way it was. For one piece, say **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"**. It shows the plan first, removes only what Guava added (using the `.pre-guava` copies setup keeps), and leaves your hub's pages and files alone, since they're yours. If your assistant doesn't know the command, paste this:

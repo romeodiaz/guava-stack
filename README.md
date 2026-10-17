@@ -4,11 +4,13 @@
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
-**Free, open source, and yours to keep.**
+Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device.
 
-Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device. No code needed: paste one line into your bot and it sets it up.
+No coding needed: paste the following and your bot sets it up:
 
-**🧭 Opinionated defaults.** guava-stack is one setup, tested end to end on the way Guava works every day. It's all plain Markdown skills, so you can still hack it to fit anyone.
+```
+Follow the Start here steps in github.com/romeodiaz/guava-stack
+```
 
 **🔑 You'll need:**
 - Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">
@@ -98,7 +100,7 @@ Your Notion guava-hub has four parts:
 Paste this into Grok Bot or Muse:
 
 ```
-Set me up by following the Start here steps in github.com/romeodiaz/guava-stack.
+Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 It asks a few questions, explains each step, and checks that everything works. Unsure? Say "use the defaults".

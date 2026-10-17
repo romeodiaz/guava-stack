@@ -41,8 +41,8 @@ def picks(img, slot):
 
 
 def kitchen(args):
-    pre_h = "Plans and reviews. " if args.get("roles") == "yes" else ""
-    pre_l = "Does the work. " if args.get("roles") == "yes" else ""
+    pre_h = "Plans and reviews.<br>" if args.get("roles") == "yes" else ""
+    pre_l = "Does the work.<br>" if args.get("roles") == "yes" else ""
     cap = lambda t: t[0].upper() + t[1:] + "."
     img = args.get("assets", "assets")
     return f"""

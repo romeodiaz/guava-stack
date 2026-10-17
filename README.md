@@ -139,7 +139,13 @@ codex plugin marketplace add romeodiaz/guava-stack
 codex plugin add <name>@guava
 ```
 
-On Grok Bot: `npx skills add romeodiaz/guava-stack -g -y`, or add `--skill <name>` for one piece.
+On Grok Bot:
+
+```
+npx skills add romeodiaz/guava-stack -g -y
+```
+
+For one piece, add `--skill <name>`.
 
 **▶️ Try it:**
 1. "Set me up."

@@ -22,17 +22,17 @@ Your business context, rules and skills in one place you already own. Every AI a
 ### 🧠 AI brain
 <table>
 <tr>
-<td align="center" width="160"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
-<td>One home in your own Notion workspace for your context, rules and skills. Every assistant you connect reads it, and your computer keeps a copy so sessions start instantly.</td>
+<td align="center" width="200"><a href="guava-hub/"><img src="assets/brain-hub.png" width="120" alt="Pixel-art brain"></a> <img src="assets/notion.svg" width="40" alt="Notion logo"><br><strong>AI brain</strong><br><sub>guava-hub (Notion)</sub></td>
+<td>One home in your own Notion workspace for your context, rules, skills and memories. Every assistant you connect reads it and remembers into it, and your computer keeps a copy so sessions start instantly.</td>
 </tr>
 </table>
 
-Your Notion guava-hub has three parts:
+Your Notion guava-hub has four parts:
 
 ### context
 <table>
 <tr>
-<td align="center" width="160"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
+<td align="center" width="200"><img src="assets/logo.png" width="120" alt="Guava logo"><br><strong>context</strong><br><sub>Who you are</sub></td>
 <td>Your guava-stack settings come first: the rules you've turned on, and your head-chef and line-cook. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
@@ -40,7 +40,7 @@ Your Notion guava-hub has three parts:
 ### rules
 <table>
 <tr>
-<td align="center" width="160"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
+<td align="center" width="200"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong><br><sub>How your AI works for you</sub></td>
 <td>Your own rules, plus any rules skill you turn on, such as founder-mode. Each set is saved word for word in its own section, and every assistant follows them.</td>
 </tr>
 </table>
@@ -48,15 +48,23 @@ Your Notion guava-hub has three parts:
 ### skills
 <table>
 <tr>
-<td align="center" width="160"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
+<td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>skills</strong><br><sub>What your AI reuses</sub></td>
 <td>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
+</tr>
+</table>
+
+### memories
+<table>
+<tr>
+<td align="center" width="200"><img src="assets/memories.svg" width="96" alt="Notion Memory thought cloud"><br><strong>memories</strong><br><sub>What your AI learned</sub></td>
+<td>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Claude, ChatGPT, Grok Bot and Muse all remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
 
 ### 🔀 Router
 <table>
 <tr>
-<td align="center" width="160"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
+<td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a><br><strong>Router</strong><br><sub>guava-router</sub></td>
 <td>Sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
 </tr>
 </table>
@@ -64,8 +72,8 @@ Your Notion guava-hub has three parts:
 <!-- models:kitchen -->
 <table>
 <tr>
-<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
-<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="120" alt="Pixel-art head chef"> <img src="assets/claude.svg" width="48" alt="Claude logo"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5</sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="120" alt="Pixel-art line cook"> <img src="assets/chatgpt.svg" width="48" alt="ChatGPT logo"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol</sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
@@ -79,7 +87,7 @@ Any Claude model works as head-chef and any OpenAI model as line-cook. Say "chec
 ### 🎤 Rules
 <table>
 <tr>
-<td align="center" width="160"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>
+<td align="center" width="200"><a href="founder-mode/"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>Rules</strong><br><sub>founder-mode</sub></td>
 <td>27 working rules. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
 </tr>
 </table>
@@ -91,7 +99,7 @@ Any Claude model works as head-chef and any OpenAI model as line-cook. Say "chec
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.
 - 🔒 **Private.** Guava never sees your data.
-- 🛡️ **Safe for your AI accounts.** No shared or proxied logins. Each AI runs in its official app, signed in as you.
+- 🛡️ **Safe for your AI accounts.** No shared or proxied logins that could get your accounts banned. Each AI runs in its official app, signed in as you.
 - ✅ **Safe by default.** Shows every change first, never overwrites, and scans outside skills before installing.
 
 ## Start here

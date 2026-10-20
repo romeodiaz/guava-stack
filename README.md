@@ -61,7 +61,7 @@ Your Notion guava-hub has four parts:
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a></td>
-<td><ins>guava-router</ins><br>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen.</td>
+<td><ins>guava-router</ins><br>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen. Picked from the Pareto-optimal winners on my private benchmarks, <a href="https://workwithguava.com/mainstreetbench">Main Street Bench</a> and <a href="https://workwithguava.com/mspbench">MSP Bench</a>.</td>
 </tr>
 </table>
 

@@ -109,8 +109,6 @@ def stack_example(args):
     return f"""
   ```
   ## guava-stack settings
-  ### Rules
-  - founder-mode v{FOUNDER_MODE}
   ### guava-router
   head-chef
   - {detailed(HEAD, 'Claude Code')}
@@ -118,6 +116,8 @@ def stack_example(args):
   line-cook
   - {detailed(LINE, 'Codex')}
     - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
+  ### Rules
+  - founder-mode v{FOUNDER_MODE}
   ```
   """
 

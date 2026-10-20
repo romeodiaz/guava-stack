@@ -55,8 +55,6 @@ Follow **Build the hub** in [backends/notion.md](backends/notion.md). The hub ho
 <!-- models:stack-example -->
   ```
   ## guava-stack settings
-  ### Rules
-  - founder-mode v3.0.2
   ### guava-router
   head-chef
   - Claude Opus 5.5 (High) via Claude Code
@@ -64,10 +62,12 @@ Follow **Build the hub** in [backends/notion.md](backends/notion.md). The hub ho
   line-cook
   - GPT-6.1 Sol (High) via Codex
     - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
+  ### Rules
+  - founder-mode v3.0.2
   ```
   <!-- /models -->
   That's the setup on both plans. On one plan, use that plan's row of the plans table in the guava-router skill.
-  guava-stack settings ends with two headings of its own: **Rules** over the rules skills that are on, then **guava-router** over a `head-chef` line and a `line-cook` line, each with its model on the bullet right under it (the model line) and a sub-bullet listing its jobs, so the owner can find and swap them at a glance. Under Rules, list every rules skill that's on, one per line by name and version where it has one, the same as the list at the top of the rules page, with founder-mode as the default; leave the Rules heading out until the owner turns one on. A rules skill can cover all work, or one kind of work named in brackets, such as `- <coding rules> (coding)`. Each one is saved word for word in its own section of the rules page. When two rules disagree, the owner's own rules (such as an import) come first, then the stricter of the others, and the assistant says which one it followed.
+  guava-stack settings ends with two headings of its own: **guava-router** over a `head-chef` line and a `line-cook` line, each with its model on the bullet right under it (the model line) and a sub-bullet listing its jobs, so the owner can find and swap them at a glance, then **Rules** over the rules skills that are on. Under Rules, list every rules skill that's on, one per line by name and version where it has one, the same as the list at the top of the rules page, with founder-mode as the default; leave the Rules heading out until the owner turns one on. A rules skill can cover all work, or one kind of work named in brackets, such as `- <coding rules> (coding)`. Each one is saved word for word in its own section of the rules page. When two rules disagree, the owner's own rules (such as an import) come first, then the stricter of the others, and the assistant says which one it followed.
 - **rules**: only the owner's own rules and the rules skills they turn on, such as founder-mode. Each set is saved word for word in its own section. Rules brought in during step 3 are one set, named for the day they came in, such as `Oct 15 import`. Start the page with a list of the sets on it, one line each with its name and version where it has one, such as `founder-mode v2.0.6` or `Oct 15 import`, in the same order as their sections. Setup adds no rules of its own, so leave the page empty if they have none. Routing and hub loading come from the standing instructions and guava-stack settings, not from this page.
 - **skills**: one entry per skill. Rules skills such as founder-mode go on the rules page, and routing comes from guava-stack settings, so neither gets an entry here. Ask the owner before turning skills on.
 

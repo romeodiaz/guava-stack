@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/logo.png" alt="Guava logo" width="120"></p>
+<p align="center"><img src="assets/guava-stack-logo.png" alt="guava-stack logo: three pixel-art guavas in a row" width="180"></p>
 
 # guava-stack: AI brain + router + rules
 

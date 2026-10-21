@@ -225,7 +225,7 @@ Following **Putting files back** above:
 
 ### 4. Take it out of the bots' memories
 Remove the hub instruction line and the standing instructions everywhere they were saved. Show the exact text to delete, one app per message, and wait for done. Leave everything else in place.
-- **Claude or ChatGPT app:** delete the Guava lines from Instructions for Claude or ChatGPT's custom instructions (the adapter file links each), and any Guava memories the app saved.
+- **Claude or ChatGPT app:** delete the Guava lines from Instructions for Claude, or from both the ChatGPT and Codex rows of ChatGPT's custom instructions (the adapter file links each), and any Guava memories the app saved.
 - **Grok Bot:** delete the Guava memories, in shared user memory too.
 - **Muse:** delete the Guava lines at the end of SOUL.md (the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Your own memory or custom instructions**, if you saved them there.

@@ -6,7 +6,7 @@
 - **Connect your hub:** "Open https://chatgpt.com/plugins?search=notion and click **+** next to Notion." "Sign in to Notion and approve access to the workspace you'll use for your guava-hub." Then start a new chat if Notion doesn't show up in this one.
 
   ![ChatGPT Plugins with Notion and its + button](https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/setup/chatgpt-plugins.png)
-- **Add the standing instructions:** "Open https://chatgpt.com/settings/personalization and, under **Custom instructions**, click **ChatGPT**." "Paste these lines at the end of the instructions box, then save. Add to what's there; never replace or delete anything." Give them the short version from setup step 2.
+- **Add the standing instructions:** "Open https://chatgpt.com/settings/personalization and, under **Custom instructions**, click **ChatGPT**." "Paste these lines at the end of the instructions box, then save." "Now click **Codex** in the same list and paste the same lines there too, then save, so Codex follows them as well." "In both, add to what's there; never replace or delete anything." Give them the short version from setup step 2. Uninstalling removes the lines from both rows.
 
   ![ChatGPT Personalization with Custom instructions, ChatGPT](https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/setup/chatgpt-custom-instructions.png)
 - ChatGPT keeps no skill files here: keep skills in the hub and read the matching one from there when a task needs it.

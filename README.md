@@ -153,7 +153,7 @@ For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
 
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
-- **Claude or ChatGPT app:** the guava lines in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization).
+- **Claude or ChatGPT app:** the guava lines in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT and Codex rows.
 - **Sign-ins:** you approve Notion in your browser, and with a bot, Claude and ChatGPT too, pasting any code straight back into the bot.
 - **Muse:** the guava lines at the end of SOUL.md (click the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.

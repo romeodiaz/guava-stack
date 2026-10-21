@@ -2,6 +2,7 @@
 
 founder-mode version history.
 
+- v3.0.4 (2026-10-21): Rule 1 no longer bans a third-party skill because a skills.sh audit flags it. Before any install, your assistant tells you in plain words what its audits found, failed and warning checks included, and installs only on a clear yes. Setup works the same way. It offers two more skills: last30days again (with a bot, since it runs a program), and design-cook-off, which builds a page twice at once with the impeccable and taste-skill design skills so you can pick the one to build on. The README groups the free AI assessment, humanizer, design-cook-off and last30days under Skills. The other rules are unchanged from v3.0.0.
 - v3.0.3 (2026-10-20, setup only): You set up guava-stack in the Claude or ChatGPT app you already have; Grok Bot and Muse become recommended additions that turn on the router. Setup asks for your website and LinkedIn to draft your hub, starts it from a one-click Notion template, asks one yes per step, offers starter skills (humanizer, and last30days with a bot) and adds the free AI assessment, a report that stays on your computer. The rules are unchanged from v3.0.0.
 - v3.0.2 (2026-10-17): The rules page section is now called 16 Commandments on How to work with me. The rules are unchanged from v3.0.0.
 - v3.0.1 (2026-10-17): The rules page section is now called 16 Commandments instead of How to work with me. The rules themselves are unchanged from v3.0.0.

@@ -66,11 +66,23 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### 3) free AI assessment
+### 3) skills
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/assessment.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a></td>
-<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
+<td><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><ins>free-ai-assessment</ins></a><br>Say "run my free AI assessment". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
+</tr>
+<tr>
+<td align="center" width="200"><a href="https://github.com/blader/humanizer"><img src="assets/humanizer.png" width="80" alt="Pixel-art person speaking"></a></td>
+<td><a href="https://github.com/blader/humanizer"><ins>humanizer</ins></a><br>By blader. So anything your AI writes for you doesn't sound like AI. Offered at setup.</td>
+</tr>
+<tr>
+<td align="center" width="200"><a href="guava-hub/skills/design-cook-off/SKILL.md"><img src="assets/cook-off.png" width="80" alt="Pixel-art frying pan between two crossed spatulas under a trophy"></a></td>
+<td><a href="guava-hub/skills/design-cook-off/SKILL.md"><ins>design-cook-off</ins></a><br>Say "cook-off" when you want a page or screen people will judge by its look, such as a landing page. Your head-chef builds it twice at once, with two design skills, <a href="https://github.com/pbakaus/impeccable">impeccable</a> and <a href="https://github.com/leonxlnx/taste-skill">taste-skill</a>, and you pick the one to build on. Needs Claude Code, and asks before installing the two design skills.</td>
+</tr>
+<tr>
+<td align="center" width="200"><a href="https://github.com/mvanhorn/last30days-skill"><img src="assets/last30days.png" width="80" alt="Pixel-art calendar with one day marked"></a></td>
+<td><a href="https://github.com/mvanhorn/last30days-skill"><ins>last30days</ins></a><br>By Matt Van Horn. Research what people are actually saying about any topic in the last 30 days, across Reddit, X, YouTube, Hacker News and the web. Comes with a bot, since it runs a program.</td>
 </tr>
 </table>
 
@@ -189,6 +201,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🧠 **[guava-hub](guava-hub/)**: hub setup, with the [Notion steps](guava-hub/skills/guava-hub/backends/notion.md).
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
 - 📋 **[free-ai-assessment](guava-hub/skills/free-ai-assessment/)**: the free AI Assessment and its report template.
+- 🍳 **[design-cook-off](guava-hub/skills/design-cook-off/)**: two designed versions of a page to pick from.
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
 - 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Grok Bot and Muse each skip or change.
 

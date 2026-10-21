@@ -32,9 +32,17 @@ Everything works across the owner's computer, laptop and phone, because the apps
 2. Ask one question at a time, and save the answers:
    - **Who you are, in one message:** what should I call you, what's your business and who are your customers, in a sentence or two, and your website, LinkedIn and anything else that describes it (a company profile, a pitch deck, a services page)? Read every public link they give before the next question.
    - **Your plans:** do you pay for Claude Pro or higher, ChatGPT Plus or higher, or both? Do you also use Grok Bot or Muse? If they have neither plan, say setup needs one and wait. If they're asking from Grok Bot or Muse, follow **Add a bot** below instead of these steps once the hub exists.
-   - **Your tools and your week:** which apps does your business run on (email, calendar, CRM, accounting, ticketing and so on), and which weekly tasks take up the most time? Save the apps as the **Tech stack** memory and the tasks as the **Workflows** memory in Notion Memory once the hub exists (step 2), each with how often and how long when they said.
+   - **Your tools and your week:** which apps does your business run on (email, calendar, CRM, accounting, ticketing and so on), which tasks take up most of your week (roughly how often and how long), and what would you most like off your plate?
    - **Notion:** is Notion connected here? If not, help connect it, following your app's adapter file.
-3. Draft the context page from what they said and the pages you read: who they are, the business, ideal customers, offers, voice and tools, in short bullets, with the link each fact came from. Leave out anything you're unsure of and list it as a question instead of guessing. You'll show it in step 2.
+3. Draft the context page from what they said and the pages you read, in short bullets under the template's headings, with the link each fact came from:
+   - **About you:** name, role, the business and what it does, website, time zone.
+   - **Customers:** who they serve, and best fit and not a fit if known.
+   - **What you sell:** products or services, with prices only where they're public or the owner shares them.
+   - **Team:** who does what. Leave the section out for a solo owner.
+   - **Voice:** how they write, judged from their own website and posts: tone, sentence length, words they use and avoid.
+   - **Tools**, **Where your time goes** and **Priorities:** from the third question.
+
+   Add a line under the headings' intro naming the source links you read. Leave out anything you're unsure of and list it as a question instead of guessing. You'll show it in step 2.
 
 ## 2. Make the hub
 Follow **Make the hub** in [backends/notion.md](backends/notion.md): the owner duplicates Guava's template with one click, and you fill it in. The hub holds three parts:
@@ -79,7 +87,7 @@ Before substantive work, load my guava-hub in Notion (rules, context and enabled
    - Session checks: when guava-stack settings differ from the last version you checked, or this session runs in the head-chef's own tool on another model, follow **Session checks** in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack before relying on them.
    - When the owner says "update" or "uninstall" with "guava-stack", "guava-hub", "guava-router" or "founder-mode", follow the Update or Uninstall step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md. These always mean the published guava-stack in that repo, never a plan or notes of your own, so read the step there before doing anything.
    - When the owner asks to change their setup (for example "change my setup", "make Sonnet my line-cook", "apply my guava-stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
-   - Workflows and tech stack: when you learn a task the owner does again and again, or a tool their business uses, add it to the **Workflows** or **Tech stack** memory in Notion Memory (what it is, how often, which tools, how long it takes when they've said), so the free AI assessment has something real to review.
+   - Workflows and tech stack: when you learn a task the owner does again and again, or a tool their business uses, that the context page doesn't already list, add it to the **Workflows** or **Tech stack** memory in Notion Memory (what it is, how often, which tools, how long it takes when they've said), so the free AI assessment has something real to review.
    - When the owner says "run my free AI assessment" or "review my workflows", follow the **free-ai-assessment** skill from github.com/romeodiaz/guava-stack (guava-hub/skills/free-ai-assessment/SKILL.md), or the copy in their hub's skills.
 
    Leave out the model routing and session-check lines until a bot runs the Model Router: **Add a bot** adds them.

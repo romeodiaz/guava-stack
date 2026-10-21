@@ -13,7 +13,7 @@ The owner can ask for either one anytime. Use the one that fits and say which in
 
 ## 1. Gather
 Read only, no changes:
-- The context page in the hub: the business, its customers, offers and **Tool stack** (or any list of tools).
+- The context page in the hub: **About you**, **Customers**, **What you sell**, **Tools**, **Where your time goes** and **Priorities** (older hubs may name these differently, such as Tool stack).
 - Notion Memory: fetch id "memory", then search it for workflows, recurring tasks, tools and the tech stack. Read the **Workflows** and **Tech stack** memories if they exist.
 - The skills database: which workflows already have a skill, and the routines view for what already runs on a schedule.
 - The hub page's creation date, to tell which kind of report this is.
@@ -26,6 +26,7 @@ For each workflow (Workflow review only), decide:
 - **Pilot:** worth trying but one thing is uncertain, such as messy inputs, a judgment call in the middle, or a client seeing the result. Name that one thing.
 - **Don't build:** rare, mostly judgment or relationships, or the inputs aren't digital yet. Say what would change the verdict.
 - **Hours:** a rough range per week, from how often it runs and how long it takes. Mark it as an estimate. If the owner never said how long it takes, write "unknown" instead of guessing.
+- When the owner's **Priorities** name a workflow, lead with it and say so.
 - Skip workflows that already have a skill or a routine, and mention them in the summary as already handled.
 
 Write in the owner's own words where you can, plainly, with no hype. Every claim must come from the hub or memory. If something is a guess, say so in the row.

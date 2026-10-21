@@ -125,7 +125,7 @@
   </style>
 </head>
 <body>
-  <!-- Replace tokens with HTML-escaped text; SUMMARY is 2–3 sentences. REPORT_KIND: Day 1 check-in or Workflow review. -->
+  <!-- Replace tokens with HTML-escaped text; SUMMARY is 2–3 sentences. BASED_ON: e.g. "From 6 days of your guava-hub and your answers". -->
   <!-- Duplicate or delete repeat blocks. VERDICT / VERDICT_CLASS pairs: Build / build, Pilot / pilot, Don't build / dont. -->
   <div class="report">
     <header class="header band">
@@ -137,7 +137,7 @@
           </svg>
           guava
         </div>
-        <p class="kind">{{REPORT_KIND}}</p>
+        <p class="kind">{{BASED_ON}}</p>
       </div>
       <h1 id="report-title">Free AI Assessment</h1>
       <p class="prepared">Prepared for <strong>{{OWNER_NAME}}</strong> · <strong>{{BUSINESS_NAME}}</strong></p>
@@ -153,7 +153,7 @@
           <div class="stat"><dt>Pilot</dt><dd>{{PILOT_COUNT}}</dd></div>
           <div class="stat"><dt>Don't build</dt><dd>{{DONT_BUILD_COUNT}}</dd></div>
         </dl>
-        <p class="estimate">Estimated savings across Build + Pilot workflows. Actual time saved will need to be tested.</p>
+        <p class="estimate">Estimated savings across Build + Pilot workflows, from how often and how long each takes. Actual time saved will need to be tested.</p>
       </section>
       <section aria-labelledby="stack-title">
         <h2 id="stack-title">Your tech stack</h2>
@@ -214,7 +214,7 @@
       <a class="button" href="https://cal.com/romeodiazai/20min">Book a free call</a>
     </section>
     <footer>
-      <p>Made by your own AI assistant from your guava-hub. Guava never sees this report unless you share it. This is a short version of Guava's AI Assessment.</p>
+      <p>Made by your own AI assistant from your guava-hub and your answers. Guava never sees this report unless you share it. This is a short version of Guava's AI Assessment.</p>
       <a href="https://workwithguava.com">workwithguava.com</a>
     </footer>
   </div>

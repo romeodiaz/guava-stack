@@ -22,7 +22,7 @@ In one short message, show the owner the workflows you found that don't already 
 - What they most want off their plate first, if **Priorities** is empty.
 - Anything big you missed: a weekly job that isn't on the list.
 
-Only ask what changes a verdict or an hours figure. If they skip a question, carry on and write "unknown" for what it would have filled. If they have no hub data at all, ask for their 3 to 5 most time-consuming jobs instead.
+Only ask what changes a verdict or an hours figure. If they skip every question about time, ask once more for one number: "One number makes this much more useful: how many hours a week does <their biggest workflow> take you?" If they skip a question after that, carry on and write "unknown" for what it would have filled. If they have no hub data at all, ask for their 3 to 5 most time-consuming jobs instead.
 
 Then save their answers to the **Workflows** memory (and new tools to **Tech stack**), as Notion's memory guide says: update the memory if it exists, otherwise create it. One line per workflow: what it is, how often, which tools, how long it takes, and that the owner said so, with the date. The next run starts from there.
 

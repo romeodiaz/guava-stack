@@ -3,13 +3,13 @@ name: guava-router
 description: Sets up a Model Router that sends thinking work to a head-chef model and doing work to a line-cook model, through Claude Code on the owner's Claude plan and Codex on their ChatGPT plan, or both slots on whichever one plan they have, with the models in models.yaml. Also use when the owner says "check for newer models", "update guava-router" or "uninstall guava-router". Use when the owner asks for model routing or the CLIs, or when hub setup hands off to the router.
 ---
 
-**Before every edit, install or setting change below, show the owner the exact command or change and wait for a yes.** Put it in your message text before you ask, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
+**One yes per step.** Before each numbered step below, show its whole plan in your message text: every command, edit, install and setting change, word for word. Wait for one yes, then do the whole step and report what you did. Put the plan in your message text, never only inside a question or approval card, since some apps don't show what's in the card. Never ask for a yes to a change the owner hasn't seen.
 
 # Model Router: setup
 
 These steps send each kind of work to the model that's best at it, through the Claude plan, ChatGPT plan or both that the owner already pays for: thinking and reviewing to a **head-chef**, and heavy lifting to a **line-cook**. With both plans, the head-chef runs in Claude Code and the line-cook in Codex; with one, both run in that plan's tool.
 
-> Start with the **guava-hub** skill. It builds the hub first and sends you here at the right step.
+> Start with the **guava-hub** skill. It builds the hub first and sends you here from **Add a bot**. The router needs a computer to run Claude Code and Codex, so it runs on a bot such as Grok Bot or Muse. In the Claude or ChatGPT app, tell the owner the router comes with adding a bot, and stop.
 
 ## 1. The models
 Pick the row for the plans the owner pays for (hub setup asks; otherwise ask):
@@ -114,7 +114,7 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 - **Claude Code:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
 - **Grok Bot:** `npx skills update -g -y`.
-- **Muse:** no skill files, so nothing to download.
+- **Muse, and the Claude and ChatGPT apps:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models".
 3. **Check the routing still runs:** each tool the owner's plans need is installed and signed in on the bot's computer (step 2 of setup, checking first).
@@ -124,7 +124,7 @@ Only for the Guava plugins the owner has (for "update guava-router", just guava-
 Use this when the owner says **"uninstall guava-router"**, or when the guava-hub skill's Uninstall step sends you here. It stops the routing and puts back what router setup changed. Show the whole plan first, in your message text, as one numbered list (each command, each file change as old, then new, and each app step); the owner can approve it with one yes or pick numbers. Then apply it in order.
 
 <!-- guava-restore: keep this paragraph the same in the guava-hub and guava-router skills -->
-**Putting files back** (`~/.claude/settings.json` and `~/.codex/config.toml`): `<file>.pre-guava` next to each file shows how it was before Guava (see **Backups** in setup step 1 of the guava-hub skill). Run the plugin commands first, since they rewrite these files and remove their own entries. Then, for only the settings the Uninstall step lists, put each one back to its value in the `.pre-guava` copy, or remove it if that copy doesn't have it; if the owner has changed it since Guava set it, ask instead. Drop any section left empty that the copy doesn't have, such as an empty `enabledPlugins`. Never copy a backup over the file, since that would undo every change the owner made since, and never change anything else. With no `.pre-guava` copy, remove only what Guava added and ask about any value it may have replaced. Leave the `.pre-guava` and `.bak-` copies where they are and list them in the wrap-up, so the owner can delete them once they're happy.
+**Putting files back** (`~/.claude/settings.json` and `~/.codex/config.toml`): `<file>.pre-guava` next to each file shows how it was before Guava (see **Backups** in setup step 2 of the guava-hub skill). Run the plugin commands first, since they rewrite these files and remove their own entries. Then, for only the settings the Uninstall step lists, put each one back to its value in the `.pre-guava` copy, or remove it if that copy doesn't have it; if the owner has changed it since Guava set it, ask instead. Drop any section left empty that the copy doesn't have, such as an empty `enabledPlugins`. Never copy a backup over the file, since that would undo every change the owner made since, and never change anything else. With no `.pre-guava` copy, remove only what Guava added and ask about any value it may have replaced. Leave the `.pre-guava` and `.bak-` copies where they are and list them in the wrap-up, so the owner can delete them once they're happy.
 <!-- /guava-restore -->
 
 1. **Remove the plugin** (skip this when the guava-hub Uninstall step already did it). When uninstalling guava-router on its own, first check what's there without asking, as step 1 of the guava-hub Uninstall step says:
@@ -133,7 +133,7 @@ Only for the Guava plugins the owner has (for "uninstall guava-router", just gua
 - **Claude Code:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
 - **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
-- **Muse:** no skill files, so nothing to delete.
+- **Muse, and the Claude and ChatGPT apps:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. **Put the computer back**, following **Putting files back** above:
    - `~/.claude/settings.json`: `model`, if router setup set it. Say which model new sessions will use instead. The hub's read-only tools under `permissions.allow` stay while the hub does: guava-hub's Uninstall step removes them.

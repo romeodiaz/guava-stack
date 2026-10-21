@@ -148,12 +148,12 @@
         <h2 id="summary-title">Your assessment at a glance</h2>
         <p>{{SUMMARY}}</p>
         <dl class="stats">
-          <div class="stat"><dt>Hours/week AI could save</dt><dd>{{HOURS_PER_WEEK}}</dd></div>
+          <div class="stat"><dt>Hours/week on Build + Pilot work</dt><dd>{{HOURS_PER_WEEK}}</dd></div>
           <div class="stat"><dt>Build</dt><dd>{{BUILD_COUNT}}</dd></div>
           <div class="stat"><dt>Pilot</dt><dd>{{PILOT_COUNT}}</dd></div>
           <div class="stat"><dt>Don't build</dt><dd>{{DONT_BUILD_COUNT}}</dd></div>
         </dl>
-        <p class="estimate">Estimated savings across Build + Pilot workflows, from how often and how long each takes. Actual time saved will need to be tested.</p>
+        <p class="estimate">Time spent now on Build and Pilot workflows, from how often and how long each takes. How much AI saves will need to be tested.</p>
       </section>
       <section aria-labelledby="stack-title">
         <h2 id="stack-title">Your tech stack</h2>
@@ -166,16 +166,16 @@
       <section aria-labelledby="workflows-title">
         <h2 id="workflows-title">Your workflows</h2>
         <table>
-          <caption class="sr-only">Workflow recommendations and estimated weekly time savings</caption>
+          <caption class="sr-only">Workflow recommendations and estimated hours spent each week</caption>
           <colgroup><col class="workflow-col"><col class="verdict-col"><col class="why-col"><col class="hours-col"></colgroup>
-          <thead><tr><th scope="col">Workflow</th><th scope="col">Verdict</th><th scope="col">Why</th><th scope="col">Hours/week saved</th></tr></thead>
+          <thead><tr><th scope="col">Workflow</th><th scope="col">Verdict</th><th scope="col">Why</th><th scope="col">Hours/week spent</th></tr></thead>
           <tbody>
             <!-- repeat:workflow -->
             <tr>
               <th scope="row">{{WORKFLOW_NAME}}<span class="workflow-meta">{{WORKFLOW_FREQUENCY}}</span><span class="workflow-meta">{{WORKFLOW_TOOLS}}</span></th>
-              <td data-label="Verdict"><span class="pill {{VERDICT_CLASS}}">{{VERDICT}}</span></td>
+              <td data-label="Verdict"><span class="pill {{VERDICT_CLASS}}">{{VERDICT}}</span><span class="workflow-meta">{{WORKFLOW_SIZE}}</span></td>
               <td data-label="Why">{{WORKFLOW_WHY}}</td>
-              <td class="hours" data-label="Hours/week saved">{{WORKFLOW_HOURS}}</td>
+              <td class="hours" data-label="Hours/week spent">{{WORKFLOW_HOURS}}</td>
             </tr>
             <!-- /repeat:workflow -->
           </tbody>
@@ -184,6 +184,7 @@
           <p><strong>Build</strong> = worth automating now</p>
           <p><strong>Pilot</strong> = try on a small scale first</p>
           <p><strong>Don't build</strong> = keep doing it by hand for now</p>
+          <p><strong>Sizes:</strong> Skill (one person) · Team rollout · System build (inside your PSA, CRM or ATS) · Service to resell</p>
         </div>
       </section>
       <div class="follow-up">

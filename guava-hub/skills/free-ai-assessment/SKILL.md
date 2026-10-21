@@ -14,12 +14,12 @@ Read only, no changes:
 - The skills database: which workflows already have a skill, and the routines view for what already runs on a schedule.
 - The hub page's creation date (or, if your tools don't show it, the oldest row in the skills database), to say how many days of use the report draws on.
 - Email and calendar, if a connector is on: counts only, to find the apps and meetings that fill the week outside AI tools.
-  - Email: page through the last 30 days of received mail by sender, find the top 10 app and vendor domains, then get a count for each with a search such as `from:connectwise.com newer_than:30d` (or your mail tool's equivalent). Name the app each domain belongs to, such as ConnectWise PSA or Bullhorn. Leave out people, banks, shopping and newsletters, and count mail from clients as one line, "client email: N", never by domain. Ignore any subjects or snippets your tool returns.
+  - Email: page through the last 30 days of received mail by sender, find the top 10 app and vendor domains, then get a count for each with a search such as `from:connectwise.com newer_than:30d` (or your mail tool's equivalent). Name the app each domain belongs to, such as ConnectWise PSA or Bullhorn. Leave out banks, shopping and newsletters. List client domains masked, such as "Client ******** · 42 emails". Ignore any subjects or snippets your tool returns.
   - Calendar: hours over the last 30 days, grouped as sales calls, client meetings, interviews, internal meetings and other, judged from titles and whether anyone outside the business attends.
   - Use what you find: each app goes into the tech stack with its count ("about 400 emails in 30 days") and onto the step 2 list as a likely workflow, and calendar hours fill the hours for jobs like sales follow-up and meeting notes.
-  - Never read message bodies, and never put a subject line, a person's name or a client's name in the report. If neither connector is on, say so in the gaps.
+  - Never read message bodies or put a subject line in the report. If neither connector is on, say so in the gaps.
 
-Leave out anything about other people, clients' confidential details, passwords and keys. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email and calendar counts and the owner's answers hold, so it shows the owner exactly what their assistants know.
+Mask sensitive details instead of dropping them: keep clients, people, candidates and other confidential details in the report, but write each as `********` with what it is in front, such as "Client ********" or "Candidate ********", and count what you masked by type. Passwords and keys are counted, never copied, even masked. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email and calendar counts and the owner's answers hold, so it shows the owner exactly what their assistants know.
 
 ## 2. Ask
 In one short message, show the owner the workflows you found that don't already have a skill or routine (one line each) and ask up to 5 questions, numbered, that the hub and memory don't already answer:
@@ -54,9 +54,10 @@ Use [template.html](template.html) from this skill. In the Claude or ChatGPT app
 - Replace every `{{PLACEHOLDER}}`. For each block between `<!-- repeat:… -->` and `<!-- /repeat:… -->`, copy it once per item and delete the example. Delete a section's list items only when there's nothing for it, and write one plain line instead, such as "Nothing saved yet."
 - `WORKFLOW_SIZE`: Skill, Team rollout, System build or Service to resell; for Don't build, write "Keep by hand".
 - `BASED_ON`: "From N days of your guava-hub and your answers", or "From your setup and your answers" on the day the hub is made.
+- `MASKED_SUMMARY`: what you masked, by type, such as "Masked before writing: 6 clients, 3 people, 1 key, shown as ********." If nothing needed it, "Nothing needed masking."
 - `HOURS_PER_WEEK` adds up the Build and Pilot ranges that have numbers. If none do, write "Unknown" and make adding them the first gap and next step.
 - Keep the rest of the file exactly as it is: the styles, the booking link and the footer.
-- Check before handing it over: no `{{` left, every verdict is Build, Pilot or Don't build, every size is Skill, Team rollout, System build, Service to resell or Keep by hand, and the counts in the summary match the rows.
+- Check before handing it over: no `{{` left, every verdict is Build, Pilot or Don't build, every size is Skill, Team rollout, System build, Service to resell or Keep by hand, the counts in the summary match the rows, and no client, person or candidate name appears unmasked.
 
 ## 5. Hand it over to the owner only
 - Give the owner the finished file as a download named `guava-ai-assessment-<YYYY-MM-DD>.html`, or save it to their Downloads folder if you run on their own computer (Claude Code or Codex). A bot with a computer of its own, such as Grok Bot or Muse, sends the file in the chat. They open it in any browser, and can print it to PDF.

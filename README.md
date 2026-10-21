@@ -114,7 +114,7 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 
 It asks for your website and a few details, drafts your hub from them, and checks that everything works, with one yes per step. Unsure? Say "use the defaults".
 
-**⚡ Prefer clicking?** Start your hub from the [Notion template]({{NOTION_TEMPLATE_URL}}), or add the [Grok Bot template]({{GROK_TEMPLATE_URL}}), then say "set me up".
+**⚡ Prefer clicking?** Start your hub from the [Notion template](https://guava-hub.notion.site/guava-hub-400a1a34268a81289479dce72c225c3f), or add the [Grok Bot template]({{GROK_TEMPLATE_URL}}), then say "set me up".
 
 **➕ Add a bot later:** paste the same line into Grok Bot or Muse. It connects to your hub and turns on the router.
 

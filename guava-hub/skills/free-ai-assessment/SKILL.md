@@ -1,6 +1,6 @@
 ---
 name: free-ai-assessment
-description: Makes the owner a free, short AI Assessment from their guava-hub and Notion Memory: their tech stack, the workflows assistants have picked up, and which ones are worth automating (Build, Pilot or Don't build), as a polished report file that stays on their computer. Use when the owner says "run my free AI assessment", "free AI assessment", "what do you know about my workflows", "review my workflows" or "review my setup for my team".
+description: Makes the owner a free, short AI Assessment from their guava-hub and Notion Memory, covering their tech stack, the workflows assistants have picked up, and which ones are worth automating (Build, Pilot or Don't build), as a polished report file that stays on their computer. Use when the owner says "run my free AI assessment", "free AI assessment", "what do you know about my workflows", "review my workflows" or "review my setup for my team".
 ---
 
 # Free AI Assessment

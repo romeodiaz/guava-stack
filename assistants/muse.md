@@ -11,6 +11,7 @@
   Save the tools my business uses and the tasks I do again and again to my Notion Memory, as the Tech stack and Workflows memories. When I say "run my free AI assessment", follow guava-hub/skills/free-ai-assessment/SKILL.md from github.com/romeodiaz/guava-stack.
   When I ask to change my setup (for example "change my setup", "apply my guava-stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
   ```
+  A chat that's already open keeps the SOUL.md it started with, so changes apply in a new chat: tell the owner to start one after any SOUL.md edit, and check from there.
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.
 - **Verify:** start a new chat and ask "Write a short intro about my business." It passes if the intro uses details from the hub.
 - **Run the CLI steps and model router in Muse's own terminal.** Muse can install Claude Code with npm and usually has Codex already; follow step 2 of the Model Router setup in guava-router (it checks and skips what's installed). For sign-in, the owner opens the link and signs in with their own account, then pastes any code straight into Muse, never anywhere else. When Muse asks to share information with anthropic.com or openai.com, choose Allow once, not Always allow.

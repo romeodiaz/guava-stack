@@ -13,7 +13,7 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 **🔑 You'll need:**
-- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher)
+- Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan
 - Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
 
 **➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router and can run Claude and ChatGPT behind the scenes.

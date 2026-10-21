@@ -17,7 +17,7 @@ These steps give all of the owner's AI assistants one shared place for their con
 Guava supports one setup, the one it's tested on. Other hubs, AI providers, assistants and local models are coming later: if the owner asks for one, say it isn't supported yet.
 
 - **Where the owner works:** the Claude app or the ChatGPT app, on their computer, the web or their phone. Nothing to install.
-- **Accounts:** Claude Pro or ChatGPT Plus or higher ($20 a month), and Notion (the free plan is enough).
+- **Accounts:** a Claude or ChatGPT plan, and Notion (the free plan is enough). Pro or Plus ($20 a month) works best: free plans can hit their message limits partway through setup, and the Model Router needs a paid plan for Claude Code or Codex.
 - **Recommended addition, any time later:** a bot with its own computer that they hand whole jobs to: Grok Bot (on a $30 a month xAI or Cursor plan) or Meta's Muse Bot (free). Adding one turns on the Model Router upgrade and the last30days research skill. See **Add a bot** below.
 - **Hub:** Notion, started from Guava's one-click template. Its steps are in [backends/notion.md](backends/notion.md).
 
@@ -31,7 +31,7 @@ Everything works across the owner's computer, laptop and phone, because the apps
 1. Say in one line: I'll set up your guava-hub so every AI assistant you use shares the same context, rules, skills and memories, and it all works from your phone too.
 2. Ask one question at a time, and save the answers:
    - **Who you are, in one message:** what should I call you, what's your business and who are your customers, in a sentence or two, and your website, LinkedIn and anything else that describes it (a company profile, a pitch deck, a services page)? Read every public link they give before the next question.
-   - **Your plans:** do you pay for Claude Pro or higher, ChatGPT Plus or higher, or both? Do you also use Grok Bot or Muse? If they have neither plan, say setup needs one and wait. If they're asking from Grok Bot or Muse, follow **Add a bot** below instead of these steps once the hub exists.
+   - **Your plans:** do you use Claude, ChatGPT or both, and on which plan? Do you also use Grok Bot or Muse? If they use neither, say setup needs one and wait. On a free plan, say setup may need a few sittings if it hits the message limit, and pick up where it stopped. If they're asking from Grok Bot or Muse, follow **Add a bot** below instead of these steps once the hub exists.
    - **Your tools and your week:** which apps does your business run on (email, calendar, CRM, accounting, ticketing and so on), which tasks take up most of your week (roughly how often and how long), and what would you most like off your plate?
    - **Notion:** is Notion connected here? If not, help connect it, following your app's adapter file.
 3. Draft the context page from what they said and the pages you read, in short bullets under the template's headings, with the link each fact came from:

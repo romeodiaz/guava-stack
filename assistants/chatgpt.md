@@ -1,6 +1,6 @@
 # ChatGPT app adapter
 
-- Where the owner works by default, on ChatGPT Plus or higher: the ChatGPT app on their computer, chatgpt.com on the web, or the ChatGPT app on their phone. Nothing to install. Do the setup clicks on a computer; the phone app lays settings out differently.
+- Where the owner works by default, on any ChatGPT plan (Plus or higher works best; if Notion won't connect on Free, setup needs a paid plan): the ChatGPT app on their computer, chatgpt.com on the web, or the ChatGPT app on their phone. Nothing to install. Do the setup clicks on a computer; the phone app lays settings out differently.
 - **Before you start:** setup reads these steps from GitHub, so web search must be on for this chat. If you can't open github.com/romeodiaz/guava-stack, ask the owner to turn it on and try again.
 - **Show the screenshots:** for each click below, give the owner the link and the screenshot, so they see exactly where to click.
 - **Connect your hub:** "Open https://chatgpt.com/plugins?search=notion and click **+** next to Notion." "Sign in to Notion and approve access to the workspace you'll use for your guava-hub." Then start a new chat if Notion doesn't show up in this one.

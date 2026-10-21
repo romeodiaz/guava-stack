@@ -1,6 +1,6 @@
 # Claude app adapter
 
-- Where the owner works by default, on Claude Pro or higher: the Claude app on their computer, claude.ai on the web, or the Claude app on their phone. Nothing to install. Do the setup clicks on a computer; the phone app lays settings out differently.
+- Where the owner works by default, on any Claude plan (Pro or higher works best; Free can hit its message limit partway through setup): the Claude app on their computer, claude.ai on the web, or the Claude app on their phone. Nothing to install. Do the setup clicks on a computer; the phone app lays settings out differently.
 - **Before you start:** setup reads these steps from GitHub, so web search and fetch must be on (Settings, then Capabilities). If you can't open github.com/romeodiaz/guava-stack, ask the owner to turn it on and start a new chat.
 - **Show the screenshots:** for each click below, give the owner the link and the screenshot, so they see exactly where to click.
 - **Connect your hub:** "Open https://claude.ai/customize/connectors?q=notion and click **Connect** next to Notion." "Sign in to Notion and approve access to the workspace you'll use for your guava-hub." Then start a new chat if Notion's tools don't show up in this one.

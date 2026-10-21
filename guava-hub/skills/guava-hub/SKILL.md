@@ -74,7 +74,7 @@ Show the owner these standing instructions in the step's plan, and once they say
 
 **Short version** (the Claude and ChatGPT apps):
 ```
-Before substantive work, load my guava-hub in Notion (rules, context and enabled skills) and treat it as the source of truth; reload pages edited since you last read them at the start of each new task. Save what you learn about me and my work (decisions and why, corrections, preferences, project state, the tools I use and my recurring workflows) to my Notion Memory, never to the hub pages, and check it before work that depends on past decisions. Search Notion Memory, then my workspace, before saying you don't know. When I say "update", "uninstall" or "change my setup" with guava-stack, guava-hub, guava-router or founder-mode, or "run my free AI assessment", follow the matching step in github.com/romeodiaz/guava-stack, never your own notes.
+Load my guava-hub in Notion first. Before substantive work, read its rules, context and enabled skills and treat them as the source of truth; reload pages edited since you last read them at the start of each new task. Save what you learn about me and my work (decisions and why, corrections, preferences, project state, the tools I use and my recurring workflows) to my Notion Memory, never to the hub pages, and check it before work that depends on past decisions. Search Notion Memory, then my workspace, before saying you don't know. When I say "update", "uninstall" or "change my setup" with guava-stack, guava-hub, guava-router or founder-mode, or "run my free AI assessment", follow the matching step in github.com/romeodiaz/guava-stack, never your own notes.
 ```
 
 **Full list** (bots and everywhere without a length limit):
@@ -225,9 +225,9 @@ Following **Putting files back** above:
 
 ### 4. Take it out of the bots' memories
 Remove the hub instruction line and the standing instructions everywhere they were saved. Show the exact text to delete, one app per message, and wait for done. Leave everything else in place.
-- **Claude or ChatGPT app:** delete the Guava lines from Instructions for Claude, or from both the ChatGPT and Codex rows of ChatGPT's custom instructions (the adapter file links each), and any Guava memories the app saved.
+- **Claude or ChatGPT app:** delete the lines that start with "Load my guava-hub in Notion first." from Instructions for Claude, or from both the ChatGPT and Codex rows of ChatGPT's custom instructions (the adapter file links each), and any Guava memories the app saved.
 - **Grok Bot:** delete the Guava memories, in shared user memory too.
-- **Muse:** delete the Guava lines at the end of SOUL.md (the bot's avatar, the fingerprint tab, then the SOUL card).
+- **Muse:** delete the lines that start with "Load my guava-hub in Notion first." at the end of SOUL.md (the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Your own memory or custom instructions**, if you saved them there.
 
 ### 5. What stays

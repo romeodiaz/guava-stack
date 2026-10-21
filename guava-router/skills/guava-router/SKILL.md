@@ -75,7 +75,7 @@ The bot runs Claude Code and Codex with nobody at the keyboard, and Claude Code 
 - **Long jobs on Grok Bot**: any hand-off that may take more than a few minutes runs in the background, as **Long jobs** below says.
 - **Skills with their own setup come first**: when a skill defines how it runs (its own engine, scripts, models or setup), follow it as designed and use this routing only for work it leaves open. Never change a skill's own setup to fit the routing.
 
-Save these routing rules as a standing instruction if hub setup hasn't already, pointing at the head-chef and line-cook in guava-stack settings instead of naming models, so the owner can swap a model by editing guava-stack settings. On Grok Bot, save them to shared user memory too, so every current and future bot follows them.
+Save these routing rules as a standing instruction if hub setup hasn't already, pointing at the head-chef and line-cook in guava-stack settings instead of naming models, so the owner can swap a model by editing guava-stack settings. On Grok Bot, save them to shared user memory only, so every current and future bot follows one copy.
 
 ### Long jobs
 On Grok Bot, one command can wait at most 13 minutes, and the computer pauses between the bot's turns, so a CLI still running when the turn ends stops until the next one. For any hand-off that may take more than a few minutes:

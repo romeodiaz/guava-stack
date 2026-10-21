@@ -28,7 +28,7 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 </tr>
 </table>
 
-Your Notion guava-hub has four parts:
+Your Notion guava-hub has five parts:
 
 <table>
 <tr>
@@ -48,6 +48,13 @@ Your Notion guava-hub has four parts:
 <tr>
 <td align="center" width="200"><img src="assets/skills.png" width="80" alt="Pixel-art stack of books"><br><strong>skills</strong></td>
 <td><ins>What your AI reuses</ins><br>A Notion database of step-by-step instructions your assistants reuse, such as writing a post in your voice or onboarding a client. You choose which ones are on.</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td align="center" width="200"><span style="font-size:64px">🎫</span><br><strong>tasks</strong></td>
+<td><ins>What your AI did</ins><br>Every piece of work that changes something, or gets handed to another model, gets a row with an ID such as TASK-12, its goal, status and links. The ID goes in commits, PRs, hand-offs and memories, so one search finds the whole trail.</td>
 </tr>
 </table>
 

@@ -3,7 +3,7 @@ name: founder-mode
 description: Installs, updates, uninstalls or shows founder-mode, the owner's 16 working rules for their AI assistant, saved to the rules page in their guava-hub. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v3.0.4
+# founder-mode v3.0.5
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
@@ -32,7 +32,7 @@ Only for the Guava plugins the owner has (for "uninstall founder-mode", just fou
 - **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse, and the Claude and ChatGPT apps:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
-2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "16 Commandments on How to work with me" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete the founder-mode line under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. Add a dated line to the hub's changelog page.
+2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "16 Commandments on How to work with me" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete the founder-mode line under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. Log the hub edit on this work's task in the hub's tasks database.
 3. Check that `claude plugin list` and `codex plugin list` (or `npx skills list -g`) no longer show founder-mode and that the rules page has no "16 Commandments on How to work with me" section, then confirm in two lines what you removed, and that new sessions and chats no longer follow the rules.
 
 **People:** paste this into your AI assistant: "Install (or update, or uninstall) founder-mode from github.com/romeodiaz/guava-stack."

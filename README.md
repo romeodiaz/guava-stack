@@ -78,7 +78,7 @@ Your Notion guava-hub has four parts:
 </tr>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/design-cook-off/SKILL.md"><img src="assets/cook-off.png" width="80" alt="Pixel-art frying pan between two crossed spatulas under a trophy"></a></td>
-<td><a href="guava-hub/skills/design-cook-off/SKILL.md"><ins>design-cook-off</ins></a><br>Say "cook-off" when you want a page or screen people will judge by its look, such as a landing page. Your head-chef builds it twice at once, with two design skills, <a href="https://github.com/pbakaus/impeccable">impeccable</a> and <a href="https://github.com/leonxlnx/taste-skill">taste-skill</a>, and you pick the one to build on. Needs Claude Code, and asks before installing the two design skills.</td>
+<td><a href="guava-hub/skills/design-cook-off/SKILL.md"><ins>design-cook-off</ins></a><br>Say "cook-off" when you want a page or screen people will judge by its look, such as a landing page. Your head-chef builds it twice at once, with two design skills, <a href="https://github.com/pbakaus/impeccable">impeccable</a> and <a href="https://github.com/leonxlnx/taste-skill">taste-skill</a>, and you pick the one to build on. Needs Claude Code or Codex (the Claude and ChatGPT apps run them in their Code and Codex tabs), and asks before installing the two design skills.</td>
 </tr>
 <tr>
 <td align="center" width="200"><a href="https://github.com/mvanhorn/last30days-skill"><img src="assets/last30days.png" width="80" alt="Pixel-art calendar with one day marked"></a></td>

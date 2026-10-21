@@ -60,8 +60,9 @@ rules)
   [ -f "$copy/rules.md" ] && show "guava-hub rules page, local copy" "$copy/rules.md"
   ;;
 save)
-  # Asks once per 60 new transcript lines, about 25 tool
-  # calls, so short chats are never interrupted, and never twice in a row.
+  # Asks after 60 new transcript lines (250 in Codex, which logs more per step),
+  # at most once every 45 minutes per session, so short chats are never
+  # interrupted, and never twice in a row.
   [ -f "$copy/sync.md" ] || exit 0
   input=$(cat)
   case "$input" in *'"stop_hook_active":true'* | *'"stop_hook_active": true'*) exit 0 ;; esac
@@ -72,7 +73,12 @@ save)
   mark="$copy/saved/$(basename "$transcript" .jsonl)"
   lines=$(wc -l < "$transcript")
   last=$(cat "$mark" 2>/dev/null || echo 0)
-  [ $(( lines - last )) -ge 60 ] || exit 0
+  case "$transcript" in */.codex/*) need=250 ;; *) need=60 ;; esac
+  [ $(( lines - last )) -ge "$need" ] || exit 0
+  if [ -f "$mark" ]; then
+    asked=$(stat -c %Y "$mark" 2>/dev/null || stat -f %m "$mark")
+    [ $(( $(date +%s) - asked )) -ge 2700 ] || exit 0
+  fi
   echo "$lines" > "$mark"
   echo '{"decision": "block", "reason": "guava-stack: before you stop, save anything durable from this work to Notion Memory (decisions and their reasons, corrections, preferences, project state), as the hub instructions say, unless the owner paused memory. If nothing qualifies, stop without mentioning this."}'
   ;;

@@ -47,7 +47,7 @@ For a skill from GitHub (setup's starter skills, or any the owner asks for), alw
 1. Read the skill's `SKILL.md` and list its other files from the repo. Third-party skills need their [skills.sh](https://skills.sh) audit shown first and nothing flagged, as setup step 5 says.
 2. Add it to the hub's skills database as a Notion skill (the connector's skill upload, or a page marked as a skill), named as the skill names itself, with its description and its full text word for word. Attach its other files the same way when the skill uses them, such as free-ai-assessment's `template.html`.
 3. On Grok Bot, also install it as files: `npx skills add <owner>/<repo> -g -y` (add `--skill <name>` for one skill from a repo with several). Muse and the Claude and ChatGPT apps read it from the hub.
-4. Skills that run programs, such as last30days, also need the bot's own computer: install them only on Grok Bot or Muse, and say in the skill's entry which bot it runs on.
+4. Skills that run programs also need the bot's own computer: install them only on Grok Bot or Muse, and say in the skill's entry which bot it runs on.
 
 ## Notion Memory
 Notion's own memory: a **Memories** database (one page per topic, typed Profile, Preference, Work, People or Notes) and an **About** page that sums up the owner. Assistants save what they learn there (decisions and their reasons, corrections, preferences, project state), so the next session or another assistant can find it. Notion creates both with the first save, which setup makes when it builds the hub. It's the one memory every assistant shares, so it wins over any assistant's own memory (Claude's, ChatGPT's, Grok Bot's, Muse's, Claude Code's or Codex's): when they disagree, follow Notion Memory and update the other where you can.

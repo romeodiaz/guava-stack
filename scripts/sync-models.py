@@ -68,12 +68,14 @@ def kitchen(args):
     return f"""
 <table>
 <tr>
-<td align="center" width="50%"><img src="{img}/head-chef.png" width="{size}" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
-<td align="center" width="50%"><img src="{img}/line-cook.png" width="{size}" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
+<td align="center" width="33%"><img src="{img}/head-chef.png" width="{size}" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
+<td align="center" width="33%"><img src="{img}/line-cook.png" width="{size}" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
+<td align="center" width="33%"><img src="{img}/computer-use.png" width="{size}" alt="Pixel-art monitor with a cursor clicking a button"><br><strong>computer-use</strong><br><sub>Today's best: {COMPUTER['name']} ({effort(COMPUTER)}) {logo(img, COMPUTER['name'])}<br>Claude only: your assistant's own computer tools</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>
 <td>{cap(ROLES['line_cook'])}</td>
+<td>{cap(ROLES['computer_use'])}</td>
 </tr>
 </table>
 """

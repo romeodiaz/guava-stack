@@ -33,7 +33,7 @@ Your Notion guava-hub has four parts:
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"> <img src="assets/model-router.png" width="80" alt="Pixel-art router"><br><strong>context</strong></td>
-<td><ins>Your settings and who you are</ins><br>Starts with your guava-stack settings, where guava-router lives: your head-chef and line-cook models, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
+<td><ins>Your settings and who you are</ins><br>Starts with your guava-stack settings, where guava-router lives: your head-chef, line-cook and computer-use slots, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 
@@ -94,6 +94,7 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 <!-- /models -->
+<!-- models:computer-use -->computer-use: GPT-6.1 Sol (Low) via Codex for apps outside the browser, after browser tools; Claude only: your assistant's own computer tools.<!-- /models -->
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.

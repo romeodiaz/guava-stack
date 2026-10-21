@@ -16,6 +16,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
+COMPUTER = CONFIG["computer_use"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 ROLES = CONFIG["roles"]
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
@@ -85,18 +86,21 @@ def commands(args):
         "|---|---|---|---|",
         row("head-chef", HEAD),
         row("line-cook", LINE),
+        row("computer-use", COMPUTER),
         row(f"head-chef, {company(HEAD_NEXT)} only", HEAD_NEXT),
         row(f"line-cook, {company(LINE_NEXT)} only", LINE_NEXT),
     ]) + "\n"
 
 
 def plans(args):
-    row = lambda label, h, l: f"| {label} | {detailed(h, tool(h))} | {detailed(l, tool(l))} |"
+    row = lambda label, h, l, c: f"| {label} | {detailed(h, tool(h))} | {detailed(l, tool(l))} | {c} |"
     return "\n" + "\n".join([
-        "| You pay for | head-chef | line-cook |",
-        "|---|---|---|",
-        row("Claude and ChatGPT (best)", HEAD, LINE),
-        *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
+        "| You pay for | head-chef | line-cook | computer-use |",
+        "|---|---|---|---|",
+        row("Claude and ChatGPT (best)", HEAD, LINE, detailed(COMPUTER, "Codex")),
+        *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan),
+              "Your assistant's own computer tools" if plan == "Claude" else detailed(COMPUTER, "Codex"))
+          for plan in ("Claude", "ChatGPT")],
     ]) + "\n"
 
 
@@ -116,6 +120,9 @@ def stack_example(args):
   line-cook
   - {detailed(LINE, 'Codex')}
     - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
+  computer-use
+  - {detailed(COMPUTER, 'Codex')}
+    - {ROLES['computer_use'].capitalize()}. Claude only: the assistant's own computer tools.
   ### Rules
   - founder-mode v{FOUNDER_MODE}
   ```
@@ -126,8 +133,13 @@ def default_pair(args):
     return f"{HEAD['name']} and {LINE['name']}"
 
 
+def computer_use(args):
+    return (f"computer-use: {detailed(COMPUTER, 'Codex')} for {ROLES['computer_use']}; "
+            "Claude only: your assistant's own computer tools.")
+
+
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
-         "stack-example": stack_example, "default-pair": default_pair}
+         "stack-example": stack_example, "default-pair": default_pair, "computer-use": computer_use}
 
 
 def render(match):

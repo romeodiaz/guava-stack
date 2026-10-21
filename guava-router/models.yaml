@@ -4,6 +4,9 @@
 # owner's Claude plan, and the line-cook (does the bulk work) through Codex on their
 # ChatGPT plan. An owner with only one of the two plans gets that company's next_best
 # in the other slot, so both slots run on the one plan.
+# The computer-use slot runs through Codex at Low effort, without the priority
+# speed tier. It has no Claude next_best: Claude-only owners use their assistant's
+# own computer tools.
 #
 # To swap in a newer model:
 #   1. Change its name, id and effort below.
@@ -18,7 +21,7 @@
 #   next_best: the slot's pick from the other company (name, id and effort), used
 #              when the owner pays for only that company's plan
 
-updated: 2026-10-16
+updated: 2026-10-20
 
 head_chef:
   name: Claude Opus 5.5
@@ -38,7 +41,13 @@ line_cook:
     id: claude-sonnet-5-5
     effort: high
 
-# What each role does. Shown under the head-chef and line-cook in the READMEs.
+computer_use:
+  name: GPT-6.1 Sol
+  id: gpt-6.1-sol
+  effort: low
+
+# What each role does. Shown in the READMEs.
 roles:
   head_chef: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems
   line_cook: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs
+  computer_use: apps outside the browser, after browser tools

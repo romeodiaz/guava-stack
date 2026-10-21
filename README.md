@@ -91,7 +91,7 @@ Your Notion guava-hub has four parts:
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/logo.png" width="80" alt="Guava logo"></a></td>
-<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". On day 1 it shows what your AI has picked up about your tools and workflows; after two weeks it ranks which workflows are worth automating, as a polished report that stays on your computer.</td>
+<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". On day 1 it shows what your AI has picked up about your tools and workflows; after two weeks it ranks which workflows are worth automating, as a polished report that stays on your computer. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
 </tr>
 </table>
 

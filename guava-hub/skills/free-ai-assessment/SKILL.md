@@ -1,11 +1,11 @@
 ---
 name: free-ai-assessment
-description: Makes the owner a free, short AI Assessment from their guava-hub, Notion Memory, email and calendar counts and a few quick questions, covering their tech stack, their workflows and which ones are worth automating (Build, Pilot or Don't build), as a polished report file that stays on their computer. Use when the owner says "run my free AI assessment", "free AI assessment", "what do you know about my workflows", "review my workflows" or "review my setup for my team".
+description: Makes the owner a free, short AI Assessment from their guava-hub, Notion Memory, email and calendar counts and a few quick questions, covering their tech stack, their workflows and which ones are worth automating (Build, Pilot or Don't build), as a polished report file that stays on their computer, and keeps their AI apps' memories in step with Notion Memory. Use when the owner says "run my free AI assessment", "free AI assessment", "what do you know about my workflows", "review my workflows", "review my setup for my team" or "check my memories".
 ---
 
 # Free AI Assessment
 
-A short version of Guava's paid AI Assessment, made by the owner's own assistant from what their guava-hub holds, counts from their email and calendar, and a few quick answers from the owner. It runs anytime, from the day the hub is made: it ranks every workflow it knows about **Build** (worth automating now), **Pilot** (try it small first) or **Don't build** (keep doing it by hand for now), with the reason and the rough hours it takes now, and says plainly where the evidence is thin. It gets sharper the longer the owner uses their assistants, so they can run it again anytime.
+A short version of Guava's paid AI Assessment, made by the owner's own assistant from what their guava-hub holds, counts from their email and calendar, and a few quick answers from the owner. It runs anytime, from the day the hub is made: it ranks every workflow it knows about **Build** (worth automating now), **Pilot** (try it small first) or **Don't build** (keep doing it by hand for now), with the reason and the rough hours it takes now, and says plainly where the evidence is thin. It gets sharper the longer the owner uses their assistants, so they can run it again anytime. Each run also checks the owner's AI memories against Notion Memory and fixes drift (step 6), showing every change first.
 
 ## 1. Gather
 Read only, no changes:
@@ -29,7 +29,7 @@ Read only, no changes:
 Mask sensitive details instead of dropping them: keep clients, people, candidates and other confidential details in the report, but write each as `********` with what it is in front, such as "Client ********" or "Candidate ********", and count what you masked by type. Passwords and keys are counted, never copied, even masked. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email, calendar, app-use and local-memory totals and the owner's answers hold, so it shows the owner exactly what their assistants know.
 
 ## 2. Ask
-In one short message, show the owner the workflows you found that don't already have a skill or routine (one line each) and ask up to 5 questions, numbered, that the hub and memory don't already answer:
+In one short message, start with one line: "I'll also compare what your AI apps remember with your Notion Memory, and show you any fixes before I make them." Then show the owner the workflows you found that don't already have a skill or routine (one line each) and ask up to 5 questions, numbered, that the hub and memory don't already answer:
 - How often each workflow without a time cost runs and roughly how long it takes them, for the ones that matter most. Offer the form "about 2 a week, 3 hours each".
 - What they most want off their plate first, if **Priorities** is empty.
 - Anything big you missed: a weekly job that isn't on the list.
@@ -71,7 +71,18 @@ Use [template.html](template.html) from this skill. In the Claude or ChatGPT app
 - Give the owner the finished file as a download named `guava-ai-assessment-<YYYY-MM-DD>.html`, or save it to their Downloads folder if you run on their own computer (Claude Code or Codex). A bot with a computer of its own, such as Grok Bot or Muse, sends the file in the chat. They open it in any browser, and can print it to PDF.
 - Never put it anywhere else: not in Notion, Google Drive, a published or shared link, an email or a message. The file makes no web requests, so opening it sends nothing anywhere.
 - In chat, give a three-line summary: how many workflows, how many Build, and the one to start with. Then say: "The report ends with a link to book a free 20-minute call with Guava, if you'd like to talk it through. Nothing is shared unless you share it."
-- Besides the answers in step 2, save nothing new to Notion Memory from this skill unless the owner corrects something, such as a workflow that's wrong; then fix that memory.
+- Besides the answers in step 2 and the memory check in step 6, save nothing new to Notion Memory from this skill unless the owner corrects something, such as a workflow that's wrong; then fix that memory.
+
+## 6. Memory check
+Run it after handing over the report, or on its own when the owner says "check my memories" or a scheduled run starts it.
+- Compare what the owner's AI memories hold with the hub and Notion Memory: your own memory (the Claude or ChatGPT app's, or a bot's own memory store if it has one), plus Codex's and Claude Code's local memories when you run on their computer. Each tool can fix only its own memory; list anything in another app as "fix in <that app>" for the owner to do there.
+- Make one numbered list, each item marked with its reason:
+  - **Add to Notion Memory:** a durable fact about the owner that Notion doesn't have yet.
+  - **Fix in the app:** an app memory that contradicts the hub or Notion Memory (name what replaced it), or a secret stored in an app's memory ("forget this secret", never its text).
+  - **Leave out (not copied):** duplicates, other people, notes tied to one code project, and instructions to assistants.
+- Ask "Reply yes, or the numbers to skip." Then save the adds to Notion Memory as its guide says (search first, update instead of duplicating) and fix the app memories: in Claude or ChatGPT, update or forget that memory; in Claude Code, edit its file under `~/.claude/projects/*/memory/`. Codex's local memories shouldn't be edited by hand; if they're badly out of date, suggest "Delete Codex memories" in the Codex app, which starts them fresh.
+- A scheduled run with nobody there only makes the list, with other people and clients masked, and sends it in the chat or notification the owner will see, never into Notion. It changes nothing until they reply.
+- If this skill's row in the skills database has no Schedule yet, offer: "Want me to run this memory check every two weeks? It's light: no report and no questions, just the list." If they say yes and you run on Grok Bot, Muse, or a Claude or ChatGPT app that can schedule tasks, check the hub's routines view so nothing runs twice, set it up, and fill in this skill's Schedule and Runs on. If your tool can't schedule, say so, and that "check my memories" works anytime.
 
 ## Checklists
 Pick the one that fits the context page; use **Any business** when none does. Offer it as a numbered list so the owner can answer with numbers.

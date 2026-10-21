@@ -70,7 +70,7 @@ guava-stack settings is the owner's own settings page, and assistants read it li
 
 Then save the standing instructions:
 
-Show the owner these standing instructions in the step's plan, and once they say yes, save them where your app's adapter file says: custom instructions or personal preferences in the Claude or ChatGPT app, your memory and shared user memory on Grok Bot, SOUL.md on Muse. Where the guava-hub plugin is installed (Claude Code or Codex), its start-up hook already gives every new session these instructions, so there's nothing to save there. Apps with a length limit on custom instructions get the short version below; bots get the full list.
+Show the owner these standing instructions in the step's plan, and once they say yes, save them where your app's adapter file says: Instructions for Claude, or custom instructions in ChatGPT, your memory and shared user memory on Grok Bot, SOUL.md on Muse. Where the guava-hub plugin is installed (Claude Code or Codex), its start-up hook already gives every new session these instructions, so there's nothing to save there. Apps with a length limit on custom instructions get the short version below; bots get the full list.
 
 **Short version** (the Claude and ChatGPT apps):
 ```
@@ -187,7 +187,7 @@ Only for the Guava plugins the owner has (for "update guava-hub", just guava-hub
 <!-- /update-steps -->
 
 ### 2. Bring the hub up to date
-Read the hub and every saved copy of the standing instructions (custom instructions or personal preferences in the Claude or ChatGPT app, your memory and shared user memory on Grok Bot, Muse's SOUL.md), and compare them with steps 1, 2 and 5 of setup in this version, including starter skills the owner doesn't have yet. Offer to change anything that differs. You can't change another app's or bot's instructions from here, so if the owner uses more than one (such as the ChatGPT app and Grok Bot), tell them to say "update guava-stack" in each of the others too. Add a dated line to the hub's changelog page for each hub edit.
+Read the hub and every saved copy of the standing instructions (Instructions for Claude or ChatGPT's custom instructions, your memory and shared user memory on Grok Bot, Muse's SOUL.md), and compare them with steps 1, 2 and 5 of setup in this version, including starter skills the owner doesn't have yet. Offer to change anything that differs. You can't change another app's or bot's instructions from here, so if the owner uses more than one (such as the ChatGPT app and Grok Bot), tell them to say "update guava-stack" in each of the others too. Add a dated line to the hub's changelog page for each hub edit.
 
 ### 3. Run the other updates
 For "update guava-stack", follow the Update step in the **guava-router** skill, then in the **founder-mode** skill, for whichever the owner has. Skip their "get the newest files" step, since step 1 above already did it.
@@ -225,9 +225,9 @@ Following **Putting files back** above:
 
 ### 4. Take it out of the bots' memories
 Remove the hub instruction line and the standing instructions everywhere they were saved. Show the exact text to delete, one app per message, and wait for done. Leave everything else in place.
-- **Claude or ChatGPT app:** delete the Guava lines from custom instructions or personal preferences (the adapter file says where), and any Guava memories the app saved.
+- **Claude or ChatGPT app:** delete the Guava lines from Instructions for Claude or ChatGPT's custom instructions (the adapter file links each), and any Guava memories the app saved.
 - **Grok Bot:** delete the Guava memories, in shared user memory too.
-- **Muse:** delete the Guava lines at the end of SOUL.md (the bot's avatar, then the Fingerprint tab).
+- **Muse:** delete the Guava lines at the end of SOUL.md (the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Your own memory or custom instructions**, if you saved them there.
 
 ### 5. What stays

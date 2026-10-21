@@ -153,9 +153,9 @@ For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
 
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
-- **Claude or ChatGPT app:** the guava lines in your personal preferences (Claude) or custom instructions (ChatGPT).
+- **Claude or ChatGPT app:** the guava lines in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization).
 - **Sign-ins:** you approve Notion in your browser, and with a bot, Claude and ChatGPT too, pasting any code straight back into the bot.
-- **Muse:** the guava lines at the end of SOUL.md (click the bot's avatar, then the Fingerprint tab).
+- **Muse:** the guava lines at the end of SOUL.md (click the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.
 
 ## How to update
@@ -177,7 +177,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
 - **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
-- **Saved:** your hub, plus standing instructions in your personal preferences (Claude), custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The free AI assessment is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
+- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The free AI assessment is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), npm (to install the tools, with a bot) and skills.sh (to check outside skills). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 

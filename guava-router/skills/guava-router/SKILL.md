@@ -69,7 +69,7 @@ The bot runs Claude Code and Codex with nobody at the keyboard, and Claude Code 
 - **line-cook**: bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.
 - **Browser and desktop tasks**: keep using the assistant's own computer tools.
 - **Hand-off rule**: if a tool can't reach the hub, the head-chef (or you) loads what the job needs from the hub and puts it in that tool's prompt.
-- **If either fails**: do the task yourself and say so.
+- **If a hand-off fails**: follow **Repair** below and retry once. If it still fails, do the task yourself and say so.
 - **If you are the head-chef or the line-cook** (say, Claude Code on the head-chef's model), do that slot's work yourself and send only the other slot's work out. On one plan, the other slot's work goes to the same tool on the other slot's model.
 - **Grok Bot and Muse:** run Claude Code, Codex or both on their own computers and hand each job to the CLI its slot names.
 - **Long jobs on Grok Bot**: any hand-off that may take more than a few minutes runs in the background, as **Long jobs** below says.
@@ -85,6 +85,16 @@ On Grok Bot, one command can wait at most 13 minutes, and the computer pauses be
 2. **Stay in your turn until it finishes.** Check every few minutes with short commands, such as `sleep 240; tail -n 20 /workspace/guava-runs/<job>.log`, each well under the command limit. Tell the owner it's still running, but never end your turn while a job runs.
 3. **If it stopped without an answer, resume it instead of starting over**, in the background the same way: Codex `codex exec resume <session id> -o /workspace/guava-runs/<job>.md "Continue where you left off." < /dev/null`, with the session ID from the top of `<job>.log`; Claude Code `claude -p --resume <uuid> "Continue where you left off." < /dev/null`. If it fails again, do the task yourself and say so.
 4. **Split big jobs.** The head-chef breaks work that could run for hours into steps the line-cook can finish one at a time, and checks each before the next starts.
+
+### Repair
+A bot's computer can be replaced or reset (Muse and Grok Bot both do this), which wipes the tools, their sign-ins, Codex's Notion connection and Claude Code's settings. When a hand-off fails, or a tool says it's missing, unsigned, expired or doesn't support the model, check these in order on that tool and fix only what's broken, using the setup step named:
+1. **Installed?** `command -v claude` or `command -v codex`. Missing: reinstall as step 2 says.
+2. **Up to date?** Always run `claude update` or `npm i -g @openai/codex@latest`: an old version rejects new models.
+3. **Signed in?** `claude auth status` or `codex login status`, then the tool's tiny test from step 1's commands table, since a status can say signed in while the token has expired (a 401 or `token_expired`). Not working: start the sign-in as step 2 says and send the owner the link.
+4. **Connected to Notion?** `claude mcp list` or `codex mcp list`. Missing: reconnect as step 3 says.
+5. **Allowed to read the hub?** Claude Code's `~/.claude/settings.json` still approves Notion's four read-only tools. Missing: restore them as step 4 says, backing up first.
+
+Restoring what setup already installed needs no new yes, since the owner approved it at setup: tell them in one line what was reset and what you fixed, for example "Your bot's computer was reset, so I reinstalled Codex and need you to approve its sign-in." Anything beyond restoring setup needs a yes as usual. Then retry the hand-off once.
 
 ## 6. Stay inside each provider's terms
 For Claude Code on a Claude plan:

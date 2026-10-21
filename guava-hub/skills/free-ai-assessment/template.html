@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>Free AI Assessment | {{BUSINESS_NAME}}</title>
   <style>
@@ -29,9 +29,7 @@
     .header { padding: 24px 32px; }
     .brand-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .wordmark { display: inline-flex; align-items: center; gap: 8px; font-size: 28px; font-weight: 750; letter-spacing: -.06em; }
-    .mark { width: 26px; height: 30px; flex: none; }
-    .mark circle { fill: var(--guava); }
-    .mark path { fill: var(--on-forest-muted); }
+    .mark { width: 26px; height: 32px; flex: none; }
     .kind { color: var(--on-forest-muted); font-size: 12px; text-align: right; }
     .prepared { color: var(--on-forest-muted); }
     .prepared strong { color: var(--on-forest); font-weight: 600; }
@@ -145,10 +143,7 @@
     <header class="header band">
       <div class="brand-row">
         <div class="wordmark">
-          <svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" aria-hidden="true" focusable="false">
-            <path d="M14 9C13 3 19 1 24 2c-1 5-5 8-10 7Z"/>
-            <circle cx="13" cy="20" r="11"/>
-          </svg>
+          <img class="mark" src="data:image/png;base64,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" alt="" width="26" height="32">
           guava
         </div>
         <p class="kind">{{BASED_ON}}</p>

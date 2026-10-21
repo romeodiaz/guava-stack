@@ -70,6 +70,8 @@
     .status.ready { background: var(--forest-2); color: var(--on-forest); }
     .status.populating { background: var(--guava-soft); color: var(--accent); }
     .status.off { background: var(--tint); color: var(--muted); }
+    .source.interviews { border: 1px dashed var(--accent); background: var(--guava-soft); }
+    .status.excluded { background: var(--accent); color: var(--on-forest); }
     .pending, .tool .pending { color: var(--accent); font-weight: 600; }
     .blindspots { margin-top: 24px; padding: 20px; border: 1px dashed var(--guava); border-radius: 12px; background: var(--guava-soft); }
     .blindspots p { max-width: 78ch; }
@@ -173,6 +175,7 @@
           <!-- repeat:source -->
           <li class="source"><strong>{{SOURCE_NAME}}</strong> <span class="status {{SOURCE_CLASS}}">{{SOURCE_STATUS}}</span><span class="source-note">{{SOURCE_NOTE}}</span></li>
           <!-- /repeat:source -->
+          <li class="source interviews"><strong>Live interviews with Guava</strong> <span class="status excluded">Not included</span><span class="source-note">Why work stalls and who waits on whom. Only in the full <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>.</span></li>
         </ul>
       </section>
       <section aria-labelledby="stack-title">

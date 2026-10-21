@@ -1,7 +1,7 @@
 # Grok Bot adapter
 
 - A recommended addition on a $30 a month xAI or Cursor plan: a bot with its own computer that the owner hands whole jobs to, from any device. Setting it up runs **Add a bot** in the setup skill.
-- **Fastest start: Guava's Grok Bot template**, <!-- grok-template-url -->{{GROK_TEMPLATE_URL}}<!-- /grok-template-url -->. The owner opens it and clicks **Add to Grok Bot**. The new bot already has the standing instructions and Guava's skills; it still connects Notion and sets up the Model Router, so they say "set me up" in it next.
+- **Fastest start: Guava's Grok Bot template**, https://x.ai/bot/bp8zbSkrzoJo6wKrv9Eny. The owner opens it and clicks **Add to Grok Bot**. The new bot, guava-bot, already has the standing instructions in its description and two skills (guava-stack and getting-started); its first chat connects Notion, makes or finds the hub and sets up the Model Router, so they say "set me up" in it next.
 - **Connect your hub:** walk the owner through it one step per message: "Click **Connect Apps** in the bottom left." "Search for Notion and click **Install**." "Sign in to Notion and approve access to the workspace with your guava-hub."
 - Install: paste the Start here line from the README.
 - Grok Bot keeps the skills as files: it installs them with `npx skills add romeodiaz/guava-stack -g -y`.

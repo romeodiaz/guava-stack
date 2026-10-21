@@ -18,14 +18,21 @@ Read only, no changes:
   - Calendar: hours over the last 30 days, grouped as sales calls, client meetings, interviews, internal meetings and other, judged from titles and whether anyone outside the business attends.
   - Use what you find: each app goes into the tech stack with its count ("about 400 emails in 30 days") and onto the step 2 list as a likely workflow, and calendar hours fill the hours for jobs like sales follow-up and meeting notes.
   - Never read message bodies or put a subject line in the report. If neither connector is on, say so in the gaps.
+- App and website use, when you run on the owner's own computer (Claude Code, Codex, or an app with computer use). Only domain and app totals leave the script or the settings page; no URLs, page titles or searches.
+  - Browser history: run [app-usage.py](app-usage.py) from this skill, or fetch it from `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/guava-hub/skills/free-ai-assessment/app-usage.py` (`python3 app-usage.py` on a Mac, `py app-usage.py` on Windows; if Python isn't installed, run the same logic yourself). It reads the last 30 days from Chrome, Edge, Brave, Arc and Firefox and prints only domains, with visits, days used and estimated active hours. It doesn't read Safari, which needs Full Disk Access. Hours are a floor: apps that stay on one page all day, such as Gmail or a CRM, show fewer hours than they get.
+  - Mac: read the top apps and websites for the last 7 days from System Settings → Screen Time → App & Website Activity, with computer use, changing nothing. If App & Website Activity is off, note it for the step 2 question.
+  - Windows: there's no setting to turn on. On a laptop, read the last 7 days of per-app use from Settings → System → Power & battery → Battery usage, with computer use, changing nothing; it may count only time on battery, so a laptop that's usually plugged in shows less. Desktops don't show it, so use browser history alone.
+  - Use it like the email counts: name the app behind each domain (hubspot.com is HubSpot), put the top apps in the tech stack with their hours, and add likely workflows to the step 2 list. Client sites and portals are masked like client email, "Client ******** · N hours", and personal browsing (video, social, news, shopping, banking) becomes one masked line, "Personal sites ******** · N hours".
+  - In the Claude or ChatGPT app with no access to the computer, skip this and say in the gaps that running the assessment in Claude Code or Codex adds app and website use.
 
-Mask sensitive details instead of dropping them: keep clients, people, candidates and other confidential details in the report, but write each as `********` with what it is in front, such as "Client ********" or "Candidate ********", and count what you masked by type. Passwords and keys are counted, never copied, even masked. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email and calendar counts and the owner's answers hold, so it shows the owner exactly what their assistants know.
+Mask sensitive details instead of dropping them: keep clients, people, candidates and other confidential details in the report, but write each as `********` with what it is in front, such as "Client ********" or "Candidate ********", and count what you masked by type. Passwords and keys are counted, never copied, even masked. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email, calendar and app-use totals and the owner's answers hold, so it shows the owner exactly what their assistants know.
 
 ## 2. Ask
 In one short message, show the owner the workflows you found that don't already have a skill or routine (one line each) and ask up to 5 questions, numbered, that the hub and memory don't already answer:
 - How often each workflow without a time cost runs and roughly how long it takes them, for the ones that matter most. Offer the form "about 2 a week, 3 hours each".
 - What they most want off their plate first, if **Priorities** is empty.
 - Anything big you missed: a weekly job that isn't on the list.
+- If you read app and website use: the top 15 as one question, "Strike any that aren't work, or that an AI agent browsed for you" (flag bursts, such as hundreds of visits in a day or two). If Screen Time was off, add: "Want me to turn it on for next time?", keeping Share across devices off.
 - The checklist for their kind of business, from **Checklists** below, as one of the questions: "Which of these do you or your team do every week? Reply with the numbers, and rough hours for your top 3." Most of their week sits in jobs like these, not in their AI tools.
 
 Only ask what changes a verdict or an hours figure. If they skip every question about time, ask once more for one number: "One number makes this much more useful: how many hours a week does <their biggest workflow> take you?" If they skip a question after that, carry on and write "unknown" for what it would have filled. If they have no hub data at all, ask for their 3 to 5 most time-consuming jobs instead.
@@ -47,7 +54,7 @@ For each workflow, decide:
 - When the owner's **Priorities** name a workflow, lead with it and say so. Otherwise lead with the biggest hours, and name its size in the summary.
 - Skip workflows that already have a skill or a routine, and mention them in the summary as already handled.
 
-Write in the owner's own words where you can, plainly, with no hype. Every claim must come from the hub, memory, the email and calendar counts or the owner's answers. If something is a guess, say so in the row.
+Write in the owner's own words where you can, plainly, with no hype. Every claim must come from the hub, memory, the email, calendar and app-use totals or the owner's answers. If something is a guess, say so in the row.
 
 ## 4. Make the report
 Use [template.html](template.html) from this skill. In the Claude or ChatGPT app, or anywhere you can't read the skill's files, fetch it from `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/guava-hub/skills/free-ai-assessment/template.html`.

@@ -123,6 +123,10 @@ Don't ask a bare yes or no. Explain the benefit first, then offer three choices:
 ## 5. Add starter skills
 Offer these in one message, each with one line on what it does, and add the ones the owner picks to the hub's skills database as **Add a skill** in [backends/notion.md](backends/notion.md) says:
 - **free-ai-assessment** (Guava, always added): "Say 'run my free AI assessment' anytime. I'll ask a few quick questions, then rank which of your workflows are worth automating, as a report that stays on your computer. It gets sharper the longer you use me." From this repo: `guava-hub/skills/free-ai-assessment/`.
+  When free-ai-assessment is added, ask once: "Want stronger assessments? Your computer can keep a private count of which apps and websites you use, and the assessment reads only the totals." Ask whether they're on a Mac or Windows:
+  - Mac: if Screen Time's App & Website Activity is off, they turn it on in System Settings → Screen Time → App & Website Activity (`x-apple.systempreferences:com.apple.Screen-Time-Settings.extension`). Turning it on can also switch on Share across devices; switch that back off so the counts stay on this Mac. With computer use, offer to do it for them once they say yes.
+  - Windows: nothing to turn on. A laptop already keeps 7 days of per-app use in Settings → System → Power & battery → Battery usage (`ms-settings:batterysaver-usagedetails`), though it may count only time on battery; on a desktop the assessment uses browser history instead.
+  - If they say no, carry on.
 - **humanizer** (by blader, from [github.com/blader/humanizer](https://github.com/blader/humanizer)): "So anything I write for you doesn't sound like AI." Recommended.
 
 Take each third-party skill straight from its GitHub repo, never from a copy elsewhere. In the step's plan, show its [skills.sh](https://skills.sh) security audit results (`https://skills.sh/blader/humanizer`), and leave it out if any audit flags it.

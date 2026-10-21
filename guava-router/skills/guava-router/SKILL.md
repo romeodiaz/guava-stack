@@ -36,7 +36,7 @@ The picks come from [models.yaml](https://github.com/romeodiaz/guava-stack/blob/
 ## 2. Install the command-line tools
 Only the tools the owner's plans need: Claude Code for a Claude plan, Codex for a ChatGPT plan.
 - Check first, without asking (these only read): `claude --version` and `codex --version`. Skip the install for any tool that answers with a version, and tell the owner it's already there.
-- Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code` and Codex `npm i -g @openai/codex`.
+- Install only what's missing: Claude Code `npm i -g @anthropic-ai/claude-code` and Codex `npm i -g @openai/codex`. Then run `claude update`, since npm can install a Claude Code too old to run the newest Claude models, and check both versions again.
 - Put the tools on the computer's PATH, so `claude` and `codex` also work in its desktop terminal if the owner ever signs in there: find their folder with `dirname "$(command -v claude)"` (or `codex`), often `~/.local/bin`. If `~/.bashrc` or `~/.profile` doesn't already add that folder, back the file up (see **Backups** below) and add `export PATH="<folder>:$PATH"` at the end. Until a new terminal picks it up, give the owner the full path, such as `~/.local/bin/claude auth login`.
 - Check sign-in: `claude auth status` and `codex login status`. Skip any that's already signed in; otherwise run the sign-in yourself, on the owner's own subscription, so they only open a link and send you back what it shows:
   - Codex: run `codex login --device-auth` in the background, send the owner its link and one-time code, and check `codex login status` once they say they've approved it.
@@ -47,7 +47,7 @@ Only the tools the owner's plans need: Claude Code for a Claude plan, Codex for 
 ## 3. Connect them to Notion
 For each tool step 2 set up, check what's already connected first (`claude mcp list`, `codex mcp list`) and skip anything that already shows Notion.
 - Claude Code: run `claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp`, then have the owner type `/mcp` in Claude Code and approve Notion's sign-in page.
-- Codex: run `codex mcp add notion --url https://mcp.notion.com/mcp`, then `codex mcp login notion` and have the owner approve Notion's sign-in page.
+- Codex: run `codex mcp add notion --url https://mcp.notion.com/mcp`, then `codex mcp login notion` and have the owner approve Notion's sign-in page. On a bot's computer, the owner's browser then lands on an error page at `127.0.0.1:<port>`, because that address belongs to the bot's computer: tell them so before they approve, and ask them to paste the whole address from the address bar back to you so you can finish the sign-in.
 
 Test each tool with a quick non-interactive run that reads the context page from the hub, for example `claude -p "..." < /dev/null` and `codex exec --skip-git-repo-check "..." < /dev/null`.
 

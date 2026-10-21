@@ -1,6 +1,6 @@
 # Meta Muse Bot adapter
 
-- Free. Where the owner works, like Grok Bot: they drive everything from here, on any device.
+- Free. A recommended addition, like Grok Bot: a bot with its own computer that the owner hands whole jobs to, from any device. Setting it up runs **Add a bot** in the setup skill. Muse has no template sharing, so its standing instructions go in SOUL.md as below.
 - **Connect your hub:** tell Muse "Connect my Notion" and approve access to your guava-hub. Start with just the hub, not your whole workspace.
 - Muse doesn't let you upload your own skills, so don't install them as files. Keep the skills in the hub and have Muse read the matching one from there when a task needs it.
 - **Add the standing instructions:** click the bot's avatar, open the Fingerprint tab, and open SOUL.md. Add these lines at the end, then save. Add to what's there; never replace or delete anything. The routing line reads the models from guava-stack settings, so swapping one there needs no change here:
@@ -8,6 +8,7 @@
   Before any substantive task, load my guava-hub in Notion first (context, rules and skills) and treat it as the source of truth.
   Model routing: use the head-chef and line-cook in my guava-stack settings, re-reading those two lines right before each hand-off, through the CLI each one names at the effort it names (`claude -p --effort <effort>` for Claude Code, `codex exec -c model_reasoning_effort=<effort>` for Codex): the head-chef for orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems; the line-cook for bulk execution, coding, sub-agent tasks, worker threads and long-running jobs; quick replies and connector lookups stay with you; if either CLI fails, do the task yourself and say so; when a skill defines how it runs, follow the skill and use routing only for work it leaves open. Run routed work through the CLI without being asked, and mention which one you used.
   When I say "update" or "uninstall" with "guava-stack", "guava-hub", "guava-router" or "founder-mode", follow the Update or Uninstall step in that piece's skill from github.com/romeodiaz/guava-stack: guava-hub/skills/guava-hub/SKILL.md (it also handles "guava-stack"), guava-router/skills/guava-router/SKILL.md or founder-mode/skills/founder-mode/SKILL.md. These always mean the published guava-stack in that repo, never a plan or notes of your own, so read the step there before doing anything.
+  Save the tools my business uses and the tasks I do again and again to my Notion Memory, as the Tech stack and Workflows memories. When I say "run my free AI assessment", follow guava-hub/skills/free-ai-assessment/SKILL.md from github.com/romeodiaz/guava-stack.
   When I ask to change my setup (for example "change my setup", "apply my guava-stack settings" or "check for newer models"), follow the Change your setup step in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack.
   ```
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.

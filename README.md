@@ -4,18 +4,19 @@
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
-Your business context, rules, skills and AI memories in one place you already own. You drive everything from Grok Bot or Muse, on any device.
+Your business context, rules, skills and AI memories in one place you already own. Use it from the Claude or ChatGPT app you already have, on any device.
 
-No coding needed: paste the following and your bot sets it up:
+No coding needed: paste the following into Claude or ChatGPT and it sets everything up:
 
 ```
 Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 **🔑 You'll need:**
-- Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">
-- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher)<br>Your bot can run both behind the scenes
+- Claude Pro <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT Plus <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> ($20 plan or higher)
 - Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
+
+**➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router and can run Claude and ChatGPT behind the scenes.
 
 ## What you get
 
@@ -23,7 +24,7 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"></a></td>
-<td><ins>guava-hub (Notion)</ins><br>One home in your own Notion workspace for your context, rules, skills and memories. Your bot reads it and remembers into it, and so does any other assistant you connect.</td>
+<td><ins>guava-hub (Notion)</ins><br>One home in your own Notion workspace for your context, rules, skills and memories. Claude or ChatGPT reads it and remembers into it, and so does any bot or assistant you connect.</td>
 </tr>
 </table>
 
@@ -53,15 +54,15 @@ Your Notion guava-hub has four parts:
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/memories.svg" width="80" alt="Notion Memory thought cloud"><br><strong>memories</strong></td>
-<td><ins>What your AI learned</ins><br>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
+<td><ins>What your AI learned</ins><br>Notion Memory: the decisions, corrections and preferences your assistants pick up as they work, in one place every assistant shares, so Claude, ChatGPT, Grok Bot, Muse and anything else you connect remember the same things. Each app can move its own memories in, and you can say "forget" anything to remove it.</td>
 </tr>
 </table>
 
-### 2) router
+### 2) router (upgrade, with a bot)
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a></td>
-<td><ins>guava-router</ins><br>Your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen. Picked from the Pareto-optimal winners on my private benchmarks, <a href="https://workwithguava.com/mainstreetbench#cost-frontier">Main Street Bench</a> and <a href="https://workwithguava.com/mspbench#cost-frontier">MSP Bench</a>.</td>
+<td><ins>guava-router</ins><br>Once you add Grok Bot or Muse, your bot sends each job to the best AI model on the plans you already pay for, split like a kitchen. Picked from the Pareto-optimal winners on my private benchmarks, <a href="https://workwithguava.com/mainstreetbench#cost-frontier">Main Street Bench</a> and <a href="https://workwithguava.com/mspbench#cost-frontier">MSP Bench</a>.</td>
 </tr>
 </table>
 
@@ -86,10 +87,18 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
+### 4) free AI assessment
+<table>
+<tr>
+<td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/logo.png" width="80" alt="Guava logo"></a></td>
+<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". On day 1 it shows what your AI has picked up about your tools and workflows; after two weeks it ranks which workflows are worth automating, as a polished report that stays on your computer.</td>
+</tr>
+</table>
+
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
 - 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, and Muse is free.
-- 📱 **Everywhere.** Your bot works the same on your desk, laptop and phone.
+- 📱 **Everywhere.** Works the same in the Claude or ChatGPT app on your desk, laptop and phone.
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.
 - 🔒 **Private.** Guava never sees your data.
@@ -97,17 +106,21 @@ Your Notion guava-hub has four parts:
 - ✅ **Safe by default.** Shows every change first, never overwrites, and checks outside skills before installing.
 
 ## Start here
-Paste this into Grok Bot or Muse:
+Paste this into the Claude or ChatGPT app:
 
 ```
 Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
-It asks a few questions, explains each step, and checks that everything works. Unsure? Say "use the defaults".
+It asks for your website and a few details, drafts your hub from them, and checks that everything works, with one yes per step. Unsure? Say "use the defaults".
 
-Each bot follows its own guide: [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
+**⚡ Prefer clicking?** Start your hub from the [Notion template]({{NOTION_TEMPLATE_URL}}), or add the [Grok Bot template]({{GROK_TEMPLATE_URL}}), then say "set me up".
 
-**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, tell the owner Guava doesn't support that assistant yet. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It builds the hub, hands off to the router, offers founder-mode and wraps up.
+**➕ Add a bot later:** paste the same line into Grok Bot or Muse. It connects to your hub and turns on the router.
+
+Each app follows its own guide: [Claude](assistants/claude.md) · [ChatGPT](assistants/chatgpt.md) · [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
+
+**AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, tell the owner Guava doesn't support that assistant yet. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It makes the hub, offers founder-mode and starter skills, and wraps up; in a bot, **Add a bot** turns on the router.
 
 **🧩 Just want one piece?** Each works on its own:
 
@@ -136,18 +149,20 @@ For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
 2. "Import my existing instructions and skills into my guava-hub."
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
+5. "Run my free AI assessment."
 
 ## Some Manual Setup Needed
-Setup walks you through each of these, since your bot can't do them for you. If your bot seems to ignore your hub, check these first:
-- **Sign-ins:** you approve Notion, Claude and ChatGPT in your browser when your bot asks, and paste any code straight back into the bot.
+Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
+- **Claude or ChatGPT app:** the guava lines in your personal preferences (Claude) or custom instructions (ChatGPT).
+- **Sign-ins:** you approve Notion in your browser, and with a bot, Claude and ChatGPT too, pasting any code straight back into the bot.
 - **Muse:** the guava lines at the end of SOUL.md (click the bot's avatar, then the Fingerprint tab).
-- **Updates:** say "update guava-stack" in each bot you use, since only it can change its own memory.
+- **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.
 
 ## How to update
-Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Grok Bot or Muse Bot. It shows the plan first and offers newer models.
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first and offers newer models.
 
 ## How to uninstall
-Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Grok Bot or Muse Bot. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your bot doesn't know the command, paste this:
+Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your AI doesn't know the command, paste this:
 
 ```
 Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/guava-stack.
@@ -159,20 +174,21 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** on your bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
-- **Commands run:** `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
-- **Files read:** only the instruction, skill or notes files you approve. Never your bot's memories or chats. Each bot can move its own memories into Notion Memory if you ask it to.
-- **Saved:** your hub, plus standing instructions in your bot's memory (Grok Bot) or SOUL.md (Muse). Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
+- **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
+- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
+- **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
+- **Saved:** your hub, plus standing instructions in your personal preferences (Claude), custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The free AI assessment is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
-- **External services:** Notion, your AI providers, GitHub (where your bot reads these steps), npm (to install the tools) and skills.sh (to check outside skills). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
+- **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), npm (to install the tools, with a bot) and skills.sh (to check outside skills). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 
 </details>
 
 ## What's inside
 - 🧠 **[guava-hub](guava-hub/)**: hub setup, with the [Notion steps](guava-hub/skills/guava-hub/backends/notion.md).
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
+- 📋 **[free-ai-assessment](guava-hub/skills/free-ai-assessment/)**: the free AI Assessment and its report template.
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
-- 🤖 **[assistants/](assistants/)**: what Grok Bot and Muse each skip or change.
+- 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Grok Bot and Muse each skip or change.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

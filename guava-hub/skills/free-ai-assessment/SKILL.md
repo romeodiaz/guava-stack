@@ -5,7 +5,7 @@ description: Makes the owner a free, short AI Assessment from their guava-hub, N
 
 # Free AI Assessment
 
-A short version of Guava's paid AI Assessment, made by the owner's own assistant from what their guava-hub holds, counts from their email and calendar, and a few quick answers from the owner. It runs anytime, from the day the hub is made: it ranks every workflow it knows about **Build** (worth automating now), **Pilot** (try it small first) or **Don't build** (keep doing it by hand for now), with the reason and a rough time saving, and says plainly where the evidence is thin. It gets sharper the longer the owner uses their assistants, so they can run it again anytime.
+A short version of Guava's paid AI Assessment, made by the owner's own assistant from what their guava-hub holds, counts from their email and calendar, and a few quick answers from the owner. It runs anytime, from the day the hub is made: it ranks every workflow it knows about **Build** (worth automating now), **Pilot** (try it small first) or **Don't build** (keep doing it by hand for now), with the reason and the rough hours it takes now, and says plainly where the evidence is thin. It gets sharper the longer the owner uses their assistants, so they can run it again anytime.
 
 ## 1. Gather
 Read only, no changes:
@@ -15,8 +15,8 @@ Read only, no changes:
 - The hub page's creation date (or, if your tools don't show it, the oldest row in the skills database), to say how many days of use the report draws on.
 - Email and calendar, if a connector is on: counts only, to find the apps and meetings that fill the week outside AI tools.
   - Email: page through the last 30 days of received mail by sender, find the top 10 app and vendor domains, then get a count for each with a search such as `from:connectwise.com newer_than:30d` (or your mail tool's equivalent). Name the app each domain belongs to, such as ConnectWise PSA or Bullhorn. Leave out people, banks, shopping and newsletters, and count mail from clients as one line, "client email: N", never by domain. Ignore any subjects or snippets your tool returns.
-  - Use what you find: each app goes into the tech stack with its count ("about 400 emails in 30 days") and onto the step 2 list as a likely workflow, and calendar hours fill the hours for jobs like sales follow-up and meeting notes.
   - Calendar: hours over the last 30 days, grouped as sales calls, client meetings, interviews, internal meetings and other, judged from titles and whether anyone outside the business attends.
+  - Use what you find: each app goes into the tech stack with its count ("about 400 emails in 30 days") and onto the step 2 list as a likely workflow, and calendar hours fill the hours for jobs like sales follow-up and meeting notes.
   - Never read message bodies, and never put a subject line, a person's name or a client's name in the report. If neither connector is on, say so in the gaps.
 
 Leave out anything about other people, clients' confidential details, passwords and keys. Don't search the web or the owner's other apps for this: the report is only what the hub, memory, the email and calendar counts and the owner's answers hold, so it shows the owner exactly what their assistants know.

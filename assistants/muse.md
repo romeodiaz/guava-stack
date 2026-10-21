@@ -14,4 +14,5 @@
   Leave IDENTITY.md alone. Use MEMORY.md only for facts about the owner, never for passwords, keys or other secrets.
 - **Verify:** start a new chat and ask "Write a short intro about my business." It passes if the intro uses details from the hub.
 - **Run the CLI steps and model router in Muse's own terminal.** Muse can install Claude Code with npm and usually has Codex already; follow step 2 of the Model Router setup in guava-router (it checks and skips what's installed). For sign-in, the owner opens the link and signs in with their own account, then pastes any code straight into Muse, never anywhere else. When Muse asks to share information with anthropic.com or openai.com, choose Allow once, not Always allow.
+- Muse's computer image ships its own older Codex in `/opt/hatch-image/bin`, ahead of npm's on PATH, so a plain `codex` can stay old after an update. Run Codex by the full path of the updated one, `$(npm prefix -g)/bin/codex`, as **Repair** in the guava-router skill says.
 - Muse asks before important actions like sending email. Keep those approvals on.

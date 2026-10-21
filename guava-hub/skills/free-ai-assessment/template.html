@@ -63,6 +63,17 @@
     .pilot { background: var(--guava); color: var(--forest); }
     .dont { background: var(--tint); color: var(--muted); }
     .hours { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .sources { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; padding: 0; margin: 0; list-style: none; }
+    .source { padding: 10px 12px; border: 1px solid var(--rule); border-radius: 10px; background: var(--card); }
+    .source-note { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .status { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 650; }
+    .status.ready { background: var(--forest-2); color: var(--on-forest); }
+    .status.populating { background: var(--guava-soft); color: var(--accent); }
+    .status.off { background: var(--tint); color: var(--muted); }
+    .pending, .tool .pending { color: var(--accent); font-weight: 600; }
+    .blindspots { margin-top: 24px; padding: 20px; border: 1px dashed var(--guava); border-radius: 12px; background: var(--guava-soft); }
+    .blindspots p { max-width: 78ch; }
+    .blindspots ul { margin: 10px 0; }
     .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; color: var(--muted); font-size: 11px; }
     .legend strong { color: var(--forest); }
     .follow-up { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
@@ -100,6 +111,7 @@
       tbody td + td { margin-top: 12px; }
       td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--muted); font-size: 11px; font-weight: 400; }
       .follow-up { grid-template-columns: 1fr; gap: 24px; }
+      .sources { grid-template-columns: 1fr; }
       .cta { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
     @page { size: A4; margin: 10mm; }
@@ -119,13 +131,13 @@
       .cta { padding: 16px 22px; }
       .cta h2 { font-size: 14pt; }
       footer { padding: 12px 0 0; font-size: 8pt; }
-      .header, .summary, .stat, .tool, tr, li, .cta, footer { break-inside: avoid; page-break-inside: avoid; }
+      .header, .summary, .stat, .tool, .source, tr, li, .cta, footer { break-inside: avoid; page-break-inside: avoid; }
       thead { display: table-header-group; }
     }
   </style>
 </head>
 <body>
-  <!-- Replace tokens with HTML-escaped text; SUMMARY is 2–3 sentences. BASED_ON: e.g. "From 6 days of your guava-hub and your answers". -->
+  <!-- Replace tokens with HTML-escaped text; SUMMARY is 3–4 sentences. BASED_ON: e.g. "From 6 days of your guava-hub and your answers". -->
   <!-- Duplicate or delete repeat blocks. VERDICT / VERDICT_CLASS pairs: Build / build, Pilot / pilot, Don't build / dont. -->
   <div class="report">
     <header class="header band">
@@ -154,6 +166,14 @@
           <div class="stat"><dt>Don't build</dt><dd>{{DONT_BUILD_COUNT}}</dd></div>
         </dl>
         <p class="estimate">Time spent now on Build and Pilot workflows, from how often and how long each takes. How much AI saves will need to be tested.</p>
+      </section>
+      <section aria-labelledby="sources-title">
+        <h2 id="sources-title">What this report draws on</h2>
+        <ul class="sources">
+          <!-- repeat:source -->
+          <li class="source"><strong>{{SOURCE_NAME}}</strong> <span class="status {{SOURCE_CLASS}}">{{SOURCE_STATUS}}</span><span class="source-note">{{SOURCE_NOTE}}</span></li>
+          <!-- /repeat:source -->
+        </ul>
       </section>
       <section aria-labelledby="stack-title">
         <h2 id="stack-title">Your tech stack</h2>
@@ -205,6 +225,16 @@
           </ol>
         </section>
       </div>
+      <section class="blindspots" aria-labelledby="blindspots-title">
+        <h2 id="blindspots-title">What this report can't see</h2>
+        <p>Your apps, inbox and history show where the time goes. They can't show why work stalls, who waits on whom, or what lives only in someone's head.</p>
+        <ul>
+          <!-- repeat:blindspot -->
+          <li>{{BLINDSPOT}}</li>
+          <!-- /repeat:blindspot -->
+        </ul>
+        <p>Guava's full <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a> answers these through interviews with you and the people who do the work: $4,000, two weeks, credited in full toward the next project.</p>
+      </section>
     </main>
     <section class="cta band" aria-labelledby="cta-title">
       <div>

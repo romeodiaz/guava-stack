@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/guava-stack-logo.png" alt="guava-stack logo: three pixel-art guavas in a row" width="180"></p>
 
-# guava-stack: AI brain + router + rules
+# guava-stack: AI brain + rules + router
 
 <p align="center"><a href="https://skills.sh/romeodiaz/guava-stack"><img src="https://skills.sh/b/romeodiaz/guava-stack" alt="skills.sh"></a></p>
 
@@ -58,7 +58,23 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 
-### 2) router (upgrade, with a bot)
+### 2) rules
+<table>
+<tr>
+<td align="center" width="200"><a href="founder-mode/skills/founder-mode/SKILL.md#the-rules"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a></td>
+<td><a href="founder-mode/skills/founder-mode/SKILL.md#the-rules"><ins>founder-mode</ins></a><br>16 commandments. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
+</tr>
+</table>
+
+### 3) free AI assessment
+<table>
+<tr>
+<td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/logo.png" width="80" alt="Guava logo"></a></td>
+<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". On day 1 it shows what your AI has picked up about your tools and workflows; after two weeks it ranks which workflows are worth automating, as a polished report that stays on your computer. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
+</tr>
+</table>
+
+### 4) router (upgrade, with a bot)
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-router/"><img src="assets/model-router.png" width="120" alt="Pixel-art router"></a></td>
@@ -78,22 +94,6 @@ Your Notion guava-hub has four parts:
 </tr>
 </table>
 <!-- /models -->
-
-### 3) rules
-<table>
-<tr>
-<td align="center" width="200"><a href="founder-mode/skills/founder-mode/SKILL.md#the-rules"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a></td>
-<td><a href="founder-mode/skills/founder-mode/SKILL.md#the-rules"><ins>founder-mode</ins></a><br>16 commandments. Your AI does the safe work itself, writes like a human, and asks before anything costly or permanent.</td>
-</tr>
-</table>
-
-### 4) free AI assessment
-<table>
-<tr>
-<td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/logo.png" width="80" alt="Guava logo"></a></td>
-<td><ins>free-ai-assessment</ins><br>Say "run my free AI assessment". On day 1 it shows what your AI has picked up about your tools and workflows; after two weeks it ranks which workflows are worth automating, as a polished report that stays on your computer. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
-</tr>
-</table>
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
@@ -129,11 +129,11 @@ Install guava-hub from github.com/romeodiaz/guava-stack
 ```
 
 ```
-Install guava-router from github.com/romeodiaz/guava-stack
+Install founder-mode from github.com/romeodiaz/guava-stack
 ```
 
 ```
-Install founder-mode from github.com/romeodiaz/guava-stack
+Install guava-router from github.com/romeodiaz/guava-stack
 ```
 
 On Grok Bot:
@@ -142,7 +142,7 @@ On Grok Bot:
 npx skills add romeodiaz/guava-stack -g -y
 ```
 
-For one piece, add `--skill guava-hub` or `guava-router` or `founder-mode`.
+For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router`.
 
 **▶️ Try it:**
 1. "Set me up."
@@ -159,10 +159,10 @@ Setup walks you through each of these, since your AI can't do them for you. If i
 - **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.
 
 ## How to update
-Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update guava-router"** or **"update founder-mode"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first and offers newer models.
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update founder-mode"** or **"update guava-router"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first and offers newer models.
 
 ## How to uninstall
-Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall guava-router"** or **"uninstall founder-mode"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your AI doesn't know the command, paste this:
+Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall founder-mode"** or **"uninstall guava-router"** in Claude, ChatGPT, Grok Bot or Muse. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your AI doesn't know the command, paste this:
 
 ```
 Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/guava-stack.
@@ -185,9 +185,9 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 
 ## What's inside
 - 🧠 **[guava-hub](guava-hub/)**: hub setup, with the [Notion steps](guava-hub/skills/guava-hub/backends/notion.md).
-- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
-- 📋 **[free-ai-assessment](guava-hub/skills/free-ai-assessment/)**: the free AI Assessment and its report template.
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
+- 📋 **[free-ai-assessment](guava-hub/skills/free-ai-assessment/)**: the free AI Assessment and its report template.
+- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
 - 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Grok Bot and Muse each skip or change.
 
 ## Support

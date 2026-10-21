@@ -17,10 +17,10 @@
       "category": "Productivity"
     },
     {
-      "name": "guava-router",
+      "name": "founder-mode",
       "source": {
         "source": "local",
-        "path": "./guava-router"
+        "path": "./founder-mode"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -29,10 +29,10 @@
       "category": "Productivity"
     },
     {
-      "name": "founder-mode",
+      "name": "guava-router",
       "source": {
         "source": "local",
-        "path": "./founder-mode"
+        "path": "./guava-router"
       },
       "policy": {
         "installation": "AVAILABLE",

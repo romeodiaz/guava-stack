@@ -14,14 +14,14 @@
       "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules, skills and memories, so Claude, ChatGPT and any bot you add, such as Grok Bot or Muse, share them. Part of the Guava Stack."
     },
     {
-      "name": "guava-router",
-      "source": "./guava-router",
-      "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model through Claude Code and Codex, on your Claude Pro or ChatGPT Plus plan or higher, or both, and newer models swap in with a one-line change. Part of the Guava Stack."
-    },
-    {
       "name": "founder-mode",
       "source": "./founder-mode",
       "description": "For business owners and solo operators. 16 working rules so your AI assistant handles the safe work on its own and always checks with you before anything that could cost you money or can't be undone. Part of the Guava Stack."
+    },
+    {
+      "name": "guava-router",
+      "source": "./guava-router",
+      "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model through Claude Code and Codex, on your Claude Pro or ChatGPT Plus plan or higher, or both, and newer models swap in with a one-line change. Part of the Guava Stack."
     }
   ]
 }

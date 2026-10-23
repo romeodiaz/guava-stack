@@ -88,6 +88,10 @@ Your Notion guava-hub has five parts:
 <td><a href="guava-hub/skills/design-cook-off/SKILL.md"><ins>design-cook-off</ins></a><br>Say "cook-off" when you want a page or screen people will judge by its look, such as a landing page. Your head-chef builds it twice at once, with two design skills, <a href="https://github.com/pbakaus/impeccable">impeccable</a> and <a href="https://github.com/leonxlnx/taste-skill">taste-skill</a>, and you pick the one to build on. Needs Claude Code or Codex (the Claude and ChatGPT apps run them in their Code and Codex tabs), and asks before installing the two design skills.</td>
 </tr>
 <tr>
+<td align="center" width="200"><a href="https://github.com/DietrichGebert/ponytail"><img src="assets/ponytail.png" width="80" alt="Pixel-art head with a green ponytail"></a></td>
+<td><a href="https://github.com/DietrichGebert/ponytail"><ins>ponytail</ins></a><br>By Dietrich Gebert. When your AI writes or changes code for you, it writes the least code that does the whole job, so there's less to break, review and pay for. Offered at setup if you build things with AI, and turned on in every session where you have Claude Code or Codex.</td>
+</tr>
+<tr>
 <td align="center" width="200"><a href="https://github.com/mvanhorn/last30days-skill"><img src="assets/last30days.png" width="80" alt="Pixel-art calendar with one day marked"></a></td>
 <td><a href="https://github.com/mvanhorn/last30days-skill"><ins>last30days</ins></a><br>By Matt Van Horn. Research what people are actually saying about any topic in the last 30 days, across Reddit, X, YouTube, Hacker News and the web. Comes with a bot, since it runs a program.</td>
 </tr>
@@ -196,7 +200,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
-- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
+- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.

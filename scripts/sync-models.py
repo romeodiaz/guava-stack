@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
+GOOGLE_HEAD, GOOGLE_LINE = CONFIG["google_only"]["head_chef"], CONFIG["google_only"]["line_cook"]
 ROLES = CONFIG["roles"]
 COUNCIL = CONFIG["oracle_council"]
 MEMBERS = ROOT / "guava-hub" / "skills" / "oracle-council" / "members.json"
@@ -44,6 +45,15 @@ def tool(slot):
 def pick(slot, plan):
     """The slot's model for an owner who pays for only one plan."""
     return slot if company(slot) == plan else slot["next_best"]
+
+
+def google(slot):
+    """A google_only slot as shown in tables and settings: its Claude model, then its fallback."""
+    return f"{detailed(slot, 'Antigravity CLI')}, falling back to {slot['fallback']['name']} ({effort(slot['fallback'])}) when its usage runs out"
+
+
+def agy(slot):
+    return f'agy -p "<task>" --model {slot["id"]} --effort {slot["effort"]} --mode accept-edits < /dev/null'
 
 
 def run(slot):
@@ -90,6 +100,11 @@ def commands(args):
         row("line-cook", LINE),
         row(f"head-chef, {company(HEAD_NEXT)} only", HEAD_NEXT),
         row(f"line-cook, {company(LINE_NEXT)} only", LINE_NEXT),
+        *[f"| {label} | {s['name']}, effort {s['effort']} (`{s['id']}`) | Antigravity CLI | `{agy(s)}` |"
+          for label, s in (("head-chef, Google AI only", GOOGLE_HEAD),
+                           ("head-chef fallback, Google AI only", GOOGLE_HEAD["fallback"]),
+                           ("line-cook, Google AI only", GOOGLE_LINE),
+                           ("line-cook fallback, Google AI only", GOOGLE_LINE["fallback"]))],
     ]) + "\n"
 
 
@@ -100,12 +115,16 @@ def plans(args):
         "|---|---|---|",
         row("Claude and ChatGPT (best)", HEAD, LINE),
         *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
+        f"| Google AI Pro or Ultra only | {google(GOOGLE_HEAD)} | {google(GOOGLE_LINE)} |",
     ]) + "\n"
 
 
 def one_plan(args):
     return (f"{LINE_NEXT['name']} as line-cook on {company(LINE_NEXT)} only, "
-            f"and {HEAD_NEXT['name']} as head-chef on {company(HEAD_NEXT)} only")
+            f"and {HEAD_NEXT['name']} as head-chef on {company(HEAD_NEXT)} only. "
+            f"On Google AI Pro or Ultra only, {GOOGLE_HEAD['name']} and {GOOGLE_LINE['name']} run through "
+            f"Google's Antigravity CLI, and fall back to {GOOGLE_HEAD['fallback']['name']} and "
+            f"{GOOGLE_LINE['fallback']['name']} when their usage runs out")
 
 
 def stack_example(args):

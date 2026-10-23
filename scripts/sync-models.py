@@ -3,6 +3,7 @@
 
 Files mark generated parts with HTML comments:
     <!-- models:KIND key="value" ... -->  generated text  <!-- /models -->
+The oracle_council section is also written to guava-hub/skills/oracle-council/members.json.
 Run from anywhere: python3 scripts/sync-models.py  (add --check to only report stale files)
 """
 import json
@@ -18,6 +19,8 @@ CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 ROLES = CONFIG["roles"]
+COUNCIL = CONFIG["oracle_council"]
+MEMBERS = ROOT / "guava-hub" / "skills" / "oracle-council" / "members.json"
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
 
@@ -126,8 +129,20 @@ def default_pair(args):
     return f"{HEAD['name']} and {LINE['name']}"
 
 
+def oracle_council(args):
+    gpt, claude, gemini = COUNCIL["chatgpt"], COUNCIL["claude"], COUNCIL["gemini"]
+    return "\n" + "\n".join([
+        "| Seat | On your plan | With an API key |",
+        "|---|---|---|",
+        f"| ChatGPT | {gpt['name']} via Codex (`{gpt['id']}`) | OpenRouter `{gpt['openrouter']}`, with no ChatGPT plan or when Codex fails |",
+        f"| Claude | Max: {claude['max']['name']} via Claude Code (`{claude['max']['id']}`)<br>Pro: {claude['pro']['name']} via Claude Code (`{claude['pro']['id']}`) | OpenRouter {claude['openrouter']['name']} (`{claude['openrouter']['id']}`), only with no Claude plan |",
+        f"| Gemini | Google AI Pro or Ultra: {gemini['name']} via Antigravity CLI (`{gemini['agy']}`) | Gemini API `{gemini['api']}`, or OpenRouter `{gemini['openrouter']}` |",
+    ]) + f"\n\nEvery seat runs at {gpt['effort']} effort (high on Google's own routes, its top level).\n"
+
+
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
-         "stack-example": stack_example, "default-pair": default_pair}
+         "stack-example": stack_example, "default-pair": default_pair,
+         "oracle-council": oracle_council}
 
 
 def render(match):
@@ -148,6 +163,11 @@ def main():
             stale.append(path.relative_to(ROOT))
             if not check:
                 path.write_text(new)
+    members = json.dumps(COUNCIL, indent=2) + "\n"
+    if not MEMBERS.exists() or MEMBERS.read_text() != members:
+        stale.append(MEMBERS.relative_to(ROOT))
+        if not check:
+            MEMBERS.write_text(members)
     verb = "Out of date" if check else "Updated"
     for p in stale:
         print(f"{verb}: {p}")

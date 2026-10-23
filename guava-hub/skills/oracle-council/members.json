@@ -1,0 +1,30 @@
+{
+  "chatgpt": {
+    "name": "GPT-6 Astra",
+    "id": "gpt-6-astra",
+    "openrouter": "openai/gpt-6-astra",
+    "effort": "max"
+  },
+  "claude": {
+    "max": {
+      "name": "Claude Fable 5.1",
+      "id": "claude-fable-5-1"
+    },
+    "pro": {
+      "name": "Claude Opus 5.5",
+      "id": "claude-opus-5-5"
+    },
+    "openrouter": {
+      "name": "Claude Opus 5.5",
+      "id": "anthropic/claude-opus-5.5"
+    },
+    "effort": "max"
+  },
+  "gemini": {
+    "name": "Gemini 4 Argon",
+    "agy": "gemini-4-argon-high",
+    "api": "gemini-4-argon",
+    "openrouter": "google/gemini-4-argon",
+    "effort": "max"
+  }
+}

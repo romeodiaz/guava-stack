@@ -6,7 +6,7 @@ Part of the [Guava Stack](../README.md). Sets up one shared place for your conte
 
 The hub lives in Notion ([steps](skills/guava-hub/backends/notion.md)); the free plan is enough. *Coming soon:* Google Drive and OneDrive hubs.
 
-It has three parts, plus a tasks database and Notion Memory:
+It has three parts, plus your Tasks database and Notion Memory:
 
 <table>
 <tr>
@@ -16,7 +16,7 @@ It has three parts, plus a tasks database and Notion Memory:
 </tr>
 </table>
 
-- tasks: each piece of work that changes something, or gets handed to another model, gets a row with an ID such as TASK-12, its goal, status and links. The ID goes in commits, PRs, hand-offs and memories, so one search finds the whole trail.
+- Tasks: your own Notion Tasks database becomes one list for your to-dos and your AI's work. Each piece of work that changes something, or gets handed to another model, gets a row with an ID such as TASK-12, its goal, status and links. The ID goes in commits, PRs, hand-offs and memories, so one search finds the whole trail. Setup adopts the Tasks database you have, or makes one, and adds a **Where things live** list to your context page so assistants file deals, call notes and docs in your own databases.
 - Notion Memory: assistants save what they learn (decisions, corrections, preferences) to Notion's own memory, outside your hub, and look it up when a task needs it. Say "forget" anything to remove it, or "pause memory" to stop saving for a while ([Notion Memory](skills/guava-hub/backends/notion.md#notion-memory)).
 - Skill: [guava-hub](skills/guava-hub/SKILL.md)
 - Update: say "update guava-hub", or "update guava-stack" for every piece.

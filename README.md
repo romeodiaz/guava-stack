@@ -53,8 +53,8 @@ Your Notion guava-hub has five parts:
 
 <table>
 <tr>
-<td align="center" width="200"><span style="font-size:64px">🎫</span><br><strong>tasks</strong></td>
-<td><ins>What your AI did</ins><br>Every piece of work that changes something, or gets handed to another model, gets a row with an ID such as TASK-12, its goal, status and links. The ID goes in commits, PRs, hand-offs and memories, so one search finds the whole trail.</td>
+<td align="center" width="200"><span style="font-size:64px">🎫</span><br><strong>Tasks</strong></td>
+<td><ins>What your AI did</ins><br>Your own Notion Tasks database, now one list for your to-dos and your AI's work. Every piece of work that changes something, or gets handed to another model, gets a row with an ID such as TASK-12, its goal, status and links. The ID goes in commits, PRs, hand-offs and memories, so one search finds the whole trail.</td>
 </tr>
 </table>
 

@@ -214,16 +214,16 @@ def check():
     """What each seat can run on here. Never prints a key, only whether it's set."""
     report = {}
     version = probe(["claude", "--version"], [])
-    status = probe(["claude", "auth", "status", "--json"], ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"])
+    claude = probe(["claude", "auth", "status", "--json"], ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"])
     try:
-        status = json.loads(status[1]) if status else {}
+        claude = json.loads(claude[1]) if claude else {}
     except json.JSONDecodeError:
-        status = {"error": status[1][-300:]}
+        claude = {"error": claude[1][-300:]}
     report["claude_code"] = {
         "installed": version[1].split()[0] if version else False,
-        "signed_in": bool(status.get("loggedIn")),
-        **{k: status[k] for k in ("authMethod", "subscriptionType", "error") if status.get(k)},
-        "fix": None if status.get("loggedIn") else
+        "signed_in": bool(claude.get("loggedIn")),
+        **{k: claude[k] for k in ("authMethod", "subscriptionType", "error") if claude.get(k)},
+        "fix": None if claude.get("loggedIn") else
             ("run `claude auth login` and sign in with the Claude account that has the Max or Pro plan" if version
              else "install with `npm i -g @anthropic-ai/claude-code`, then run `claude auth login`")}
     version = probe(["codex", "--version"], [])
@@ -247,7 +247,8 @@ def check():
              else "install with `curl -fsSL https://antigravity.google/cli/install.sh | bash`, then run `agy` to sign in")}
     report["keys_set"] = {k: bool(os.environ.get(k)) for k in ("GEMINI_API_KEY", "OPENROUTER_API_KEY")}
     report["flags"] = {
-        "--claude": "max or pro (ask the owner which plan)" if report["claude_code"]["signed_in"] else "none",
+        "--claude": (claude.get("subscriptionType") if claude.get("subscriptionType") in ("max", "pro")
+                     else "max or pro (ask the owner which plan)") if report["claude_code"]["signed_in"] else "none",
         "--chatgpt": "yes" if on_plan else "no",
         "--google": "yes" if has_argon else "no"}
     return report

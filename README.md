@@ -76,8 +76,8 @@ Your Notion guava-hub has five parts:
 ### 3) skills
 <table>
 <tr>
-<td align="center" width="200"><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><img src="assets/assessment.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a></td>
-<td><a href="guava-hub/skills/free-ai-assessment/SKILL.md"><ins>free-ai-assessment</ins></a><br>Say "run my free AI assessment". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a free, lite version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
+<td align="center" width="200"><a href="guava-hub/skills/workflow-review/SKILL.md"><img src="assets/workflow-review.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a></td>
+<td><a href="guava-hub/skills/workflow-review/SKILL.md"><ins>workflow-review</ins></a><br>Say "review my workflows". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a short version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
 </tr>
 <tr>
 <td align="center" width="200"><a href="https://github.com/blader/humanizer"><img src="assets/humanizer.png" width="80" alt="Pixel-art person speaking"></a></td>
@@ -170,7 +170,7 @@ For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router`.
 2. "Import my existing instructions and skills into my guava-hub."
 3. "Turn on founder-mode."
 4. "Write this week's LinkedIn post in my voice."
-5. "Run my free AI assessment."
+5. "Review my workflows."
 
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
@@ -198,7 +198,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
 - **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth`, `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
-- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The free AI assessment is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
+- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), npm (to install the tools, with a bot) and skills.sh (to check outside skills). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 
@@ -207,7 +207,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 ## What's inside
 - 🧠 **[guava-hub](guava-hub/)**: hub setup, with the [Notion steps](guava-hub/skills/guava-hub/backends/notion.md).
 - 🎤 **[founder-mode](founder-mode/)**: the rules and their [changelog](founder-mode/CHANGELOG.md).
-- 📋 **[free-ai-assessment](guava-hub/skills/free-ai-assessment/)**: the free AI Assessment and its report template.
+- 📋 **[workflow-review](guava-hub/skills/workflow-review/)**: the workflow review and its report template.
 - 🍳 **[design-cook-off](guava-hub/skills/design-cook-off/)**: two designed versions of a page to pick from.
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, which your bot runs for you.
 - 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Grok Bot and Muse each skip or change.

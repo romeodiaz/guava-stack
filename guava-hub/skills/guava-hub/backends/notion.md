@@ -59,7 +59,7 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 ## Add a skill
 For a skill from GitHub (setup's starter skills, or any the owner asks for), always from the repo itself:
 1. Read the skill's `SKILL.md` and list its other files from the repo. Third-party skills need what their [skills.sh](https://skills.sh) audits found shown first, failed and warning checks included, and a clear yes, as setup step 5 says.
-2. Add it to the hub's skills database as a Notion skill (the connector's skill upload, or a page marked as a skill), named as the skill names itself, with its description and its full text word for word. Set **Works in**: Computer if any step runs a program (a script, a downloaded engine, a headless browser), otherwise Any app. Attach its other files the same way when the skill uses them, such as free-ai-assessment's `template.html` and `app-usage.py`.
+2. Add it to the hub's skills database as a Notion skill (the connector's skill upload, or a page marked as a skill), named as the skill names itself, with its description and its full text word for word. Set **Works in**: Computer if any step runs a program (a script, a downloaded engine, a headless browser), otherwise Any app. Attach its other files the same way when the skill uses them, such as workflow-review's `template.html` and `app-usage.py`.
 3. On Grok Bot, also install it as files: `npx skills add <owner>/<repo> -g -y` (add `--skill <name>` for one skill from a repo with several). Muse and the Claude and ChatGPT apps read it from the hub.
 4. Skills that run programs, such as last30days, need a computer: install their files where they'll run, in Claude Code or Codex on the owner's computer or on Grok Bot or Muse, and set **Works in** to Computer.
 

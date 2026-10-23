@@ -7,14 +7,12 @@ Part of the [Guava Stack](../README.md). Sends hard thinking and reviews to a **
 <!-- models:kitchen assets=../assets -->
 <table>
 <tr>
-<td align="center" width="33%"><img src="../assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
-<td align="center" width="33%"><img src="../assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"></sub></td>
-<td align="center" width="33%"><img src="../assets/computer-use.png" width="120" alt="Pixel-art monitor with a cursor clicking a button"><br><strong>computer-use</strong><br><sub>Today's best: GPT-6.1 Sol (Low) <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Claude only: your assistant's own computer tools</sub></td>
+<td align="center" width="50%"><img src="../assets/head-chef.png" width="120" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
+<td align="center" width="50%"><img src="../assets/line-cook.png" width="120" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="../assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="../assets/claude.svg" width="20" alt="Claude logo"></sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
-<td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
-<td>Apps outside the browser, after browser tools.</td>
+<td>Bulk execution, coding, computer use, sub-agent tasks, worker threads, long-running jobs.</td>
 </tr>
 </table>
 <!-- /models -->
@@ -24,11 +22,11 @@ Works best with [guava-hub](../guava-hub/), since both tools read the same hub.
 On one plan, the other slot uses that company's next best:
 
 <!-- models:plans -->
-| You pay for | head-chef | line-cook | computer-use |
-|---|---|---|---|
-| Claude and ChatGPT (best) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex | GPT-6.1 Sol (Low) via Codex |
-| Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code | Your assistant's own computer tools |
-| ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex | GPT-6.1 Sol (Low) via Codex |
+| You pay for | head-chef | line-cook |
+|---|---|---|
+| Claude and ChatGPT (best) | Claude Opus 5.5 (High) via Claude Code | GPT-6.1 Sol (High) via Codex |
+| Claude only | Claude Opus 5.5 (High) via Claude Code | Claude Sonnet 5.5 (High) via Claude Code |
+| ChatGPT only | GPT-6 Astra (High) via Codex | GPT-6.1 Sol (High) via Codex |
 <!-- /models -->
 
 <!-- models:commands -->
@@ -36,7 +34,6 @@ On one plan, the other slot uses that company's next best:
 |---|---|---|---|
 | head-chef | Claude Opus 5.5, effort high (`claude-opus-5-5`) | Claude Code | `claude -p --model claude-opus-5-5 --effort high "<task>" < /dev/null` |
 | line-cook | GPT-6.1 Sol, effort high (`gpt-6.1-sol`) | Codex | `codex exec -m gpt-6.1-sol -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
-| computer-use | GPT-6.1 Sol, effort low (`gpt-6.1-sol`) | Codex | `codex exec -m gpt-6.1-sol -c model_reasoning_effort=low --skip-git-repo-check "<task>" < /dev/null` |
 | head-chef, ChatGPT only | GPT-6 Astra, effort high (`gpt-6-astra`) | Codex | `codex exec -m gpt-6-astra -c model_reasoning_effort=high --skip-git-repo-check "<task>" < /dev/null` |
 | line-cook, Claude only | Claude Sonnet 5.5, effort high (`claude-sonnet-5-5`) | Claude Code | `claude -p --model claude-sonnet-5-5 --effort high "<task>" < /dev/null` |
 <!-- /models -->

@@ -16,7 +16,6 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
-COMPUTER = CONFIG["computer_use"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 ROLES = CONFIG["roles"]
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
@@ -68,14 +67,12 @@ def kitchen(args):
     return f"""
 <table>
 <tr>
-<td align="center" width="33%"><img src="{img}/head-chef.png" width="{size}" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
-<td align="center" width="33%"><img src="{img}/line-cook.png" width="{size}" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
-<td align="center" width="33%"><img src="{img}/computer-use.png" width="{size}" alt="Pixel-art monitor with a cursor clicking a button"><br><strong>computer-use</strong><br><sub>Today's best: {COMPUTER['name']} ({effort(COMPUTER)}) {logo(img, COMPUTER['name'])}<br>Claude only: your assistant's own computer tools</sub></td>
+<td align="center" width="50%"><img src="{img}/head-chef.png" width="{size}" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>{picks(img, HEAD)}</sub></td>
+<td align="center" width="50%"><img src="{img}/line-cook.png" width="{size}" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>{picks(img, LINE)}</sub></td>
 </tr>
 <tr>
 <td>{cap(ROLES['head_chef'])}</td>
 <td>{cap(ROLES['line_cook'])}</td>
-<td>{cap(ROLES['computer_use'])}</td>
 </tr>
 </table>
 """
@@ -88,21 +85,18 @@ def commands(args):
         "|---|---|---|---|",
         row("head-chef", HEAD),
         row("line-cook", LINE),
-        row("computer-use", COMPUTER),
         row(f"head-chef, {company(HEAD_NEXT)} only", HEAD_NEXT),
         row(f"line-cook, {company(LINE_NEXT)} only", LINE_NEXT),
     ]) + "\n"
 
 
 def plans(args):
-    row = lambda label, h, l, c: f"| {label} | {detailed(h, tool(h))} | {detailed(l, tool(l))} | {c} |"
+    row = lambda label, h, l: f"| {label} | {detailed(h, tool(h))} | {detailed(l, tool(l))} |"
     return "\n" + "\n".join([
-        "| You pay for | head-chef | line-cook | computer-use |",
-        "|---|---|---|---|",
-        row("Claude and ChatGPT (best)", HEAD, LINE, detailed(COMPUTER, "Codex")),
-        *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan),
-              "Your assistant's own computer tools" if plan == "Claude" else detailed(COMPUTER, "Codex"))
-          for plan in ("Claude", "ChatGPT")],
+        "| You pay for | head-chef | line-cook |",
+        "|---|---|---|",
+        row("Claude and ChatGPT (best)", HEAD, LINE),
+        *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
     ]) + "\n"
 
 
@@ -121,10 +115,7 @@ def stack_example(args):
     - Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, and fuzzy and hard problems. On important work, checks the line-cook's result before it's called done.
   line-cook
   - {detailed(LINE, 'Codex')}
-    - Bulk execution, coding, sub-agent tasks, worker threads and long-running jobs.
-  computer-use
-  - {detailed(COMPUTER, 'Codex')}
-    - {ROLES['computer_use'].capitalize()}. Claude only: the assistant's own computer tools.
+    - Bulk execution, coding, computer use, sub-agent tasks, worker threads and long-running jobs.
   ### Rules
   - founder-mode v{FOUNDER_MODE}
   ```
@@ -135,13 +126,8 @@ def default_pair(args):
     return f"{HEAD['name']} and {LINE['name']}"
 
 
-def computer_use(args):
-    return (f"computer-use: {detailed(COMPUTER, 'Codex')} for {ROLES['computer_use']}; "
-            "Claude only: your assistant's own computer tools.")
-
-
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
-         "stack-example": stack_example, "default-pair": default_pair, "computer-use": computer_use}
+         "stack-example": stack_example, "default-pair": default_pair}
 
 
 def render(match):

@@ -16,6 +16,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 import urllib.error
@@ -111,21 +112,23 @@ def run_codex(model, effort, prompt, timeout, out):
 
 
 def run_agy(model, effort, prompt, timeout):
-    """Antigravity CLI on the owner's Google AI Pro or Ultra login; the prompt goes in on stdin."""
-    cmd = ["agy", "-p", "--model", model, "--effort", effort, "--mode", "plan",
+    """Antigravity CLI on the owner's Google AI Pro or Ultra login; the prompt goes in on stdin.
+    -p takes a value, so it gets an empty one, and agy runs in an empty folder so its tools see nothing."""
+    cmd = ["agy", "-p=", "--model", model, "--effort", effort, "--mode", "plan",
            "--input-format", "stream-json", "--output-format", "stream-json",
            "--print-timeout", f"{timeout // 60}m"]
     message = json.dumps({"event": "user", "message": {"content": prompt}}) + "\n"
-    done = subprocess.run(cmd, input=message, capture_output=True, text=True, timeout=timeout + 60,
-                          env=without("GEMINI_API_KEY", "GOOGLE_API_KEY"))
+    with tempfile.TemporaryDirectory() as empty:
+        done = subprocess.run(cmd, input=message, capture_output=True, text=True, timeout=timeout + 60,
+                              cwd=empty, env=without("GEMINI_API_KEY", "GOOGLE_API_KEY"))
     result = {}
     for line in done.stdout.splitlines():
         try:
             event = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if isinstance(event, dict) and "response" in event:
-            result = event
+        if isinstance(event, dict) and event.get("event") == "result":
+            result = event.get("result") or {}
     if done.returncode or result.get("status") != "SUCCESS" or not result.get("response"):
         raise RuntimeError(str(result.get("error") or done.stderr.strip()[-500:] or f"exit {done.returncode}"))
     return result["response"], None

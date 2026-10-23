@@ -12,7 +12,7 @@ AI-built pages look alike: a centered headline, a small label above it, three ic
 Each run costs two head-chef runs, so use it only where a designed look changes the result.
 
 - **Use:** a page someone outside the business sees and judges by its look first: landing pages, offer and pricing pages, marketing sites, one-pagers, portfolios, hero sections, event or launch pages. Also new app screens (dashboards, settings, inboxes) when the look matters to a client. This is where plain AI output is most generic and both skills help most.
-- **Skip:** writing (emails, posts, Notion pages, docs), slides, charts (use a chart skill), reports built from a fixed template such as the free AI assessment, and small edits inside a page that already has its own design. There the design is already decided, and the skills add little beyond plain Claude.
+- **Skip:** writing (emails, posts, Notion pages, docs), slides, charts (use a chart skill), reports built from a fixed template such as the workflow review, and small edits inside a page that already has its own design. There the design is already decided, and the skills add little beyond plain Claude.
 - If unsure, ask the owner in one line: "This is a page people will judge by its look. Want two designed versions to pick from? It takes about 20 minutes."
 
 ## Needs

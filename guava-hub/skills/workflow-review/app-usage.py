@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Web app usage for the free AI assessment: domain totals from local browser history.
+"""Web app usage for the workflow review: domain totals from local browser history.
 
 Reads Chrome, Edge, Brave, Arc and Firefox history on this computer (Mac or Windows),
 last 30 days by default, and prints only domains: visits, days used and estimated

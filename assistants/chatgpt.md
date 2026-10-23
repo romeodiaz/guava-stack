@@ -11,4 +11,4 @@
   ![ChatGPT Personalization with Custom instructions, ChatGPT](https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/setup/chatgpt-custom-instructions.png)
 - ChatGPT keeps no skill files here: keep skills in the hub and read the matching one from there when a task needs it.
 - There's no computer here to run Claude Code or Codex, so the Model Router and last30days come with adding Grok Bot or Muse (**Add a bot** in the setup skill).
-- **Free AI assessment:** make the report as a downloadable `.html` file the owner saves, never a shared link.
+- **Workflow review:** make the report as a downloadable `.html` file the owner saves, never a shared link.

@@ -1,6 +1,6 @@
 ---
 name: oracle-council
-description: Sends one hard question to a council of three top AI models at once (GPT-6 Astra, Claude Fable 5.1 and Gemini 4 Argon, each at max effort), on the owner's ChatGPT and Claude plans where it can and OpenRouter otherwise, then has the head-chef merge the three answers into one verdict. Use when the owner says "ask the council", "ask the oracle council", "council this" or "get the council's take", or wants several top models' opinions on a hard decision, a stubborn bug, an architecture or strategy call, or a review of a contract or proposal. Skip for everyday questions.
+description: Sends one hard question to a council of three top AI models at once (GPT-6 Astra, Claude Fable 5.1 and Gemini 4 Argon, each at max effort), on the owner's ChatGPT, Claude and Google plans where it can and a Gemini API or OpenRouter key otherwise, then has the head-chef merge the three answers into one verdict. Use when the owner says "ask the council", "ask the oracle council", "council this" or "get the council's take", or wants several top models' opinions on a hard decision, a stubborn bug, an architecture or strategy call, or a review of a contract or proposal. Skip for everyday questions.
 ---
 
 # Oracle council
@@ -14,13 +14,13 @@ A run takes about 5 to 30 minutes and uses three top-model answers plus a merge,
 ## Who sits on the council
 
 <!-- models:oracle-council -->
-| Seat | On your plan | On OpenRouter |
+| Seat | On your plan | With an API key |
 |---|---|---|
-| ChatGPT | GPT-6 Astra via Codex (`gpt-6-astra`) | `openai/gpt-6-astra`, with no ChatGPT plan or when Codex fails |
-| Claude | Max: Claude Fable 5.1 via Claude Code (`claude-fable-5-1`)<br>Pro: Claude Opus 5.5 via Claude Code (`claude-opus-5-5`) | Claude Opus 5.5 (`anthropic/claude-opus-5.5`), only with no Claude plan |
-| Gemini | none | Gemini 4 Argon (`google/gemini-4-argon`), always |
+| ChatGPT | GPT-6 Astra via Codex (`gpt-6-astra`) | OpenRouter `openai/gpt-6-astra`, with no ChatGPT plan or when Codex fails |
+| Claude | Max: Claude Fable 5.1 via Claude Code (`claude-fable-5-1`)<br>Pro: Claude Opus 5.5 via Claude Code (`claude-opus-5-5`) | OpenRouter Claude Opus 5.5 (`anthropic/claude-opus-5.5`), only with no Claude plan |
+| Gemini | Google AI Pro or Ultra: Gemini 4 Argon via Antigravity CLI (`gemini-4-argon-high`) | Gemini API `gemini-4-argon`, or OpenRouter `google/gemini-4-argon` |
 
-Every seat runs at max effort.
+Every seat runs at max effort (high on Google's own routes, its top level).
 <!-- /models -->
 
 The picks come from the `oracle_council` section of guava-router's [models.yaml](https://github.com/romeodiaz/guava-stack/blob/main/guava-router/models.yaml); `scripts/sync-models.py` copies them into this table and into [members.json](members.json). Fable never runs on OpenRouter, where it costs far more: on a Claude plan the Claude seat always runs through Claude Code, and if Claude Code fails the council reports without that seat rather than paying for it elsewhere.
@@ -30,7 +30,12 @@ The picks come from the `oracle_council` section of guava-router's [models.yaml]
 - **A computer** with Claude Code, Codex or both, signed in on the owner's plans as guava-router sets them up: the owner's own computer (including the Claude app's Code tab and the ChatGPT app's Codex tab set to Local), Grok Bot or Muse. Fable needs Claude Code 2.1.255 or newer. In a regular Claude or ChatGPT chat with no computer, hand the whole job to a bot with the router if there is one; otherwise say in one line that the council needs a computer, and answer the usual way.
 - **Python 3**, to run [oracle-council.py](oracle-council.py) from this skill. If it isn't here, fetch it and members.json from `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/guava-hub/skills/oracle-council/` into the run folder.
 - **The owner's plans.** ChatGPT: yes if any slot in guava-stack settings runs via Codex. Claude: Max or Pro, from the **Oracle council** memory in Notion Memory. If it's missing, ask once, "Is your Claude plan Max or Pro?", and save the answer there. On Max, Fable is part of the plan; on Pro, the Claude seat uses Opus 5.5 instead, since Fable on Pro bills usage credits.
-- **An OpenRouter key** in `OPENROUTER_API_KEY` on the computer that runs the council, for the Gemini seat. The first time, ask the owner to make one at [openrouter.ai/keys](https://openrouter.ai/keys) with a monthly credit limit they're comfortable with, keep it in their password manager, and paste it to you once. Add `export OPENROUTER_API_KEY=...` to the shell profile (`~/.zshrc` on a Mac, `~/.bashrc` on Linux or a bot's computer), backing the file up first as guava-router's **Backups** says. Never save the key in Notion, a memory, a task, the question or any file in the run folder. Without a key, the council runs with the seats the owner's plans cover, and the report says Gemini was missing.
+- **A way to reach Gemini.** The first time, unless the **Oracle council** memory already says, ask the owner to pick one, and save the pick there:
+  1. **Google AI Pro or Ultra plan** (recommended if they have one: no extra cost). Gemini 4 Argon runs through Google's **Antigravity CLI** (`agy`), the way Claude runs through Claude Code and ChatGPT through Codex. Gemini CLI isn't built for Argon, and Google moved Pro and Ultra sign-ins to Antigravity CLI. Check first with `agy --version`; install only if it's missing (`curl -fsSL https://antigravity.google/cli/install.sh | bash` on a Mac or Linux, `irm https://antigravity.google/cli/install.ps1 | iex` on Windows). Then sign it in on the owner's own Google account: run `agy` once, which opens a browser on their computer; on a bot's computer, start it in tmux as guava-router does for `claude auth login`, send the owner the sign-in link and type the code they paste back. Check with `agy models` that Gemini 4 Argon is listed; if it isn't, their plan doesn't include it, so offer option 2 or 3 instead. Then pass `--google yes`.
+  2. **Gemini API key**, billed per use by Google. The owner makes one at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and pastes it to you once. Set `GEMINI_API_KEY`.
+  3. **OpenRouter key**, billed per use by OpenRouter, about $0.02 for a typical question. The owner makes one at [openrouter.ai/keys](https://openrouter.ai/keys) with a monthly credit limit they're comfortable with. Set `OPENROUTER_API_KEY`. It also covers the ChatGPT seat if Codex fails.
+
+  For a key, add `export GEMINI_API_KEY=...` or `export OPENROUTER_API_KEY=...` to the shell profile (`~/.zshrc` on a Mac, `~/.bashrc` on Linux or a bot's computer), backing the file up first as guava-router's **Backups** says. If the computer's safety check won't let you edit the profile, give the owner the one line to paste into Terminal. Never save a key in Notion, a memory, a task, the question or any file in the run folder. The council tries the Google plan first, then each key that's set, so an owner can keep a key as a backup. With none of the three, the council runs without Gemini and the report says so.
 
 ## 1. Write the briefing
 
@@ -47,15 +52,15 @@ Never put passwords, keys, tokens or client secrets in the briefing.
 
 When the question is about code or documents, pass them with `--file` (a file, a folder or a glob; `!glob` leaves files out). The script numbers every line so answers can cite `path:line`, and skips folders like `node_modules` and `.git`, binaries, files over 1 MB and anything that looks like a secret, such as `.env` files and keys. Check first:
 
-`python3 <this skill>/oracle-council.py --question <run>/question.md --out <run> --claude <max|pro|none> --chatgpt <yes|no> --file <path> --dry-run`
+`python3 <this skill>/oracle-council.py --question <run>/question.md --out <run> --claude <max|pro|none> --chatgpt <yes|no> --google <yes|no> --file <path> --dry-run`
 
-It prints the files, anything it skipped, a token estimate and which model and route each seat will use. Keep it well under the 196,000-token limit: narrow the files to what the question needs. Tell the owner in two or three lines what the council will be asked, which files go with it, and which seats run where. Their "ask the council" covers the run, so go ahead, unless the estimate is over 100,000 tokens or a seat other than Gemini would run on OpenRouter: then say what it will cost roughly (OpenRouter's price per million tokens for that model, times the estimate) and wait for a yes.
+It prints the files, anything it skipped, a token estimate and which model and route each seat will use. Keep it well under the 196,000-token limit: narrow the files to what the question needs. Tell the owner in two or three lines what the council will be asked, which files go with it, and which seats run where. Their "ask the council" covers the run, so go ahead, unless the estimate is over 100,000 tokens or a seat other than Gemini would run on an API key: then say what it will cost roughly (the price per million tokens for that model, times the estimate) and wait for a yes.
 
 ## 3. Ask the council
 
 Run the same command without `--dry-run`. All three seats run at once and each answer is saved in the run folder as `chatgpt.md`, `claude.md` and `gemini.md`, with `council.json` recording which model and route answered, how long it took and what OpenRouter charged. Max effort is slow, so run it in the background and check on it every few minutes; on Grok Bot follow guava-router's **Long jobs**, since one command can wait at most 13 minutes.
 
-If a Claude Code or Codex seat failed, follow guava-router's **Repair** for that tool, then rerun only that seat with the same command plus `--seat claude` (or `chatgpt`). If it fails again, go on without it. Never move a failed Claude seat to OpenRouter.
+If a Claude Code or Codex seat failed, follow guava-router's **Repair** for that tool, then rerun only that seat with the same command plus `--seat claude` (or `chatgpt`). If Antigravity CLI failed, check `agy --version`, sign it in again if it says so, and rerun with `--seat gemini`. If it fails again, go on without it. Never move a failed Claude seat to OpenRouter.
 
 ## 4. Merge the answers
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Ask the council: one hard question to three models at once, each at max effort.
 
-    python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no \
+    python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no --google yes|no \
         [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--dry-run] [--timeout MINUTES]
 
 Seats and models come from members.json next to this script (written by
 scripts/sync-models.py from guava-router/models.yaml). Each answer is saved as
 DIR/<seat>.md, and DIR/council.json records which model and route served each seat.
-Standard library only. OPENROUTER_API_KEY must be set for any seat that runs on OpenRouter.
+Standard library only. Seats that run on an API read OPENROUTER_API_KEY or GEMINI_API_KEY.
 """
 import argparse
 import fnmatch
@@ -110,6 +110,64 @@ def run_codex(model, effort, prompt, timeout, out):
     return answer, None
 
 
+def run_agy(model, effort, prompt, timeout):
+    """Antigravity CLI on the owner's Google AI Pro or Ultra login; the prompt goes in on stdin."""
+    cmd = ["agy", "-p", "--model", model, "--effort", effort, "--mode", "plan",
+           "--input-format", "stream-json", "--output-format", "stream-json",
+           "--print-timeout", f"{timeout // 60}m"]
+    message = json.dumps({"event": "user", "message": {"content": prompt}}) + "\n"
+    done = subprocess.run(cmd, input=message, capture_output=True, text=True, timeout=timeout + 60,
+                          env=without("GEMINI_API_KEY", "GOOGLE_API_KEY"))
+    result = {}
+    for line in done.stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(event, dict) and "response" in event:
+            result = event
+    if done.returncode or result.get("status") != "SUCCESS" or not result.get("response"):
+        raise RuntimeError(str(result.get("error") or done.stderr.strip()[-500:] or f"exit {done.returncode}"))
+    return result["response"], None
+
+
+def sse(request, deadline):
+    """Yield each JSON event of a server-sent-events response, raising on HTTP errors and the deadline."""
+    try:
+        response = urllib.request.urlopen(request, timeout=600)
+    except urllib.error.HTTPError as error:
+        raise RuntimeError(f"HTTP {error.code}: {error.read().decode(errors='replace')[:500]}")
+    with response:
+        for raw in response:
+            if time.time() > deadline:
+                raise TimeoutError("no full answer before the timeout")
+            line = raw.decode().strip()
+            if line.startswith("data: ") and line != "data: [DONE]":
+                yield json.loads(line[6:])
+
+
+def run_gemini_api(model, effort, prompt, timeout):
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        raise RuntimeError("GEMINI_API_KEY is not set")
+    body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {"thinkingConfig": {"thinkingLevel": effort}}}
+    request = urllib.request.Request(
+        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse",
+        data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"})
+    text = []
+    for chunk in sse(request, time.time() + timeout):
+        if "error" in chunk:
+            raise RuntimeError(chunk["error"].get("message", str(chunk["error"])))
+        for candidate in chunk.get("candidates", []):
+            text += [part.get("text", "") for part in candidate.get("content", {}).get("parts", [])
+                     if not part.get("thought")]
+    answer = "".join(text).strip()
+    if not answer:
+        raise RuntimeError("empty answer")
+    return answer, None
+
+
 def run_openrouter(model, effort, prompt, timeout):
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
@@ -120,24 +178,13 @@ def run_openrouter(model, effort, prompt, timeout):
         "https://openrouter.ai/api/v1/chat/completions", data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
                  "HTTP-Referer": "https://github.com/romeodiaz/guava-stack", "X-Title": "guava-stack oracle-council"})
-    deadline, text, cost = time.time() + timeout, [], None
-    try:
-        response = urllib.request.urlopen(request, timeout=600)
-    except urllib.error.HTTPError as error:
-        raise RuntimeError(f"HTTP {error.code}: {error.read().decode(errors='replace')[:500]}")
-    with response:
-        for raw in response:
-            if time.time() > deadline:
-                raise TimeoutError(f"no full answer after {timeout // 60} minutes")
-            line = raw.decode().strip()
-            if not line.startswith("data: ") or line == "data: [DONE]":
-                continue
-            chunk = json.loads(line[6:])
-            if "error" in chunk:
-                raise RuntimeError(chunk["error"].get("message", str(chunk["error"])))
-            for choice in chunk.get("choices", []):
-                text.append((choice.get("delta") or {}).get("content") or "")
-            cost = (chunk.get("usage") or {}).get("cost", cost)
+    text, cost = [], None
+    for chunk in sse(request, time.time() + timeout):
+        if "error" in chunk:
+            raise RuntimeError(chunk["error"].get("message", str(chunk["error"])))
+        for choice in chunk.get("choices", []):
+            text.append((choice.get("delta") or {}).get("content") or "")
+        cost = (chunk.get("usage") or {}).get("cost", cost)
     answer = "".join(text).strip()
     if not answer:
         raise RuntimeError("empty answer")
@@ -153,11 +200,14 @@ def routes(seat, args):
     if seat == "claude":
         pick = member[args.claude] if args.claude != "none" else member["openrouter"]
         return [(pick["name"], pick["id"], "OpenRouter" if args.claude == "none" else "Claude Code")]
-    return [(member["name"], member["openrouter"], "OpenRouter")]
+    return ([(member["name"], member["agy"], "Antigravity CLI")] if args.google == "yes" else []) + \
+        ([(member["name"], member["api"], "Gemini API")] if os.environ.get("GEMINI_API_KEY") else []) + \
+        ([(member["name"], member["openrouter"], "OpenRouter")] if os.environ.get("OPENROUTER_API_KEY") else [])
 
 
 def ask(seat, args, prompt, results):
     effort, timeout = MEMBERS[seat]["effort"], args.timeout * 60
+    google_effort = "high" if effort in ("xhigh", "max") else effort  # Google's top thinking level
     out = args.out / f"{seat}.md"
     failures = []
     for name, model, route in routes(seat, args):
@@ -167,6 +217,10 @@ def ask(seat, args, prompt, results):
                 answer, cost = run_claude(model, effort, prompt, timeout)
             elif route == "Codex":
                 answer, cost = run_codex(model, effort, prompt, timeout, out)
+            elif route == "Antigravity CLI":
+                answer, cost = run_agy(model, google_effort, prompt, timeout)
+            elif route == "Gemini API":
+                answer, cost = run_gemini_api(model, google_effort, prompt, timeout)
             else:
                 answer, cost = run_openrouter(model, effort, prompt, timeout)
         except Exception as error:  # one seat failing never stops the others
@@ -177,7 +231,8 @@ def ask(seat, args, prompt, results):
                          "seconds": round(time.time() - start), "cost_usd": cost,
                          "answer": str(out), "failed_first": failures}
         return
-    results[seat] = {"ok": False, "failures": failures}
+    results[seat] = {"ok": False, "failures": failures or [
+        "no route: sign in to Antigravity CLI on a Google plan, or set GEMINI_API_KEY or OPENROUTER_API_KEY"]}
 
 
 def main():
@@ -186,6 +241,8 @@ def main():
     parser.add_argument("--out", type=Path, required=True, help="folder for the answers")
     parser.add_argument("--claude", choices=["max", "pro", "none"], required=True, help="the owner's Claude plan")
     parser.add_argument("--chatgpt", choices=["yes", "no"], required=True, help="whether the owner has a ChatGPT plan")
+    parser.add_argument("--google", choices=["yes", "no"], required=True,
+                        help="whether the owner signed in to Antigravity CLI on a Google AI Pro or Ultra plan")
     parser.add_argument("--file", action="append", default=[], help="file, folder or glob to include; !glob excludes")
     parser.add_argument("--seat", action="append", choices=list(MEMBERS),
                         help="ask only this seat, such as one that failed (default: all three)")

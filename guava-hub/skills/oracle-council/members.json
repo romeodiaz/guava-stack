@@ -22,6 +22,8 @@
   },
   "gemini": {
     "name": "Gemini 4 Argon",
+    "agy": "gemini-4-argon-high",
+    "api": "gemini-4-argon",
     "openrouter": "google/gemini-4-argon",
     "effort": "max"
   }

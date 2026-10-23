@@ -132,12 +132,12 @@ def default_pair(args):
 def oracle_council(args):
     gpt, claude, gemini = COUNCIL["chatgpt"], COUNCIL["claude"], COUNCIL["gemini"]
     return "\n" + "\n".join([
-        "| Seat | On your plan | On OpenRouter |",
+        "| Seat | On your plan | With an API key |",
         "|---|---|---|",
-        f"| ChatGPT | {gpt['name']} via Codex (`{gpt['id']}`) | `{gpt['openrouter']}`, with no ChatGPT plan or when Codex fails |",
-        f"| Claude | Max: {claude['max']['name']} via Claude Code (`{claude['max']['id']}`)<br>Pro: {claude['pro']['name']} via Claude Code (`{claude['pro']['id']}`) | {claude['openrouter']['name']} (`{claude['openrouter']['id']}`), only with no Claude plan |",
-        f"| Gemini | none | {gemini['name']} (`{gemini['openrouter']}`), always |",
-    ]) + f"\n\nEvery seat runs at {gpt['effort']} effort.\n"
+        f"| ChatGPT | {gpt['name']} via Codex (`{gpt['id']}`) | OpenRouter `{gpt['openrouter']}`, with no ChatGPT plan or when Codex fails |",
+        f"| Claude | Max: {claude['max']['name']} via Claude Code (`{claude['max']['id']}`)<br>Pro: {claude['pro']['name']} via Claude Code (`{claude['pro']['id']}`) | OpenRouter {claude['openrouter']['name']} (`{claude['openrouter']['id']}`), only with no Claude plan |",
+        f"| Gemini | Google AI Pro or Ultra: {gemini['name']} via Antigravity CLI (`{gemini['agy']}`) | Gemini API `{gemini['api']}`, or OpenRouter `{gemini['openrouter']}` |",
+    ]) + f"\n\nEvery seat runs at {gpt['effort']} effort (high on Google's own routes, its top level).\n"
 
 
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,

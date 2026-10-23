@@ -46,6 +46,38 @@ computer_use:
   id: gpt-6.1-sol
   effort: low
 
+# The council skill asks three models the same hard question at once, each at max
+# effort, then the head-chef merges their answers. Each seat runs on the owner's plan
+# through Claude Code or Codex where it can, and on OpenRouter otherwise:
+#   chatgpt: Codex on a ChatGPT plan. OpenRouter with no ChatGPT plan, or when Codex fails.
+#   claude:  Claude Code, with the max model on a Claude Max plan and the pro model on
+#            Pro. OpenRouter only with no Claude plan, and never Fable there, since
+#            it costs far more than Opus.
+#   gemini:  always OpenRouter.
+# openrouter fields are OpenRouter model IDs. sync-models.py copies this section into
+# guava-hub/skills/council/members.json, which council.py reads.
+council:
+  chatgpt:
+    name: GPT-6 Astra
+    id: gpt-6-astra
+    openrouter: openai/gpt-6-astra
+    effort: max
+  claude:
+    max:
+      name: Claude Fable 5.1
+      id: claude-fable-5-1
+    pro:
+      name: Claude Opus 5.5
+      id: claude-opus-5-5
+    openrouter:
+      name: Claude Opus 5.5
+      id: anthropic/claude-opus-5.5
+    effort: max
+  gemini:
+    name: Gemini 4 Argon
+    openrouter: google/gemini-4-argon
+    effort: max
+
 # What each role does. Shown in the READMEs.
 roles:
   head_chef: orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems

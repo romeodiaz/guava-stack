@@ -10,5 +10,5 @@
 
   ![Claude Settings, Account, with the Instructions for Claude box](https://raw.githubusercontent.com/romeodiaz/guava-stack/main/assets/setup/claude-instructions.png)
 - The Claude app keeps no skill files: keep skills in the hub and read the matching one from there when a task needs it.
-- There's no computer here to run Claude Code or Codex, so the Model Router and last30days come with adding Grok Bot or Muse (**Add a bot** in the setup skill).
+- There's no computer here to run Claude Code or Codex, so the Model Router and last30days-research come with adding Grok Bot or Muse (**Add a bot** in the setup skill).
 - **Workflow review:** make the report as a downloadable `.html` file the owner saves, never a published or shared artifact.

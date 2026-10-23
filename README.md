@@ -33,7 +33,7 @@ Your Notion guava-hub has five parts:
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/logo.png" width="80" alt="Guava logo"> <img src="assets/model-router.png" width="80" alt="Pixel-art router"><br><strong>context</strong></td>
-<td><ins>Your settings and who you are</ins><br>Starts with your guava-stack settings, where guava-router lives: your head-chef, line-cook and computer-use slots, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
+<td><ins>Your settings and who you are</ins><br>Starts with your guava-stack settings, where guava-router lives: your head-chef and line-cook slots, plus the rules you've turned on. Change a model there and every assistant follows it. Then who you are: your business, customers, offers, voice and tools, filled in from a short interview at setup.</td>
 </tr>
 </table>
 
@@ -112,14 +112,12 @@ Your Notion guava-hub has five parts:
 <!-- models:kitchen size=80 -->
 <table>
 <tr>
-<td align="center" width="33%"><img src="assets/head-chef.png" width="80" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
-<td align="center" width="33%"><img src="assets/line-cook.png" width="80" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
-<td align="center" width="33%"><img src="assets/computer-use.png" width="80" alt="Pixel-art monitor with a cursor clicking a button"><br><strong>computer-use</strong><br><sub>Today's best: GPT-6.1 Sol (Low) <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Claude only: your assistant's own computer tools</sub></td>
+<td align="center" width="50%"><img src="assets/head-chef.png" width="80" alt="Pixel-art head chef"><br><strong>head-chef</strong><br><sub>Today's best: Claude Opus 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"><br>Next best: GPT-6 Astra <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"></sub></td>
+<td align="center" width="50%"><img src="assets/line-cook.png" width="80" alt="Pixel-art line cook"><br><strong>line-cook</strong><br><sub>Today's best: GPT-6.1 Sol <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"><br>Next best: Claude Sonnet 5.5 <img src="assets/claude.svg" width="20" alt="Claude logo"></sub></td>
 </tr>
 <tr>
 <td>Orchestration, research, planning, brainstorming, copywriting, validation, review, verification, fuzzy and hard problems.</td>
-<td>Bulk execution, coding, sub-agent tasks, worker threads, long-running jobs.</td>
-<td>Apps outside the browser, after browser tools.</td>
+<td>Bulk execution, coding, computer use, sub-agent tasks, worker threads, long-running jobs.</td>
 </tr>
 </table>
 <!-- /models -->

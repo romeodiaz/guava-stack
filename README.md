@@ -163,13 +163,17 @@ Install founder-mode from github.com/romeodiaz/guava-stack
 Install guava-router from github.com/romeodiaz/guava-stack
 ```
 
+```
+Install oracle-council from github.com/romeodiaz/guava-stack
+```
+
 On Grok Bot:
 
 ```
 npx skills add romeodiaz/guava-stack -g -y
 ```
 
-For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router`.
+For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router` or `oracle-council`.
 
 **▶️ Try it:**
 1. "Set me up."

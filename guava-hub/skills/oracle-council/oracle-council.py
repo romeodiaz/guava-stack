@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Ask the council: one hard question to three models at once, each at max effort.
 
+    python3 oracle-council.py --check
     python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no --google yes|no \
         [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--dry-run] [--timeout MINUTES]
+
+--check shows which of Claude Code, Codex and Antigravity CLI are installed and signed in
+on a plan, and which API keys are set, so the owner can be walked through what's missing.
 
 Seats and models come from members.json next to this script (written by
 scripts/sync-models.py from guava-router/models.yaml). Each answer is saved as
@@ -194,6 +198,61 @@ def run_openrouter(model, effort, prompt, timeout):
     return answer, cost
 
 
+def probe(cmd, strip, timeout=60):
+    """Run a status command without the API keys in strip; (exit code, output), or None if it isn't installed."""
+    try:
+        done = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, env=without(*strip),
+                              stdin=subprocess.DEVNULL)
+    except FileNotFoundError:
+        return None
+    except subprocess.TimeoutExpired:
+        return 124, "timed out"
+    return done.returncode, (done.stdout + done.stderr).strip()
+
+
+def check():
+    """What each seat can run on here. Never prints a key, only whether it's set."""
+    report = {}
+    version = probe(["claude", "--version"], [])
+    status = probe(["claude", "auth", "status", "--json"], ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"])
+    try:
+        status = json.loads(status[1]) if status else {}
+    except json.JSONDecodeError:
+        status = {"error": status[1][-300:]}
+    report["claude_code"] = {
+        "installed": version[1].split()[0] if version else False,
+        "signed_in": bool(status.get("loggedIn")),
+        **{k: status[k] for k in ("authMethod", "subscriptionType", "error") if status.get(k)},
+        "fix": None if status.get("loggedIn") else
+            ("run `claude auth login` and sign in with the Claude account that has the Max or Pro plan" if version
+             else "install with `npm i -g @anthropic-ai/claude-code`, then run `claude auth login`")}
+    version = probe(["codex", "--version"], [])
+    status = probe(["codex", "login", "status"], ["OPENAI_API_KEY", "CODEX_API_KEY"])
+    on_plan = bool(status) and status[0] == 0 and "chatgpt" in status[1].lower()
+    report["codex"] = {
+        "installed": version[1].split()[-1] if version else False,
+        "signed_in_with_chatgpt": on_plan, "status": status[1][-200:] if status else None,
+        "fix": None if on_plan else
+            ("run `codex login` and choose Sign in with ChatGPT (`codex login --device-auth` without a browser)" if version
+             else "install with `npm i -g @openai/codex`, then run `codex login`")}
+    version = probe(["agy", "--version"], [])
+    models = probe(["agy", "models"], ["GEMINI_API_KEY", "GOOGLE_API_KEY"]) if version else None
+    has_argon = bool(models) and models[0] == 0 and MEMBERS["gemini"]["agy"] in models[1]
+    report["antigravity_cli"] = {
+        "installed": version[1].split()[-1] if version else False,
+        "gemini_argon_on_plan": has_argon, "models": models[1][-300:] if models and not has_argon else None,
+        "fix": None if has_argon else
+            ("run `agy` and sign in with the Google account that has Google AI Pro or Ultra; "
+             "if it's signed in and Argon still isn't listed, the plan doesn't include it" if version
+             else "install with `curl -fsSL https://antigravity.google/cli/install.sh | bash`, then run `agy` to sign in")}
+    report["keys_set"] = {k: bool(os.environ.get(k)) for k in ("GEMINI_API_KEY", "OPENROUTER_API_KEY")}
+    report["flags"] = {
+        "--claude": "max or pro (ask the owner which plan)" if report["claude_code"]["signed_in"] else "none",
+        "--chatgpt": "yes" if on_plan else "no",
+        "--google": "yes" if has_argon else "no"}
+    return report
+
+
 def routes(seat, args):
     """The (model name, model id, route) attempts for a seat, in order."""
     member = MEMBERS[seat]
@@ -240,18 +299,25 @@ def ask(seat, args, prompt, results):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--question", type=Path, required=True, help="the briefing and question, as markdown")
-    parser.add_argument("--out", type=Path, required=True, help="folder for the answers")
-    parser.add_argument("--claude", choices=["max", "pro", "none"], required=True, help="the owner's Claude plan")
-    parser.add_argument("--chatgpt", choices=["yes", "no"], required=True, help="whether the owner has a ChatGPT plan")
-    parser.add_argument("--google", choices=["yes", "no"], required=True,
-                        help="whether the owner signed in to Antigravity CLI on a Google AI Pro or Ultra plan")
+    parser.add_argument("--check", action="store_true", help="show which CLIs are installed and signed in, and which keys are set")
+    parser.add_argument("--question", type=Path, help="the briefing and question, as markdown")
+    parser.add_argument("--out", type=Path, help="folder for the answers")
+    parser.add_argument("--claude", choices=["max", "pro", "none"], help="the owner's Claude plan")
+    parser.add_argument("--chatgpt", choices=["yes", "no"], help="whether Codex is signed in on the owner's ChatGPT plan")
+    parser.add_argument("--google", choices=["yes", "no"],
+                        help="whether Antigravity CLI is signed in on the owner's Google AI Pro or Ultra plan")
     parser.add_argument("--file", action="append", default=[], help="file, folder or glob to include; !glob excludes")
     parser.add_argument("--seat", action="append", choices=list(MEMBERS),
                         help="ask only this seat, such as one that failed (default: all three)")
     parser.add_argument("--timeout", type=int, default=45, help="minutes per seat (default 45)")
     parser.add_argument("--dry-run", action="store_true", help="show files, size and routes without asking anyone")
     args = parser.parse_args()
+    if args.check:
+        print(json.dumps(check(), indent=2))
+        return
+    missing = [f"--{k}" for k in ("question", "out", "claude", "chatgpt", "google") if getattr(args, k) is None]
+    if missing:
+        parser.error(f"needs {', '.join(missing)} (run --check first to see what to pass)")
     seats = args.seat or list(MEMBERS)
 
     files, skipped = bundle(args.file)

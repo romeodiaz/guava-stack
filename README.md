@@ -80,8 +80,8 @@ Your Notion guava-hub has five parts:
 <td><a href="guava-hub/skills/workflow-review/SKILL.md"><ins>workflow-review</ins></a><br>Say "review my workflows". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a short version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
 </tr>
 <tr>
-<td align="center" width="200"><a href="https://github.com/blader/humanizer"><img src="assets/humanizer.png" width="80" alt="Pixel-art person speaking"></a></td>
-<td><a href="https://github.com/blader/humanizer"><ins>humanizer</ins></a><br>By blader. So anything your AI writes for you doesn't sound like AI. Offered at setup.</td>
+<td align="center" width="200"><a href="https://github.com/blader/humanizer"><img src="assets/humanizer-writing.png" width="80" alt="Pixel-art person speaking"></a></td>
+<td><a href="https://github.com/blader/humanizer"><ins>humanizer-writing</ins></a><br>From blader's humanizer. So anything your AI writes for you doesn't sound like AI. Offered at setup.</td>
 </tr>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/design-cook-off/SKILL.md"><img src="assets/cook-off.png" width="80" alt="Pixel-art frying pan between two crossed spatulas under a trophy"></a></td>
@@ -92,12 +92,12 @@ Your Notion guava-hub has five parts:
 <td><a href="guava-hub/skills/oracle-council/SKILL.md"><ins>oracle-council</ins></a><br>Say "ask the council" when you face a hard call. Three top AIs from three companies, GPT-6 Astra, Claude Fable 5.1 and Gemini 4 Argon, answer the same question at once at max effort, and your head-chef merges them into one verdict: where they agree, where they split, and its call on each split. Inspired by <a href="https://github.com/steipete/oracle">oracle</a>. ChatGPT, Claude and Gemini run on your plans (Gemini through Google's Antigravity CLI on Google AI Pro or Ultra), or Gemini runs on a Gemini API or <a href="https://openrouter.ai">OpenRouter</a> key. Needs Claude Code or Codex, or a bot.</td>
 </tr>
 <tr>
-<td align="center" width="200"><a href="https://github.com/DietrichGebert/ponytail"><img src="assets/ponytail.png" width="80" alt="Pixel-art head with a green ponytail"></a></td>
-<td><a href="https://github.com/DietrichGebert/ponytail"><ins>ponytail</ins></a><br>By Dietrich Gebert. When your AI writes or changes code for you, it writes the least code that does the whole job, so there's less to break, review and pay for. Offered at setup if you build things with AI, and turned on in every session where you have Claude Code or Codex.</td>
+<td align="center" width="200"><a href="https://github.com/DietrichGebert/ponytail"><img src="assets/ponytail-development.png" width="80" alt="Pixel-art head with a green ponytail"></a></td>
+<td><a href="https://github.com/DietrichGebert/ponytail"><ins>ponytail-development</ins></a><br>From Dietrich Gebert's ponytail. When your AI writes or changes code for you, it writes the least code that does the whole job, so there's less to break, review and pay for. Offered at setup if you build things with AI, and turned on in every session where you have Claude Code or Codex.</td>
 </tr>
 <tr>
-<td align="center" width="200"><a href="https://github.com/mvanhorn/last30days-skill"><img src="assets/last30days.png" width="80" alt="Pixel-art calendar with one day marked"></a></td>
-<td><a href="https://github.com/mvanhorn/last30days-skill"><ins>last30days</ins></a><br>By Matt Van Horn. Research what people are actually saying about any topic in the last 30 days, across Reddit, X, YouTube, Hacker News and the web. Comes with a bot, since it runs a program.</td>
+<td align="center" width="200"><a href="https://github.com/mvanhorn/last30days-skill"><img src="assets/last30days-research.png" width="80" alt="Pixel-art calendar with one day marked"></a></td>
+<td><a href="https://github.com/mvanhorn/last30days-skill"><ins>last30days-research</ins></a><br>From Matt Van Horn's last30days. Research what people are actually saying about any topic in the last 30 days, across Reddit, X, YouTube, Hacker News and the web. Comes with a bot, since it runs a program.</td>
 </tr>
 </table>
 
@@ -206,7 +206,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <summary><strong>See exactly what setup touches</strong></summary>
 
 - **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
-- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on Google AI Pro alone, Antigravity CLI's install script and its sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it installs and signs in Google's Antigravity CLI (`agy`) for Gemini, or puts your Gemini API or OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
+- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on Google AI Pro alone, Antigravity CLI's install script and its sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail-development where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it installs and signs in Google's Antigravity CLI (`agy`) for Gemini, or puts your Gemini API or OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.

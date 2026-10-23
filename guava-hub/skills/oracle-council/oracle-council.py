@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Ask the council: one hard question to three models at once, each at max effort.
 
-    python3 council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no \
+    python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no \
         [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--dry-run] [--timeout MINUTES]
 
 Seats and models come from members.json next to this script (written by
@@ -119,7 +119,7 @@ def run_openrouter(model, effort, prompt, timeout):
     request = urllib.request.Request(
         "https://openrouter.ai/api/v1/chat/completions", data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
-                 "HTTP-Referer": "https://github.com/romeodiaz/guava-stack", "X-Title": "guava-stack council"})
+                 "HTTP-Referer": "https://github.com/romeodiaz/guava-stack", "X-Title": "guava-stack oracle-council"})
     deadline, text, cost = time.time() + timeout, [], None
     try:
         response = urllib.request.urlopen(request, timeout=600)

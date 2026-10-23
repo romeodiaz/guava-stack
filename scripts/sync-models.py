@@ -3,7 +3,7 @@
 
 Files mark generated parts with HTML comments:
     <!-- models:KIND key="value" ... -->  generated text  <!-- /models -->
-The council section is also written to guava-hub/skills/council/members.json.
+The oracle_council section is also written to guava-hub/skills/oracle-council/members.json.
 Run from anywhere: python3 scripts/sync-models.py  (add --check to only report stale files)
 """
 import json
@@ -19,8 +19,8 @@ CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 ROLES = CONFIG["roles"]
-COUNCIL = CONFIG["council"]
-MEMBERS = ROOT / "guava-hub" / "skills" / "council" / "members.json"
+COUNCIL = CONFIG["oracle_council"]
+MEMBERS = ROOT / "guava-hub" / "skills" / "oracle-council" / "members.json"
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
 
@@ -129,7 +129,7 @@ def default_pair(args):
     return f"{HEAD['name']} and {LINE['name']}"
 
 
-def council(args):
+def oracle_council(args):
     gpt, claude, gemini = COUNCIL["chatgpt"], COUNCIL["claude"], COUNCIL["gemini"]
     return "\n" + "\n".join([
         "| Seat | On your plan | On OpenRouter |",
@@ -142,7 +142,7 @@ def council(args):
 
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
          "stack-example": stack_example, "default-pair": default_pair,
-         "council": council}
+         "oracle-council": oracle_council}
 
 
 def render(match):

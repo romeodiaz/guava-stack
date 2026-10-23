@@ -38,7 +38,7 @@ line_cook:
     id: claude-sonnet-5-5
     effort: high
 
-# The council skill asks three models the same hard question at once, each at max
+# The oracle-council skill asks three models the same hard question at once, each at max
 # effort, then the head-chef merges their answers. Each seat runs on the owner's plan
 # through Claude Code or Codex where it can, and on OpenRouter otherwise:
 #   chatgpt: Codex on a ChatGPT plan. OpenRouter with no ChatGPT plan, or when Codex fails.
@@ -47,8 +47,8 @@ line_cook:
 #            it costs far more than Opus.
 #   gemini:  always OpenRouter.
 # openrouter fields are OpenRouter model IDs. sync-models.py copies this section into
-# guava-hub/skills/council/members.json, which council.py reads.
-council:
+# guava-hub/skills/oracle-council/members.json, which oracle-council.py reads.
+oracle_council:
   chatgpt:
     name: GPT-6 Astra
     id: gpt-6-astra

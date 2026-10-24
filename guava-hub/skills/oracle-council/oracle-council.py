@@ -6,15 +6,18 @@
         [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--no-web] [--dry-run] [--timeout MINUTES]
 
 --check shows which of Claude Code, Codex and Antigravity CLI are installed and signed in
-on a plan, and which API keys are set, so the owner can be walked through what's missing.
+on a plan, whether Pi is signed in to OpenRouter, and which API keys are set, so the owner
+can be walked through what's missing.
 
 Seats and models come from members.json next to this script (written by
 scripts/sync-models.py from guava-router/models.yaml). Each answer is saved as
 DIR/<seat>.md, and DIR/council.json records which model and route served each seat.
-Standard library only. Seats that run on an API read OPENROUTER_API_KEY or GEMINI_API_KEY.
+Standard library only. Seats that run on an API read GEMINI_API_KEY, or for OpenRouter the key
+Pi saved when the owner signed in to OpenRouter in the browser, else OPENROUTER_API_KEY.
 """
 import argparse
 import fnmatch
+import functools
 import glob
 import json
 import os
@@ -187,10 +190,24 @@ def run_gemini_api(model, effort, prompt, timeout, web):
     return answer, None
 
 
+@functools.cache
+def openrouter_key():
+    """The key Pi saved from OpenRouter's browser sign-in (Pi falls back to OPENROUTER_API_KEY itself),
+    or OPENROUTER_API_KEY when Pi isn't installed."""
+    try:
+        done = subprocess.run(["pi", "auth", "print-api-key", "--provider", "openrouter"], capture_output=True,
+                              text=True, timeout=60, stdin=subprocess.DEVNULL)
+        if done.returncode == 0 and done.stdout.strip():
+            return done.stdout.strip()
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+    return os.environ.get("OPENROUTER_API_KEY")
+
+
 def run_openrouter(model, effort, prompt, timeout, web):
-    key = os.environ.get("OPENROUTER_API_KEY")
+    key = openrouter_key()
     if not key:
-        raise RuntimeError("OPENROUTER_API_KEY is not set")
+        raise RuntimeError("not signed in to OpenRouter: sign in with `/login openrouter` in Pi, or set OPENROUTER_API_KEY")
     body = {"model": model, "messages": [{"role": "user", "content": prompt}],
             "reasoning": {"effort": effort}, "stream": True, "usage": {"include": True}}
     if web:
@@ -259,6 +276,20 @@ def check():
             ("run `agy` and sign in with the Google account that has Google AI Pro or Ultra; "
              "if it's signed in and Argon still isn't listed, the plan doesn't include it" if version
              else "install with `curl -fsSL https://antigravity.google/cli/install.sh | bash`, then run `agy` to sign in")}
+    version = probe(["pi", "--version"], [])
+    status = probe(["pi", "auth", "check", "--provider", "openrouter", "--json"], [], timeout=60) if version else None
+    try:
+        status = json.loads(status[1]) if status else {}
+    except json.JSONDecodeError:
+        status = {"error": status[1][-300:]}
+    report["openrouter_sign_in"] = {
+        "pi_installed": version[1].split()[-1] if version else False,
+        "signed_in": status.get("status") == "ready",
+        **({"how": "browser sign-in" if status.get("authType") == "oauth" else "API key"}
+           if status.get("status") == "ready" else {}),
+        "fix": None if status.get("status") == "ready" else
+            ("run `pi`, type `/login openrouter` and choose Sign in with OpenRouter" if version
+             else "install Pi with `curl -fsSL https://pi.dev/install.sh | sh`, then run `pi` and type `/login openrouter`")}
     report["keys_set"] = {k: bool(os.environ.get(k)) for k in ("GEMINI_API_KEY", "OPENROUTER_API_KEY")}
     report["flags"] = {
         "--claude": (claude.get("subscriptionType") if claude.get("subscriptionType") in ("max", "pro")
@@ -279,7 +310,7 @@ def routes(seat, args):
         return [(pick["name"], pick["id"], "OpenRouter" if args.claude == "none" else "Claude Code")]
     return ([(member["name"], member["agy"], "Antigravity CLI")] if args.google == "yes" else []) + \
         ([(member["name"], member["api"], "Gemini API")] if os.environ.get("GEMINI_API_KEY") else []) + \
-        ([(member["name"], member["openrouter"], "OpenRouter")] if os.environ.get("OPENROUTER_API_KEY") else [])
+        ([(member["name"], member["openrouter"], "OpenRouter")] if openrouter_key() else [])
 
 
 def ask(seat, args, prompt, results):
@@ -310,7 +341,7 @@ def ask(seat, args, prompt, results):
                          "answer": str(out), "failed_first": failures}
         return
     results[seat] = {"ok": False, "failures": failures or [
-        "no route: sign in to Antigravity CLI on a Google plan, or set GEMINI_API_KEY or OPENROUTER_API_KEY"]}
+        "no route: sign in to Antigravity CLI on a Google plan or to OpenRouter in Pi, or set GEMINI_API_KEY or OPENROUTER_API_KEY"]}
 
 
 def main():

@@ -279,7 +279,13 @@ enum Agent {
 
 extension Agent {
     // Check the new model answers, with router-check.py's own command for its tool.
+    // Models that passed once on this Mac, one "tool id" per line; they skip the test from then on.
+    static var tested: URL { Hub.directory.appendingPathComponent("guava-bar-tested.txt") }
+
     static func test(_ pick: Pick, effort: String, slot: String) -> String? {
+        let key = "\(pick.tool) \(pick.id(effort)):\(effort.lowercased())"
+        let passed = (try? String(contentsOf: tested, encoding: .utf8))?.components(separatedBy: "\n") ?? []
+        if passed.contains(key) { return nil }
         let args = ["exec \"$@\"", "guava-bar", "python3", resource("router-check.py").path, "--plan", pick.plan,
                     "--slot", slot, "--\(slot)", "\(pick.id(effort)):\(effort.lowercased())", "--timeout", "240"]
         guard let (output, _, timedOut) = try? shell(args, timeout: 300) else { return "failed: couldn't run router-check.py" }
@@ -289,7 +295,10 @@ extension Agent {
               let result = (report["slots"] as? [[String: Any]])?.first else {
             return "failed: couldn't test \(pick.name): " + output.suffix(200)
         }
-        if result["ok"] as? Bool == true { return nil }
+        if result["ok"] as? Bool == true {
+            try? (passed.filter { !$0.isEmpty } + [key]).joined(separator: "\n").write(to: tested, atomically: true, encoding: .utf8)
+            return nil
+        }
         return "failed: \(pick.name) at \(effort) didn't pass its test: "
             + "\(result["verdict"] ?? "")\(result["error"].map { " (\($0))" } ?? "")"
     }

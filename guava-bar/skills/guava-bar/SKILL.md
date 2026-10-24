@@ -32,13 +32,13 @@ Use this when the owner says **"update guava-bar"**, or when the guava-hub skill
 ## Uninstall
 Use this when the owner says **"uninstall guava-bar"**, or when the guava-hub skill's Uninstall step sends you here.
 1. The owner turns off **Open at login** in guava-bar's menu, if it's on.
-2. `pkill -f 'GuavaBar.app/Contents/MacOS/guava-bar'`, then delete `~/Applications/GuavaBar.app`, and `~/.local/bin/guava-bar` if it's a link to that app (`readlink ~/.local/bin/guava-bar`).
+2. `pkill -f 'GuavaBar.app/Contents/MacOS/guava-bar'`, then delete `~/Applications/GuavaBar.app`, `~/.guava-hub/guava-bar-tested.txt`, and `~/.local/bin/guava-bar` if it's a link to that app (`readlink ~/.local/bin/guava-bar`).
 3. Nothing in Notion or `~/.guava-hub` needs undoing: guava-bar only changed what the owner picked, through **Change your setup**.
 
 ## What a change runs
 Show this to the owner when they ask what guava-bar can do on their computer. A pick runs, in this order:
 1. **Switch it on this Mac:** guava-bar rewrites that slot's model line, or both for **Switch both**, in `~/.guava-hub/context.md` and nothing else. New hand-offs on this Mac use it right away.
-2. **Test the new model:** guava-router's `router-check.py`, bundled in the app, sends it a one-word prompt with its own tool's command, such as `python3 router-check.py --plan claude-and-chatgpt --slot line-cook --line-cook gpt-6.1-sol:medium`. With both slots, each is tested. If one fails, guava-bar puts the old lines back and says why. A tool that's installed but not on one of the owner's plans fails here.
+2. **Test the new model**, only the first time that model and effort are picked on this Mac (guava-bar remembers each one that passed in `~/.guava-hub/guava-bar-tested.txt`): guava-router's `router-check.py`, bundled in the app, sends it a one-word prompt with its own tool's command, such as `python3 router-check.py --plan claude-and-chatgpt --slot line-cook --line-cook gpt-6.1-sol:medium`. With both slots, each is tested. If one fails, guava-bar puts the old lines back and says why. A tool that's installed but not on one of the owner's plans fails here.
 3. **Update Notion**, from `~/.guava-hub`, with no input, stopped after 10 minutes:
    - `claude -p "<the change>" --allowedTools mcp__claude_ai_Notion__notion-fetch mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-update-page` (the same three for a Notion connection named `notion`) `Read "WebFetch(domain:github.com)" "WebFetch(domain:raw.githubusercontent.com)"`: read and update Notion pages and read this repo's steps; no file edits and no commands.
    - With no Claude Code: `codex exec --skip-git-repo-check --sandbox workspace-write "<the change>"`, which can only write inside `~/.guava-hub`.

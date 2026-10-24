@@ -132,7 +132,7 @@ echo 'PASS: looking up tools runs none of them, and an invalid set exits 1 witho
 # A switch with stand-in tools: the copy changes at once, and a model that fails its test is switched back.
 fake="$fixture/fake"
 mkdir -p "$fake/bin" "$fake/hub"
-printf '#!/bin/sh\necho "${REPLY:-done: mock}"\n' > "$fake/bin/claude"
+printf '#!/bin/sh\necho "${MOCK_REPLY:-done: mock}"\n' > "$fake/bin/claude"
 cp "$fake/bin/claude" "$fake/bin/codex"
 cat > "$fake/bin/python3" <<'EOF'
 #!/bin/sh
@@ -167,11 +167,21 @@ has "$opus (Max) via Claude Code"
 has "$sonnet (High) via Claude Code"
 echo 'PASS: switching one slot or both edits only the model lines, and a failed test switches them all back'
 code=0
-REPLY='done: nothing. failed: not supported' OK=true switch line-cook "$sol (High) via Codex" || code=$?
+# In sh, a variable set in front of a function call stays set afterwards, so unset it.
+MOCK_REPLY='done: nothing. failed: not supported' OK=true switch line-cook "$sol (High) via Codex" || code=$?
+unset MOCK_REPLY
 [ "$code" -eq 1 ]
 grep -F "Notion wasn't updated" "$fake/out" > /dev/null
 has "$sol (High) via Codex"
 echo "PASS: a reply that says done but also failed keeps the Mac switched and reports Notion wasn't updated"
+OK=false switch line-cook "$sol (Medium) via Codex"
+has "$sol (Medium) via Codex"
+echo 'PASS: a model and effort that passed before skip the test'
+code=0
+OK=false switch line-cook "$sol (xhigh) via Codex" || code=$?
+[ "$code" -eq 1 ]
+has "$sol (Medium) via Codex"
+echo 'PASS: a model and effort not tried before still get tested'
 echo 'Build and self-test passed.'
 
 if [ "${1-}" != --no-install ]; then

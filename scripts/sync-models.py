@@ -19,6 +19,7 @@ CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
 GOOGLE_HEAD, GOOGLE_LINE = CONFIG["google_only"]["head_chef"], CONFIG["google_only"]["line_cook"]
+OR_HEAD, OR_LINE = CONFIG["openrouter_only"]["head_chef"], CONFIG["openrouter_only"]["line_cook"]
 ROLES = CONFIG["roles"]
 COUNCIL = CONFIG["oracle_council"]
 MEMBERS = ROOT / "guava-hub" / "skills" / "oracle-council" / "members.json"
@@ -54,6 +55,10 @@ def google(slot):
 
 def agy(slot):
     return f'agy -p "<task>" --model {slot["id"]} --effort {slot["effort"]} --mode accept-edits < /dev/null'
+
+
+def pi(slot):
+    return f'pi -p --provider openrouter --model {slot["id"]} --thinking {slot["effort"]} "<task>" < /dev/null'
 
 
 def run(slot):
@@ -105,6 +110,8 @@ def commands(args):
                            ("head-chef fallback, Google AI only", GOOGLE_HEAD["fallback"]),
                            ("line-cook, Google AI only", GOOGLE_LINE),
                            ("line-cook fallback, Google AI only", GOOGLE_LINE["fallback"]))],
+        *[f"| {label} | {s['name']}, effort {s['effort']} (`{s['id']}`) | Pi | `{pi(s)}` |"
+          for label, s in (("head-chef, OpenRouter only", OR_HEAD), ("line-cook, OpenRouter only", OR_LINE))],
     ]) + "\n"
 
 
@@ -116,6 +123,7 @@ def plans(args):
         row("Claude and ChatGPT (best)", HEAD, LINE),
         *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
         f"| Google AI Pro or Ultra only | {google(GOOGLE_HEAD)} | {google(GOOGLE_LINE)} |",
+        f"| OpenRouter only, billed per use | {detailed(OR_HEAD, 'Pi')} | {detailed(OR_LINE, 'Pi')} |",
     ]) + "\n"
 
 
@@ -124,7 +132,8 @@ def one_plan(args):
             f"and {HEAD_NEXT['name']} as head-chef on {company(HEAD_NEXT)} only. "
             f"On Google AI Pro or Ultra only, {GOOGLE_HEAD['name']} and {GOOGLE_LINE['name']} run through "
             f"Google's Antigravity CLI, and fall back to {GOOGLE_HEAD['fallback']['name']} and "
-            f"{GOOGLE_LINE['fallback']['name']} when their usage runs out")
+            f"{GOOGLE_LINE['fallback']['name']} when their usage runs out. With none of these plans, "
+            f"{OR_HEAD['name']} and {OR_LINE['name']} run on OpenRouter, billed per use, through the Pi coding agent")
 
 
 def stack_example(args):
@@ -151,7 +160,7 @@ def default_pair(args):
 def oracle_council(args):
     gpt, claude, gemini = COUNCIL["chatgpt"], COUNCIL["claude"], COUNCIL["gemini"]
     return "\n" + "\n".join([
-        "| Seat | On your plan | With an API key |",
+        "| Seat | On your plan | Billed per use |",
         "|---|---|---|",
         f"| ChatGPT | {gpt['name']} via Codex (`{gpt['id']}`) | OpenRouter `{gpt['openrouter']}`, with no ChatGPT plan or when Codex fails |",
         f"| Claude | Max: {claude['max']['name']} via Claude Code (`{claude['max']['id']}`)<br>Pro: {claude['pro']['name']} via Claude Code (`{claude['pro']['id']}`) | OpenRouter {claude['openrouter']['name']} (`{claude['openrouter']['id']}`), only with no Claude plan |",

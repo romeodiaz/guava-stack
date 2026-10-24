@@ -4,7 +4,8 @@
 # owner's Claude plan, and the line-cook (does the bulk work) through Codex on their
 # ChatGPT plan. An owner with only one of the two plans gets that company's next_best
 # in the other slot, so both slots run on the one plan. An owner with only Google AI Pro
-# or Ultra gets the google_only picks below. Computer use is line-cook work.
+# or Ultra gets the google_only picks below, and an owner with none of these plans the
+# openrouter_only picks. Computer use is line-cook work.
 #
 # To swap in a newer model:
 #   1. Change its name, id and effort below.
@@ -21,7 +22,7 @@
 #   fallback: in google_only, the Gemini pick (name, id and effort) agy runs when the
 #             Claude model's usage on the Google plan has run out
 
-updated: 2026-10-23
+updated: 2026-10-24
 
 head_chef:
   name: Claude Opus 5.5
@@ -62,6 +63,20 @@ google_only:
       name: Gemini 3.8 Flash
       id: gemini-3.8-flash-high
       effort: high
+
+# An owner with no Claude, ChatGPT or Google AI plan runs both slots on OpenRouter, billed
+# per use, through the Pi coding agent (pi), signed in to OpenRouter in the browser or with
+# an OpenRouter API key. id here is the OpenRouter model ID; effort is OpenRouter's
+# reasoning effort, which pi's --thinking sets.
+openrouter_only:
+  head_chef:
+    name: Kimi K3.1 Pro
+    id: moonshotai/kimi-k3.1-pro
+    effort: high
+  line_cook:
+    name: DeepSeek V4.1 Flash 1017
+    id: deepseek/deepseek-v4.1-flash-1017
+    effort: high
 
 # The oracle-council skill asks three models the same hard question at once, each at max
 # effort, then the head-chef merges their answers. Each seat runs on the owner's plan

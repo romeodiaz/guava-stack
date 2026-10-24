@@ -13,10 +13,10 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
 **🔑 You'll need:**
-- Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan, or Google AI Pro <img src="assets/gemini.svg" width="20" alt="Gemini logo"> (with the free Claude or ChatGPT app for setup)
+- Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan, or Google AI Pro <img src="assets/gemini.svg" width="20" alt="Gemini logo">, or OpenRouter <img src="assets/openrouter.svg" width="20" alt="OpenRouter logo"> (pay per use, no plan needed), with the free Claude or ChatGPT app for setup
 - Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
 
-**➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router and can run Claude, ChatGPT or Gemini behind the scenes.
+**➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router and can run Claude, ChatGPT, Gemini or OpenRouter's models behind the scenes.
 
 ## What you get
 
@@ -89,7 +89,7 @@ Your Notion guava-hub has five parts:
 </tr>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/oracle-council/SKILL.md"><img src="assets/oracle-council.png" width="80" alt="Pixel-art council of three figures behind a table"></a></td>
-<td><a href="guava-hub/skills/oracle-council/SKILL.md"><ins>oracle-council</ins></a><br>Say "ask the council" when you face a hard call. Three top AIs from three companies, GPT-6 Astra, Claude Fable 5.1 and Gemini 4 Argon, answer the same question at once at max effort, and your head-chef merges them into one verdict: where they agree, where they split, and its call on each split. Inspired by <a href="https://github.com/steipete/oracle">oracle</a>. ChatGPT, Claude and Gemini run on your plans (Gemini through Google's Antigravity CLI on Google AI Pro or Ultra), or Gemini runs on a Gemini API or <a href="https://openrouter.ai">OpenRouter</a> key. Needs Claude Code or Codex, or a bot.</td>
+<td><a href="guava-hub/skills/oracle-council/SKILL.md"><ins>oracle-council</ins></a><br>Say "ask the council" when you face a hard call. Three top AIs from three companies, GPT-6 Astra, Claude Fable 5.1 and Gemini 4 Argon, answer the same question at once at max effort, and your head-chef merges them into one verdict: where they agree, where they split, and its call on each split. Inspired by <a href="https://github.com/steipete/oracle">oracle</a>. ChatGPT, Claude and Gemini run on your plans (Gemini through Google's Antigravity CLI on Google AI Pro or Ultra), or any seat runs on <a href="https://openrouter.ai">OpenRouter</a>, signed in through your browser, or on a Gemini API key. Needs Claude Code or Codex, or a bot.</td>
 </tr>
 <tr>
 <td align="center" width="200"><a href="https://github.com/DietrichGebert/ponytail"><img src="assets/ponytail-development.png" width="80" alt="Pixel-art head with a green ponytail"></a></td>
@@ -124,7 +124,7 @@ Your Notion guava-hub has five parts:
 
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
-- 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, or Google AI Pro on its own, and Muse is free.
+- 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, or Google AI Pro on its own, or OpenRouter with no plan at all, and Muse is free.
 - 📱 **Everywhere.** Works the same in the Claude or ChatGPT app on your desk, laptop and phone.
 - 🔓 **No lock-in.** It lives in your own Notion account.
 - 🆓 **Free and open source.** MIT licensed.
@@ -205,12 +205,12 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools.
-- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on Google AI Pro alone, Antigravity CLI's install script and its sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail-development where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it installs and signs in Google's Antigravity CLI (`agy`) for Gemini, or puts your Gemini API or OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
+- **Files edited:** none in the Claude or ChatGPT app. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools. On OpenRouter alone, Pi keeps the key OpenRouter's sign-in makes in `~/.pi/agent/auth.json`.
+- **Commands run:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on Google AI Pro alone, Antigravity CLI's install script and its sign-in, or on OpenRouter alone, Pi's install script and OpenRouter's browser sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail-development where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it installs and signs in Google's Antigravity CLI (`agy`) for Gemini, or signs you in to OpenRouter in your browser through Pi, or, only if you'd rather paste one, puts your Gemini API or OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
 - **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
-- **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), npm (to install the tools, with a bot), skills.sh (to check outside skills) and Google or OpenRouter (the router on Google AI Pro alone, and oracle-council's Gemini seat if you add it). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
+- **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), npm and pi.dev (to install the tools, with a bot), skills.sh (to check outside skills) and Google or OpenRouter (the router on Google AI Pro or OpenRouter alone, and oracle-council's seats if you add it). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 
 </details>
 
@@ -220,7 +220,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 📋 **[workflow-review](guava-hub/skills/workflow-review/)**: the workflow review and its report template.
 - 🍳 **[design-cook-off](guava-hub/skills/design-cook-off/)**: two designed versions of a page to pick from.
 - 🏛️ **[oracle-council](guava-hub/skills/oracle-council/)**: three top AIs answer one hard question, merged into one verdict.
-- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, or Antigravity CLI on Google AI Pro alone, which your bot runs for you.
+- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, Antigravity CLI on Google AI Pro alone, or Pi on OpenRouter alone, which your bot runs for you.
 - 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Grok Bot and Muse each skip or change.
 
 ## Support

@@ -6,18 +6,21 @@ import SwiftUI
 import Darwin
 
 let slots = ["head-chef", "line-cook"]
-let efforts = ["Low", "Medium", "High", "xhigh", "Max"]
+let allEfforts = ["Low", "Medium", "High", "xhigh", "Max"]
 
 let tools = ["claude": "Claude Code", "codex": "Codex", "agy": "Antigravity CLI", "pi": "Pi"]
 
 // One slot of one plan row in guava-router's slots.json, which sync-models.py writes from models.yaml.
 struct Slot: Decodable {
-    struct Fallback: Decodable { let name: String; let effort: String }
+    struct Fallback: Decodable { let name: String; let id: String; let effort: String }
     let name: String
     let id: String
+    let effort: String
     let tool: String
     let fallback: Fallback?
 }
+
+func label(_ effort: String) -> String { allEfforts.first { $0.lowercased() == effort.lowercased() } ?? effort }
 
 struct Pick: Hashable {
     let name: String
@@ -25,11 +28,52 @@ struct Pick: Hashable {
     let fallback: String?
     let id: String
     let plan: String  // the slots.json row it came from, which router-check.py tests it on
+    let effort: String
+    // Antigravity CLI's model IDs name their effort, and Pi's thinking levels differ, so those keep their own.
+    var efforts: [String] { tool == "Claude Code" || tool == "Codex" ? allEfforts : [effort] }
+
+    init(_ s: Slot, plan: String) {
+        name = s.name; tool = tools[s.tool] ?? s.tool; id = s.id; self.plan = plan; effort = label(s.effort)
+        fallback = s.fallback.map { "\($0.name) (\(label($0.effort)))" }
+    }
+
+    // On Google AI, the slot's Gemini fallback can also be picked on its own.
+    init(gemini s: Slot.Fallback) {
+        name = s.name; tool = "Antigravity CLI"; id = s.id; plan = "google"; effort = label(s.effort); fallback = nil
+    }
 
     func line(_ effort: String) -> String {
         let base = "\(name) (\(effort)) via \(tool)"
         return fallback.map { "\(base), falling back to \($0) when its usage runs out" } ?? base
     }
+}
+
+// Both slots at once, such as every plan row of slots.json.
+struct Pair: Hashable {
+    let name: String
+    let head: Pick
+    let line: Pick
+}
+
+let plans = ["claude-and-chatgpt": "Claude + ChatGPT", "claude": "Claude", "chatgpt": "ChatGPT",
+             "google": "Google AI", "openrouter": "OpenRouter"]
+
+func catalog(_ rows: [String: [String: Slot]]) -> (picks: [String: [Pick]], pairs: [Pair]) {
+    var picks: [String: [Pick]] = [:], pairs: [Pair] = []
+    for plan in ["claude-and-chatgpt", "claude", "chatgpt", "google", "openrouter"] {
+        guard let row = rows[plan], let head = row["head-chef"], let line = row["line-cook"] else { continue }
+        pairs.append(Pair(name: plans[plan]!, head: Pick(head, plan: plan), line: Pick(line, plan: plan)))
+        if let h = head.fallback, let l = line.fallback {
+            pairs.append(Pair(name: "Google AI, Gemini", head: Pick(gemini: h), line: Pick(gemini: l)))
+        }
+    }
+    for pair in pairs {
+        for (slot, pick) in [("head-chef", pair.head), ("line-cook", pair.line)]
+        where !picks[slot, default: []].contains(where: { $0.line("") == pick.line("") }) {
+            picks[slot, default: []].append(pick)
+        }
+    }
+    return (picks, pairs)
 }
 
 struct Hub {
@@ -70,25 +114,27 @@ struct Hub {
         synced.map { "refreshed \(max(0, Int(Date().timeIntervalSince($0) / 60))) min ago" } ?? "no hub copy yet"
     }
 
-    // The tools both slots run on stand for the owner's plans, as "check for newer models" reads them,
-    // so only those tools' picks are offered. Plan changes go through "change my setup" in chat.
-    func picks(_ slot: String, from rows: [String: [String: Slot]]) -> [Pick] {
-        let owned = Set(lines.values.map(bare).compactMap { line in
+    // Offered: the tools installed on this Mac, plus those the slots already name, which stand for the
+    // owner's plans. A tool that's installed but not on a plan fails guava-bar's test and switches back.
+    func owned(_ installed: Set<String>) -> Set<String> {
+        installed.union(lines.values.map(bare).compactMap { line in
             line.range(of: " via ").map { line[$0.upperBound...].components(separatedBy: ",")[0] }
         })
-        var seen: [Pick] = []
-        for plan in ["claude-and-chatgpt", "claude", "chatgpt", "google", "openrouter"] {
-            guard let s = rows[plan]?[slot], owned.contains(tools[s.tool] ?? s.tool) else { continue }
-            let pick = Pick(name: s.name, tool: tools[s.tool] ?? s.tool,
-                            fallback: s.fallback.map { "\($0.name) (\($0.effort.capitalized))" }, id: s.id, plan: plan)
-            if !seen.contains(where: { $0.line("") == pick.line("") }) { seen.append(pick) }
-        }
-        return seen
     }
 
-    func option(_ slot: String, _ line: String, from rows: [String: [String: Slot]]) -> (Pick, String)? {
-        for pick in picks(slot, from: rows) {
-            if let effort = efforts.first(where: { pick.line($0) == line }) { return (pick, effort) }
+    func picks(_ slot: String, from rows: [String: [String: Slot]], installed: Set<String>) -> [Pick] {
+        let owned = owned(installed)
+        return catalog(rows).picks[slot, default: []].filter { owned.contains($0.tool) }
+    }
+
+    func pairs(from rows: [String: [String: Slot]], installed: Set<String>) -> [Pair] {
+        let owned = owned(installed)
+        return catalog(rows).pairs.filter { owned.contains($0.head.tool) && owned.contains($0.line.tool) }
+    }
+
+    func option(_ slot: String, _ line: String, from rows: [String: [String: Slot]], installed: Set<String>) -> (Pick, String)? {
+        for pick in picks(slot, from: rows, installed: installed) {
+            if let effort = pick.efforts.first(where: { pick.line($0) == line }) { return (pick, effort) }
         }
         return nil
     }
@@ -128,6 +174,14 @@ let guava: NSImage = {
     image.size = NSSize(width: 14.5, height: 18)
     return image
 }()
+
+// shortcut: trusts the session's own last line, so "done: nothing. failed: …" counts as failed; read Notion back if that slips
+func succeeded(_ line: String) -> Bool { line.hasPrefix("done:") && !line.lowercased().contains("fail") }
+
+struct Change: Hashable, Sendable {
+    let slot: String
+    let line: String
+}
 
 enum Agent {
     static let missing = "guava-bar needs Claude Code or Codex: see guava-bar/README.md"
@@ -174,9 +228,16 @@ enum Agent {
         return nil
     }
 
-    static func setPrompt(slot: String, old: String, new: String) -> String {
-        """
-        guava-bar: the owner switched their \(slot) in the guava-bar menu, so that click is their yes for this one change. guava-bar already switched it in ~/.guava-hub/context.md and tested the new model. Now make my Notion context page match: in guava-stack settings, set only the \(slot) model line to "\(new)" (it was "\(old)"), marking it (own pick) if it isn't today's pick for my plans, as Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack says. Leave ~/.guava-hub, ~/.claude/settings.json and ~/.codex/config.toml alone, skip the test, and skip logging a task for this one change. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
+    static func installed() -> Set<String> {
+        let found = (try? shell(["for t in claude codex agy pi; do command -v $t > /dev/null && echo $t; done"], timeout: 15))?.0 ?? ""
+        return Set(found.split(separator: "\n").compactMap { tools[String($0)] })
+    }
+
+    static func setPrompt(_ changes: [Change], old: [String: String]) -> String {
+        let what = changes.map { "the \($0.slot) model line to \"\($0.line)\" (it was \"\(old[$0.slot] ?? "not set")\")" }
+            .joined(separator: " and ")
+        return """
+        guava-bar: the owner switched their models in the guava-bar menu, so that click is their yes for this one change. guava-bar already switched it in ~/.guava-hub/context.md and tested the new models. Now make my Notion context page match: in guava-stack settings, set only \(what), marking each (own pick) if it isn't today's pick for my plans, as Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack says. Leave ~/.guava-hub, ~/.claude/settings.json and ~/.codex/config.toml alone, skip the test, and skip logging a task for this one change. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
         """
     }
 
@@ -229,23 +290,32 @@ extension Agent {
     }
 
     // Switch on this Mac at once, then test and update Notion. Picking the current line again just retries Notion.
-    static func change(slot: String, to line: String, rows: [String: [String: Slot]], tool: String,
+    static func change(_ changes: [Change], rows: [String: [String: Slot]], installed: Set<String>, tool: String,
                        switched: (String) -> Void) -> String {
         let hub = Hub()
-        guard let (pick, effort) = hub.option(slot, line, from: rows), let old = hub.lines[slot] else {
-            return "failed: not one of guava-bar's picks"
+        var tests: [(Pick, String, String)] = []
+        for change in changes {
+            guard let (pick, effort) = hub.option(change.slot, change.line, from: rows, installed: installed),
+                  hub.lines[change.slot] != nil else { return "failed: \(change.line) isn't one of guava-bar's picks" }
+            tests.append((pick, effort, change.slot))
         }
-        if !hub.matches(slot, line) {
-            guard Hub.write(slot, line) else { return "failed: couldn't change \(slot) in the hub copy" }
+        var written: [Change] = []
+        func undo() { for change in written { _ = Hub.write(change.slot, hub.lines[change.slot]!) } }
+        for change in changes where !hub.matches(change.slot, change.line) {
+            guard Hub.write(change.slot, change.line) else { undo(); return "failed: couldn't change \(change.slot) in the hub copy" }
+            written.append(change)
         }
-        switched("\(slot) is now \(line) on this Mac. Testing it, then updating Notion…")
-        if let failure = test(pick, effort: effort, slot: slot) {
-            guard !hub.matches(slot, line), Hub().matches(slot, line), Hub.write(slot, old) else { return failure }
-            return failure + ". Switched back to \(old)."
+        let now = changes.map { "\($0.slot) is now \($0.line)" }.joined(separator: ", ")
+        switched("\(now) on this Mac. Testing, then updating Notion…")
+        for (pick, effort, slot) in tests {
+            if let failure = test(pick, effort: effort, slot: slot) {
+                undo()
+                return written.isEmpty ? failure : failure + ". Switched back."
+            }
         }
-        let result = run(setPrompt(slot: slot, old: old, new: line), tool: tool, write: true)
-        guard result.hasPrefix("done:") else {
-            return "failed: \(slot) is switched on this Mac, but Notion wasn't updated (pick it again to retry): "
+        let result = run(setPrompt(changes, old: hub.lines), tool: tool, write: true)
+        guard succeeded(result) else {
+            return "failed: switched on this Mac, but Notion wasn't updated (pick it again to retry): "
                 + (result.hasPrefix("failed: ") ? String(result.dropFirst(8)) : result)
         }
         return result
@@ -262,48 +332,61 @@ func cli(_ args: [String]) -> Int32 {
     let prompt: String
     if args == ["refresh"] {
         prompt = Agent.refreshPrompt
-    } else if (args.count == 2 && args[0] == "picks" || args.count == 3 && args[0] == "set"), slots.contains(args[1]) {
+    } else if args == ["pairs"] || args.count == 2 && args[0] == "picks" && slots.contains(args[1])
+                || args.first == "set" && [3, 5].contains(args.count) {
         do {
-            let options = hub.picks(args[1], from: try loadPicks()).flatMap { pick in efforts.map { pick.line($0) } }
-            if args[0] == "picks" {
-                options.forEach { print($0) }
+            let rows = try loadPicks(), installed = Agent.installed()
+            if args == ["pairs"] {
+                for pair in hub.pairs(from: rows, installed: installed) {
+                    print("\(pair.name): set head-chef \"\(pair.head.line(pair.head.effort))\" line-cook \"\(pair.line.line(pair.line.effort))\"")
+                }
                 return 0
             }
-            guard options.contains(args[2]) else {
-                fputs("Invalid option. See: guava-bar picks \(args[1])\n", stderr)
+            if args[0] == "picks" {
+                hub.picks(args[1], from: rows, installed: installed).forEach { pick in pick.efforts.forEach { print(pick.line($0)) } }
+                return 0
+            }
+            let changes = stride(from: 1, to: args.count, by: 2).map { Change(slot: args[$0], line: args[$0 + 1]) }
+            guard Set(changes.map(\.slot)).count == changes.count, changes.allSatisfy({ slots.contains($0.slot)
+                      && hub.option($0.slot, $0.line, from: rows, installed: installed) != nil }) else {
+                fputs("Invalid option. See: guava-bar picks <head-chef|line-cook>, or guava-bar pairs\n", stderr)
                 return 1
             }
             guard let tool = Agent.find() else { print(Agent.missing); return 1 }
-            let result = Agent.change(slot: args[1], to: args[2], rows: try loadPicks(), tool: tool) {
+            let result = Agent.change(changes, rows: rows, installed: installed, tool: tool) {
                 print($0)
                 fflush(stdout)
             }
             print(result)
-            return result.hasPrefix("done:") ? 0 : 1
+            return succeeded(result) ? 0 : 1
         } catch {
             fputs("failed: cannot load slots.json: \(error.localizedDescription)\n", stderr)
             return 1
         }
     } else {
-        fputs("Usage: guava-bar [show | picks <head-chef|line-cook> | set <head-chef|line-cook> \"<option>\" | refresh]\n", stderr)
+        fputs("Usage: guava-bar [show | picks <head-chef|line-cook> | pairs | set <slot> \"<option>\" [<slot> \"<option>\"] | refresh]\n", stderr)
         return 2
     }
     guard let tool = Agent.find() else { print(Agent.missing); return 1 }
     let result = Agent.run(prompt, tool: tool, write: false)
     print(result)
-    return result.hasPrefix("done:") ? 0 : 1
+    return succeeded(result) ? 0 : 1
 }
 
 @MainActor
 final class BarState: ObservableObject {
     @Published var hub = Hub()
     @Published var picks: [String: [String: Slot]] = [:]
+    @Published var installed: Set<String> = []
     @Published var running = false
     @Published var status = ""
     var unsynced: Set<String> = []  // slots switched here whose Notion update failed
     @Published var loginStatus = SMAppService.mainApp.status
 
-    init() { reload() }
+    init() {
+        reload()
+        Task { installed = await Task.detached { Agent.installed() }.value }
+    }
 
     func reload() {
         hub = Hub()
@@ -319,9 +402,9 @@ final class BarState: ObservableObject {
         reload()
     }
 
-    func request(slot: String? = nil, option: String? = nil) {
+    func request(_ changes: [Change]? = nil) {
         guard !running else { return }
-        if let slot, let option, hub.matches(slot, option), !unsynced.contains(slot) { return }
+        if let changes, changes.allSatisfy({ hub.matches($0.slot, $0.line) && !unsynced.contains($0.slot) }) { return }
         running = true
         status = "Finding Claude Code or Codex…"
         Task {
@@ -330,14 +413,16 @@ final class BarState: ObservableObject {
                 running = false
                 return
             }
-            if let slot, let option {
-                let rows = picks
-                await start(status: "Switching \(slot)…") {
-                    Agent.change(slot: slot, to: option, rows: rows, tool: tool) { message in
+            if let changes {
+                let rows = picks, installed = installed
+                await start(status: "Switching…") {
+                    Agent.change(changes, rows: rows, installed: installed, tool: tool) { message in
                         Task { @MainActor in self.status = message; self.hub = Hub() }
                     }
                 }
-                if status.hasPrefix("failed: \(slot) is switched") { unsynced.insert(slot) } else { unsynced.remove(slot) }
+                for change in changes {
+                    if status.hasPrefix("failed: switched") { unsynced.insert(change.slot) } else { unsynced.remove(change.slot) }
+                }
             } else {
                 await start(status: "Refreshing from Notion…") { Agent.run(Agent.refreshPrompt, tool: tool, write: false) }
             }
@@ -372,10 +457,10 @@ struct GuavaBarApp: App {
             ForEach(slots, id: \.self) { slot in
                 Text("\(slot): \(state.hub.lines[slot] ?? "not set")").disabled(true)
                 Menu("Change \(slot)") {
-                    ForEach(state.hub.picks(slot, from: state.picks), id: \.self) { pick in
+                    ForEach(state.hub.picks(slot, from: state.picks, installed: state.installed), id: \.self) { pick in
                         Menu("\(pick.name) via \(pick.tool)") {
-                            ForEach(efforts, id: \.self) { effort in
-                                Button { state.request(slot: slot, option: pick.line(effort)) } label: {
+                            ForEach(pick.efforts, id: \.self) { effort in
+                                Button { state.request([Change(slot: slot, line: pick.line(effort))]) } label: {
                                     if state.hub.matches(slot, pick.line(effort)) {
                                         Label(effort, systemImage: "checkmark")
                                     } else { Text(effort) }
@@ -385,6 +470,18 @@ struct GuavaBarApp: App {
                     }
                 }.disabled(state.running)
             }
+            Menu("Switch both") {
+                ForEach(state.hub.pairs(from: state.picks, installed: state.installed), id: \.self) { pair in
+                    let changes = [Change(slot: "head-chef", line: pair.head.line(pair.head.effort)),
+                                   Change(slot: "line-cook", line: pair.line.line(pair.line.effort))]
+                    Button { state.request(changes) } label: {
+                        let title = "\(pair.name): \(pair.head.name) + \(pair.line.name)"
+                        if changes.allSatisfy({ state.hub.matches($0.slot, $0.line) }) {
+                            Label(title, systemImage: "checkmark")
+                        } else { Text(title) }
+                    }
+                }
+            }.disabled(state.running)
             Divider()
             Text(state.hub.synced == nil ? "No hub copy yet" : "Hub copy \(state.hub.age)").disabled(true)
             Button("Refresh from Notion") { state.request() }.disabled(state.running)

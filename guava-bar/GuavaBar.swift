@@ -152,12 +152,11 @@ struct Hub {
         bare(lines[slot, default: ""]).caseInsensitiveCompare(option) == .orderedSame
     }
 
-    var title: String {
-        slots.map { slot in
-            guard let line = lines[slot] else { return "?" }
-            return line.components(separatedBy: " (")[0].split(separator: " ").dropFirst()
-                .filter { $0.first?.isNumber != true }.joined(separator: " ")
-        }.joined(separator: " · ")
+    // "Claude Opus 5.5 (High) via Claude Code" → "Opus", "GPT-6.1 Sol (High) via Codex" → "Sol".
+    func short(_ slot: String) -> String {
+        guard let line = lines[slot] else { return "?" }
+        return line.components(separatedBy: " (")[0].split(separator: " ").dropFirst()
+            .filter { $0.first?.isNumber != true }.joined(separator: " ")
     }
 }
 
@@ -174,11 +173,12 @@ func loadPicks() throws -> [String: [String: Slot]] {
     try JSONDecoder().decode([String: [String: Slot]].self, from: Data(contentsOf: resource("slots.json")))
 }
 
-let guava: NSImage = {
-    let image = NSImage(contentsOf: resource("guava.png")) ?? NSImage()
-    image.size = NSSize(width: 14.5, height: 18)
-    return image
-}()
+// The head-chef and line-cook pixel art, 18 points tall in the menu bar.
+let icons: [String: NSImage] = Dictionary(uniqueKeysWithValues: slots.map { slot in
+    let image = NSImage(contentsOf: resource("\(slot).png")) ?? NSImage()
+    if image.size.height > 0 { image.size = NSSize(width: 18 * image.size.width / image.size.height, height: 18) }
+    return (slot, image)
+})
 
 // shortcut: trusts the session's own last line, so "done: nothing. failed: …" counts as failed; read Notion back if that slips
 func succeeded(_ line: String) -> Bool { line.hasPrefix("done:") && !line.lowercased().contains("fail") }
@@ -453,6 +453,27 @@ final class BarState: ObservableObject {
     }
 }
 
+// The menu bar label shows only one image and one text, so both icons and names are drawn into one image.
+func bar(_ hub: Hub, running: Bool) -> NSImage {
+    let font = NSFont.menuBarFont(ofSize: 0)
+    let parts = slots.map { (icons[$0]!, hub.synced == nil ? "" : hub.short($0)) } + (running ? [(NSImage(), "…")] : [])
+    let gap: CGFloat = 4, space: CGFloat = 8
+    let style: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: NSColor.labelColor]
+    let width = parts.reduce(-space) { $0 + $1.0.size.width + gap + ($1.1 as NSString).size(withAttributes: style).width + space }
+    return NSImage(size: NSSize(width: max(width, 1), height: 18), flipped: false) { _ in
+        NSGraphicsContext.current?.imageInterpolation = .none  // keep the pixel art crisp
+        var x: CGFloat = 0
+        for (icon, text) in parts {
+            icon.draw(in: NSRect(x: x, y: 0, width: icon.size.width, height: icon.size.height))
+            x += icon.size.width + (icon.size.width > 0 ? gap : 0)
+            let size = (text as NSString).size(withAttributes: style)
+            (text as NSString).draw(at: NSPoint(x: x, y: (18 - size.height) / 2), withAttributes: style)
+            x += size.width + space
+        }
+        return true
+    }
+}
+
 struct GuavaBarApp: App {
     @StateObject private var state = BarState()
     private let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
@@ -499,10 +520,7 @@ struct GuavaBarApp: App {
             Text("Open at login: \(state.loginDescription)").disabled(true)
             Button("Quit guava-bar") { NSApp.terminate(nil) }
         } label: {
-            HStack {
-                Image(nsImage: guava)
-                Text((state.hub.synced == nil ? "" : state.hub.title) + (state.running ? " …" : ""))
-            }.onReceive(timer) { _ in state.reload() }
+            Image(nsImage: bar(state.hub, running: state.running)).onReceive(timer) { _ in state.reload() }
         }.menuBarExtraStyle(.menu)
     }
 }

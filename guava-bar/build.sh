@@ -13,7 +13,7 @@ mkdir -p "$build" "$app/Contents/MacOS" "$app/Contents/Resources"
 xcrun swiftc -O -parse-as-library -target "$(uname -m)-apple-macosx14.0" "$dir/GuavaBar.swift" -o "$build/guava-bar"
 cp "$build/guava-bar" "$app/Contents/MacOS/guava-bar"
 router="$dir/../guava-router/skills/guava-router"
-cp "$router/slots.json" "$router/router-check.py" "$dir/guava.png" "$app/Contents/Resources/"
+cp "$router/slots.json" "$router/router-check.py" "$dir/head-chef.png" "$dir/line-cook.png" "$app/Contents/Resources/"
 # The app icon, for Login Items and Finder: the guava logo at each size iconutil wants.
 iconset="$build/AppIcon.iconset"
 mkdir -p "$iconset"

@@ -2,9 +2,9 @@
 
 # guava-bar: your kitchen in the menu bar
 
-Part of the [Guava Stack](../README.md), and optional. A small Mac menu bar app that shows your guava-router **head-chef** and **line-cook** anytime, such as `Opus · Sol`, and swaps either one from a menu. A lite take on Peter Steinberger's [CodexBar](https://github.com/steipete/CodexBar), with models only.
+Part of the [Guava Stack](../README.md), and optional. A small Mac menu bar app that shows your guava-router **head-chef** and **line-cook** anytime, as their pixel art with short model names such as `Opus` and `Sol`, and swaps either one from a menu. A lite take on Peter Steinberger's [CodexBar](https://github.com/steipete/CodexBar), with models only.
 
-- **See it:** click the guava for each slot's full model line and when your hub copy last refreshed.
+- **See it:** click the head-chef and line-cook in the menu bar for each slot's full model line and when your hub copy last refreshed.
 - **Change it:** **Change line-cook**, then pick a model and an effort. Your Mac switches at once, so you can get back to work. In the background guava-bar tests the new model (switching back if it can't answer) and updates your Notion hub, so your bots and the Claude and ChatGPT apps follow within a minute or two.
 - **Switch both:** move head-chef and line-cook to another plan's pair in one click, such as Claude Opus 5.5 + GPT-6.1 Sol, Gemini 4 Argon + Gemini 3.8 Flash via Antigravity CLI, or Kimi K3.1 Pro + DeepSeek V4.1 Flash 1017 via Pi. Your bots follow, as long as they have that plan's tool too ("change my setup" in the bot installs it).
 - **Picks:** today's picks for each slot from [models.yaml](../guava-router/models.yaml), for every AI tool on your Mac (Claude Code, Codex, Antigravity CLI, Pi), at Low, Medium, High, xhigh or Max (Low to High on Antigravity CLI, its top level).

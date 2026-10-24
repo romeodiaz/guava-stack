@@ -7,7 +7,7 @@ description: Installs, updates or removes guava-bar, an optional Mac menu bar ap
 
 # guava-bar
 
-A small Mac menu bar app, a lite take on [CodexBar](https://github.com/steipete/CodexBar) with models only. The menu bar shows both slots at a glance, such as `Opus · Sol`. Its menu shows each slot's full model line and offers today's picks from guava-router's `models.yaml` at each effort, Low to Max. A pick, once the owner confirms it, runs Claude Code (or Codex) in the background on **Change your setup** in the guava-hub skill: it edits that one model line in guava-stack settings in Notion, refreshes the local copy and tests the new model. Notion stays the source of truth, so every assistant follows the change, and an edit made in Notion shows in the bar once the local copy refreshes. It doesn't show usage limits.
+A small Mac menu bar app, a lite take on [CodexBar](https://github.com/steipete/CodexBar) with models only. The menu bar shows both slots at a glance, such as `Opus · Sol`. Its menu shows each slot's full model line and offers today's picks from guava-router's `models.yaml` for the plans the owner's two slots show (both via Claude Code means Claude only, and so on), at each effort, Low to Max. A pick, once the owner confirms it, is tested first, then Claude Code (or Codex) runs in the background on **Change your setup** in the guava-hub skill: it edits that one model line in guava-stack settings in Notion and refreshes the local copy. Notion stays the source of truth, so every assistant follows the change, and an edit made in Notion shows in the bar once the local copy refreshes. It doesn't show usage limits.
 
 The app is also a command, `guava-bar`: `guava-bar show`, `guava-bar picks line-cook`, `guava-bar set line-cook "<a line from picks>"` and `guava-bar refresh`.
 
@@ -36,11 +36,14 @@ Use this when the owner says **"uninstall guava-bar"**, or when the guava-hub sk
 3. Nothing in Notion or `~/.guava-hub` needs undoing: guava-bar only changed what the owner picked, through **Change your setup**.
 
 ## What a change runs
-Show this to the owner when they ask what guava-bar can do on their computer. After the confirm, it runs one of these from `~/.guava-hub`, with no input, and stops it after 10 minutes:
-- `claude -p "<the change>" --allowedTools mcp__claude_ai_Notion mcp__notion Read Edit Write "Bash(claude -p:*)" "Bash(codex exec:*)" "Bash(agy -p:*)" "Bash(date:*)" "Bash(find:*)" "Bash(grep:*)"`: Notion's tools, the files in the local copy, the one-line model tests, and nothing else.
-- With no Claude Code: `codex exec --skip-git-repo-check --sandbox workspace-write "<the change>"`.
+Show this to the owner when they ask what guava-bar can do on their computer. After the confirm, in this order, stopping at the first failure:
+1. **Test the new model**, before anything changes: guava-router's `router-check.py`, bundled in the app, sends it a one-word prompt with its own tool's command, such as `python3 router-check.py --plan claude-and-chatgpt --slot line-cook --line-cook gpt-6.1-sol:medium`.
+2. **Make the change**, from `~/.guava-hub`, with no input, stopped after 10 minutes:
+   - `claude -p "<the change>" --allowedTools mcp__claude_ai_Notion__notion-fetch mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-update-page` (the same three for a Notion connection named `notion`) `Read "Edit(~/.guava-hub/**)" "Write(~/.guava-hub/**)" "WebFetch(domain:github.com)" "WebFetch(domain:raw.githubusercontent.com)"`: read and update Notion pages, edit only the local copy, read this repo's steps, and no commands. **Refresh from Notion** gets the same without `notion-update-page`.
+   - With no Claude Code: `codex exec --skip-git-repo-check --sandbox workspace-write "<the change>"`, which can only write inside `~/.guava-hub`.
+3. **Check it landed:** the tool must exit cleanly and end with `done: …`, and the local copy must then show the new model line. Otherwise the menu shows `failed: …` with the reason.
 
-The prompt names the slot, the old and new model lines, and says the owner already confirmed this one change in guava-bar. It tells the session to follow **Change your setup**, edit only that model line, mark it "(own pick)" if it isn't today's pick for the owner's plans, leave `~/.claude/settings.json` and `~/.codex/config.toml` alone (this is the owner's own computer, not a bot's), test the new model and end with `done: …` or `failed: …`. The menu shows that last line.
+The prompt names the slot, the old and new model lines, and says the owner already confirmed this one change in guava-bar. It tells the session to follow **Change your setup**, edit only that model line, mark it "(own pick)" if it isn't today's pick for the owner's plans, refresh the local copy, leave `~/.claude/settings.json` and `~/.codex/config.toml` alone (this is the owner's own computer, not a bot's), skip the test and the task log, and change nothing else.
 
 ## If something fails
 - **The bar shows an old model:** the local copy refreshes when an AI session runs, or when the owner clicks **Refresh from Notion**.

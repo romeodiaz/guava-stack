@@ -1,6 +1,6 @@
 {
   "name": "guava-router",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "description": "For business owners and solo operators. Routes thinking work to a head-chef model and doing work to a line-cook model through Claude Code and Codex, on your Claude Pro or ChatGPT Plus plan or higher, or both, or through Antigravity CLI on Google AI Pro alone, or through Pi on OpenRouter, billed per use, and newer models swap in with a one-line change. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",

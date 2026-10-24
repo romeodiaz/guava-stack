@@ -14,6 +14,7 @@ let tools = ["claude": "Claude Code", "codex": "Codex", "agy": "Antigravity CLI"
 struct Slot: Decodable {
     struct Fallback: Decodable { let name: String; let effort: String }
     let name: String
+    let id: String
     let tool: String
     let fallback: Fallback?
 }
@@ -22,6 +23,8 @@ struct Pick: Hashable {
     let name: String
     let tool: String
     let fallback: String?
+    let id: String
+    let plan: String  // the slots.json row it came from, which router-check.py tests it on
 
     func line(_ effort: String) -> String {
         let base = "\(name) (\(effort)) via \(tool)"
@@ -54,24 +57,35 @@ struct Hub {
         synced.map { "refreshed \(max(0, Int(Date().timeIntervalSince($0) / 60))) min ago" } ?? "no hub copy yet"
     }
 
-    // Plan changes go through chat, so a slot on Antigravity CLI or Pi only offers that plan's picks.
+    // The tools both slots run on stand for the owner's plans, as "check for newer models" reads them,
+    // so only those tools' picks are offered. Plan changes go through "change my setup" in chat.
     func picks(_ slot: String, from rows: [String: [String: Slot]]) -> [Pick] {
-        let line = lines[slot, default: ""]
-        let plans = line.contains("via Antigravity CLI") ? ["google"]
-            : line.contains("via Pi") ? ["openrouter"] : ["claude-and-chatgpt", "chatgpt", "claude"]
+        let owned = Set(lines.values.map(bare).compactMap { line in
+            line.range(of: " via ").map { line[$0.upperBound...].components(separatedBy: ",")[0] }
+        })
         var seen: [Pick] = []
-        for plan in plans {
-            guard let s = rows[plan]?[slot] else { continue }
+        for plan in ["claude-and-chatgpt", "claude", "chatgpt", "google", "openrouter"] {
+            guard let s = rows[plan]?[slot], owned.contains(tools[s.tool] ?? s.tool) else { continue }
             let pick = Pick(name: s.name, tool: tools[s.tool] ?? s.tool,
-                            fallback: s.fallback.map { "\($0.name) (\($0.effort.capitalized))" })
-            if !seen.contains(pick) { seen.append(pick) }
+                            fallback: s.fallback.map { "\($0.name) (\($0.effort.capitalized))" }, id: s.id, plan: plan)
+            if !seen.contains(where: { $0.line("") == pick.line("") }) { seen.append(pick) }
         }
         return seen
     }
 
+    func option(_ slot: String, _ line: String, from rows: [String: [String: Slot]]) -> (Pick, String)? {
+        for pick in picks(slot, from: rows) {
+            if let effort = efforts.first(where: { pick.line($0) == line }) { return (pick, effort) }
+        }
+        return nil
+    }
+
+    func bare(_ line: String) -> String {
+        line.replacingOccurrences(of: " (own pick)", with: "", options: .caseInsensitive)
+    }
+
     func matches(_ slot: String, _ option: String) -> Bool {
-        lines[slot, default: ""].replacingOccurrences(of: " (own pick)", with: "", options: .caseInsensitive)
-            .caseInsensitiveCompare(option) == .orderedSame
+        bare(lines[slot, default: ""]).caseInsensitiveCompare(option) == .orderedSame
     }
 
     var title: String {
@@ -149,7 +163,7 @@ enum Agent {
 
     static func setPrompt(slot: String, old: String, new: String) -> String {
         """
-        guava-bar: the owner picked this in the guava-bar menu and confirmed it there, so that click is their yes for this one change. Make my \(slot) "\(new)" (it was "\(old)"). Follow Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack: edit only that slot's model line in guava-stack settings on my Notion context page, marking it (own pick) if it isn't today's pick for my plans, then refresh that page in ~/.guava-hub/context.md and set synced in ~/.guava-hub/sync.md. This is my own computer, not a bot's, so leave ~/.claude/settings.json and ~/.codex/config.toml alone. Test the new slot with one tiny prompt at its effort. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
+        guava-bar: the owner picked this in the guava-bar menu and confirmed it there, so that click is their yes for this one change. Make my \(slot) "\(new)" (it was "\(old)"). Follow Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack: edit only that slot's model line in guava-stack settings on my Notion context page, marking it (own pick) if it isn't today's pick for my plans, then refresh that page in ~/.guava-hub/context.md and set synced in ~/.guava-hub/sync.md. This is my own computer, not a bot's, so leave ~/.claude/settings.json and ~/.codex/config.toml alone. guava-bar already tested the new model, so skip the test, and skip logging a task for this one change. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
         """
     }
 
@@ -157,11 +171,16 @@ enum Agent {
     guava-bar: refresh my local hub copy in ~/.guava-hub now, as Local copy in guava-hub/skills/guava-hub/backends/notion.md from github.com/romeodiaz/guava-stack says (build it if there's none yet). Change nothing in Notion. End your reply with one line: "done: <what changed>" or "failed: <why>".
     """
 
-    static func run(_ prompt: String, tool: String) -> String {
+    // Notion's read tools, plus update-page for a change; files only in the hub copy. No shell, so the
+    // session can't run anything: guava-bar tests the model itself, before the change.
+    static func run(_ prompt: String, tool: String, write: Bool) -> String {
         let args: [String]
         if tool == "claude" {
-            args = ["-p", prompt, "--allowedTools", "mcp__claude_ai_Notion", "mcp__notion", "Read", "Edit", "Write",
-                    "Bash(claude -p:*)", "Bash(codex exec:*)", "Bash(agy -p:*)", "Bash(date:*)", "Bash(find:*)", "Bash(grep:*)"]
+            let notion = ["notion-fetch", "notion-search"] + (write ? ["notion-update-page"] : [])
+            args = ["-p", prompt, "--allowedTools"]
+                + notion.flatMap { ["mcp__claude_ai_Notion__\($0)", "mcp__notion__\($0)"] }
+                + ["Read", "Edit(~/.guava-hub/**)", "Write(~/.guava-hub/**)",
+                   "WebFetch(domain:github.com)", "WebFetch(domain:raw.githubusercontent.com)"]
         } else {
             // shortcut: Codex path untested for Notion MCP approvals in exec mode, test on a ChatGPT-only setup
             args = ["exec", "--skip-git-repo-check", "--sandbox", "workspace-write", prompt]
@@ -169,11 +188,43 @@ enum Agent {
         do {
             let (output, code, timedOut) = try shell(["exec \"$@\"", "guava-bar", tool] + args)
             if timedOut { return "failed: timed out after 10 minutes" }
-            return output.components(separatedBy: .newlines).map { $0.trimmingCharacters(in: .whitespaces) }
-                .last(where: { !$0.isEmpty }) ?? "failed: \(tool) returned no output (exit \(code))"
+            let last = output.components(separatedBy: .newlines).map { $0.trimmingCharacters(in: .whitespaces) }
+                .last(where: { !$0.isEmpty })
+            guard code == 0 else { return "failed: \(tool) exited \(code)" + (last.map { ": \($0)" } ?? "") }
+            return last ?? "failed: \(tool) returned no output"
         } catch {
             return "failed: \(error.localizedDescription)"
         }
+    }
+}
+
+extension Agent {
+    // Check the new model answers before changing anything, with router-check.py's own command for its tool.
+    static func test(_ pick: Pick, effort: String, slot: String) -> String? {
+        let args = ["exec \"$@\"", "guava-bar", "python3", resource("router-check.py").path, "--plan", pick.plan,
+                    "--slot", slot, "--\(slot)", "\(pick.id):\(effort.lowercased())", "--timeout", "240"]
+        guard let (output, _, timedOut) = try? shell(args, timeout: 300) else { return "failed: couldn't run router-check.py" }
+        if timedOut { return "failed: testing \(pick.name) timed out" }
+        guard let start = output.firstIndex(of: "{"), let end = output.lastIndex(of: "}"),
+              let report = try? JSONSerialization.jsonObject(with: Data(output[start...end].utf8)) as? [String: Any],
+              let result = (report["slots"] as? [[String: Any]])?.first else {
+            return "failed: couldn't test \(pick.name): " + output.suffix(200)
+        }
+        if result["ok"] as? Bool == true { return nil }
+        return "failed: \(pick.name) at \(effort) didn't pass its test, so nothing changed: "
+            + "\(result["verdict"] ?? "")\(result["error"].map { " (\($0))" } ?? "")"
+    }
+
+    static func change(slot: String, to line: String, rows: [String: [String: Slot]], tool: String) -> String {
+        let hub = Hub()
+        guard let (pick, effort) = hub.option(slot, line, from: rows) else { return "failed: not one of guava-bar's picks" }
+        if let failure = test(pick, effort: effort, slot: slot) { return failure }
+        let result = run(setPrompt(slot: slot, old: hub.lines[slot] ?? "not set", new: line), tool: tool, write: true)
+        guard result.hasPrefix("done:") else { return result.hasPrefix("failed") ? result : "failed: \(result)" }
+        guard Hub().matches(slot, line) else {
+            return "failed: \(tool) said done, but the hub copy shows \(Hub().lines[slot] ?? "no \(slot)"): refresh, then check Notion"
+        }
+        return result
     }
 }
 
@@ -198,7 +249,10 @@ func cli(_ args: [String]) -> Int32 {
                 fputs("Invalid option. See: guava-bar picks \(args[1])\n", stderr)
                 return 1
             }
-            prompt = Agent.setPrompt(slot: args[1], old: hub.lines[args[1]] ?? "not set", new: args[2])
+            guard let tool = Agent.find() else { print(Agent.missing); return 1 }
+            let result = Agent.change(slot: args[1], to: args[2], rows: try loadPicks(), tool: tool)
+            print(result)
+            return result.hasPrefix("done:") ? 0 : 1
         } catch {
             fputs("failed: cannot load slots.json: \(error.localizedDescription)\n", stderr)
             return 1
@@ -208,9 +262,9 @@ func cli(_ args: [String]) -> Int32 {
         return 2
     }
     guard let tool = Agent.find() else { print(Agent.missing); return 1 }
-    let result = Agent.run(prompt, tool: tool)
+    let result = Agent.run(prompt, tool: tool, write: false)
     print(result)
-    return result.hasPrefix("done") ? 0 : 1
+    return result.hasPrefix("done:") ? 0 : 1
 }
 
 @MainActor
@@ -230,9 +284,9 @@ final class BarState: ObservableObject {
         catch { status = "failed: cannot load slots.json: \(error.localizedDescription)" }
     }
 
-    func start(_ prompt: String, tool: String, status message: String) async {
+    func start(status message: String, _ work: @escaping @Sendable () -> String) async {
         status = message
-        status = await Task.detached { Agent.run(prompt, tool: tool) }.value
+        status = await Task.detached { work() }.value
         running = false
         reload()
     }
@@ -254,13 +308,14 @@ final class BarState: ObservableObject {
                 let alert = NSAlert()
                 alert.messageText = "Change \(slot)?"
                 let toolName = tool == "claude" ? "Claude Code" : "Codex"
-                alert.informativeText = "From: \(old)\nTo: \(option)\n\nguava-bar asks \(toolName) to make this change in your Notion hub and test it. It takes a minute or two and uses a little of your plan."
+                alert.informativeText = "From: \(old)\nTo: \(option)\n\nguava-bar tests the new model, then asks \(toolName) to make this change in your Notion hub. It takes a minute or two and uses a little of your plan."
                 alert.addButton(withTitle: "Change")
                 alert.addButton(withTitle: "Cancel")
                 guard alert.runModal() == .alertFirstButtonReturn else { running = false; return }
-                await start(Agent.setPrompt(slot: slot, old: old, new: option), tool: tool, status: "Changing \(slot)…")
+                let rows = picks
+                await start(status: "Testing, then changing \(slot)…") { Agent.change(slot: slot, to: option, rows: rows, tool: tool) }
             } else {
-                await start(Agent.refreshPrompt, tool: tool, status: "Refreshing from Notion…")
+                await start(status: "Refreshing from Notion…") { Agent.run(Agent.refreshPrompt, tool: tool, write: false) }
             }
         }
     }

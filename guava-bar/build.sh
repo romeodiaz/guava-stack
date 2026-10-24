@@ -12,7 +12,8 @@ app="$build/GuavaBar.app"
 mkdir -p "$build" "$app/Contents/MacOS" "$app/Contents/Resources"
 xcrun swiftc -O -parse-as-library -target "$(uname -m)-apple-macosx14.0" "$dir/GuavaBar.swift" -o "$build/guava-bar"
 cp "$build/guava-bar" "$app/Contents/MacOS/guava-bar"
-cp "$dir/../guava-router/skills/guava-router/slots.json" "$dir/guava.png" "$app/Contents/Resources/"
+router="$dir/../guava-router/skills/guava-router"
+cp "$router/slots.json" "$router/router-check.py" "$dir/guava.png" "$app/Contents/Resources/"
 # The app icon, for Login Items and Finder: the guava logo at each size iconutil wants.
 iconset="$build/AppIcon.iconset"
 mkdir -p "$iconset"
@@ -64,11 +65,23 @@ grep -Fx 'head-chef: Claude Opus 5.5 (High) via Claude Code' "$fixture/show" > /
 grep -Fx 'line-cook: GPT-6.1 Sol (High) via Codex' "$fixture/show" > /dev/null
 echo 'PASS: show parses both slots across blank lines'
 GUAVA_HUB="$fixture" "$binary" picks line-cook > "$fixture/picks"
-grep -Fx 'GPT-6.1 Sol (Medium) via Codex' "$fixture/picks" > /dev/null
+# Expected names come from slots.json, so a new model pick doesn't break the build.
+sol=$(plutil -extract claude-and-chatgpt.line-cook.name raw -o - "$router/slots.json")
+sonnet=$(plutil -extract claude.line-cook.name raw -o - "$router/slots.json")
+grep -Fx "$sol (Medium) via Codex" "$fixture/picks" > /dev/null
+grep -Fx "$sonnet (Max) via Claude Code" "$fixture/picks" > /dev/null
 if grep -q Antigravity "$fixture/picks"; then
     echo 'FAIL: non-Google picks contain Antigravity' >&2; exit 1
 fi
-echo 'PASS: non-Google picks include Sol Medium and exclude Antigravity'
+echo 'PASS: Claude and ChatGPT picks include both tools and exclude Antigravity'
+mkdir "$fixture/claude"
+printf 'head-chef\n\n- %s (High) via Claude Code\n\nline-cook\n\n- %s (Medium) via Claude Code (own pick)\n' "$sol" "$sonnet" > "$fixture/claude/context.md"
+GUAVA_HUB="$fixture/claude" "$binary" picks line-cook > "$fixture/claude-picks"
+grep -Fx "$sonnet (High) via Claude Code" "$fixture/claude-picks" > /dev/null
+if grep -v 'via Claude Code$' "$fixture/claude-picks"; then
+    echo 'FAIL: Claude-only picks offer another tool' >&2; exit 1
+fi
+echo 'PASS: Claude-only slots, one an own pick, offer only Claude Code picks'
 ln -s "$binary" "$fixture/guava-bar"
 GUAVA_HUB="$fixture" "$fixture/guava-bar" picks line-cook > "$fixture/symlink-picks"
 cmp "$fixture/picks" "$fixture/symlink-picks"

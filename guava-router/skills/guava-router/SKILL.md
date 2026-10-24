@@ -147,7 +147,7 @@ Use this when the owner says **"update guava-router"**, or when the guava-hub sk
 Only for the Guava plugins the owner has (for "update guava-router", just guava-router):
 - **Claude Code:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
-- **Grok Bot, Antigravity and OpenCode:** `npx skills update -g -y`.
+- **Grok Bot, Antigravity and Pi with OpenCode:** `npx skills update -g -y`.
 - **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models".
@@ -166,7 +166,7 @@ Use this when the owner says **"uninstall guava-router"**, or when the guava-hub
 Only for the Guava plugins the owner has (for "uninstall guava-router", just guava-router; for "uninstall guava-stack", every one installed):
 - **Claude Code:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
-- **Grok Bot, Antigravity and OpenCode:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
+- **Grok Bot, Antigravity and Pi with OpenCode:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. **Put the computer back**, following **Putting files back** above:

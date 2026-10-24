@@ -17,5 +17,5 @@
   - Notion: `claude mcp list` should show the account's Notion connector (`claude.ai Notion`). Only if it doesn't, run `claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp`, and have the owner type `/mcp` in Claude Code and approve Notion's sign-in page.
   - Check it in a new Code tab session: "What's in my guava-hub?" passes if it answers from the hub.
 - The Claude app's chat keeps no skill files: keep skills in the hub and read the matching one from there when a task needs it. Claude Code reads them from the hub too, and runs the ones that need a computer.
-- The Model Router and last30days-research come with adding Grok Bot or Muse (**Add a bot** in the setup skill).
+- The Model Router and last30days-research come with adding Grok Bot or Muse (**Add a bot** in the setup skill), which is also the best way to drive everything from the phone.
 - **Workflow review:** make the report as a downloadable `.html` file the owner saves, never a published or shared artifact.

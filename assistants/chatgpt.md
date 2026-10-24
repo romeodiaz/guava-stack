@@ -17,5 +17,5 @@
   - Notion, unless `codex mcp list` already shows it: `codex mcp add notion --url https://mcp.notion.com/mcp`, then `codex mcp login notion`, and the owner approves Notion's sign-in page.
   - Check it in a new Codex chat: "What's in my guava-hub?" passes if it answers from the hub.
 - ChatGPT's chat keeps no skill files: keep skills in the hub and read the matching one from there when a task needs it. Codex reads them from the hub too, and runs the ones that need a computer.
-- The Model Router and last30days-research come with adding Grok Bot or Muse (**Add a bot** in the setup skill).
+- The Model Router and last30days-research come with adding Grok Bot or Muse (**Add a bot** in the setup skill), which is also the best way to drive everything from the phone.
 - **Workflow review:** make the report as a downloadable `.html` file the owner saves, never a shared link.

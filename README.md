@@ -16,7 +16,7 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 - Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan, or Google AI Pro <img src="assets/gemini.svg" width="20" alt="Gemini logo">, or OpenRouter <img src="assets/openrouter.svg" width="20" alt="OpenRouter logo"> (pay per use, no plan needed), with that plan's free desktop app
 - Notion (Free) <img src="assets/notion.svg" width="20" alt="Notion logo">
 
-**➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router, can run Claude, ChatGPT, Gemini or OpenRouter's models behind the scenes, and works from your phone on any plan.
+**➕ Recommended later:** Grok Bot ($30 plan or higher) <img src="assets/grok.svg" width="20" alt="Grok logo"> or Muse Bot (Free) <img src="assets/meta.svg" width="20" alt="Meta logo">, a bot with its own computer that you hand whole jobs to. It turns on the router, can run Claude, ChatGPT, Gemini or OpenRouter's models behind the scenes, and is the best way to drive it all from your phone, on any plan.
 
 ## What you get
 
@@ -125,8 +125,8 @@ Your Notion guava-hub has five parts:
 ## Why people use it
 - 🗣️ **Explain your business once.** Every assistant already knows it.
 - 💳 **Uses the plans you have.** Claude, ChatGPT or both do the work, or Google AI Pro on its own, or OpenRouter with no plan at all, and Muse is free.
-- 📱 **Everywhere.** On Claude or ChatGPT, works the same on your desk, laptop and phone. Antigravity and OpenCode have no phone app yet, so on Google AI or OpenRouter, add the free Claude or ChatGPT app or a bot for your phone.
-- 🔓 **No lock-in.** It lives in your own Notion account, and each plan uses its own company's apps, so switching plans keeps everything. On OpenRouter you get OpenCode, free, open source and from no AI company.
+- 📱 **Everywhere.** Every app you connect reads the same hub. Add Grok Bot or Muse to drive it all from your phone, on any plan.
+- 🔓 **No lock-in.** It lives in your own Notion account, and each plan uses its own company's apps, so switching plans keeps everything. On OpenRouter you get OpenCode and Pi, free, open source and from no AI company.
 - 🆓 **Free and open source.** MIT licensed.
 - 🔒 **Private.** Guava never sees your data.
 - 🛡️ **Safe for your AI accounts.** No shared or proxied logins that could get your accounts banned. Each AI runs in its official tool, signed in as you.
@@ -135,16 +135,16 @@ Your Notion guava-hub has five parts:
 ## Start here
 Each plan uses its own company's apps: a desktop app for daily chat and setup, and its command-line tool on the same computer for the skills that run programs. Setup connects both to your hub in Notion.
 
-| Your AI plan | Daily chat | On your computer | Phone |
-|---|---|---|---|
-| Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> | [Claude desktop app](https://claude.ai/download) | Claude Code | Claude app |
-| ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> | [ChatGPT desktop app](https://chatgpt.com/download) | Codex | ChatGPT app |
-| Google AI Pro or Ultra <img src="assets/gemini.svg" width="20" alt="Gemini logo"> | [Antigravity desktop app](https://antigravity.google/download) | Antigravity CLI | None yet |
-| OpenRouter <img src="assets/openrouter.svg" width="20" alt="OpenRouter logo">, pay per use | [OpenCode desktop app](https://opencode.ai/download), free and open source | OpenCode CLI | None yet |
+| Your AI plan | Daily chat | On your computer |
+|---|---|---|
+| Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> | [Claude desktop app](https://claude.ai/download) | Claude Code |
+| ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> | [ChatGPT desktop app](https://chatgpt.com/download) | Codex |
+| Google AI Pro or Ultra <img src="assets/gemini.svg" width="20" alt="Gemini logo"> | [Antigravity desktop app](https://antigravity.google/download) | Antigravity CLI |
+| OpenRouter <img src="assets/openrouter.svg" width="20" alt="OpenRouter logo">, pay per use | [OpenCode desktop app](https://opencode.ai/download), free and open source | [Pi](https://pi.dev), free and open source |
 
-On both Claude and ChatGPT, start in the one you use most, then paste the same line into the other. On OpenRouter, connect OpenRouter in OpenCode first (type `/connect`), so the key stays in OpenCode.
+On both Claude and ChatGPT, start in the one you use most, then paste the same line into the other. On OpenRouter, start in Pi instead: install it with `curl -fsSL https://pi.dev/install.sh | sh`, run `pi`, type `/login openrouter` to sign in in your browser, and paste the line there. Setup then hands that sign-in to OpenCode, so you never handle a key. For your phone, on any plan, add Grok Bot or Muse.
 
-Paste this into your plan's desktop app:
+Paste this into your plan's desktop app (Pi, on OpenRouter):
 
 ```
 Follow the Start here steps in github.com/romeodiaz/guava-stack
@@ -156,7 +156,7 @@ It asks for your website and a few details, drafts your hub from them, and check
 
 **➕ Add a bot later:** paste the same line into Grok Bot or Muse. It connects to your hub and turns on the router.
 
-Each app follows its own guide: [Claude](assistants/claude.md) · [ChatGPT](assistants/chatgpt.md) · [Antigravity](assistants/antigravity.md) · [OpenCode](assistants/opencode.md) · [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
+Each app follows its own guide: [Claude](assistants/claude.md) · [ChatGPT](assistants/chatgpt.md) · [Antigravity](assistants/antigravity.md) · [Pi](assistants/pi.md) · [OpenCode](assistants/opencode.md) · [Grok Bot](assistants/grok.md) · [Muse](assistants/muse.md).
 
 **AI assistants:** first check `assistants/<your assistant>.md` for steps to skip or change. If there's no file for you, tell the owner Guava doesn't support that assistant yet. Then follow [guava-hub/skills/guava-hub/SKILL.md](guava-hub/skills/guava-hub/SKILL.md) from step 1. It makes the hub, offers founder-mode and starter skills, and wraps up; in a bot, **Add a bot** turns on the router.
 
@@ -196,16 +196,16 @@ For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router` or `o
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
 - **Claude or ChatGPT app:** the lines that start with "Load my guava-hub in Notion first." in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT and Codex rows. Then one line pasted into the app's Code or Codex tab connects Claude Code or Codex.
-- **OpenCode:** your OpenRouter key, pasted into OpenCode's own `/connect`, never into a chat.
+- **OpenRouter:** Pi's browser sign-in (`/login openrouter` in Pi), which setup then hands to OpenCode.
 - **Sign-ins:** you approve Notion in your browser, once for each app, and with a bot, Claude and ChatGPT too, pasting any code straight back into the bot.
 - **Muse:** the lines that start with "Load my guava-hub in Notion first." at the end of SOUL.md (click the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.
 
 ## How to update
-Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update founder-mode"** or **"update guava-router"** in Claude, ChatGPT, Antigravity, OpenCode, Grok Bot or Muse. It shows the plan first and offers newer models.
+Say **"update guava-stack"** for everything or just **"update guava-hub"**, **"update founder-mode"** or **"update guava-router"** in Claude, ChatGPT, Antigravity, Pi, OpenCode, Grok Bot or Muse. It shows the plan first and offers newer models.
 
 ## How to uninstall
-Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall founder-mode"** or **"uninstall guava-router"** in Claude, ChatGPT, Antigravity, OpenCode, Grok Bot or Muse. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your AI doesn't know the command, paste this:
+Say **"uninstall guava-stack"** for everything or just **"uninstall guava-hub"**, **"uninstall founder-mode"** or **"uninstall guava-router"** in Claude, ChatGPT, Antigravity, Pi, OpenCode, Grok Bot or Muse. It shows the plan first, removes only what Guava added and leaves your hub in Notion. If your AI doesn't know the command, paste this:
 
 ```
 Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/guava-stack.
@@ -217,11 +217,11 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 <details>
 <summary><strong>See exactly what setup touches</strong></summary>
 
-- **Files edited:** none in the Claude or ChatGPT app's chat. On your computer: the guava-hub plugin in Claude Code or Codex, through their own plugin commands (Codex also adds a Notion connection to `~/.codex/config.toml`); on Antigravity, the end of `~/.gemini/GEMINI.md` and a Notion entry in `~/.gemini/config/mcp_config.json`; on OpenCode, the end of `~/.config/opencode/AGENTS.md` and a Notion entry in `~/.config/opencode/opencode.jsonc`. Each file is backed up first. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools. On OpenRouter alone, Pi keeps the key OpenRouter's sign-in makes in `~/.pi/agent/auth.json`.
-- **Commands run on your computer:** only what your plan's apps need, checking first and skipping what's there: Claude Code's or Antigravity CLI's install script, `npm i -g @openai/codex`, or OpenCode's install script; `claude plugin install` or `codex plugin add` for guava-hub; `codex mcp add`, `agy mcp add` or `opencode mcp add` for Notion; and on Antigravity and OpenCode, `npx skills add` for Guava's skills. Then a quick "What's in my guava-hub?" in each.
+- **Files edited:** none in the Claude or ChatGPT app's chat. On your computer: the guava-hub plugin in Claude Code or Codex, through their own plugin commands (Codex also adds a Notion connection to `~/.codex/config.toml`); on Antigravity, the end of `~/.gemini/GEMINI.md` and a Notion entry in `~/.gemini/config/mcp_config.json`; on OpenRouter, the end of `~/.pi/agent/AGENTS.md` and a Notion entry in `~/.pi/agent/mcp.json` for Pi, and for OpenCode the end of `~/.config/opencode/AGENTS.md`, a Notion entry in `~/.config/opencode/opencode.json`, and the OpenRouter sign-in handed over from Pi in `~/.local/share/opencode/auth.json`. Each file is backed up first. With a bot and the router, on the bot's own computer, `~/.claude/settings.json` and `~/.codex/config.toml`, only for the tools your plans use, each backed up first, with a `.pre-guava` copy kept from before Guava's first change. Setup adds only each tool's model, its Notion connection and approval for Notion's four read-only tools so it can read your hub, never write or delete tools. On OpenRouter alone, Pi keeps the key OpenRouter's sign-in makes in `~/.pi/agent/auth.json`, on your computer and on the bot's.
+- **Commands run on your computer:** only what your plan's apps need, checking first and skipping what's there: Claude Code's or Antigravity CLI's install script, `npm i -g @openai/codex`, or Pi's install script and its browser sign-in to OpenRouter; `claude plugin install` or `codex plugin add` for guava-hub; `codex mcp add`, `agy mcp add` or `pi mcp add` for Notion; on Antigravity and Pi, `npx skills add` for Guava's skills; and on OpenRouter, one command that hands Pi's sign-in to OpenCode without showing the key. Then a quick "What's in my guava-hub?" in each.
 - **Commands run on a bot:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on Google AI Pro alone, Antigravity CLI's install script and its sign-in, or on OpenRouter alone, Pi's install script and OpenRouter's browser sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail-coding where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it installs and signs in Google's Antigravity CLI (`agy`) for Gemini, or signs you in to OpenRouter in your browser through Pi, or, only if you'd rather paste one, puts your Gemini API or OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
-- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), `GEMINI.md` (Antigravity), `AGENTS.md` (OpenCode), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
+- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), `GEMINI.md` (Antigravity), `AGENTS.md` (Pi and OpenCode), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), the app makers' download sites, npm and pi.dev (to install the tools), skills.sh (to check outside skills) and Google or OpenRouter (the router on Google AI Pro or OpenRouter alone, and oracle-council's seats if you add it). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 
@@ -234,7 +234,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🍳 **[design-cook-off](guava-hub/skills/design-cook-off/)**: two designed versions of a page to pick from.
 - 🏛️ **[oracle-council](guava-hub/skills/oracle-council/)**: three top AIs answer one hard question, merged into one verdict.
 - 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, Antigravity CLI on Google AI Pro alone, or Pi on OpenRouter alone, which your bot runs for you.
-- 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Antigravity, OpenCode, Grok Bot and Muse each skip or change.
+- 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Antigravity, Pi, OpenCode, Grok Bot and Muse each skip or change.
 
 ## Support
 - ✉️ [romeo@workwithguava.com](mailto:romeo@workwithguava.com)

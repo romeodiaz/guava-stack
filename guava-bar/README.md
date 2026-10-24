@@ -1,4 +1,4 @@
-<p align="center"><img src="../assets/logo.png" alt="Pixel-art guava" width="120"></p>
+<p align="center"><img src="../assets/guava-bar.png" alt="guava-bar in the Mac menu bar: the head-chef and line-cook pixel art with Opus and Sol" width="250"></p>
 
 # guava-bar: your kitchen in the menu bar
 

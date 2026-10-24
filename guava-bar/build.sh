@@ -112,6 +112,30 @@ GUAVA_HUB="$fixture" ZDOTDIR="$fixture" "$binary" set line-cook bogus > "$fixtur
 [ ! -e "$fixture/agent-started" ]
 grep -F 'guava-bar picks line-cook' "$fixture/invalid" > /dev/null
 echo 'PASS: invalid set exits 1 without starting an agent or shell'
+# A switch with stand-in tools: the copy changes at once, and a model that fails its test is switched back.
+fake="$fixture/fake"
+mkdir -p "$fake/bin" "$fake/hub"
+printf '#!/bin/sh\necho "done: mock"\n' > "$fake/bin/claude"
+cat > "$fake/bin/python3" <<'EOF'
+#!/bin/sh
+echo "{\"slots\": [{\"ok\": $OK, \"verdict\": \"mock\"}]}"
+EOF
+chmod +x "$fake/bin/claude" "$fake/bin/python3"
+printf 'export PATH="%s:$PATH"\n' "$fake/bin" > "$fake/.zprofile"
+# Never let this test reach the real tools, which would edit the owner's Notion.
+if [ "$(ZDOTDIR="$fake" zsh -lc 'command -v claude python3' | tr '\n' ' ')" != "$fake/bin/claude $fake/bin/python3 " ]; then
+    echo 'FAIL: stand-in tools are not first on PATH, so the switch test did not run' >&2; exit 1
+fi
+printf 'head-chef\n\n- %s (High) via Claude Code\n  - jobs\n\nline-cook\n\n- %s (High) via Codex\n  - jobs\n' \
+    "$(plutil -extract claude-and-chatgpt.head-chef.name raw -o - "$router/slots.json")" "$sol" > "$fake/hub/context.md"
+OK=true GUAVA_HUB="$fake/hub" ZDOTDIR="$fake" "$binary" set line-cook "$sol (Medium) via Codex" > /dev/null
+grep -Fx -- "- $sol (Medium) via Codex" "$fake/hub/context.md" > /dev/null
+grep -Fx -- '  - jobs' "$fake/hub/context.md" > /dev/null
+code=0
+OK=false GUAVA_HUB="$fake/hub" ZDOTDIR="$fake" "$binary" set line-cook "$sol (Low) via Codex" > /dev/null || code=$?
+[ "$code" -eq 1 ]
+grep -Fx -- "- $sol (Medium) via Codex" "$fake/hub/context.md" > /dev/null
+echo 'PASS: a switch edits only the model line, and a failed test switches back'
 echo 'Build and self-test passed.'
 
 if [ "${1-}" != --no-install ]; then

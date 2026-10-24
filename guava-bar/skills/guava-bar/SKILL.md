@@ -7,7 +7,7 @@ description: Installs, updates or removes guava-bar, an optional Mac menu bar ap
 
 # guava-bar
 
-A small Mac menu bar app, a lite take on [CodexBar](https://github.com/steipete/CodexBar) with models only. The menu bar shows both slots at a glance, such as `Opus · Sol`. Its menu shows each slot's full model line and offers today's picks from guava-router's `models.yaml` for the plans the owner's two slots show (both via Claude Code means Claude only, and so on), at each effort, Low to Max. A pick, once the owner confirms it, is tested first, then Claude Code (or Codex) runs in the background on **Change your setup** in the guava-hub skill: it edits that one model line in guava-stack settings in Notion and refreshes the local copy. Notion stays the source of truth, so every assistant follows the change, and an edit made in Notion shows in the bar once the local copy refreshes. It doesn't show usage limits.
+A small Mac menu bar app, a lite take on [CodexBar](https://github.com/steipete/CodexBar) with models only. The menu bar shows both slots at a glance, such as `Opus · Sol`. Its menu shows each slot's full model line and offers today's picks from guava-router's `models.yaml` for the plans the owner's two slots show (both via Claude Code means Claude only, and so on), at each effort, Low to Max. On the owner's Mac, guava-bar is the main place to change models: a pick switches that slot in the local copy (`~/.guava-hub/context.md`) at once, which Claude Code and Codex there read before every hand-off. In the background it then tests the new model, switching back if it can't answer, and has Claude Code (or Codex) update the same line in Notion, so bots and the Claude and ChatGPT apps follow within a minute or two. Notion keeps the stored copy, and an edit made in Notion still shows in the bar once the local copy refreshes. It doesn't show usage limits.
 
 The app is also a command, `guava-bar`: `guava-bar show`, `guava-bar picks line-cook`, `guava-bar set line-cook "<a line from picks>"` and `guava-bar refresh`.
 
@@ -36,16 +36,18 @@ Use this when the owner says **"uninstall guava-bar"**, or when the guava-hub sk
 3. Nothing in Notion or `~/.guava-hub` needs undoing: guava-bar only changed what the owner picked, through **Change your setup**.
 
 ## What a change runs
-Show this to the owner when they ask what guava-bar can do on their computer. After the confirm, in this order, stopping at the first failure:
-1. **Test the new model**, before anything changes: guava-router's `router-check.py`, bundled in the app, sends it a one-word prompt with its own tool's command, such as `python3 router-check.py --plan claude-and-chatgpt --slot line-cook --line-cook gpt-6.1-sol:medium`.
-2. **Make the change**, from `~/.guava-hub`, with no input, stopped after 10 minutes:
-   - `claude -p "<the change>" --allowedTools mcp__claude_ai_Notion__notion-fetch mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-update-page` (the same three for a Notion connection named `notion`) `Read "Edit(~/.guava-hub/**)" "Write(~/.guava-hub/**)" "WebFetch(domain:github.com)" "WebFetch(domain:raw.githubusercontent.com)"`: read and update Notion pages, edit only the local copy, read this repo's steps, and no commands. **Refresh from Notion** gets the same without `notion-update-page`.
+Show this to the owner when they ask what guava-bar can do on their computer. A pick runs, in this order:
+1. **Switch it on this Mac:** guava-bar rewrites that slot's model line in `~/.guava-hub/context.md` and nothing else. New hand-offs on this Mac use it right away.
+2. **Test the new model:** guava-router's `router-check.py`, bundled in the app, sends it a one-word prompt with its own tool's command, such as `python3 router-check.py --plan claude-and-chatgpt --slot line-cook --line-cook gpt-6.1-sol:medium`. If it fails, guava-bar puts the old line back and says why.
+3. **Update Notion**, from `~/.guava-hub`, with no input, stopped after 10 minutes:
+   - `claude -p "<the change>" --allowedTools mcp__claude_ai_Notion__notion-fetch mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-update-page` (the same three for a Notion connection named `notion`) `Read "WebFetch(domain:github.com)" "WebFetch(domain:raw.githubusercontent.com)"`: read and update Notion pages and read this repo's steps; no file edits and no commands.
    - With no Claude Code: `codex exec --skip-git-repo-check --sandbox workspace-write "<the change>"`, which can only write inside `~/.guava-hub`.
-3. **Check it landed:** the tool must exit cleanly and end with `done: …`, and the local copy must then show the new model line. Otherwise the menu shows `failed: …` with the reason.
+   - The tool must exit cleanly and end with `done: …`. Otherwise the menu says the Mac is switched but Notion isn't yet; picking the same model again retries.
 
-The prompt names the slot, the old and new model lines, and says the owner already confirmed this one change in guava-bar. It tells the session to follow **Change your setup**, edit only that model line, mark it "(own pick)" if it isn't today's pick for the owner's plans, refresh the local copy, leave `~/.claude/settings.json` and `~/.codex/config.toml` alone (this is the owner's own computer, not a bot's), skip the test and the task log, and change nothing else.
+The prompt names the slot and the old and new model lines, and says the owner chose this one change in guava-bar, which already switched the local copy and tested the model. It tells the session to set only that model line in Notion, marking it "(own pick)" if it isn't today's pick for the owner's plans, as **Change your setup** says, to leave `~/.guava-hub`, `~/.claude/settings.json` and `~/.codex/config.toml` alone (this is the owner's own computer, not a bot's), to skip the test and the task log, and to change nothing else. **Refresh from Notion** gets Notion's fetch and search, and edits only in `~/.guava-hub`.
 
 ## If something fails
 - **The bar shows an old model:** the local copy refreshes when an AI session runs, or when the owner clicks **Refresh from Notion**.
-- **A change failed:** the menu shows the reason. Run `guava-bar set <slot> "<line>"` in Terminal to see it again, or say "change my setup" in Claude or ChatGPT instead.
+- **The test failed:** guava-bar switched back, and the menu shows why, usually a tool that needs updating or signing in (guava-router's **Repair**).
+- **Notion wasn't updated:** this Mac already uses the new model. Pick the same model again to retry, or run `guava-bar set <slot> "<line>"` in Terminal to see why, or say "change my setup" in Claude or ChatGPT instead.
 - **"guava-bar needs Claude Code or Codex":** install one as guava-router's step 2 says, sign in, and try again.

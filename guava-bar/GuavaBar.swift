@@ -53,6 +53,19 @@ struct Hub {
         synced = (try? FileManager.default.attributesOfItem(atPath: Self.directory.appendingPathComponent("sync.md").path))?[.modificationDate] as? Date
     }
 
+    // Switch a slot in the hub copy, which local sessions read before each hand-off; Notion catches up after.
+    static func write(_ slot: String, _ line: String) -> Bool {
+        let url = directory.appendingPathComponent("context.md")
+        guard let text = try? String(contentsOf: url, encoding: .utf8) else { return false }
+        var rows = text.components(separatedBy: "\n")
+        guard let label = rows.firstIndex(where: { $0.trimmingCharacters(in: .whitespaces) == slot }),
+              let bullet = rows[(label + 1)...].firstIndex(where: { !$0.trimmingCharacters(in: .whitespaces).isEmpty }),
+              let dash = rows[bullet].range(of: "- "),
+              rows[bullet][..<dash.lowerBound].allSatisfy(\.isWhitespace) else { return false }
+        rows[bullet] = rows[bullet][..<dash.upperBound] + line
+        return (try? rows.joined(separator: "\n").write(to: url, atomically: true, encoding: .utf8)) != nil
+    }
+
     var age: String {
         synced.map { "refreshed \(max(0, Int(Date().timeIntervalSince($0) / 60))) min ago" } ?? "no hub copy yet"
     }
@@ -163,7 +176,7 @@ enum Agent {
 
     static func setPrompt(slot: String, old: String, new: String) -> String {
         """
-        guava-bar: the owner picked this in the guava-bar menu and confirmed it there, so that click is their yes for this one change. Make my \(slot) "\(new)" (it was "\(old)"). Follow Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack: edit only that slot's model line in guava-stack settings on my Notion context page, marking it (own pick) if it isn't today's pick for my plans, then refresh that page in ~/.guava-hub/context.md and set synced in ~/.guava-hub/sync.md. This is my own computer, not a bot's, so leave ~/.claude/settings.json and ~/.codex/config.toml alone. guava-bar already tested the new model, so skip the test, and skip logging a task for this one change. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
+        guava-bar: the owner switched their \(slot) in the guava-bar menu, so that click is their yes for this one change. guava-bar already switched it in ~/.guava-hub/context.md and tested the new model. Now make my Notion context page match: in guava-stack settings, set only the \(slot) model line to "\(new)" (it was "\(old)"), marking it (own pick) if it isn't today's pick for my plans, as Change your setup in guava-hub/skills/guava-hub/SKILL.md from github.com/romeodiaz/guava-stack says. Leave ~/.guava-hub, ~/.claude/settings.json and ~/.codex/config.toml alone, skip the test, and skip logging a task for this one change. Make no other change. End your reply with one line: "done: <what changed>" or "failed: <why>".
         """
     }
 
@@ -171,16 +184,16 @@ enum Agent {
     guava-bar: refresh my local hub copy in ~/.guava-hub now, as Local copy in guava-hub/skills/guava-hub/backends/notion.md from github.com/romeodiaz/guava-stack says (build it if there's none yet). Change nothing in Notion. End your reply with one line: "done: <what changed>" or "failed: <why>".
     """
 
-    // Notion's read tools, plus update-page for a change; files only in the hub copy. No shell, so the
-    // session can't run anything: guava-bar tests the model itself, before the change.
+    // No shell, so the session can't run anything. A change gets Notion's read tools and update-page and
+    // no file edits (guava-bar already switched the copy); a refresh gets the read tools and the hub copy.
     static func run(_ prompt: String, tool: String, write: Bool) -> String {
         let args: [String]
         if tool == "claude" {
             let notion = ["notion-fetch", "notion-search"] + (write ? ["notion-update-page"] : [])
             args = ["-p", prompt, "--allowedTools"]
                 + notion.flatMap { ["mcp__claude_ai_Notion__\($0)", "mcp__notion__\($0)"] }
-                + ["Read", "Edit(~/.guava-hub/**)", "Write(~/.guava-hub/**)",
-                   "WebFetch(domain:github.com)", "WebFetch(domain:raw.githubusercontent.com)"]
+                + ["Read", "WebFetch(domain:github.com)", "WebFetch(domain:raw.githubusercontent.com)"]
+                + (write ? [] : ["Edit(~/.guava-hub/**)", "Write(~/.guava-hub/**)"])
         } else {
             // shortcut: Codex path untested for Notion MCP approvals in exec mode, test on a ChatGPT-only setup
             args = ["exec", "--skip-git-repo-check", "--sandbox", "workspace-write", prompt]
@@ -199,7 +212,7 @@ enum Agent {
 }
 
 extension Agent {
-    // Check the new model answers before changing anything, with router-check.py's own command for its tool.
+    // Check the new model answers, with router-check.py's own command for its tool.
     static func test(_ pick: Pick, effort: String, slot: String) -> String? {
         let args = ["exec \"$@\"", "guava-bar", "python3", resource("router-check.py").path, "--plan", pick.plan,
                     "--slot", slot, "--\(slot)", "\(pick.id):\(effort.lowercased())", "--timeout", "240"]
@@ -211,18 +224,29 @@ extension Agent {
             return "failed: couldn't test \(pick.name): " + output.suffix(200)
         }
         if result["ok"] as? Bool == true { return nil }
-        return "failed: \(pick.name) at \(effort) didn't pass its test, so nothing changed: "
+        return "failed: \(pick.name) at \(effort) didn't pass its test: "
             + "\(result["verdict"] ?? "")\(result["error"].map { " (\($0))" } ?? "")"
     }
 
-    static func change(slot: String, to line: String, rows: [String: [String: Slot]], tool: String) -> String {
+    // Switch on this Mac at once, then test and update Notion. Picking the current line again just retries Notion.
+    static func change(slot: String, to line: String, rows: [String: [String: Slot]], tool: String,
+                       switched: (String) -> Void) -> String {
         let hub = Hub()
-        guard let (pick, effort) = hub.option(slot, line, from: rows) else { return "failed: not one of guava-bar's picks" }
-        if let failure = test(pick, effort: effort, slot: slot) { return failure }
-        let result = run(setPrompt(slot: slot, old: hub.lines[slot] ?? "not set", new: line), tool: tool, write: true)
-        guard result.hasPrefix("done:") else { return result.hasPrefix("failed") ? result : "failed: \(result)" }
-        guard Hub().matches(slot, line) else {
-            return "failed: \(tool) said done, but the hub copy shows \(Hub().lines[slot] ?? "no \(slot)"): refresh, then check Notion"
+        guard let (pick, effort) = hub.option(slot, line, from: rows), let old = hub.lines[slot] else {
+            return "failed: not one of guava-bar's picks"
+        }
+        if !hub.matches(slot, line) {
+            guard Hub.write(slot, line) else { return "failed: couldn't change \(slot) in the hub copy" }
+        }
+        switched("\(slot) is now \(line) on this Mac. Testing it, then updating Notion…")
+        if let failure = test(pick, effort: effort, slot: slot) {
+            guard !hub.matches(slot, line), Hub().matches(slot, line), Hub.write(slot, old) else { return failure }
+            return failure + ". Switched back to \(old)."
+        }
+        let result = run(setPrompt(slot: slot, old: old, new: line), tool: tool, write: true)
+        guard result.hasPrefix("done:") else {
+            return "failed: \(slot) is switched on this Mac, but Notion wasn't updated (pick it again to retry): "
+                + (result.hasPrefix("failed: ") ? String(result.dropFirst(8)) : result)
         }
         return result
     }
@@ -250,7 +274,10 @@ func cli(_ args: [String]) -> Int32 {
                 return 1
             }
             guard let tool = Agent.find() else { print(Agent.missing); return 1 }
-            let result = Agent.change(slot: args[1], to: args[2], rows: try loadPicks(), tool: tool)
+            let result = Agent.change(slot: args[1], to: args[2], rows: try loadPicks(), tool: tool) {
+                print($0)
+                fflush(stdout)
+            }
             print(result)
             return result.hasPrefix("done:") ? 0 : 1
         } catch {
@@ -273,6 +300,7 @@ final class BarState: ObservableObject {
     @Published var picks: [String: [String: Slot]] = [:]
     @Published var running = false
     @Published var status = ""
+    var unsynced: Set<String> = []  // slots switched here whose Notion update failed
     @Published var loginStatus = SMAppService.mainApp.status
 
     init() { reload() }
@@ -293,7 +321,7 @@ final class BarState: ObservableObject {
 
     func request(slot: String? = nil, option: String? = nil) {
         guard !running else { return }
-        if let slot, let option, hub.matches(slot, option) { return }
+        if let slot, let option, hub.matches(slot, option), !unsynced.contains(slot) { return }
         running = true
         status = "Finding Claude Code or Codex…"
         Task {
@@ -303,17 +331,13 @@ final class BarState: ObservableObject {
                 return
             }
             if let slot, let option {
-                let old = hub.lines[slot] ?? "not set"
-                NSApp.activate(ignoringOtherApps: true)
-                let alert = NSAlert()
-                alert.messageText = "Change \(slot)?"
-                let toolName = tool == "claude" ? "Claude Code" : "Codex"
-                alert.informativeText = "From: \(old)\nTo: \(option)\n\nguava-bar tests the new model, then asks \(toolName) to make this change in your Notion hub. It takes a minute or two and uses a little of your plan."
-                alert.addButton(withTitle: "Change")
-                alert.addButton(withTitle: "Cancel")
-                guard alert.runModal() == .alertFirstButtonReturn else { running = false; return }
                 let rows = picks
-                await start(status: "Testing, then changing \(slot)…") { Agent.change(slot: slot, to: option, rows: rows, tool: tool) }
+                await start(status: "Switching \(slot)…") {
+                    Agent.change(slot: slot, to: option, rows: rows, tool: tool) { message in
+                        Task { @MainActor in self.status = message; self.hub = Hub() }
+                    }
+                }
+                if status.hasPrefix("failed: \(slot) is switched") { unsynced.insert(slot) } else { unsynced.remove(slot) }
             } else {
                 await start(status: "Refreshing from Notion…") { Agent.run(Agent.refreshPrompt, tool: tool, write: false) }
             }

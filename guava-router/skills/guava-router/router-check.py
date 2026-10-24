@@ -49,7 +49,11 @@ def copies(name):
     found = []
     for folder in os.environ.get("PATH", "").split(os.pathsep):
         path = Path(folder) / name
-        if path.is_file() and os.access(path, os.X_OK) and path.resolve() not in (p.resolve() for p in found):
+        try:
+            usable = path.is_file() and os.access(path, os.X_OK)
+        except OSError:  # a copy this user can't even look at, such as a root-only /usr/local/bin/claude
+            continue
+        if usable and path.resolve() not in (p.resolve() for p in found):
             found.append(path)
     return [str(p) for p in found]
 

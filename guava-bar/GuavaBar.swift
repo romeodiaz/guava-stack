@@ -383,14 +383,21 @@ final class BarState: ObservableObject {
     @Published var hub = Hub()
     @Published var picks: [String: [String: Slot]] = [:]
     @Published var installed: Set<String> = []
-    @Published var running = false
+    @Published var running = false  // the background test and Notion update; switching stays open meanwhile
     @Published var status = ""
-    var unsynced: Set<String> = []  // slots switched here whose Notion update failed
+    // Slots switched on this Mac that Notion doesn't show yet, each with the line Notion still has.
+    // Kept across restarts, so a switch Notion never got is retried, not forgotten.
+    @Published var unsynced = UserDefaults.standard.dictionary(forKey: "unsynced") as? [String: String] ?? [:] {
+        didSet { UserDefaults.standard.set(unsynced, forKey: "unsynced") }
+    }
     @Published var loginStatus = SMAppService.mainApp.status
 
     init() {
         reload()
-        Task { installed = await Task.detached { Agent.installed() }.value }
+        Task {
+            installed = await Task.detached { Agent.installed() }.value
+            sync()
+        }
     }
 
     func reload() {
@@ -400,37 +407,74 @@ final class BarState: ObservableObject {
         catch { status = "failed: cannot load slots.json: \(error.localizedDescription)" }
     }
 
-    func start(status message: String, _ work: @escaping @Sendable () -> String) async {
-        status = message
-        status = await Task.detached { work() }.value
-        running = false
+    // Switch on this Mac at once, then let the background catch Notion up.
+    func request(_ changes: [Change]) {
+        let hub = Hub()
+        guard changes.allSatisfy({ hub.option($0.slot, $0.line, from: picks, installed: installed) != nil }) else { return }
+        for change in changes where !hub.matches(change.slot, change.line) {
+            guard Hub.write(change.slot, change.line) else { status = "failed: couldn't change \(change.slot) in the hub copy"; return }
+            if unsynced[change.slot] == nil { unsynced[change.slot] = hub.lines[change.slot] }
+            // Switched back to what Notion has: nothing left to send.
+            if let notion = unsynced[change.slot], hub.bare(notion).caseInsensitiveCompare(change.line) == .orderedSame {
+                unsynced[change.slot] = nil
+            }
+        }
         reload()
+        sync()
     }
 
-    func request(_ changes: [Change]? = nil) {
-        guard !running else { return }
-        if let changes, changes.allSatisfy({ hub.matches($0.slot, $0.line) && !unsynced.contains($0.slot) }) { return }
+    // Test what changed, then send Notion the latest lines in one update; runs again if more changed meanwhile.
+    func sync() {
+        guard !running, !unsynced.isEmpty else { return }
         running = true
-        status = "Finding Claude Code or Codex…"
+        let rows = picks, installed = installed, notion = unsynced
+        let wanted = notion.keys.sorted().compactMap { slot in hub.lines[slot].map { Change(slot: slot, line: hub.bare($0)) } }
+        status = "Testing \(wanted.map(\.line).joined(separator: " and "))…"
         Task {
-            guard let tool = await Task.detached(operation: { Agent.find() }).value else {
-                status = Agent.missing
-                running = false
-                return
-            }
-            if let changes {
-                let rows = picks, installed = installed
-                await start(status: "Switching…") {
-                    Agent.change(changes, rows: rows, installed: installed, tool: tool) { message in
-                        Task { @MainActor in self.status = message; self.hub = Hub() }
+            let result = await Task.detached { () async -> String in
+                let hub = Hub()
+                for change in wanted {
+                    guard let (pick, effort) = hub.option(change.slot, change.line, from: rows, installed: installed) else { continue }
+                    if let failure = Agent.test(pick, effort: effort, slot: change.slot) {
+                        // Undo the whole batch, like the CLI, but never a switch made after it while the test ran.
+                        for change in wanted where Hub().matches(change.slot, change.line) {
+                            if let old = notion[change.slot] { _ = Hub.write(change.slot, old) }
+                        }
+                        return failure + ". Switched back."
                     }
                 }
-                for change in changes {
-                    if status.hasPrefix("failed: switched") { unsynced.insert(change.slot) } else { unsynced.remove(change.slot) }
+                await MainActor.run { self.status = "Updating Notion…" }
+                guard let tool = Agent.find() else { return "failed: \(Agent.missing)" }
+                return Agent.run(Agent.setPrompt(wanted, old: notion), tool: tool, write: true)
+            }.value
+            reload()
+            let switchedBack = result.hasSuffix("Switched back.")
+            if succeeded(result) || switchedBack {
+                for change in wanted where (succeeded(result) && hub.matches(change.slot, change.line))
+                    || (switchedBack && hub.lines[change.slot] == notion[change.slot]) {
+                    unsynced[change.slot] = nil
                 }
+                status = result
             } else {
-                await start(status: "Refreshing from Notion…") { Agent.run(Agent.refreshPrompt, tool: tool, write: false) }
+                status = "failed: switched on this Mac, but Notion wasn't updated (Retry below): "
+                    + (result.hasPrefix("failed: ") ? String(result.dropFirst(8)) : result)
             }
+            running = false
+            if succeeded(result) || switchedBack { sync() }
+        }
+    }
+
+    func refresh() {
+        guard !running else { return }
+        running = true
+        status = "Refreshing from Notion…"
+        Task {
+            status = await Task.detached { () -> String in
+                guard let tool = Agent.find() else { return Agent.missing }
+                return Agent.run(Agent.refreshPrompt, tool: tool, write: false)
+            }.value
+            running = false
+            reload()
         }
     }
 
@@ -494,7 +538,7 @@ struct GuavaBarApp: App {
                             }
                         }
                     }
-                }.disabled(state.running)
+                }
             }
             Menu("Switch both") {
                 ForEach(state.hub.pairs(from: state.picks, installed: state.installed), id: \.self) { pair in
@@ -507,10 +551,11 @@ struct GuavaBarApp: App {
                         } else { Text(title) }
                     }
                 }
-            }.disabled(state.running)
+            }
             Divider()
             Text(state.hub.synced == nil ? "No hub copy yet" : "Hub copy \(state.hub.age)").disabled(true)
-            Button("Refresh from Notion") { state.request() }.disabled(state.running)
+            Button("Refresh from Notion") { state.refresh() }.disabled(state.running || !state.unsynced.isEmpty)
+            if !state.unsynced.isEmpty && !state.running { Button("Retry Notion update") { state.sync() } }
             if !state.status.isEmpty { Text(state.status).disabled(true) }
             Divider()
             Toggle("Open at login", isOn: Binding(

@@ -3,7 +3,8 @@
 
 Files mark generated parts with HTML comments:
     <!-- models:KIND key="value" ... -->  generated text  <!-- /models -->
-The oracle_council section is also written to guava-hub/skills/oracle-council/members.json.
+The oracle_council section is also written to guava-hub/skills/oracle-council/members.json, and
+each plan row's slots to guava-router/skills/guava-router/slots.json for router-check.py.
 Run from anywhere: python3 scripts/sync-models.py  (add --check to only report stale files)
 """
 import json
@@ -23,6 +24,7 @@ OR_HEAD, OR_LINE = CONFIG["openrouter_only"]["head_chef"], CONFIG["openrouter_on
 ROLES = CONFIG["roles"]
 COUNCIL = CONFIG["oracle_council"]
 MEMBERS = ROOT / "guava-hub" / "skills" / "oracle-council" / "members.json"
+SLOTS = ROOT / "guava-router" / "skills" / "guava-router" / "slots.json"
 FOUNDER_MODE = json.loads((ROOT / "founder-mode" / ".claude-plugin" / "plugin.json").read_text())["version"]
 BLOCK = re.compile(r"<!-- models:(\S+)(.*?) -->(.*?)<!-- /models -->", re.S)
 
@@ -168,6 +170,19 @@ def oracle_council(args):
     ]) + f"\n\nEvery seat runs at {gpt['effort']} effort (high on Google's own routes, its top level).\n"
 
 
+def slots():
+    """Each plan row's head-chef and line-cook with the tool that runs it, for router-check.py."""
+    slot = lambda s, t: {"name": s["name"], "id": s["id"], "effort": s["effort"], "tool": t,
+                         **({"fallback": {k: s["fallback"][k] for k in ("name", "id", "effort")}} if "fallback" in s else {})}
+    cli = lambda s: "claude" if tool(s) == "Claude Code" else "codex"
+    one = lambda plan: {"head-chef": slot(pick(HEAD, plan), cli(pick(HEAD, plan))),
+                        "line-cook": slot(pick(LINE, plan), cli(pick(LINE, plan)))}
+    return {"claude-and-chatgpt": {"head-chef": slot(HEAD, cli(HEAD)), "line-cook": slot(LINE, cli(LINE))},
+            "claude": one("Claude"), "chatgpt": one("ChatGPT"),
+            "google": {"head-chef": slot(GOOGLE_HEAD, "agy"), "line-cook": slot(GOOGLE_LINE, "agy")},
+            "openrouter": {"head-chef": slot(OR_HEAD, "pi"), "line-cook": slot(OR_LINE, "pi")}}
+
+
 KINDS = {"kitchen": kitchen, "commands": commands, "plans": plans, "one-plan": one_plan,
          "stack-example": stack_example, "default-pair": default_pair,
          "oracle-council": oracle_council}
@@ -191,11 +206,12 @@ def main():
             stale.append(path.relative_to(ROOT))
             if not check:
                 path.write_text(new)
-    members = json.dumps(COUNCIL, indent=2) + "\n"
-    if not MEMBERS.exists() or MEMBERS.read_text() != members:
-        stale.append(MEMBERS.relative_to(ROOT))
-        if not check:
-            MEMBERS.write_text(members)
+    for path, data in ((MEMBERS, COUNCIL), (SLOTS, slots())):
+        text = json.dumps(data, indent=2) + "\n"
+        if not path.exists() or path.read_text() != text:
+            stale.append(path.relative_to(ROOT))
+            if not check:
+                path.write_text(text)
     verb = "Out of date" if check else "Updated"
     for p in stale:
         print(f"{verb}: {p}")

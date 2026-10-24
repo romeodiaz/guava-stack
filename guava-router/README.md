@@ -50,6 +50,7 @@ On one plan, the other slot uses that company's next best. On Google AI alone, b
 
 - Model picks: [models.yaml](models.yaml) is the one place they're kept. To swap in a newer model, change it there and run `python3 scripts/sync-models.py` from the repo root, which updates every README and skill that shows them. Owners already set up say "check for newer models".
 - Skill: [guava-router](skills/guava-router/SKILL.md)
+- Check: `python3 skills/guava-router/router-check.py` shows whether each tool is installed, signed in and can read the hub; add `--plan <your row>` (`claude-and-chatgpt`, `claude`, `chatgpt`, `google` or `openrouter`) to also see which model really answers each slot.
 - Update: say "update guava-router", or "update guava-stack" for every piece.
 - Uninstall: say "uninstall guava-router", or "uninstall guava-stack" for every piece.
 - Install: see [Start here](../README.md#start-here) in the stack README.

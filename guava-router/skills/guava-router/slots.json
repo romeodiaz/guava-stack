@@ -1,0 +1,82 @@
+{
+  "claude-and-chatgpt": {
+    "head-chef": {
+      "name": "Claude Opus 5.5",
+      "id": "claude-opus-5-5",
+      "effort": "high",
+      "tool": "claude"
+    },
+    "line-cook": {
+      "name": "GPT-6.1 Sol",
+      "id": "gpt-6.1-sol",
+      "effort": "high",
+      "tool": "codex"
+    }
+  },
+  "claude": {
+    "head-chef": {
+      "name": "Claude Opus 5.5",
+      "id": "claude-opus-5-5",
+      "effort": "high",
+      "tool": "claude"
+    },
+    "line-cook": {
+      "name": "Claude Sonnet 5.5",
+      "id": "claude-sonnet-5-5",
+      "effort": "high",
+      "tool": "claude"
+    }
+  },
+  "chatgpt": {
+    "head-chef": {
+      "name": "GPT-6 Astra",
+      "id": "gpt-6-astra",
+      "effort": "high",
+      "tool": "codex"
+    },
+    "line-cook": {
+      "name": "GPT-6.1 Sol",
+      "id": "gpt-6.1-sol",
+      "effort": "high",
+      "tool": "codex"
+    }
+  },
+  "google": {
+    "head-chef": {
+      "name": "Claude Opus 5.5",
+      "id": "claude-opus-5-5-high",
+      "effort": "high",
+      "tool": "agy",
+      "fallback": {
+        "name": "Gemini 4 Argon",
+        "id": "gemini-4-argon-high",
+        "effort": "high"
+      }
+    },
+    "line-cook": {
+      "name": "Claude Sonnet 5.5",
+      "id": "claude-sonnet-5-5-high",
+      "effort": "high",
+      "tool": "agy",
+      "fallback": {
+        "name": "Gemini 3.8 Flash",
+        "id": "gemini-3.8-flash-high",
+        "effort": "high"
+      }
+    }
+  },
+  "openrouter": {
+    "head-chef": {
+      "name": "Kimi K3.1 Pro",
+      "id": "moonshotai/kimi-k3.1-pro",
+      "effort": "high",
+      "tool": "pi"
+    },
+    "line-cook": {
+      "name": "DeepSeek V4.1 Flash 1017",
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "effort": "high",
+      "tool": "pi"
+    }
+  }
+}

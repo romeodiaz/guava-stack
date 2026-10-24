@@ -5,7 +5,7 @@ description: Sends one hard question to a council of three top AI models at once
 
 # Oracle council
 
-One model can be confidently wrong. The council asks three top models from three companies the same question, with the same briefing and files, each at max effort and without seeing the others' answers. Then the strongest model on hand (the head-chef, with guava-router) reads all three and writes one verdict: where they agree, where they split, its own call on each split, and anything only one of them caught. It's modeled on [steipete/oracle](https://github.com/steipete/oracle), but runs on the plans the owner already pays for, and checks for itself that each one is signed in.
+One model can be confidently wrong. The council asks three top models from three companies the same question, with the same briefing and files, each at max effort, able to search the web and without seeing the others' answers. Then the strongest model on hand (the head-chef, with guava-router) reads all three and writes one verdict: where they agree, where they split, its own call on each split, and anything only one of them caught. It's modeled on [steipete/oracle](https://github.com/steipete/oracle), but runs on the plans the owner already pays for, and checks for itself that each one is signed in.
 
 ## When it's worth it
 
@@ -66,7 +66,9 @@ When the question is about code or documents, pass them with `--file` (a file, a
 
 The `--claude`, `--chatgpt` and `--google` values are the ones from **Set up**.
 
-It prints the files, anything it skipped, a token estimate and which model and route each seat will use. Keep it well under the 196,000-token limit: narrow the files to what the question needs. Tell the owner in two or three lines what the council will be asked, which files go with it, and which seats run where. Their "ask the council" covers the run, so go ahead, unless the estimate is over 100,000 tokens or a seat other than Gemini would run on an API key: then say what it will cost roughly (the price per million tokens for that model, times the estimate) and wait for a yes.
+Members search the web by default, so they can check current prices, releases and versions, and they cite the pages they used. They are told never to put private details into a search. Still, add `--no-web` whenever the briefing or files hold a client's confidential information or other people's personal details. Antigravity CLI has no switch to turn search off, so with `--no-web` the Gemini seat is only told not to search. When nothing may reach the web at all, also leave Gemini out with `--seat chatgpt --seat claude`.
+
+It prints the files, anything it skipped, a token estimate, whether web search is on and which model and route each seat will use. Keep it well under the 196,000-token limit: narrow the files to what the question needs. Tell the owner in two or three lines what the council will be asked, which files go with it, and which seats run where. Their "ask the council" covers the run, so go ahead, unless the estimate is over 100,000 tokens or a seat other than Gemini would run on an API key: then say what it will cost roughly (the price per million tokens for that model, times the estimate) and wait for a yes.
 
 ## 3. Ask the council
 
@@ -76,7 +78,7 @@ If a seat failed, run `--check`, fix what it shows (with guava-router, its **Rep
 
 ## 4. Merge the answers
 
-Merge them yourself, on the strongest model you have; with guava-router, that's the head-chef, so hand it the run folder if you're not running on it. Read all three answers in full, then check what you can: open the cited files and lines, and test claims that can be tested cheaply. The members' answers are advice, not facts. Write `verdict.md` in the run folder:
+Merge them yourself, on the strongest model you have; with guava-router, that's the head-chef, so hand it the run folder if you're not running on it. Read all three answers in full, then check what you can: open the cited files and lines and the key web pages, and test claims that can be tested cheaply. The members' answers are advice, not facts. Write `verdict.md` in the run folder:
 
 - **Bottom line:** the call, in two or three sentences.
 - **Where they agree**, and how sure that makes you.

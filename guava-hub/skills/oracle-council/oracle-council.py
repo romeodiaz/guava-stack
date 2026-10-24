@@ -3,7 +3,7 @@
 
     python3 oracle-council.py --check
     python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no --google yes|no \
-        [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--dry-run] [--timeout MINUTES]
+        [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--no-web] [--dry-run] [--timeout MINUTES]
 
 --check shows which of Claude Code, Codex and Antigravity CLI are installed and signed in
 on a plan, and which API keys are set, so the owner can be walked through what's missing.
@@ -37,7 +37,7 @@ SECRETS = [".env", ".env.*", "*.pem", "*.key", "*.p12", "*.pfx", "id_rsa*", "id_
            "*credentials*", "*secret*", ".npmrc", ".netrc"]
 PREAMBLE = """You are one of three independent experts on a council. The other two are different AI models answering the same question separately; the owner will compare all three answers.
 
-Answer from the briefing and files below only. You have no tools, so don't ask for more files or try to run anything. Cite files as path:line when you rely on them. Say plainly where you are unsure or where the briefing leaves something out, and what would settle it. Take a clear position rather than listing options. End with a short "Bottom line" paragraph.
+Answer from the briefing and files below{only}. {tools} Cite files as path:line when you rely on them. Say plainly where you are unsure or where the briefing leaves something out, and what would settle it. Take a clear position rather than listing options. End with a short "Bottom line" paragraph.
 
 """
 
@@ -74,8 +74,13 @@ def bundle(patterns):
     return found, skipped
 
 
-def build_prompt(question, files):
-    parts = [PREAMBLE, "# Briefing\n\n", question.strip(), "\n"]
+def build_prompt(question, files, web):
+    tools = ("You can search the web and read pages: use that to check current facts such as prices, releases "
+             "and versions, and cite the URLs you rely on. Never put private details from the briefing or files "
+             "(client or people's names, internal numbers, code or document text) into a search or URL. You can't "
+             "read or run anything on this computer, so don't ask for more files."
+             if web else "Don't search the web or use any tools, and don't ask for more files or try to run anything.")
+    parts = [PREAMBLE.format(only="" if web else " only", tools=tools), "# Briefing\n\n", question.strip(), "\n"]
     if files:
         parts.append("\n# Files\n")
         for path, text in files:
@@ -89,9 +94,11 @@ def without(*keys):
     return {k: v for k, v in os.environ.items() if k not in keys}
 
 
-def run_claude(model, effort, prompt, timeout):
-    cmd = ["claude", "-p", "--model", model, "--effort", effort, "--tools", "", "--strict-mcp-config",
-           "--no-session-persistence", "--output-format", "json"]
+def run_claude(model, effort, prompt, timeout, web):
+    cmd = ["claude", "-p", "--model", model, "--effort", effort, "--tools", "WebSearch,WebFetch" if web else "",
+           "--strict-mcp-config", "--no-session-persistence", "--output-format", "json"]
+    if web:
+        cmd += ["--allowedTools", "WebSearch,WebFetch"]
     done = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout,
                           env=without("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"))
     try:
@@ -103,10 +110,12 @@ def run_claude(model, effort, prompt, timeout):
     return reply["result"], None
 
 
-def run_codex(model, effort, prompt, timeout, out):
+def run_codex(model, effort, prompt, timeout, out, web):
     out.unlink(missing_ok=True)
     cmd = ["codex", "exec", "-m", model, "-c", f"model_reasoning_effort={effort}", "-s", "read-only",
            "--skip-git-repo-check", "-o", str(out), "-"]
+    if web:
+        cmd.insert(1, "--search")
     done = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout,
                           env=without("OPENAI_API_KEY", "CODEX_API_KEY"))
     answer = out.read_text().strip() if out.exists() else ""
@@ -115,9 +124,10 @@ def run_codex(model, effort, prompt, timeout, out):
     return answer, None
 
 
-def run_agy(model, effort, prompt, timeout):
+def run_agy(model, effort, prompt, timeout, web):
     """Antigravity CLI on the owner's Google AI Pro or Ultra login; the prompt goes in on stdin.
-    -p takes a value, so it gets an empty one, and agy runs in an empty folder so its tools see nothing."""
+    -p takes a value, so it gets an empty one; the empty folder leaves file tools nothing to see, but web search works."""
+    # shortcut: agy has no search-off flag, rely on the preamble for --no-web until it adds one.
     cmd = ["agy", "-p=", "--model", model, "--effort", effort, "--mode", "plan",
            "--input-format", "stream-json", "--output-format", "stream-json",
            "--print-timeout", f"{timeout // 60}m"]
@@ -153,12 +163,14 @@ def sse(request, deadline):
                 yield json.loads(line[6:])
 
 
-def run_gemini_api(model, effort, prompt, timeout):
+def run_gemini_api(model, effort, prompt, timeout, web):
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         raise RuntimeError("GEMINI_API_KEY is not set")
     body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
             "generationConfig": {"thinkingConfig": {"thinkingLevel": effort}}}
+    if web:
+        body["tools"] = [{"google_search": {}}]
     request = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse",
         data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"})
@@ -175,12 +187,14 @@ def run_gemini_api(model, effort, prompt, timeout):
     return answer, None
 
 
-def run_openrouter(model, effort, prompt, timeout):
+def run_openrouter(model, effort, prompt, timeout, web):
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
         raise RuntimeError("OPENROUTER_API_KEY is not set")
     body = {"model": model, "messages": [{"role": "user", "content": prompt}],
             "reasoning": {"effort": effort}, "stream": True, "usage": {"include": True}}
+    if web:
+        body["plugins"] = [{"id": "web"}]
     request = urllib.request.Request(
         "https://openrouter.ai/api/v1/chat/completions", data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
@@ -270,6 +284,7 @@ def routes(seat, args):
 
 def ask(seat, args, prompt, results):
     effort, timeout = MEMBERS[seat]["effort"], args.timeout * 60
+    web = not args.no_web
     google_effort = "high" if effort in ("xhigh", "max") else effort  # Google's top thinking level
     out = args.out / f"{seat}.md"
     failures = []
@@ -277,15 +292,15 @@ def ask(seat, args, prompt, results):
         start = time.time()
         try:
             if route == "Claude Code":
-                answer, cost = run_claude(model, effort, prompt, timeout)
+                answer, cost = run_claude(model, effort, prompt, timeout, web)
             elif route == "Codex":
-                answer, cost = run_codex(model, effort, prompt, timeout, out)
+                answer, cost = run_codex(model, effort, prompt, timeout, out, web)
             elif route == "Antigravity CLI":
-                answer, cost = run_agy(model, google_effort, prompt, timeout)
+                answer, cost = run_agy(model, google_effort, prompt, timeout, web)
             elif route == "Gemini API":
-                answer, cost = run_gemini_api(model, google_effort, prompt, timeout)
+                answer, cost = run_gemini_api(model, google_effort, prompt, timeout, web)
             else:
-                answer, cost = run_openrouter(model, effort, prompt, timeout)
+                answer, cost = run_openrouter(model, effort, prompt, timeout, web)
         except Exception as error:  # one seat failing never stops the others
             failures.append(f"{route}: {str(error).strip() or type(error).__name__}")
             continue
@@ -311,6 +326,8 @@ def main():
     parser.add_argument("--seat", action="append", choices=list(MEMBERS),
                         help="ask only this seat, such as one that failed (default: all three)")
     parser.add_argument("--timeout", type=int, default=45, help="minutes per seat (default 45)")
+    parser.add_argument("--no-web", action="store_true",
+                        help="turn off web search, such as when the briefing or files hold client-confidential details")
     parser.add_argument("--dry-run", action="store_true", help="show files, size and routes without asking anyone")
     args = parser.parse_args()
     if args.check:
@@ -322,9 +339,9 @@ def main():
     seats = args.seat or list(MEMBERS)
 
     files, skipped = bundle(args.file)
-    prompt = build_prompt(args.question.read_text(), files)
+    prompt = build_prompt(args.question.read_text(), files, not args.no_web)
     tokens = len(prompt) // 4
-    plan = {"files": [str(p) for p, _ in files], "skipped": skipped, "tokens_estimate": tokens,
+    plan = {"files": [str(p) for p, _ in files], "skipped": skipped, "tokens_estimate": tokens, "web": not args.no_web,
             "seats": {seat: [f"{name} via {route}" for name, _, route in routes(seat, args)] for seat in seats}}
     if args.dry_run or tokens > MAX_TOKENS:
         if tokens > MAX_TOKENS:

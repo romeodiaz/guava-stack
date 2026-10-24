@@ -29,8 +29,13 @@ struct Pick: Hashable {
     let id: String
     let plan: String  // the slots.json row it came from, which router-check.py tests it on
     let effort: String
-    // Antigravity CLI's model IDs name their effort, and Pi's thinking levels differ, so those keep their own.
-    var efforts: [String] { tool == "Claude Code" || tool == "Codex" ? allEfforts : [effort] }
+    // Antigravity CLI's models come at Low, Medium and High, each its own ID (`agy models`).
+    var efforts: [String] { tool == "Antigravity CLI" ? Array(allEfforts.prefix(3)) : allEfforts }
+
+    func id(_ effort: String) -> String {
+        guard tool == "Antigravity CLI", let dash = id.lastIndex(of: "-") else { return id }
+        return id[..<dash] + "-" + effort.lowercased()
+    }
 
     init(_ s: Slot, plan: String) {
         name = s.name; tool = tools[s.tool] ?? s.tool; id = s.id; self.plan = plan; effort = label(s.effort)
@@ -276,7 +281,7 @@ extension Agent {
     // Check the new model answers, with router-check.py's own command for its tool.
     static func test(_ pick: Pick, effort: String, slot: String) -> String? {
         let args = ["exec \"$@\"", "guava-bar", "python3", resource("router-check.py").path, "--plan", pick.plan,
-                    "--slot", slot, "--\(slot)", "\(pick.id):\(effort.lowercased())", "--timeout", "240"]
+                    "--slot", slot, "--\(slot)", "\(pick.id(effort)):\(effort.lowercased())", "--timeout", "240"]
         guard let (output, _, timedOut) = try? shell(args, timeout: 300) else { return "failed: couldn't run router-check.py" }
         if timedOut { return "failed: testing \(pick.name) timed out" }
         guard let start = output.firstIndex(of: "{"), let end = output.lastIndex(of: "}"),

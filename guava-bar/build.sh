@@ -104,15 +104,15 @@ echo 'PASS: CLI symlink resolves bundled slots.json'
 mkdir "$fixture/google"
 printf 'line-cook\n\n- %s (High) via Antigravity CLI, falling back to %s (High) when its usage runs out\n' "$(name google.line-cook.name)" "$flash" > "$fixture/google/context.md"
 picks "$fixture/google" none line-cook > "$fixture/google-picks"
-grep -Fx "$flash (High) via Antigravity CLI" "$fixture/google-picks" > /dev/null
-only "$fixture/google-picks" '(High) via Antigravity CLI' 'Google picks offer another tool or effort'
-echo 'PASS: a Google AI slot offers Antigravity picks at their own effort, Gemini on its own included'
+grep -Fx "$flash (Low) via Antigravity CLI" "$fixture/google-picks" > /dev/null
+only "$fixture/google-picks" '(\(Low\|Medium\|High\)) via Antigravity CLI' 'Google picks offer another tool, or an effort Antigravity lacks'
+echo 'PASS: a Google AI slot offers Antigravity picks at Low, Medium and High, Gemini on its own included'
 mkdir "$fixture/openrouter"
 printf 'line-cook\n\n- %s (High) via Pi\n' "$deepseek" > "$fixture/openrouter/context.md"
 picks "$fixture/openrouter" none line-cook > "$fixture/openrouter-picks"
-[ -s "$fixture/openrouter-picks" ]
-only "$fixture/openrouter-picks" '(High) via Pi$' 'OpenRouter picks offer another tool or effort'
-echo 'PASS: an OpenRouter slot offers only Pi picks'
+grep -Fx "$deepseek (Max) via Pi" "$fixture/openrouter-picks" > /dev/null
+only "$fixture/openrouter-picks" 'via Pi$' 'OpenRouter picks offer another tool'
+echo 'PASS: an OpenRouter slot offers only Pi picks, at every effort'
 picks "$fixture" all line-cook > "$fixture/all-picks"
 grep -Fx "$flash (High) via Antigravity CLI" "$fixture/all-picks" > /dev/null
 grep -Fx "$deepseek (High) via Pi" "$fixture/all-picks" > /dev/null

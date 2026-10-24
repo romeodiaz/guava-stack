@@ -1,7 +1,7 @@
 {
   "name": "guava-hub",
-  "version": "1.27.0",
-  "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules, skills and memories, so Claude, ChatGPT and any bot you add, such as Grok Bot or Muse, share them. Part of the Guava Stack.",
+  "version": "1.28.0",
+  "description": "For business owners and solo operators. Sets up guava-hub, one shared home in Notion for your context, rules, skills and memories, so the apps on your AI plan (Claude, ChatGPT, Antigravity on Google AI, or OpenCode on OpenRouter) and any bot you add, such as Grok Bot or Muse, share them. Part of the Guava Stack.",
   "author": {
     "name": "Romeo Diaz",
     "url": "https://workwithguava.com"

@@ -17,10 +17,10 @@ Each run costs two head-chef runs, so use it only where a designed look changes 
 
 ## Needs
 
-- The head-chef's tool on a computer: Claude Code or Codex, including the Claude app's Code tab and the ChatGPT app's Codex tab set to Local, which run the same tools. The design skills run programs, so a regular chat or a cloud session can't run them.
-- Both skills installed for that tool, straight from their GitHub repos: copy impeccable's `.claude/skills/impeccable` folder to `~/.claude/skills/impeccable` (Claude Code), or its `.agents/skills/impeccable` folder, made for Codex, to `~/.agents/skills/impeccable` (Codex), and the `skills/taste-skill` folder from taste-skill to `~/.claude/skills/design-taste-frontend` or `~/.codex/skills/design-taste-frontend`. Both are third-party and their skills.sh audits show warnings (low to medium), so install them only after showing the owner what the audits found and getting a yes, as founder-mode says. Don't turn on impeccable's hooks.
+- A command-line tool on a computer, the one setup connected for the owner's plan: Claude Code or Codex (including the Claude app's Code tab and the ChatGPT app's Codex tab set to Local, which run the same tools), Antigravity CLI or OpenCode, whose desktop apps run on the computer too. With the router, use the head-chef's tool. The design skills run programs, so a regular chat or a cloud session can't run them.
+- Both skills installed for that tool, straight from their GitHub repos: copy impeccable's `.claude/skills/impeccable` folder to `~/.claude/skills/impeccable` (Claude Code), or its `.agents/skills/impeccable` folder, made for Codex, to `~/.agents/skills/impeccable` (Codex, Antigravity CLI and OpenCode, which all read that folder), and the `skills/taste-skill` folder from taste-skill to `~/.claude/skills/design-taste-frontend`, `~/.codex/skills/design-taste-frontend` or `~/.agents/skills/design-taste-frontend` the same way. Both are third-party and their skills.sh audits show warnings (low to medium), so install them only after showing the owner what the audits found and getting a yes, as founder-mode says. Don't turn on impeccable's hooks.
 - Node (taste-skill's scripts) and Chrome or Brave (both skills look at the page in a headless browser).
-- Anywhere else (a regular Claude or ChatGPT chat, Grok Bot, Muse), hand the whole job to the head-chef's tool, as guava-router says, and pass the brief from step 1. With nothing to hand it to, say so in one line and build the page the usual way.
+- Anywhere else (a regular Claude or ChatGPT chat, Grok Bot, Muse), ask the owner to say "cook-off" in the tool on their computer instead (their adapter file's **Connect your computer** names it), or on a bot with the router, hand the whole job to the head-chef's tool, as guava-router says, and pass the brief from step 1. With nothing to hand it to, say so in one line and build the page the usual way.
 
 ## 1. Write one brief
 
@@ -34,7 +34,7 @@ Both runs get the same brief, word for word, so the only difference is the skill
 
 ## 2. Run both at once
 
-Re-read the head-chef's model line first. Start two agents in the same step (subagents, or two background `claude -p` or `codex exec` runs), each on the head-chef's model and effort, each writing only to its own subfolder (`impeccable/` and `taste/`):
+Re-read the head-chef's model line first. Start two agents in the same step (subagents, or two background `claude -p`, `codex exec`, `agy -p` or `opencode run` runs), each on the head-chef's model and effort (without the router, this session's model), each writing only to its own subfolder (`impeccable/` and `taste/`):
 
 - **A:** "Use the impeccable skill for new work. Build the page in brief.md." Its engine downloads on first run from the project's GitHub releases and checks its checksum. Don't use its `live` mode.
 - **B:** "Use the design-taste-frontend skill and follow its run. Build the page in brief.md." It may use the photos its library deals. Don't run its `assets.mjs` image search unless the owner asked for found imagery: it pulls search results from public archives into the run.

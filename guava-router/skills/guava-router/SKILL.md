@@ -9,7 +9,7 @@ description: Sets up a Model Router that sends thinking work to a head-chef mode
 
 These steps send each kind of work to the model that's best at it, through the Claude plan, ChatGPT plan or both that the owner already pays for, or their Google AI Pro or Ultra plan when they have neither, or an OpenRouter account, billed per use, when they have none of the three: thinking and reviewing to a **head-chef**, and heavy lifting to a **line-cook**. With both plans, the head-chef runs in Claude Code and the line-cook in Codex; with one, both run in that plan's tool. On Google AI alone, both run in Google's Antigravity CLI (`agy`), which serves Claude models on that plan, and each slot falls back to a Gemini model when its Claude usage runs out. On OpenRouter alone, both run in the Pi coding agent (`pi`), signed in to the owner's OpenRouter account.
 
-> Start with the **guava-hub** skill. It builds the hub first and sends you here from **Add a bot**. The router needs a computer to run Claude Code, Codex, Antigravity CLI or Pi, so it runs on a bot such as Grok Bot or Muse. In the Claude or ChatGPT app, tell the owner the router comes with adding a bot, and stop.
+> Start with the **guava-hub** skill. It builds the hub first and sends you here from **Add a bot**. The router needs a computer to run Claude Code, Codex, Antigravity CLI or Pi, so it runs on a bot such as Grok Bot or Muse. In the owner's own apps (the Claude or ChatGPT app, Claude Code or Codex on their computer, Antigravity or OpenCode), tell the owner the router comes with adding a bot, and stop.
 
 ## 1. The models
 Pick the row for the plans the owner pays for (hub setup asks; otherwise ask). Google AI Pro or Ultra counts only when the owner has neither a Claude nor a ChatGPT plan, and OpenRouter only when they have none of the three:
@@ -147,8 +147,8 @@ Use this when the owner says **"update guava-router"**, or when the guava-hub sk
 Only for the Guava plugins the owner has (for "update guava-router", just guava-router):
 - **Claude Code:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
-- **Grok Bot:** `npx skills update -g -y`.
-- **Muse, and the Claude and ChatGPT apps:** no skill files, so nothing to download.
+- **Grok Bot, Antigravity and OpenCode:** `npx skills update -g -y`.
+- **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. **Check for newer models:** follow **Change your setup** in the guava-hub skill with "check for newer models".
 3. **Check the routing still runs:** each tool the owner's plans need is installed and signed in on the bot's computer (step 2 of setup, checking first).
@@ -166,8 +166,8 @@ Use this when the owner says **"uninstall guava-router"**, or when the guava-hub
 Only for the Guava plugins the owner has (for "uninstall guava-router", just guava-router; for "uninstall guava-stack", every one installed):
 - **Claude Code:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
-- **Grok Bot:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
-- **Muse, and the Claude and ChatGPT apps:** no skill files, so nothing to delete.
+- **Grok Bot, Antigravity and OpenCode:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
+- **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. **Put the computer back**, following **Putting files back** above:
    - `~/.claude/settings.json`: `model`, if router setup set it. Say which model new sessions will use instead. The hub's read-only tools under `permissions.allow` stay while the hub does: guava-hub's Uninstall step removes them.

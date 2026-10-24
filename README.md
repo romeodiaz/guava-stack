@@ -77,7 +77,7 @@ Your Notion guava-hub has five parts:
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-hub/skills/workflow-review/SKILL.md"><img src="assets/workflow-review.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a></td>
-<td><a href="guava-hub/skills/workflow-review/SKILL.md"><ins>workflow-review</ins></a><br>Say "review my workflows". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a short version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
+<td><a href="guava-hub/skills/workflow-review/SKILL.md"><ins>workflow-review</ins></a><br>Say "review my workflows". Anytime, from day 1: it asks a few quick questions, then ranks which of your workflows are worth automating, places you on the four levels of AI adoption from Notion's <a href="https://notion.notion.site/official-the-ai-transformation-model">AI Transformation Model</a> and lists the steps to your next level, as a polished report that stays on your computer. It gets sharper the longer you use your AI. It's a short version of Guava's $4,000 <a href="https://workwithguava.com/sample-ai-assessment">AI Assessment</a>: no email or sign-up.</td>
 </tr>
 <tr>
 <td align="center" width="200"><a href="https://github.com/blader/humanizer"><img src="assets/humanizer-writing.png" width="80" alt="Pixel-art person speaking"></a></td>

@@ -273,8 +273,7 @@ def ask(seat, args, prompt, results):
                          "seconds": round(time.time() - start), "cost_usd": cost,
                          "answer": str(out), "failed_first": failures}
         return
-    results[seat] = {"ok": False, "failures": failures or [
-        "no route: sign in to OpenRouter in Pi, or set OPENROUTER_API_KEY"]}
+    results[seat] = {"ok": False, "failures": failures}
 
 
 def main():

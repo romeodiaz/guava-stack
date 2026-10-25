@@ -19,7 +19,6 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((ROOT / "guava-router" / "models.yaml").read_text())
 HEAD, LINE = CONFIG["head_chef"], CONFIG["line_cook"]
 HEAD_NEXT, LINE_NEXT = HEAD["next_best"], LINE["next_best"]
-GOOGLE_HEAD, GOOGLE_LINE = CONFIG["google_only"]["head_chef"], CONFIG["google_only"]["line_cook"]
 OR_HEAD, OR_LINE = CONFIG["openrouter_only"]["head_chef"], CONFIG["openrouter_only"]["line_cook"]
 ROLES = CONFIG["roles"]
 COUNCIL = CONFIG["oracle_council"]
@@ -48,15 +47,6 @@ def tool(slot):
 def pick(slot, plan):
     """The slot's model for an owner who pays for only one plan."""
     return slot if company(slot) == plan else slot["next_best"]
-
-
-def google(slot):
-    """A google_only slot as shown in tables and settings: its Claude model, then its fallback."""
-    return f"{detailed(slot, 'Antigravity CLI')}, falling back to {slot['fallback']['name']} ({effort(slot['fallback'])}) when its usage runs out"
-
-
-def agy(slot):
-    return f'agy -p "<task>" --model {slot["id"]} --effort {slot["effort"]} --mode accept-edits < /dev/null'
 
 
 def pi(slot):
@@ -107,11 +97,6 @@ def commands(args):
         row("line-cook", LINE),
         row(f"head-chef, {company(HEAD_NEXT)} only", HEAD_NEXT),
         row(f"line-cook, {company(LINE_NEXT)} only", LINE_NEXT),
-        *[f"| {label} | {s['name']}, effort {s['effort']} (`{s['id']}`) | Antigravity CLI | `{agy(s)}` |"
-          for label, s in (("head-chef, Google AI only", GOOGLE_HEAD),
-                           ("head-chef fallback, Google AI only", GOOGLE_HEAD["fallback"]),
-                           ("line-cook, Google AI only", GOOGLE_LINE),
-                           ("line-cook fallback, Google AI only", GOOGLE_LINE["fallback"]))],
         *[f"| {label} | {s['name']}, effort {s['effort']} (`{s['id']}`) | Pi | `{pi(s)}` |"
           for label, s in (("head-chef, OpenRouter only", OR_HEAD), ("line-cook, OpenRouter only", OR_LINE))],
     ]) + "\n"
@@ -124,7 +109,6 @@ def plans(args):
         "|---|---|---|",
         row("Claude and ChatGPT (best)", HEAD, LINE),
         *[row(f"{plan} only", pick(HEAD, plan), pick(LINE, plan)) for plan in ("Claude", "ChatGPT")],
-        f"| Google AI Pro or Ultra only | {google(GOOGLE_HEAD)} | {google(GOOGLE_LINE)} |",
         f"| OpenRouter only, billed per use | {detailed(OR_HEAD, 'Pi')} | {detailed(OR_LINE, 'Pi')} |",
     ]) + "\n"
 
@@ -132,9 +116,7 @@ def plans(args):
 def one_plan(args):
     return (f"{LINE_NEXT['name']} as line-cook on {company(LINE_NEXT)} only, "
             f"and {HEAD_NEXT['name']} as head-chef on {company(HEAD_NEXT)} only. "
-            f"On Google AI Pro or Ultra only, {GOOGLE_HEAD['name']} and {GOOGLE_LINE['name']} run through "
-            f"Google's Antigravity CLI, and fall back to {GOOGLE_HEAD['fallback']['name']} and "
-            f"{GOOGLE_LINE['fallback']['name']} when their usage runs out. With none of these plans, "
+            f"With neither plan, "
             f"{OR_HEAD['name']} and {OR_LINE['name']} run on OpenRouter, billed per use, through the Pi coding agent")
 
 
@@ -166,20 +148,18 @@ def oracle_council(args):
         "|---|---|---|",
         f"| ChatGPT | {gpt['name']} via Codex (`{gpt['id']}`) | OpenRouter `{gpt['openrouter']}`, with no ChatGPT plan or when Codex fails |",
         f"| Claude | Max: {claude['max']['name']} via Claude Code (`{claude['max']['id']}`)<br>Pro: {claude['pro']['name']} via Claude Code (`{claude['pro']['id']}`) | OpenRouter {claude['openrouter']['name']} (`{claude['openrouter']['id']}`), only with no Claude plan |",
-        f"| Gemini | Google AI Pro or Ultra: {gemini['name']} via Antigravity CLI (`{gemini['agy']}`) | Gemini API `{gemini['api']}`, or OpenRouter `{gemini['openrouter']}` |",
-    ]) + f"\n\nEvery seat runs at {gpt['effort']} effort (high on Google's own routes, its top level).\n"
+        f"| Gemini | — | {gemini['name']} on OpenRouter only (`{gemini['openrouter']}`) |",
+    ]) + f"\n\nEvery seat runs at {gpt['effort']} effort.\n"
 
 
 def slots():
     """Each plan row's head-chef and line-cook with the tool that runs it, for router-check.py."""
-    slot = lambda s, t: {"name": s["name"], "id": s["id"], "effort": s["effort"], "tool": t,
-                         **({"fallback": {k: s["fallback"][k] for k in ("name", "id", "effort")}} if "fallback" in s else {})}
+    slot = lambda s, t: {"name": s["name"], "id": s["id"], "effort": s["effort"], "tool": t}
     cli = lambda s: "claude" if tool(s) == "Claude Code" else "codex"
     one = lambda plan: {"head-chef": slot(pick(HEAD, plan), cli(pick(HEAD, plan))),
                         "line-cook": slot(pick(LINE, plan), cli(pick(LINE, plan)))}
     return {"claude-and-chatgpt": {"head-chef": slot(HEAD, cli(HEAD)), "line-cook": slot(LINE, cli(LINE))},
             "claude": one("Claude"), "chatgpt": one("ChatGPT"),
-            "google": {"head-chef": slot(GOOGLE_HEAD, "agy"), "line-cook": slot(GOOGLE_LINE, "agy")},
             "openrouter": {"head-chef": slot(OR_HEAD, "pi"), "line-cook": slot(OR_LINE, "pi")}}
 
 

@@ -13,7 +13,7 @@ Your AI assistant works like humans do: it handles the safe work on its own, che
 Only for the Guava plugins the owner has (for "update founder-mode", just founder-mode):
 - **Claude Code:** `claude plugin marketplace update guava`, then `claude plugin update <plugin>@guava` for each plugin. Updates apply in a new session.
 - **Codex:** `codex plugin marketplace upgrade guava`, then `codex plugin add <plugin>@guava` for each plugin. Updates apply in a new chat.
-- **Grok Bot, Antigravity and Pi with OpenCode:** `npx skills update -g -y`.
+- **Grok Bot and Pi with OpenCode:** `npx skills update -g -y`.
 - **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to download.
 <!-- /update-steps -->
 2. Ask before saving anything. Find the "rules" page in the owner's guava-hub in Notion. If you can't find it, ask where it is, or set up the hub first with the guava-hub skill.
@@ -29,7 +29,7 @@ Use this when the owner says "uninstall founder-mode", or when the guava-hub ski
 Only for the Guava plugins the owner has (for "uninstall founder-mode", just founder-mode; for "uninstall guava-stack", every one installed):
 - **Claude Code:** `claude plugin uninstall <plugin>@guava` for each plugin. Once no Guava plugin is left, `claude plugin marketplace remove guava`, then delete `~/.claude/plugins/cache/guava` if it's still there (if your safety check won't let you delete a folder in these steps, move it into `~/guava-uninstalled/` instead and list it in the wrap-up). It applies in a new session.
 - **Codex:** `codex plugin remove <plugin>@guava` for each plugin. Once no Guava plugin is left, `codex plugin marketplace remove guava`, then delete `~/.codex/plugins/cache/guava` if it's still there, and each `~/.codex/.tmp/marketplaces/.staging/marketplace-upgrade-*` folder holding a copy of guava-stack, which marketplace upgrades leave behind. It applies in a new chat.
-- **Grok Bot, Antigravity and Pi with OpenCode:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
+- **Grok Bot and Pi with OpenCode:** `npx skills remove -g -s <plugin> -y` for each skill, and check with `npx skills list -g`.
 - **Muse, and the Claude and ChatGPT apps' chat:** no skill files, so nothing to delete.
 <!-- /uninstall-steps -->
 2. Take the rules off (skip this when uninstalling the whole stack, since the hub then stays as it is and nothing loads it). On the rules page, delete the "16 Commandments on How to work with me" section and the founder-mode line from the list of rule sets at the top. In guava-stack settings, delete the founder-mode line under **Rules**, and the Rules heading (with its image in Notion) once no rules skill is left under it. Leave the owner's other rules as they are. Log the hub edit on this work's task in the hub's tasks database.

@@ -2,18 +2,18 @@
 """Ask the council: one hard question to three models at once, each at max effort.
 
     python3 oracle-council.py --check
-    python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no --google yes|no \
+    python3 oracle-council.py --question question.md --out DIR --claude max|pro|none --chatgpt yes|no \
         [--file PATH_OR_GLOB ...] [--seat chatgpt|claude|gemini ...] [--no-web] [--dry-run] [--timeout MINUTES]
 
---check shows which of Claude Code, Codex and Antigravity CLI are installed and signed in
+--check shows which of Claude Code and Codex are installed and signed in
 on a plan, whether Pi is signed in to OpenRouter, and which API keys are set, so the owner
 can be walked through what's missing.
 
 Seats and models come from members.json next to this script (written by
 scripts/sync-models.py from guava-router/models.yaml). Each answer is saved as
 DIR/<seat>.md, and DIR/council.json records which model and route served each seat.
-Standard library only. Seats that run on an API read GEMINI_API_KEY, or for OpenRouter the key
-Pi saved when the owner signed in to OpenRouter in the browser, else OPENROUTER_API_KEY.
+Standard library only. OpenRouter seats read the key Pi saved when the owner signed in
+to OpenRouter in the browser, else OPENROUTER_API_KEY. Gemini runs on OpenRouter only, billed per use.
 """
 import argparse
 import fnmatch
@@ -23,7 +23,6 @@ import json
 import os
 import subprocess
 import sys
-import tempfile
 import threading
 import time
 import urllib.error
@@ -127,30 +126,6 @@ def run_codex(model, effort, prompt, timeout, out, web):
     return answer, None
 
 
-def run_agy(model, effort, prompt, timeout, web):
-    """Antigravity CLI on the owner's Google AI Pro or Ultra login; the prompt goes in on stdin.
-    -p takes a value, so it gets an empty one; the empty folder leaves file tools nothing to see, but web search works."""
-    # shortcut: agy has no search-off flag, rely on the preamble for --no-web until it adds one.
-    cmd = ["agy", "-p=", "--model", model, "--effort", effort, "--mode", "plan",
-           "--input-format", "stream-json", "--output-format", "stream-json",
-           "--print-timeout", f"{timeout // 60}m"]
-    message = json.dumps({"event": "user", "message": {"content": prompt}}) + "\n"
-    with tempfile.TemporaryDirectory() as empty:
-        done = subprocess.run(cmd, input=message, capture_output=True, text=True, timeout=timeout + 60,
-                              cwd=empty, env=without("GEMINI_API_KEY", "GOOGLE_API_KEY"))
-    result = {}
-    for line in done.stdout.splitlines():
-        try:
-            event = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if isinstance(event, dict) and event.get("event") == "result":
-            result = event.get("result") or {}
-    if done.returncode or result.get("status") != "SUCCESS" or not result.get("response"):
-        raise RuntimeError(str(result.get("error") or done.stderr.strip()[-500:] or f"exit {done.returncode}"))
-    return result["response"], None
-
-
 def sse(request, deadline):
     """Yield each JSON event of a server-sent-events response, raising on HTTP errors and the deadline."""
     try:
@@ -164,30 +139,6 @@ def sse(request, deadline):
             line = raw.decode().strip()
             if line.startswith("data: ") and line != "data: [DONE]":
                 yield json.loads(line[6:])
-
-
-def run_gemini_api(model, effort, prompt, timeout, web):
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        raise RuntimeError("GEMINI_API_KEY is not set")
-    body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": {"thinkingConfig": {"thinkingLevel": effort}}}
-    if web:
-        body["tools"] = [{"google_search": {}}]
-    request = urllib.request.Request(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse",
-        data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"})
-    text = []
-    for chunk in sse(request, time.time() + timeout):
-        if "error" in chunk:
-            raise RuntimeError(chunk["error"].get("message", str(chunk["error"])))
-        for candidate in chunk.get("candidates", []):
-            text += [part.get("text", "") for part in candidate.get("content", {}).get("parts", [])
-                     if not part.get("thought")]
-    answer = "".join(text).strip()
-    if not answer:
-        raise RuntimeError("empty answer")
-    return answer, None
 
 
 @functools.cache
@@ -266,16 +217,6 @@ def check():
         "fix": None if on_plan else
             ("run `codex login` and choose Sign in with ChatGPT (`codex login --device-auth` without a browser)" if version
              else "install with `npm i -g @openai/codex`, then run `codex login`")}
-    version = probe(["agy", "--version"], [])
-    models = probe(["agy", "models"], ["GEMINI_API_KEY", "GOOGLE_API_KEY"]) if version else None
-    has_argon = bool(models) and models[0] == 0 and MEMBERS["gemini"]["agy"] in models[1]
-    report["antigravity_cli"] = {
-        "installed": version[1].split()[-1] if version else False,
-        "gemini_argon_on_plan": has_argon, "models": models[1][-300:] if models and not has_argon else None,
-        "fix": None if has_argon else
-            ("run `agy` and sign in with the Google account that has Google AI Pro or Ultra; "
-             "if it's signed in and Argon still isn't listed, the plan doesn't include it" if version
-             else "install with `curl -fsSL https://antigravity.google/cli/install.sh | bash`, then run `agy` to sign in")}
     version = probe(["pi", "--version"], [])
     status = probe(["pi", "auth", "check", "--provider", "openrouter", "--json"], [], timeout=60) if version else None
     try:
@@ -290,12 +231,11 @@ def check():
         "fix": None if status.get("status") == "ready" else
             ("run `pi`, type `/login openrouter` and choose Sign in with OpenRouter" if version
              else "install Pi with `curl -fsSL https://pi.dev/install.sh | sh`, then run `pi` and type `/login openrouter`")}
-    report["keys_set"] = {k: bool(os.environ.get(k)) for k in ("GEMINI_API_KEY", "OPENROUTER_API_KEY")}
+    report["keys_set"] = {k: bool(os.environ.get(k)) for k in ("OPENROUTER_API_KEY",)}
     report["flags"] = {
         "--claude": (claude.get("subscriptionType") if claude.get("subscriptionType") in ("max", "pro")
                      else "max or pro (ask the owner which plan)") if report["claude_code"]["signed_in"] else "none",
-        "--chatgpt": "yes" if on_plan else "no",
-        "--google": "yes" if has_argon else "no"}
+        "--chatgpt": "yes" if on_plan else "no"}
     return report
 
 
@@ -308,15 +248,12 @@ def routes(seat, args):
     if seat == "claude":
         pick = member[args.claude] if args.claude != "none" else member["openrouter"]
         return [(pick["name"], pick["id"], "OpenRouter" if args.claude == "none" else "Claude Code")]
-    return ([(member["name"], member["agy"], "Antigravity CLI")] if args.google == "yes" else []) + \
-        ([(member["name"], member["api"], "Gemini API")] if os.environ.get("GEMINI_API_KEY") else []) + \
-        ([(member["name"], member["openrouter"], "OpenRouter")] if openrouter_key() else [])
+    return [(member["name"], member["openrouter"], "OpenRouter")]
 
 
 def ask(seat, args, prompt, results):
     effort, timeout = MEMBERS[seat]["effort"], args.timeout * 60
     web = not args.no_web
-    google_effort = "high" if effort in ("xhigh", "max") else effort  # Google's top thinking level
     out = args.out / f"{seat}.md"
     failures = []
     for name, model, route in routes(seat, args):
@@ -326,10 +263,6 @@ def ask(seat, args, prompt, results):
                 answer, cost = run_claude(model, effort, prompt, timeout, web)
             elif route == "Codex":
                 answer, cost = run_codex(model, effort, prompt, timeout, out, web)
-            elif route == "Antigravity CLI":
-                answer, cost = run_agy(model, google_effort, prompt, timeout, web)
-            elif route == "Gemini API":
-                answer, cost = run_gemini_api(model, google_effort, prompt, timeout, web)
             else:
                 answer, cost = run_openrouter(model, effort, prompt, timeout, web)
         except Exception as error:  # one seat failing never stops the others
@@ -340,8 +273,7 @@ def ask(seat, args, prompt, results):
                          "seconds": round(time.time() - start), "cost_usd": cost,
                          "answer": str(out), "failed_first": failures}
         return
-    results[seat] = {"ok": False, "failures": failures or [
-        "no route: sign in to Antigravity CLI on a Google plan or to OpenRouter in Pi, or set GEMINI_API_KEY or OPENROUTER_API_KEY"]}
+    results[seat] = {"ok": False, "failures": failures}
 
 
 def main():
@@ -351,8 +283,6 @@ def main():
     parser.add_argument("--out", type=Path, help="folder for the answers")
     parser.add_argument("--claude", choices=["max", "pro", "none"], help="the owner's Claude plan")
     parser.add_argument("--chatgpt", choices=["yes", "no"], help="whether Codex is signed in on the owner's ChatGPT plan")
-    parser.add_argument("--google", choices=["yes", "no"],
-                        help="whether Antigravity CLI is signed in on the owner's Google AI Pro or Ultra plan")
     parser.add_argument("--file", action="append", default=[], help="file, folder or glob to include; !glob excludes")
     parser.add_argument("--seat", action="append", choices=list(MEMBERS),
                         help="ask only this seat, such as one that failed (default: all three)")
@@ -364,7 +294,7 @@ def main():
     if args.check:
         print(json.dumps(check(), indent=2))
         return
-    missing = [f"--{k}" for k in ("question", "out", "claude", "chatgpt", "google") if getattr(args, k) is None]
+    missing = [f"--{k}" for k in ("question", "out", "claude", "chatgpt") if getattr(args, k) is None]
     if missing:
         parser.error(f"needs {', '.join(missing)} (run --check first to see what to pass)")
     seats = args.seat or list(MEMBERS)

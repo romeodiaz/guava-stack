@@ -2,15 +2,14 @@
 """Check the Model Router: is each tool installed, signed in and able to read the hub, and which model answers each slot.
 
     python3 router-check.py
-    python3 router-check.py --plan claude-and-chatgpt|claude|chatgpt|google|openrouter \
+    python3 router-check.py --plan claude-and-chatgpt|claude|chatgpt|openrouter \
         [--slot head-chef|line-cook] [--head-chef ID[:EFFORT]] [--line-cook ID[:EFFORT]] [--timeout SECONDS]
 
-With no --plan, it only reads: which of Claude Code, Codex, Antigravity CLI and Pi are installed
+With no --plan, it only reads: which of Claude Code, Codex and Pi are installed
 (and any second copy on PATH), signed in, connected to Notion and allowed to read the hub, and which
 plans' rows can run here. With --plan, it also sends each slot of that row a one-word prompt with the
 slot's own command and reports the model that answered, as the tool reports it. Claude Code and Pi
-report the model that served the answer; Codex reports only the model it asked for; Antigravity CLI
-may report none. A slot that answers as a different model fails the check.
+report the model that served the answer; Codex reports only the model it asked for. A slot that answers as a different model fails the check.
 
 Slots come from slots.json next to this script (written by scripts/sync-models.py from
 guava-router/models.yaml). --head-chef and --line-cook test an own pick instead. Standard library only.
@@ -28,7 +27,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SLOTS = json.loads((HERE / "slots.json").read_text())
-TOOLS = {"claude": "Claude Code", "codex": "Codex", "agy": "Antigravity CLI", "pi": "Pi"}
+TOOLS = {"claude": "Claude Code", "codex": "Codex", "pi": "Pi"}
 HUB_TOOLS = ("notion-get-enabled-skills", "notion-fetch", "notion-search", "notion-download-skill")
 PROMPT = "This is a quick check that you're working. Reply with just the word OK."
 
@@ -75,16 +74,6 @@ def hub_approved():
     return [t for t in HUB_TOOLS if any(str(rule).endswith(f"__{t}") for rule in allow)]
 
 
-def plan_ids(tool):
-    """The model IDs a tool must run, across every plan row that uses it."""
-    ids = set()
-    for row in SLOTS.values():
-        for slot in row.values():
-            if slot["tool"] == tool:
-                ids |= {slot["id"]} | ({slot["fallback"]["id"]} if "fallback" in slot else set())
-    return sorted(ids)
-
-
 def status(tool, hub):
     """What setup step 2 (and, with hub, steps 3 and 4) left in place for one tool, with a fix for each gap."""
     version = probe([tool, "--version"])
@@ -109,13 +98,6 @@ def status(tool, hub):
         login = probe(["codex", "login", "status"])
         report["signed_in"] = bool(login) and login[0] == 0
         report["status"] = login[1].splitlines()[-1][-200:] if login and login[1] else None
-    elif tool == "agy":
-        models = probe(["agy", "models"], timeout=90)
-        listed = models[1] if models and models[0] == 0 else ""
-        report["signed_in"] = bool(listed)
-        if missing := [m for m in plan_ids("agy") if listed and m not in listed]:
-            report["models_missing"] = missing
-            report["fix"] = "`agy models` doesn't list these, so the Google plan may not include them; tell the owner"
     else:
         auth = probe(["pi", "auth", "check", "--provider", "openrouter", "--json"])
         try:
@@ -182,26 +164,6 @@ def run(tool, model, effort, timeout):
             raise RuntimeError((done.stderr or done.stdout).strip()[-500:] or f"exit {done.returncode}")
         header = re.search(r"^model: (\S+)", done.stderr, re.M)
         return answer, header and header.group(1), "Codex's header, the model it asked for (Codex doesn't report the one that answered)"
-    if tool == "agy":
-        message = json.dumps({"event": "user", "message": {"content": PROMPT}}) + "\n"
-        with tempfile.TemporaryDirectory() as empty:
-            done = subprocess.run(["agy", "-p=", "--model", model, "--effort", effort, "--mode", "plan",
-                                   "--input-format", "stream-json", "--output-format", "stream-json",
-                                   "--print-timeout", f"{max(1, timeout // 60)}m"],
-                                  input=message, capture_output=True, text=True, timeout=timeout + 60, cwd=empty)
-        result, served = {}, None
-        for line in done.stdout.splitlines():
-            try:
-                event = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if isinstance(event, dict):
-                served = event.get("model") or (event.get("result") or {}).get("model") or served
-                if event.get("event") == "result":
-                    result = event.get("result") or {}
-        if done.returncode or result.get("status") != "SUCCESS" or not result.get("response"):
-            raise RuntimeError(str(result.get("error") or done.stderr.strip()[-500:] or f"exit {done.returncode}"))
-        return result["response"], served, "Antigravity CLI's stream"
     done = subprocess.run(["pi", "-p", "--mode", "json", "--no-session", "--provider", "openrouter", "--model", model,
                            "--thinking", effort, PROMPT],
                           capture_output=True, text=True, timeout=timeout, stdin=subprocess.DEVNULL)
@@ -220,7 +182,7 @@ def run(tool, model, effort, timeout):
 
 
 def test(name, slot, timeout):
-    """One slot's verdict, falling back as the router does when its Claude usage on Google AI runs out."""
+    """One slot's verdict using its named tool, model and effort."""
     start = time.time()
     try:
         answer, served, how = run(slot["tool"], slot["id"], slot["effort"], timeout)
@@ -228,12 +190,7 @@ def test(name, slot, timeout):
         text = str(error).strip() or type(error).__name__
         result = {"slot": name, "model": slot["name"], "id": slot["id"], "tool": TOOLS[slot["tool"]], "ok": False,
                   "error": text}
-        if slot["tool"] == "agy" and "fallback" in slot and re.search(r"quota|rate.?limit|usage|exhaust|429", text, re.I):
-            fallback = test(f"{name} fallback", {**slot["fallback"], "tool": "agy"}, timeout)
-            result.update(ok=fallback["ok"], fallback=fallback, verdict=(
-                "usage ran out, so the router runs the fallback, which works: not a failure" if fallback["ok"]
-                else "usage ran out, and the fallback didn't pass either"))
-        elif slot["tool"] == "pi" and re.search(r"\b402\b|credit", text, re.I):
+        if slot["tool"] == "pi" and re.search(r"\b402\b|credit", text, re.I):
             result["verdict"] = "OpenRouter credits or the key's limit ran out: top up, then check again (not a Repair)"
         else:
             result["verdict"] = "failed: follow Repair"
@@ -277,7 +234,7 @@ def main():
     for name, value in (("head-chef", args.head_chef), ("line-cook", args.line_cook)):
         if value:
             row[name] = own_pick(value, row[name])
-    hub = args.plan not in ("google", "openrouter")  # those two get the hub through the prompt (setup step 3)
+    hub = args.plan != "openrouter"  # Pi gets the hub through the prompt (setup step 3)
     tools = {TOOLS[t]: status(t, hub) for t in dict.fromkeys(s["tool"] for s in row.values())}
     slots = [test(name, slot, args.timeout) for name, slot in row.items() if args.slot in (None, name)]
     report = {"plan": args.plan, "tools": tools, "slots": slots}

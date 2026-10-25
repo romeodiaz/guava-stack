@@ -8,16 +8,14 @@ import Darwin
 let slots = ["head-chef", "line-cook"]
 let allEfforts = ["Low", "Medium", "High", "xhigh", "Max"]
 
-let tools = ["claude": "Claude Code", "codex": "Codex", "agy": "Antigravity CLI", "pi": "Pi"]
+let tools = ["claude": "Claude Code", "codex": "Codex", "pi": "Pi"]
 
 // One slot of one plan row in guava-router's slots.json, which sync-models.py writes from models.yaml.
 struct Slot: Decodable {
-    struct Fallback: Decodable { let name: String; let id: String; let effort: String }
     let name: String
     let id: String
     let effort: String
     let tool: String
-    let fallback: Fallback?
 }
 
 func label(_ effort: String) -> String { allEfforts.first { $0.lowercased() == effort.lowercased() } ?? effort }
@@ -25,31 +23,17 @@ func label(_ effort: String) -> String { allEfforts.first { $0.lowercased() == e
 struct Pick: Hashable {
     let name: String
     let tool: String
-    let fallback: String?
     let id: String
     let plan: String  // the slots.json row it came from, which router-check.py tests it on
     let effort: String
-    // Antigravity CLI's models come at Low, Medium and High, each its own ID (`agy models`).
-    var efforts: [String] { tool == "Antigravity CLI" ? Array(allEfforts.prefix(3)) : allEfforts }
-
-    func id(_ effort: String) -> String {
-        guard tool == "Antigravity CLI", let dash = id.lastIndex(of: "-") else { return id }
-        return id[..<dash] + "-" + effort.lowercased()
-    }
+    var efforts: [String] { allEfforts }
 
     init(_ s: Slot, plan: String) {
         name = s.name; tool = tools[s.tool] ?? s.tool; id = s.id; self.plan = plan; effort = label(s.effort)
-        fallback = s.fallback.map { "\($0.name) (\(label($0.effort)))" }
-    }
-
-    // On Google AI, the slot's Gemini fallback can also be picked on its own.
-    init(gemini s: Slot.Fallback) {
-        name = s.name; tool = "Antigravity CLI"; id = s.id; plan = "google"; effort = label(s.effort); fallback = nil
     }
 
     func line(_ effort: String) -> String {
-        let base = "\(name) (\(effort)) via \(tool)"
-        return fallback.map { "\(base), falling back to \($0) when its usage runs out" } ?? base
+        "\(name) (\(effort)) via \(tool)"
     }
 }
 
@@ -61,16 +45,13 @@ struct Pair: Hashable {
 }
 
 let plans = ["claude-and-chatgpt": "Claude + ChatGPT", "claude": "Claude", "chatgpt": "ChatGPT",
-             "google": "Google AI", "openrouter": "OpenRouter"]
+             "openrouter": "OpenRouter"]
 
 func catalog(_ rows: [String: [String: Slot]]) -> (picks: [String: [Pick]], pairs: [Pair]) {
     var picks: [String: [Pick]] = [:], pairs: [Pair] = []
-    for plan in ["claude-and-chatgpt", "claude", "chatgpt", "google", "openrouter"] {
+    for plan in ["claude-and-chatgpt", "claude", "chatgpt", "openrouter"] {
         guard let row = rows[plan], let head = row["head-chef"], let line = row["line-cook"] else { continue }
         pairs.append(Pair(name: plans[plan]!, head: Pick(head, plan: plan), line: Pick(line, plan: plan)))
-        if let h = head.fallback, let l = line.fallback {
-            pairs.append(Pair(name: "Google AI, Gemini", head: Pick(gemini: h), line: Pick(gemini: l)))
-        }
     }
     for pair in pairs {
         for (slot, pick) in [("head-chef", pair.head), ("line-cook", pair.line)]
@@ -226,7 +207,6 @@ enum Agent {
 
     static func find() -> String? {
         // Claude Code first, then Pi for owners on OpenRouter alone.
-        // shortcut: no Antigravity CLI, whose headless runs didn't load Notion's tools (not signed in to Antigravity), retry once that's solved
         for tool in ["claude", "codex", "pi"] {
             if let result = try? shell(["command -v \(tool)"], timeout: 10), result.1 == 0, !result.2 {
                 return tool
@@ -236,7 +216,7 @@ enum Agent {
     }
 
     static func installed() -> Set<String> {
-        let found = (try? shell(["for t in claude codex agy pi; do command -v $t > /dev/null && echo $t; done"], timeout: 15))?.0 ?? ""
+        let found = (try? shell(["for t in claude codex pi; do command -v $t > /dev/null && echo $t; done"], timeout: 15))?.0 ?? ""
         return Set(found.split(separator: "\n").compactMap { tools[String($0)] })
     }
 
@@ -296,11 +276,11 @@ extension Agent {
     static var tested: URL { Hub.directory.appendingPathComponent("guava-bar-tested.txt") }
 
     static func test(_ pick: Pick, effort: String, slot: String) -> String? {
-        let key = "\(pick.tool) \(pick.id(effort)):\(effort.lowercased())"
+        let key = "\(pick.tool) \(pick.id):\(effort.lowercased())"
         let passed = (try? String(contentsOf: tested, encoding: .utf8))?.components(separatedBy: "\n") ?? []
         if passed.contains(key) { return nil }
         let args = ["exec \"$@\"", "guava-bar", "python3", resource("router-check.py").path, "--plan", pick.plan,
-                    "--slot", slot, "--\(slot)", "\(pick.id(effort)):\(effort.lowercased())", "--timeout", "240"]
+                    "--slot", slot, "--\(slot)", "\(pick.id):\(effort.lowercased())", "--timeout", "240"]
         guard let (output, _, timedOut) = try? shell(args, timeout: 300) else { return "failed: couldn't run router-check.py" }
         if timedOut { return "failed: testing \(pick.name) timed out" }
         guard let start = output.firstIndex(of: "{"), let end = output.lastIndex(of: "}"),

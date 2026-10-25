@@ -3,9 +3,8 @@
 # The head-chef (plans, researches, writes, reviews) runs through Claude Code on the
 # owner's Claude plan, and the line-cook (does the bulk work) through Codex on their
 # ChatGPT plan. An owner with only one of the two plans gets that company's next_best
-# in the other slot, so both slots run on the one plan. An owner with only Google AI Pro
-# or Ultra gets the google_only picks below, and an owner with none of these plans the
-# openrouter_only picks. Computer use is line-cook work.
+# in the other slot, so both slots run on the one plan. An owner with neither plan gets
+# the openrouter_only picks. Computer use is line-cook work.
 #
 # To swap in a newer model:
 #   1. Change its name, id and effort below.
@@ -19,8 +18,6 @@
 #   effort: thinking effort (low, medium, high, xhigh or max)
 #   next_best: the slot's pick from the other company (name, id and effort), used
 #              when the owner pays for only that company's plan
-#   fallback: in google_only, the Gemini pick (name, id and effort) agy runs when the
-#             Claude model's usage on the Google plan has run out
 
 updated: 2026-10-24
 
@@ -42,29 +39,7 @@ line_cook:
     id: claude-sonnet-5-5
     effort: high
 
-# An owner with only Google AI Pro or Ultra runs both slots through Google's Antigravity
-# CLI (agy), which serves Claude models on that plan. When agy says the Claude model's
-# usage has run out, the slot runs that job on its fallback, a Gemini model on the same plan.
-# id here is agy's model ID, which already names the effort.
-google_only:
-  head_chef:
-    name: Claude Opus 5.5
-    id: claude-opus-5-5-high
-    effort: high
-    fallback:
-      name: Gemini 4 Argon
-      id: gemini-4-argon-high
-      effort: high
-  line_cook:
-    name: Claude Sonnet 5.5
-    id: claude-sonnet-5-5-high
-    effort: high
-    fallback:
-      name: Gemini 3.8 Flash
-      id: gemini-3.8-flash-high
-      effort: high
-
-# An owner with no Claude, ChatGPT or Google AI plan runs both slots on OpenRouter, billed
+# An owner with no Claude or ChatGPT plan runs both slots on OpenRouter, billed
 # per use, through the Pi coding agent (pi), signed in to OpenRouter in the browser or with
 # an OpenRouter API key. id here is the OpenRouter model ID; effort is OpenRouter's
 # reasoning effort, which pi's --thinking sets.
@@ -85,9 +60,7 @@ openrouter_only:
 #   claude:  Claude Code, with the max model on a Claude Max plan and the pro model on
 #            Pro. OpenRouter only with no Claude plan, and never Fable there, since
 #            it costs far more than Opus.
-#   gemini:  Antigravity CLI (agy) on a Google AI Pro or Ultra plan, otherwise a Gemini API
-#            key (api is the Gemini API model ID), otherwise OpenRouter. Google's top
-#            thinking level is high, so max runs as high there.
+#   gemini:  Gemini 4 Argon on OpenRouter only, billed per use.
 # openrouter fields are OpenRouter model IDs. sync-models.py copies this section into
 # guava-hub/skills/oracle-council/members.json, which oracle-council.py reads.
 oracle_council:
@@ -109,8 +82,6 @@ oracle_council:
     effort: max
   gemini:
     name: Gemini 4 Argon
-    agy: gemini-4-argon-high
-    api: gemini-4-argon
     openrouter: google/gemini-4-argon
     effort: max
 

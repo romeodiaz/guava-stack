@@ -66,12 +66,12 @@ grep -Fx 'line-cook: GPT-6.1 Sol (High) via Codex' "$fixture/show" > /dev/null
 echo 'PASS: show parses both slots across blank lines'
 
 # Picks follow the AI tools installed on this Mac, so each test sets its own through a stand-in zsh
-# profile: "none" has no AI tools on PATH, "all" has stand-ins for the four that only leave a mark if run.
+# profile: "none" has no AI tools on PATH, "all" has stand-ins for the three that only leave a mark if run.
 for set in none all; do
     mkdir -p "$fixture/$set/bin"
     printf 'export PATH="%s:/usr/bin:/bin"\n' "$fixture/$set/bin" > "$fixture/$set/.zprofile"
 done
-for tool in claude codex agy pi; do
+for tool in claude codex pi; do
     printf '#!/bin/sh\n: > "$GUAVA_HUB/agent-started"\n' > "$fixture/all/bin/$tool"
     chmod +x "$fixture/all/bin/$tool"
 done
@@ -80,7 +80,6 @@ picks() { GUAVA_HUB="$1" ZDOTDIR="$fixture/$2" "$binary" picks "$3"; }
 name() { plutil -extract "$1" raw -o - "$router/slots.json"; }
 sol=$(name claude-and-chatgpt.line-cook.name)
 sonnet=$(name claude.line-cook.name)
-flash=$(name google.line-cook.fallback.name)
 deepseek=$(name openrouter.line-cook.name)
 only() {
     if grep -v "$2" "$1"; then echo "FAIL: $3" >&2; exit 1; fi
@@ -101,12 +100,6 @@ ln -s "$binary" "$fixture/guava-bar"
 GUAVA_HUB="$fixture" ZDOTDIR="$fixture/none" "$fixture/guava-bar" picks line-cook > "$fixture/symlink-picks"
 cmp "$fixture/picks" "$fixture/symlink-picks"
 echo 'PASS: CLI symlink resolves bundled slots.json'
-mkdir "$fixture/google"
-printf 'line-cook\n\n- %s (High) via Antigravity CLI, falling back to %s (High) when its usage runs out\n' "$(name google.line-cook.name)" "$flash" > "$fixture/google/context.md"
-picks "$fixture/google" none line-cook > "$fixture/google-picks"
-grep -Fx "$flash (Low) via Antigravity CLI" "$fixture/google-picks" > /dev/null
-only "$fixture/google-picks" '(\(Low\|Medium\|High\)) via Antigravity CLI' 'Google picks offer another tool, or an effort Antigravity lacks'
-echo 'PASS: a Google AI slot offers Antigravity picks at Low, Medium and High, Gemini on its own included'
 mkdir "$fixture/openrouter"
 printf 'line-cook\n\n- %s (High) via Pi\n' "$deepseek" > "$fixture/openrouter/context.md"
 picks "$fixture/openrouter" none line-cook > "$fixture/openrouter-picks"
@@ -114,13 +107,11 @@ grep -Fx "$deepseek (Max) via Pi" "$fixture/openrouter-picks" > /dev/null
 only "$fixture/openrouter-picks" 'via Pi$' 'OpenRouter picks offer another tool'
 echo 'PASS: an OpenRouter slot offers only Pi picks, at every effort'
 picks "$fixture" all line-cook > "$fixture/all-picks"
-grep -Fx "$flash (High) via Antigravity CLI" "$fixture/all-picks" > /dev/null
 grep -Fx "$deepseek (High) via Pi" "$fixture/all-picks" > /dev/null
 GUAVA_HUB="$fixture" ZDOTDIR="$fixture/all" "$binary" pairs > "$fixture/pairs"
-[ "$(wc -l < "$fixture/pairs")" -eq 6 ]
-grep -F "line-cook \"$flash (High) via Antigravity CLI\"" "$fixture/pairs" > /dev/null
+[ "$(wc -l < "$fixture/pairs")" -eq 4 ]
 grep -F "line-cook \"$deepseek (High) via Pi\"" "$fixture/pairs" > /dev/null
-echo 'PASS: with all four tools installed, every plan pair is offered, Gemini and OpenRouter included'
+echo 'PASS: with all three tools installed, every plan pair is offered, OpenRouter included'
 [ ! -e "$fixture/agent-started" ]
 code=0
 GUAVA_HUB="$fixture" ZDOTDIR="$fixture/all" "$binary" set line-cook bogus > "$fixture/invalid" 2>&1 || code=$?

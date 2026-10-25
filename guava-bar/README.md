@@ -9,7 +9,7 @@ Part of the [Guava Stack](../README.md), and optional. A small Mac menu bar app 
 - **Switch both:** move head-chef and line-cook to another plan's pair in one click, such as Claude Opus 5.5 + GPT-6.1 Sol, Gemini 4 Argon + Gemini 3.8 Flash via Antigravity CLI, or Kimi K3.1 Pro + DeepSeek V4.1 Flash 1017 via Pi. Your bots follow, as long as they have that plan's tool too ("change my setup" in the bot installs it).
 - **Picks:** today's picks for each slot from [models.yaml](../guava-router/models.yaml), for every AI tool on your Mac (Claude Code, Codex, Antigravity CLI, Pi), at Low, Medium, High, xhigh or Max (Low to High on Antigravity CLI, its top level).
 
-Needs a Mac on macOS 14 or later, the [Model Router](../guava-router/), and Claude Code or Codex signed in on that Mac. Your AI builds it on your Mac from this folder, so there's no download to trust and no Gatekeeper warning.
+Needs a Mac on macOS 14 or later, the [Model Router](../guava-router/), and Claude Code, Codex or Pi signed in on that Mac with Notion connected (Google AI alone isn't supported yet). Your AI builds it on your Mac from this folder, so there's no download to trust and no Gatekeeper warning.
 
 - Install: paste "Install guava-bar from github.com/romeodiaz/guava-stack" into Claude Code or Codex (or the Code or Codex tab in the Claude or ChatGPT app, set to Local).
 - Skill: [guava-bar](skills/guava-bar/SKILL.md), which also lists exactly what a change runs.

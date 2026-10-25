@@ -189,7 +189,7 @@ struct Change: Hashable, Sendable {
 }
 
 enum Agent {
-    static let missing = "guava-bar needs Claude Code or Codex: see guava-bar/README.md"
+    static let missing = "guava-bar needs Claude Code, Codex or Pi: see guava-bar/README.md"
 
     static func shell(_ arguments: [String], timeout: Double = 600) throws -> (String, Int32, Bool) {
         try FileManager.default.createDirectory(at: Hub.directory, withIntermediateDirectories: true)
@@ -225,7 +225,9 @@ enum Agent {
     }
 
     static func find() -> String? {
-        for tool in ["claude", "codex"] {
+        // Claude Code first, then Pi for owners on OpenRouter alone.
+        // shortcut: no Antigravity CLI, whose headless runs didn't load Notion's tools (not signed in to Antigravity), retry once that's solved
+        for tool in ["claude", "codex", "pi"] {
             if let result = try? shell(["command -v \(tool)"], timeout: 10), result.1 == 0, !result.2 {
                 return tool
             }
@@ -246,9 +248,14 @@ enum Agent {
         """
     }
 
-    static let refreshPrompt = """
-    guava-bar: refresh my local hub copy in ~/.guava-hub now, as Local copy in guava-hub/skills/guava-hub/backends/notion.md from github.com/romeodiaz/guava-stack says (build it if there's none yet). Change nothing in Notion. End your reply with one line: "done: <what changed>" or "failed: <why>".
-    """
+    // Self-contained, since Pi has no web access: guava-bar only needs the context page and the sync time.
+    static var refreshPrompt: String {
+        let now = ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone(identifier: "UTC")!,
+                                              formatOptions: [.withFullDate, .withTime, .withColonSeparatorInTime])
+        return """
+        guava-bar: refresh my local hub copy. Search Notion for my page titled guava-hub and the page titled context under it, fetch the context page, and save its text as plain Markdown, without images, columns or icons, to ~/.guava-hub/context.md. Then in ~/.guava-hub/sync.md set the synced line to "synced: \(now.prefix(16))Z", or, if that file doesn't exist yet, create it with that line followed by "guava-hub: <its page ID>" and "context: <its page ID>". Change nothing in Notion and no other file. End your reply with one line: "done: <what changed>" or "failed: <why>".
+        """
+    }
 
     // No shell, so the session can't run anything. A change gets Notion's read tools and update-page and
     // no file edits (guava-bar already switched the copy); a refresh gets the read tools and the hub copy.
@@ -260,6 +267,12 @@ enum Agent {
                 + notion.flatMap { ["mcp__claude_ai_Notion__\($0)", "mcp__notion__\($0)"] }
                 + ["Read", "WebFetch(domain:github.com)", "WebFetch(domain:raw.githubusercontent.com)"]
                 + (write ? [] : ["Edit(~/.guava-hub/**)", "Write(~/.guava-hub/**)"])
+        } else if tool == "pi" {
+            // Pi asks no questions, so its tools are limited to Notion's, and the files only for a refresh.
+            let notion = ["notion-fetch", "notion-search"] + (write ? ["notion-update-page"] : [])
+            // Pi reaches MCP servers through its codemode tool, and names their tools with underscores.
+            let allowed = ["codemode", "read"] + notion.map { "mcp__notion__" + $0.replacingOccurrences(of: "-", with: "_") }
+            args = ["-p", prompt, "--tools", (allowed + (write ? [] : ["write", "edit"])).joined(separator: ",")]
         } else {
             // shortcut: Codex path untested for Notion MCP approvals in exec mode, test on a ChatGPT-only setup
             args = ["exec", "--skip-git-repo-check", "--sandbox", "workspace-write", prompt]

@@ -125,7 +125,7 @@ Your Notion guava-hub has five parts:
 <table>
 <tr>
 <td align="center" width="200"><a href="guava-bar/"><img src="assets/guava-bar.png" width="125" alt="guava-bar in the Mac menu bar: the head-chef and line-cook pixel art with Opus and Sol"></a></td>
-<td><a href="guava-bar/"><ins>guava-bar</ins></a> (optional, Mac)<br>Your head-chef and line-cook in the Mac menu bar, anytime. Pick a new model and effort from its menu: your Mac switches at once, and your hub in Notion follows a minute later, so every assistant does too. A lite take on <a href="https://github.com/steipete/CodexBar">CodexBar</a>. Needs Claude Code or Codex on your Mac.</td>
+<td><a href="guava-bar/"><ins>guava-bar</ins></a> (optional, Mac)<br>Your head-chef and line-cook in the Mac menu bar, anytime. Pick a new model and effort from its menu: your Mac switches at once, and your hub in Notion follows a minute later, so every assistant does too. A lite take on <a href="https://github.com/steipete/CodexBar">CodexBar</a>. Needs Claude Code, Codex or Pi on your Mac.</td>
 </tr>
 </table>
 

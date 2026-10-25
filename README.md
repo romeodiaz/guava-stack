@@ -243,7 +243,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 📋 **[workflow-review](guava-hub/skills/workflow-review/)**: the workflow review and its report template.
 - 🍳 **[design-cook-off](guava-hub/skills/design-cook-off/)**: two designed versions of a page to pick from.
 - 🏛️ **[oracle-council](guava-hub/skills/oracle-council/)**: three top AIs answer one hard question, merged into one verdict.
-- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, Pi on OpenRouter alone, which your bot runs for you.
+- 🔀 **[guava-router](guava-router/)**: model routing through Claude Code and Codex, or Pi on OpenRouter alone, which your bot runs for you.
 - 🍴 **[guava-bar](guava-bar/)**: your head-chef and line-cook in the Mac menu bar, and a menu to change them.
 - 🤖 **[assistants/](assistants/)**: what Claude, ChatGPT, Pi, OpenCode, Grok Bot and Muse each skip or change.
 

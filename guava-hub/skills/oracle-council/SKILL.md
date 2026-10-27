@@ -89,7 +89,7 @@ Don't average the answers or side with the majority by default: one member with 
 
 ## 5. Report
 
-Give the owner the bottom line and the biggest split in a few lines, with links to `verdict.md` and the three answers. Mention any missing seat and the OpenRouter cost. With guava-hub, log the run on this work's task in the Tasks database, with the run folder in Links.
+Give the owner the bottom line and the biggest split in a few lines, with links to `verdict.md` and the three answers. Mention any missing seat and the OpenRouter cost. With guava-hub, when this work has a task in the Tasks database, add the run folder to its Links.
 
 ## Staying inside each plan's terms
 

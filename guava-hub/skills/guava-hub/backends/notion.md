@@ -56,7 +56,7 @@ Notion calls are slow, so assistants on the owner's computer keep a copy of the 
 - **Codex** reads and refreshes the same copy through the same start-up hook, and leaves hub edits to Claude Code, unless the owner has only ChatGPT: then Codex makes them.
 
 ## Add a skill
-For a skill from GitHub (setup's starter skills, or any the owner asks for), always from the repo itself:
+For a skill from GitHub (setup's starter skills, or any the owner asks for), always from the repo itself. For one an assistant made or the owner made in another AI tool, use its own files instead of a repo, have the head-chef read it first as setup step 3 says for the owner's own skills, and skip step 3:
 1. Read the skill's `SKILL.md` and list its other files from the repo. Third-party skills need what their [skills.sh](https://skills.sh) audits found shown first, failed and warning checks included, and a clear yes, as setup step 5 says.
 2. Add it to the hub's skills database as a Notion skill (the connector's skill upload, or a page marked as a skill), named as the skill names itself, or by the hub name setup step 5 gives a third-party skill (such as humanizer-writing for humanizer), with its description and its full text word for word. Set **Works in**: Computer if any step runs a program (a script, a downloaded engine, a headless browser), otherwise Any app. Attach its other files the same way when the skill uses them, such as workflow-review's `template.html` and `app-usage.py`.
 3. On Grok Bot, also install it as files: `npx skills add <owner>/<repo> -g -y` (add `--skill <name>` for one skill from a repo with several), and on Pi the same with `-a pi opencode`, where setup installed Guava's skills as files. Muse and the Claude and ChatGPT apps read it from the hub.

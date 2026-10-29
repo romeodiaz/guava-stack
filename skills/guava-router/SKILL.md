@@ -5,7 +5,7 @@ description: Hands each job from Claude Code or Codex to the owner's head-chef o
 
 # guava-router
 
-Two slots, kept in the **guava-stack settings** section of the owner's Agent Operating Guide, so the owner swaps a model by editing one line. The owner can add a third line, `computer-use`, such as `GPT-6.1 Sol (Low) via Codex`, to run computer use on its own model and effort. founder-mode adds the Rules part when it's on:
+Two slots, kept in the **guava-stack settings** section of the owner's Agent Operating Guide, so the owner swaps a model by editing one line. The owner can add a third line, `computer-use`, such as `GPT-6.1 Sol (Low) via Codex`, to run computer use on its own model and effort:
 
 ```
 ## guava-stack settings
@@ -16,8 +16,6 @@ head-chef
 line-cook
 - GPT-6.1 Sol (High) via Codex
   - Bulk execution, coding, computer use, sub-agent tasks, worker threads and long-running jobs.
-### Rules
-- founder-mode v3.0.5
 ```
 
 ## Route work
@@ -43,4 +41,4 @@ Routing runs only in Claude Code or Codex on the owner's computer. In the deskto
 
    The owner can pick any Claude model through Claude Code or OpenAI model through Codex, at Low, Medium, High, xhigh or Max.
 3. Test each slot twice in a new empty folder: a tiny prompt, such as `claude -p --model claude-opus-5-5 --effort high "Reply OK" < /dev/null`, then a hand-off with the write access above that creates a file named `ok.txt`, which you check for and then delete. An old tool rejects new models, so if a model is rejected, check the tool's version and offer the update as above.
-4. On a yes, add the guava-router part of the section above to the end of the Agent Operating Guide, under a `## guava-stack settings` heading (adding the heading if it isn't there yet), with the slots that passed. Keep Notion's own sections and any Rules part as they are.
+4. On a yes, add the guava-router part of the section above to the end of the Agent Operating Guide, under a `## guava-stack settings` heading (adding the heading if it isn't there yet), with the slots that passed. Keep Notion's own sections as they are.

@@ -8,9 +8,9 @@ description: founder-mode, the owner's 16 working rules for their AI assistants,
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
 ## Turn on, update or uninstall (for your AI assistant)
-- **Turn on:** show the owner what you'll add. On a yes, save the rules below word for word, with their group headings and numbers, in a section called "16 Commandments on How to work with me" on the rules page of their guava-hub. List `founder-mode v3.0.5` at the top of the rules page, and under a `### Rules` heading in the `## guava-stack settings` section at the end of their Agent Operating Guide, adding either heading if it isn't there yet. Don't paraphrase them: the next update compares against this text.
-- **Update:** compare this version with the one listed on the rules page. If this one is newer and the rules changed, say in plain words what changed and replace the section on a yes. Either way, update both version lines.
-- **Uninstall:** on a yes, delete the section and both version lines, and leave the owner's other rules as they are.
+- **Turn on:** show the owner what you'll add. On a yes, save the rules below word for word, with their group headings and numbers, in a section called "16 Commandments on How to work with me" on the rules page of their guava-hub. List `founder-mode v3.0.5` at the top of the rules page. Don't paraphrase them: the next update compares against this text.
+- **Update:** compare this version with the one listed on the rules page. If this one is newer and the rules changed, say in plain words what changed and replace the section on a yes. Either way, update the version line.
+- **Uninstall:** on a yes, delete the section and its version line, and leave the owner's other rules as they are.
 
 Every app follows the rules page because the owner's custom instructions say so (see guava-stack's setup). If another rule on the rules page is stricter, the stricter one wins.
 

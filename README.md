@@ -19,7 +19,7 @@ Notion's guide does the setup: it connects Notion, makes your private Agent Oper
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 
 Then Guava's parts, each with your yes:
-- **guava-hub:** a context page (who you are, your business, your voice) and a rules page, next to Notion's Skills library.
+- **guava-hub:** one page in your sidebar holding your context (who you are, your business, your voice), your rules, Notion's Skills library and your Tasks.
 - **[founder-mode](skills/founder-mode/SKILL.md):** 16 working rules. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent.
 - **[guava-router](skills/guava-router/SKILL.md):** in Claude Code or Codex, the head-chef (Claude Opus 5.5) plans, writes and reviews, and the line-cook (GPT-6.1 Sol) does the bulk work and coding.
 - **Starter skills** in Notion's Skills library: [workflow-review](skills/workflow-review/SKILL.md), [design-cook-off](skills/design-cook-off/SKILL.md), [humanizer-writing](https://github.com/blader/humanizer) and [ponytail-coding](https://github.com/DietrichGebert/ponytail).

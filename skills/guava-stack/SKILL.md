@@ -9,6 +9,8 @@ guava-stack is a small add-on to Notion's official setup guide for agents, [Set 
 
 It supports four apps on two plans: the Claude desktop app and Claude Code on a Claude plan, and the ChatGPT desktop app and Codex on a ChatGPT plan. The desktop app's **Code** tab (Claude) or **Codex** tab (ChatGPT), set to **Local**, is Claude Code or Codex running on the owner's computer. For anything else, say it isn't supported yet.
 
+Read Notion databases with `notion-fetch` or through a saved view (`notion-query-data-sources` in view mode), not SQL: on Free and Plus plans Notion meters SQL per workspace, and views have no limit. Use SQL only when no view can answer.
+
 ## Set up
 1. **Run Notion's guide.** Read it in full, then run its steps in order, following its rules for talking with the user, and use steps 2 and 3 below where it leaves the details to your app. Where these steps and Notion's guide cover the same thing, follow Notion's guide. This guava-stack is tested with Notion's version 0.0.5: if the guide shows a newer version, run 0.0.5 from the guide's [changelog](https://developers.notion.com/prompts/setup/changelog.md), which links every version, and tell the owner once that Notion has a newer one.
 2. **Connect Notion** (Notion's step 1), in the app you're running in:

@@ -9,7 +9,7 @@ Paste this into the Claude or ChatGPT desktop app, or into Claude Code or Codex:
 Follow the Start here steps in github.com/romeodiaz/guava-stack
 ```
 
-You'll need a Claude or ChatGPT plan and Notion (the free plan is enough).
+You'll need a Claude or ChatGPT plan and Notion. Notion's free plan works for one person. A team needs a paid Notion plan, since a Free workspace with more than one member stops at 1,000 blocks for good.
 
 **AI assistants:** follow [skills/guava-stack/SKILL.md](skills/guava-stack/SKILL.md).
 

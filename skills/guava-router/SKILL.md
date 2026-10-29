@@ -28,7 +28,7 @@ Routing runs only in Claude Code or Codex on the owner's computer. In the deskto
   - Codex: `codex exec -m <ID> -c model_reasoning_effort=<effort> -s workspace-write --skip-git-repo-check "<task>" < /dev/null` for work that writes files in this folder, or `-s read-only` for reading and reviewing.
 
   Without `< /dev/null`, either tool can wait for input and hang.
-- Give each hand-off the goal, what's done, what to check and where to write the result.
+- Give each hand-off the goal, what's done, what to check and where to write the result. When the job reads Notion databases, tell it to use `notion-fetch` or a saved view (`notion-query-data-sources` in view mode), not SQL: on Free and Plus plans Notion meters SQL per workspace, and views have no limit.
 - On important work, the head-chef checks the line-cook's result before it's called done.
 - Computer use is line-cook work: browser tools first, in the browser where the owner is already signed in.
 - If a hand-off fails, find out why first: the tool's error, whether it's signed in (`claude auth status`, `codex login status`) and whether it had the access the job needed. Fix what the evidence points to and retry once. If it still fails, do the task yourself and say so. Updating a tool changes software on the owner's computer, so show the command (`claude update`, or `npm i -g @openai/codex@latest` for an npm install) and run it only on a yes.

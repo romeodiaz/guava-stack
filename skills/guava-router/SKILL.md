@@ -5,7 +5,7 @@ description: Hands each job from Claude Code or Codex to the owner's head-chef o
 
 # guava-router
 
-Two slots, kept in the **guava-stack settings** section of the owner's Agent Operating Guide, so the owner swaps a model by editing one line. founder-mode adds the Rules part when it's on:
+Two slots, kept in the **guava-stack settings** section of the owner's Agent Operating Guide, so the owner swaps a model by editing one line. The owner can add a third line, `computer-use`, such as `GPT-6.1 Sol (Low) via Codex`, to run computer use on its own model and effort. founder-mode adds the Rules part when it's on:
 
 ```
 ## guava-stack settings
@@ -22,7 +22,7 @@ line-cook
 
 ## Route work
 Routing runs only in Claude Code or Codex on the owner's computer. In the desktop apps' chat, do the work yourself.
-- Re-read the two model lines right before each hand-off. Quick replies and lookups stay with you.
+- Re-read the model lines right before each hand-off. Quick replies and lookups stay with you.
 - If this session already runs on that slot's model at its effort, do the work yourself. Otherwise hand it off with the slot's tool, model ID and effort, passing both, since each tool otherwise falls back to its own default. Run it in the folder it should work in, and give it only the access the job needs:
   - Claude Code: `claude -p --model <ID> --effort <effort> --permission-mode acceptEdits "<task>" < /dev/null` for work that writes files, or `--permission-mode plan` for reading and reviewing. Add any commands the job must run with `--allowedTools`, such as `--allowedTools "Bash(npm test:*)"`.
   - Codex: `codex exec -m <ID> -c model_reasoning_effort=<effort> -s workspace-write --skip-git-repo-check "<task>" < /dev/null` for work that writes files in this folder, or `-s read-only` for reading and reviewing.
@@ -30,7 +30,7 @@ Routing runs only in Claude Code or Codex on the owner's computer. In the deskto
   Without `< /dev/null`, either tool can wait for input and hang.
 - Give each hand-off the goal, what's done, what to check and where to write the result. When the job reads Notion databases, tell it to use `notion-fetch` or a saved view (`notion-query-data-sources` in view mode), not SQL: on Free and Plus plans Notion meters SQL per workspace, and views have no limit.
 - On important work, the head-chef checks the line-cook's result before it's called done.
-- Computer use is line-cook work: browser tools first, in the browser where the owner is already signed in.
+- Computer use goes to the computer-use line when guava-stack settings has one, and otherwise to the line-cook: browser tools first, in the browser where the owner is already signed in.
 - If a hand-off fails, find out why first: the tool's error, whether it's signed in (`claude auth status`, `codex login status`) and whether it had the access the job needed. Fix what the evidence points to and retry once. If it still fails, do the task yourself and say so. Updating a tool changes software on the owner's computer, so show the command (`claude update`, or `npm i -g @openai/codex@latest` for an npm install) and run it only on a yes.
 - When a skill says how it runs, follow the skill and route only the work it leaves open.
 

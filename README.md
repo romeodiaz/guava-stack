@@ -23,7 +23,7 @@ guava-stack adds only what Notion's guide leaves to each app:
 
 ## What it changes
 - **In Notion:** only what Notion's guide makes, each step with your yes.
-- **On your computer:** the custom instructions at the end of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, and a Notion connection in Claude Code or Codex if there isn't one yet.
+- **On your computer:** the custom instructions at the end of `~/.claude/CLAUDE.md` and Codex's global `AGENTS.md` (in `~/.codex`), and a Notion connection in Claude Code or Codex if there isn't one yet.
 - **In the desktop apps:** the custom instructions you paste into Claude's or ChatGPT's settings.
 
 ## Update and uninstall

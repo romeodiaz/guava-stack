@@ -4,7 +4,7 @@
 
 Part of the [Guava Stack](../README.md). Sets up one shared place for your context, rules, skills and memories, so all your AI assistants work from the same context. It's also where full Guava setup starts: once the hub works, it hands off to [guava-router](../guava-router/) and offers [founder-mode](../founder-mode/).
 
-The hub lives in Notion ([steps](skills/guava-hub/backends/notion.md)); the free plan is enough. *Coming soon:* Google Drive and OneDrive hubs.
+The hub lives in Notion ([steps](skills/guava-hub/backends/notion.md)); the free plan is enough. It's built on Notion's official [setup guide for agents](https://developers.notion.com/prompts/setup): setup runs Notion's steps (your Agent Operating Guide, the custom instructions every app shares and a daily memory check), then adds the hub, Tasks and Guava's own instructions, [guava-instructions](skills/guava-instructions/SKILL.md), as a skill every app loads. *Coming soon:* Google Drive and OneDrive hubs.
 
 It has three parts, plus your Tasks database and Notion Memory:
 

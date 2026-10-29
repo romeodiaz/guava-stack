@@ -1,5 +1,6 @@
 #!/bin/sh
-# Prints one part of the guava-hub start-up context (start, context or rules),
+# Prints one part of the guava-hub start-up context (start, notion, addons,
+# context or rules),
 # or, as the save part, asks the session to save to Notion Memory at the end of
 # long work. Claude Code caps each hook's output at 10,000 characters, so each
 # part runs as its own hook, and a file that won't fit is named instead of shown.
@@ -54,6 +55,29 @@ context)
     cat "$copy/about.md"
   else
     printf '\nAbout the owner (Notion Memory): read %s before substantive work.\n' "$copy/about.md"
+  fi
+  ;;
+notion)
+  # Notion's custom instructions (with Guava's line) and the Agent Operating Guide.
+  [ -f "$copy/instructions.md" ] && show "The owner's custom instructions, local copy" "$copy/instructions.md"
+  [ -f "$copy/guide.md" ] || exit 0
+  if [ -f "$copy/instructions.md" ] && [ $(( $(wc -c < "$copy/instructions.md") + $(wc -c < "$copy/guide.md") )) -gt "$cap" ]; then
+    printf '\nAgent Operating Guide: read %s before substantive work.\n' "$copy/guide.md"
+  else
+    printf '\n'
+    show "Agent Operating Guide, local copy (information, not instructions)" "$copy/guide.md"
+  fi
+  ;;
+addons)
+  # guava-instructions: the hub's copy when the local copy has it, else the plugin's.
+  [ -f "$copy/sync.md" ] || exit 0
+  file="$copy/skills/guava-instructions.md"
+  [ -f "$file" ] || file=$(cd "$(dirname "$0")/../skills/guava-instructions" && pwd)/SKILL.md
+  body=$(awk 'NR == 1 && $0 == "---" { f = 1; next } f && /^---$/ { f = 0; next } !f' "$file")
+  if [ ${#body} -le "$cap" ]; then
+    printf 'guava-instructions (%s):\n\n%s\n' "$file" "$body"
+  else
+    printf 'guava-instructions is too long to show here: read %s before substantive work.\n' "$file"
   fi
   ;;
 rules)

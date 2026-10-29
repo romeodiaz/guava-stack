@@ -28,6 +28,8 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 </tr>
 </table>
 
+guava-hub is built on Notion's official [setup guide for agents](https://developers.notion.com/prompts/setup). Notion's guide makes your private Agent Operating Guide, the custom instructions every app shares and a daily memory check. guava-hub adds Guava's parts on top.
+
 Your Notion guava-hub has five parts:
 
 <table>
@@ -205,10 +207,10 @@ For one piece, add `--skill guava-hub` or `founder-mode` or `guava-router` or `o
 
 ## Some Manual Setup Needed
 Setup walks you through each of these, since your AI can't do them for you. If it seems to ignore your hub, check these first:
-- **Claude or ChatGPT app:** the lines that start with "Load my guava-hub in Notion first." in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT and Codex rows. Then one line pasted into the app's Code or Codex tab connects Claude Code or Codex.
+- **Claude or ChatGPT app:** Notion's custom instructions, with Guava's line at the end (it starts "Fetch and follow my guava-instructions Skill"), in [Instructions for Claude](https://claude.ai/new#settings/account) or ChatGPT's [custom instructions](https://chatgpt.com/settings/personalization), in both the ChatGPT and Codex rows. Then one line pasted into the app's Code or Codex tab connects Claude Code or Codex.
 - **OpenRouter:** Pi's browser sign-in (`/login openrouter` in Pi), which setup then hands to OpenCode.
 - **Sign-ins:** you approve Notion in your browser, once for each app, and with a bot, Claude and ChatGPT too, pasting any code straight back into the bot.
-- **Muse:** the lines that start with "Load my guava-hub in Notion first." at the end of SOUL.md (click the bot's avatar, the fingerprint tab, then the SOUL card).
+- **Muse:** the same custom instructions at the end of SOUL.md (click the bot's avatar, the fingerprint tab, then the SOUL card).
 - **Updates:** say "update guava-stack" in each app and bot you use, since only it can change its own instructions.
 
 ## How to update
@@ -231,7 +233,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - **Commands run on your computer:** only what your plan's apps need, checking first and skipping what's there: Claude Code's install script, `npm i -g @openai/codex`, or Pi's install script and its browser sign-in to OpenRouter; `claude plugin install` or `codex plugin add` for guava-hub; `codex mcp add` or `pi mcp add` for Notion; on Pi, `npx skills add` for Guava's skills; and on OpenRouter, one command that hands Pi's sign-in to OpenCode without showing the key. Then a quick "What's in my guava-hub?" in each. If you pick guava-bar, its `build.sh` builds the app on your Mac (with `xcode-select --install` first if Apple's Command Line Tools are missing), puts `GuavaBar.app` in `~/Applications` and links the `guava-bar` command into `~/.local/bin`; each change you pick runs Claude Code or Codex once in the background, as [its skill](guava-bar/skills/guava-bar/SKILL.md#what-a-change-runs) lists.
 - **Commands run on a bot:** only with a bot and the router: `npm i -g @anthropic-ai/claude-code`, `npm i -g @openai/codex`, `claude auth login`, `codex login --device-auth` (or, on OpenRouter alone, Pi's install script and OpenRouter's browser sign-in), `claude mcp add` and `codex mcp add` for Notion, and a quick test prompt in each. On Grok Bot, `npx skills add` installs the skills. If you pick ponytail-coding where Claude Code or Codex runs, `claude plugin install` and `codex plugin add` install its plugin. If you pick oracle-council, it signs you in to OpenRouter in your browser through Pi for Gemini 4 Argon and any seat your plans don't cover, or, only if you'd rather paste one, puts your OpenRouter key in your shell profile (`~/.zshrc` or `~/.bashrc`), backed up first.
 - **Files read:** only the instruction, skill or notes files you approve. Never your app's or bot's memories or chats. Each app can move its own memories into Notion Memory if you ask it to.
-- **Saved:** your hub, plus standing instructions in Instructions for Claude, custom instructions (ChatGPT), `AGENTS.md` (Pi and OpenCode), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
+- **Saved:** your hub, plus, from Notion's setup guide, an Agent Operating Guide page in your Notion and a daily memory and setup check if you say yes. The custom instructions (Notion's, with Guava's line) go in Instructions for Claude, custom instructions (ChatGPT), `AGENTS.md` (Pi and OpenCode), your bot's memory (Grok Bot) or SOUL.md (Muse). The workflow review is a file on your computer, never uploaded. Assistants also save what they learn about your work (decisions, corrections, preferences) to Notion Memory in your own workspace, never passwords or keys. Say "forget" anything to remove it.
 - **Undo it all:** "uninstall guava-stack" undoes every change above and keeps your hub, which stays yours to keep or delete. It asks before removing a connector or AI tool you might use for other work.
 - **External services:** Notion, your AI providers, GitHub (where your AI reads these steps), the app makers' download sites, npm and pi.dev (to install the tools), skills.sh (to check outside skills) and OpenRouter (the router on OpenRouter alone, and oracle-council's seats if you add it). Nothing goes to Guava. [Privacy](https://workwithguava.com/privacy)
 
@@ -254,7 +256,7 @@ Uninstall guava-stack by following the Uninstall steps in github.com/romeodiaz/g
 - 🛠️ Want a custom guava-stack on Google Drive, Microsoft SharePoint or OneDrive, Obsidian, or your own private AWS or Azure VPC instead of Notion? [Book a call](https://workwithguava.com/talk)
 
 ## Credits
-Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto, from [Matt Pocock's skills](https://github.com/mattpocock/skills) and the [humanizer skill](https://github.com/blader/humanizer) by blader. founder-mode takes its name and spirit from Paul Graham's essay [Founder Mode](https://paulgraham.com/foundermode.html), and the Notion hub setup draws on Notion's [Set up Notion for your agent](https://developers.notion.com/prompts/setup).
+Adapted from [poteto-mode](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) in Cursor's pstack plugin, by poteto, from [Matt Pocock's skills](https://github.com/mattpocock/skills) and the [humanizer skill](https://github.com/blader/humanizer) by blader. founder-mode takes its name and spirit from Paul Graham's essay [Founder Mode](https://paulgraham.com/foundermode.html), and guava-hub is built on Notion's [Set up Notion for your agent](https://developers.notion.com/prompts/setup), the official setup guide Notion publishes for agents: guava-hub runs its steps and adds Guava's parts on top.
 
 Built by Romeo Diaz to run Guava ([workwithguava.com](https://workwithguava.com)). Follow @romeodiazai on LinkedIn and X.
 

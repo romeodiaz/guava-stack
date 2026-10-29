@@ -12,6 +12,18 @@
           },
           {
             "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" notion",
+            "timeout": 10,
+            "statusMessage": "guava-stack: Notion instructions and guide"
+          },
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" addons",
+            "timeout": 10,
+            "statusMessage": "guava-stack: guava-instructions"
+          },
+          {
+            "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/load-hub.sh\" context",
             "timeout": 10,
             "statusMessage": "guava-stack: hub context"

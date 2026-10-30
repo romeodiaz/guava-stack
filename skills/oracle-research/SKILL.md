@@ -1,6 +1,6 @@
 ---
 name: oracle-research
-description: Researches what people and the web have said about a topic recently (the last 30 days by default) in one quick, safe run. Gemini 4 Argon searches through OpenRouter's server-side search, so all searching and page reading happen on OpenRouter and only written findings come back. One pass searches discussion sites such as Reddit, Hacker News and YouTube with Perplexity, ranked by engagement, and one searches news and the wider web with Exa, each with the other engine as fallback. The answer is a short cited text reply in the chat, with no document. Use when the owner says "research this", "what are people saying about", "what's new with", "the latest on" or "last 30 days", or needs recent facts for a decision. Skip for timeless questions, and for hard calls that need several companies' models (use oracle-council).
+description: Sweeps what people said about a topic in the last 30 days on Reddit, Hacker News, YouTube and the web, as a cited answer. Use when the owner says "research this" or "what are people saying".
 ---
 
 # Oracle research

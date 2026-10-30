@@ -25,11 +25,11 @@ Then Guava's parts, each with your yes:
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/notion-brain.png" width="120" alt="Pixel-art brain with the Notion logo"><br><strong>guava-hub</strong></td>
-<td>One page in your sidebar holding your context, your rules, Notion's Skills library and your Tasks, if they live in Notion.</td>
+<td>One page in your sidebar holding your context, your rules and Notion's Skills library.</td>
 </tr>
 <tr>
 <td align="center"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong></td>
-<td>Who you are, your business and your voice, drafted from your website, with a link for each fact.</td>
+<td>Your business and your voice, drafted from your website, with a link for each fact. Who you are stays on Notion's own About page.</td>
 </tr>
 <tr>
 <td align="center"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
@@ -40,7 +40,7 @@ Then Guava's parts, each with your yes:
 <table>
 <tr>
 <td align="center" width="200"><span style="font-size:64px">🗺️</span><br><strong>where your work lives</strong></td>
-<td>Your AI learns where each kind of work lives, in Notion or the apps you already use, such as Linear, HubSpot or Google Drive, and files work there. Nothing moves, and a Notion database is only offered for work that has no home yet. Optionally, your AI logs the bigger work you'd track as tasks, wherever your tasks live, with each task's ID in commits, PRs and hand-offs.</td>
+<td>Your AI learns where each kind of work lives, in Notion or the apps you already use, such as Linear, HubSpot or Google Drive, and files work there. The map lives in your Agent Operating Guide, one line for each place. Nothing moves, and a Notion database is only offered for work that has no home yet. Optionally, your AI logs the bigger work you'd track as tasks, wherever your tasks live, with each task's ID in commits, PRs and hand-offs.</td>
 </tr>
 </table>
 

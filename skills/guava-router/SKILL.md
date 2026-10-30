@@ -1,6 +1,6 @@
 ---
 name: guava-router
-description: Hands each job from Claude Code or Codex to the owner's head-chef or line-cook, the two models named in the guava-stack settings of their Agent Operating Guide in Notion, with the head-chef for thinking work and the line-cook for doing work. Use on every task in Claude Code or Codex once guava-stack settings names both slots, and when the owner says "set up the router" or wants a different model in a slot.
+description: Use on every task in Claude Code or Codex. Hands thinking work to the owner's head-chef and doing work to their line-cook, the models in their Agent Operating Guide. Also for "set up the router".
 ---
 
 # guava-router

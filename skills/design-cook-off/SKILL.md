@@ -1,6 +1,6 @@
 ---
 name: design-cook-off
-description: Before any AI tool builds a page or screen people will judge by its look, such as a landing page, marketing site, one-pager, offer or product page, portfolio, hero section, or a new app screen like a dashboard, makes two versions at the same time on the head-chef model, one with the impeccable design skill and one with taste-skill, and lets the owner pick. Use when the owner asks for any of these, says something looks generic, templated or AI-made, or says "cook-off" or "taste-test". Skip for emails, posts, Notion pages, docs, slides, charts, reports with a fixed template, and small changes inside a page that already has a design.
+description: Before building a page people judge by its look (landing page, marketing site, offer page, portfolio, new app screen), builds two designs to pick from. Also on "cook-off". Not for emails or docs.
 ---
 
 # Design cook-off

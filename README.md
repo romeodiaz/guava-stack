@@ -22,7 +22,7 @@ Notion's guide does the setup: it connects Notion, makes your private Agent Oper
 
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 
-Then Guava's parts, each with your yes, except founder-mode, which is always on and yours to change:
+Then Guava's parts, on one short plan and one yes. founder-mode is always on and yours to change:
 
 <table>
 <tr>
@@ -63,7 +63,7 @@ Then Guava's parts, each with your yes, except founder-mode, which is always on 
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>starter skills</strong></td>
-<td>Saved in Notion's Skills library, so every app can use them. You pick which ones.</td>
+<td>Saved in Notion's Skills library, so every app can use them. Drop any you don't want.</td>
 </tr>
 <tr>
 <td align="center"><a href="skills/workflow-review/SKILL.md"><img src="assets/workflow-review.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a><br><strong>1. workflow-review</strong></td>
@@ -98,7 +98,7 @@ Then Guava's parts, each with your yes, except founder-mode, which is always on 
 **Just want oracle-council or oracle-research?** Tell any AI agent that can run commands on your computer: `Set up oracle-council from github.com/romeodiaz/guava-stack (skills/oracle-council)`, or the same with oracle-research. One OpenRouter key covers both, with no subscriptions needed. In a chat app with no terminal, it runs as a council by hand: you paste one briefing into two other companies' AI apps.
 
 ## What it changes
-- **In Notion:** what Notion's guide makes, plus the guava-hub pages, a Notion database only for a kind of work that has no home yet, the Routines columns and view in the Skills library, the skills you pick, and a few preference lines and a guava-stack settings section in your Agent Operating Guide, each with your yes.
+- **In Notion:** what Notion's guide makes, plus the guava-hub pages, a Notion database only for a kind of work that has no home yet, the Routines columns and view in the Skills library, the skills you pick, and a few preference lines and a guava-stack settings section in your Agent Operating Guide, all named in the plan you say yes to.
 - **On your computer:** the custom instructions at the end of `~/.claude/CLAUDE.md` and Codex's global `AGENTS.md` (in `~/.codex`), a Notion connection in Claude Code or Codex if there isn't one yet, and with oracle-council or oracle-research, the OpenRouter key their browser sign-in makes, in `~/.config/guava-stack/openrouter-key`.
 - **In the desktop apps:** the custom instructions you paste into Claude's or ChatGPT's settings.
 

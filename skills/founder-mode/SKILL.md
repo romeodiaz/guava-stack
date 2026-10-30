@@ -3,14 +3,14 @@ name: founder-mode
 description: founder-mode, the owner's 16 working rules for their AI assistants. Rules 1 to 4 sit in their custom instructions, and rules 5 to 16 on the rules page of their guava-hub in Notion. Use when the owner says "turn on founder-mode", "update founder-mode", "uninstall founder-mode" or asks to see the rules.
 ---
 
-# founder-mode v4.1.1
+# founder-mode v4.1.2
 
 Your AI assistant works like humans do: it handles the safe work on its own, checks the real result before calling anything done, and always checks with you before anything that could cost you money or can't be undone.
 
 Rules 1 to 4 are safety rules, so they live in your custom instructions, where they hold whatever any page says, even when Notion is down or a page has been edited. guava-stack's setup adds them there. Rules 5 to 16 are how your assistant works, reports and improves. They live on the rules page of your guava-hub, as your working preferences, where you change them in one place.
 
 ## Turn on, update or uninstall (for your AI assistant)
-- **Turn on:** guava-stack's setup turns it on for every owner without asking, and the owner can change any rule afterwards. When the owner asks for it on its own, show what you'll add and wait for a yes. Save rules 5 to 16 below word for word, with their group headings and numbers, in a section called "16 Commandments on How to work with me" on the rules page of their guava-hub, starting with the line "Rules 1 to 4 live in my custom instructions." List `founder-mode v4.1.1` at the top of the rules page. Don't paraphrase them: the next update compares against this text. If the owner's custom instructions don't hold rules 1 to 4 yet, add them as guava-stack's setup step 3 says.
+- **Turn on:** guava-stack's setup turns it on for every owner without asking, and the owner can change any rule afterwards. When the owner asks for it on its own, show what you'll add and wait for a yes. Save rules 5 to 16 below word for word, with their group headings and numbers, in a section called "founder-mode: The 16 Agent Commandments" on the rules page of their guava-hub, starting with the line "Rules 1 to 4 live in my custom instructions." List `founder-mode v4.1.2` at the top of the rules page. Don't paraphrase them: the next update compares against this text. If the owner's custom instructions don't hold rules 1 to 4 yet, add them as guava-stack's setup step 3 says.
 - **Update:** compare this version with the one listed on the rules page. If this one is newer and rules 5 to 16 changed, say in plain words what changed and replace the section on a yes. If rules 1 to 4 changed, show the new custom instructions for each app, old and then new, as guava-stack's setup step 3 says. Either way, update the version line.
 - **Uninstall:** on a yes, delete the section and its version line, and leave the owner's other rules as they are. Rules 1 to 4 stay in the custom instructions unless the owner asks to remove them too.
 

@@ -46,7 +46,7 @@ Here's what you end up with in your Notion. Notion's guide makes the first two, 
 </tr>
 <tr>
 <td align="center"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
-<td><a href="skills/founder-mode/SKILL.md">founder-mode's 16 working rules</a>, always on and yours to change, plus any of your own. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent. The four safety rules go in your custom instructions, so they always hold.</td>
+<td><a href="skills/founder-mode/SKILL.md">founder-mode: The 16 Agent Commandments</a>, always on and yours to change, plus any of your own. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent. The four safety rules go in your custom instructions, so they always hold.</td>
 </tr>
 </table>
 

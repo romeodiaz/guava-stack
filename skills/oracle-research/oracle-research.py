@@ -192,7 +192,8 @@ def run_openrouter(seat, engine, question, start, today, cap, timeout):
         with urllib.request.urlopen(request, timeout=timeout) as response:
             return json.load(response)
     except urllib.error.HTTPError as error:
-        raise RuntimeError(f"HTTP {error.code}") from None
+        body = error.read().decode(errors="replace")
+        raise RuntimeError(f"HTTP {error.code}: {redact(body)[:300]}") from None
 
 
 def sources(message):
@@ -330,7 +331,8 @@ def main():
             output = f"Window: {start} to {today}\n" + "\n".join(
                 f"{seat.title()}: Exa · {('allowed_domains' if seat == 'people' else 'excluded_domains')}: "
                 f"{', '.join(PEOPLE_SITES)} · {cap} searches max" for seat in plan["passes"])
-            output += f"\nWorst-case search cost: ${2 * cap * EXA_PRICE:.3f} (Exa searches only; model tokens extra)"
+            output += (f"\nSearches: up to ${2 * cap * EXA_PRICE:.3f} (Exa). Typical total with model tokens: "
+                       "about $0.30 with --quick, about $0.60 without (first run, October 29, 2026).")
         print(redact(output))
         return 0
     began, results = time.monotonic(), {}

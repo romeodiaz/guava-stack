@@ -30,7 +30,7 @@ Turn the ask into one clear question that names the topic, whose views matter (s
 
 `python3 <this skill>/oracle-research.py "<question>" --quick --days 30`
 
-It takes two to three minutes and costs about $0.30. The owner asking for research covers one `--quick` run. Leave out `--quick` only when the owner wants a deeper sweep, which can cost about twice as much, and say so first. For several runs in a row, say the rough total first and wait for a yes. `--dry-run` shows the plan and the most the searches can cost, without running anything.
+It takes two to three minutes and costs about $0.30. The owner asking for research covers one `--quick` run. Leave out `--quick` only when the owner wants a deeper sweep, which can cost about twice as much, and say so first. For several runs in a row, say the rough total first and wait for a yes. `--dry-run` shows the plan and the likely cost, without running anything.
 
 ## 3. Answer in the chat
 

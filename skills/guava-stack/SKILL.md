@@ -3,7 +3,7 @@ name: guava-stack
 description: Makes Notion the owner's shared memory and workspace in Claude and ChatGPT, in their desktop apps and in Claude Code and Codex, by running Notion's official setup guide for agents, adding the steps it leaves to each app, then Guava's parts (a guava-hub with the owner's context and rules, a map of where their work lives, in Notion or the apps they already use, their scheduled routines recorded in Notion's Skills library, founder-mode, and seven starter skills, the head-chef and line-cook router among them). Use when the owner says "set me up", "set this up https://workwithguava.com/guava-stack", "Follow the Start here steps in github.com/romeodiaz/guava-stack", "check my routines", "update guava-stack" or "uninstall guava-stack".
 ---
 
-# guava-stack
+# guava-stack v0.1.0
 
 guava-stack is a small add-on to Notion's official setup guide for agents, [Set up Notion for your agent](https://developers.notion.com/prompts/setup.md). Notion's guide does the setup. This skill adds what the guide leaves to each app (how Claude Code and Codex connect to Notion, where they keep the custom instructions, and how the owner's other apps join), then Guava's parts on top.
 

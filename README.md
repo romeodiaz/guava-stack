@@ -46,28 +46,14 @@ Here's what you end up with in your Notion. Notion's guide makes the first two, 
 </tr>
 <tr>
 <td align="center"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
-<td>Your working preferences and the rules skills you turn on, such as founder-mode, word for word.</td>
+<td><a href="skills/founder-mode/SKILL.md">founder-mode's 16 working rules</a>, always on and yours to change, plus any of your own. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent. The four safety rules go in your custom instructions, so they always hold.</td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="200"><img src="assets/routines.png" width="120" alt="Pixel-art calendar with one day marked"><br><strong>routines</strong></td>
-<td>The scheduled tasks in your Claude and ChatGPT apps, recorded in Notion's Skills library next to the skill each one runs: when it runs, where, what you approved ahead of time and when it last ran. Say "check my routines" anytime.</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<td align="center" width="200"><a href="skills/founder-mode/SKILL.md"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>
-<td><a href="skills/founder-mode/SKILL.md">16 working rules</a>. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent. The four safety rules go in your custom instructions, so they always hold. Always on; change any rule on your rules page.</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>starter skills</strong></td>
-<td>Saved in Notion's Skills library, so every app can use them. Drop any you don't want.</td>
+<td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>Skills</strong></td>
+<td>Notion's Skills library, in your guava-hub, so every app can use the same skills. Drop any starter skill you don't want. Its Routines view records the scheduled tasks in your Claude and ChatGPT apps next to the skill each one runs: when it runs, where, what you approved ahead of time and when it last ran. Say "check my routines" anytime.</td>
 </tr>
 <tr>
 <td align="center"><a href="skills/workflow-review/SKILL.md"><img src="assets/workflow-review.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a><br><strong>1. workflow-review</strong></td>

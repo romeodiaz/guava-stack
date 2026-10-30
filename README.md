@@ -5,15 +5,15 @@
 Notion as the shared memory and workspace for Claude and ChatGPT, in their desktop apps and in Claude Code and Codex. Built on Notion's official setup guide for agents, [Set up Notion for your agent](https://developers.notion.com/prompts/setup).
 
 ## Start here
-Paste this into the Claude or ChatGPT desktop app, or into Claude Code or Codex:
+Tell your agent this, in the Claude or ChatGPT desktop app, or in Claude Code or Codex:
 
 ```
-Follow the Start here steps in github.com/romeodiaz/guava-stack
+Set this up https://workwithguava.com/guava-stack
 ```
 
 You'll need a Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan and Notion <img src="assets/notion.svg" width="20" alt="Notion logo">. Notion's free plan works for one person. A team needs a paid Notion plan, since a Free workspace with more than one member stops at 1,000 blocks for good.
 
-**Prefer clicking?** Start from the [guava-hub template](https://guava-hub.notion.site/guava-hub-409a1a34268a810c8951f9a75a9e5c8a): click **Duplicate**, then paste the line above.
+**Prefer clicking?** Start from the [guava-hub template](https://guava-hub.notion.site/guava-hub-409a1a34268a810c8951f9a75a9e5c8a): click **Duplicate**, then tell your agent the line above.
 
 **AI assistants:** follow [skills/guava-stack/SKILL.md](skills/guava-stack/SKILL.md).
 

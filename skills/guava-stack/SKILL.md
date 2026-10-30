@@ -52,7 +52,7 @@ Offer each one with one line on what it does, and do it on a yes. Save into the 
   2. Bring in the scheduled tasks this app already has, as **Check my routines** below says, including Notion's daily check from step 3. When a job's prompt isn't a skill yet, offer to save it as a Notion Skill, the way Notion's step 5 saves skills, so it has a row.
   3. Add this line to the Agent Operating Guide's preferences:
   ```
-  When you set up, change or stop a scheduled task, update its skill's Schedule, Runs on, Scheduler ID and Pre-approved in my Skills library in the same step, and write into its prompt that each run sets Last run when it finishes. When I say "check my routines", follow Check my routines in github.com/romeodiaz/guava-stack (skills/guava-stack/SKILL.md).
+  When you set up, change or stop a scheduled task, update its skill's Schedule, Runs on, Scheduler ID and Pre-approved in my Skills library in the same step, and write into its prompt that each run sets Last run when it finishes. When I say "check my routines", follow Check my routines in the guava-stack skill from github.com/romeodiaz/guava-stack.
   ```
 - **founder-mode:** 16 working rules, so the assistants handle safe work on their own, check the real result and ask before anything costly or permanent. Follow [founder-mode](../founder-mode/SKILL.md).
 - **Starter skills:** save the ones the owner picks as real Notion Skills in the Skills library, with every file they need, as Notion's step 5 (Save Skills) says:

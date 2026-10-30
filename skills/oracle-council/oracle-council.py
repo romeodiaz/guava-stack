@@ -16,7 +16,9 @@ Seats and models come from members.json next to this script. Each answer is save
 DIR/<seat>.md, and DIR/council.json records which model and route served each seat.
 Standard library only. OpenRouter seats read OPENROUTER_API_KEY, then the key saved by
 --login at $XDG_CONFIG_HOME/guava-stack/openrouter-key (default ~/.config/guava-stack/openrouter-key).
-Gemini runs on OpenRouter only, billed per use.
+ChatGPT uses only Codex with --chatgpt yes, or OpenRouter with --chatgpt no.
+Gemini runs on OpenRouter only. OpenRouter is billed per use and only uses providers
+that do not store or train on data.
 """
 import argparse
 import base64
@@ -252,7 +254,8 @@ def run_openrouter(model, effort, prompt, timeout, web):
     if not key:
         raise RuntimeError("not signed in to OpenRouter: run `python3 oracle-council.py --login`, or set OPENROUTER_API_KEY")
     body = {"model": model, "messages": [{"role": "user", "content": prompt}],
-            "reasoning": {"effort": effort}, "stream": True, "usage": {"include": True}}
+            "reasoning": {"effort": effort}, "stream": True, "usage": {"include": True},
+            "provider": {"data_collection": "deny"}}
     if web:
         body["plugins"] = [{"id": "web"}]
     request = urllib.request.Request(
@@ -326,8 +329,9 @@ def routes(seat, args):
     """The (model name, model id, route) attempts for a seat, in order."""
     member = MEMBERS[seat]
     if seat == "chatgpt":
-        openrouter = (member["name"], member["openrouter"], "OpenRouter")
-        return [(member["name"], member["id"], "Codex"), openrouter] if args.chatgpt == "yes" else [openrouter]
+        if args.chatgpt == "yes":
+            return [(member["name"], member["id"], "Codex")]
+        return [(member["name"], member["openrouter"], "OpenRouter")]
     if seat == "claude":
         pick = member[args.claude] if args.claude != "none" else member["openrouter"]
         return [(pick["name"], pick["id"], "OpenRouter" if args.claude == "none" else "Claude Code")]
@@ -350,6 +354,9 @@ def ask(seat, args, prompt, results):
                 answer, cost = run_openrouter(model, effort, prompt, timeout, web)
         except Exception as error:  # one seat failing never stops the others
             failures.append(f"{route}: {str(error).strip() or type(error).__name__}")
+            if route == "Codex":
+                failures[-1] += ("; to run this seat on OpenRouter instead, billed per use, "
+                                 "rerun with --seat chatgpt --chatgpt no once the owner says yes")
             continue
         out.write_text(f"# {name} via {route}\n\n{answer}\n")
         results[seat] = {"ok": True, "model": name, "id": model, "route": route,

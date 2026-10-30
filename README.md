@@ -19,8 +19,8 @@ Notion's guide does the setup: it connects Notion, makes your private Agent Oper
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 
 Then Guava's parts, each with your yes:
-- **guava-hub:** one page in your sidebar holding your context (who you are, your business, your voice), your rules, Notion's Skills library and your Tasks.
-- **Your workspace:** your Tasks, Projects, Meetings and Docs in Notion. It uses the ones you have and makes Notion's own for any that are missing, so every app files work where you keep it. Optionally, your AI logs the bigger work you'd track as tasks, with each task's ID in commits, PRs and hand-offs.
+- **guava-hub:** one page in your sidebar holding your context (who you are, your business, your voice), your rules, Notion's Skills library and your Tasks, if they live in Notion.
+- **Where your work lives:** your AI learns where each kind of work lives, in Notion or the apps you already use, such as Linear, HubSpot or Google Drive, and files work there. Nothing moves, and a Notion database is only offered for work that has no home yet. Optionally, your AI logs the bigger work you'd track as tasks, wherever your tasks live, with each task's ID in commits, PRs and hand-offs.
 - **Routines:** the scheduled tasks in your Claude and ChatGPT apps, recorded in Notion's Skills library next to the skill each one runs: when it runs, where, what you approved ahead of time and when it last ran. Say "check my routines" anytime.
 - **[founder-mode](skills/founder-mode/SKILL.md):** 16 working rules. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent.
 - **Starter skills** in Notion's Skills library:
@@ -34,7 +34,7 @@ Then Guava's parts, each with your yes:
 **Just want oracle-council?** Tell any AI agent that can run commands on your computer: `Set up oracle-council from github.com/romeodiaz/guava-stack (skills/oracle-council)`. One OpenRouter key covers all three seats, with no subscriptions needed. In a chat app with no terminal, it runs as a council by hand: you paste one briefing into two other companies' AI apps.
 
 ## What it changes
-- **In Notion:** what Notion's guide makes, plus the guava-hub pages, any Tasks, Projects, Meetings or Docs database you're missing, the Routines columns and view in the Skills library, the skills you pick, and a few preference lines and a guava-stack settings section in your Agent Operating Guide, each with your yes.
+- **In Notion:** what Notion's guide makes, plus the guava-hub pages, a Notion database only for a kind of work that has no home yet, the Routines columns and view in the Skills library, the skills you pick, and a few preference lines and a guava-stack settings section in your Agent Operating Guide, each with your yes.
 - **On your computer:** the custom instructions at the end of `~/.claude/CLAUDE.md` and Codex's global `AGENTS.md` (in `~/.codex`), a Notion connection in Claude Code or Codex if there isn't one yet, and with oracle-council, the OpenRouter key its browser sign-in makes, in `~/.config/guava-stack/openrouter-key`.
 - **In the desktop apps:** the custom instructions you paste into Claude's or ChatGPT's settings.
 

@@ -13,6 +13,8 @@ Follow the Start here steps in github.com/romeodiaz/guava-stack
 
 You'll need a Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> or ChatGPT <img src="assets/chatgpt.svg" width="20" alt="ChatGPT logo"> plan and Notion <img src="assets/notion.svg" width="20" alt="Notion logo">. Notion's free plan works for one person. A team needs a paid Notion plan, since a Free workspace with more than one member stops at 1,000 blocks for good.
 
+**Prefer clicking?** Start from the [guava-hub template](https://guava-hub.notion.site/guava-hub-409a1a34268a810c8951f9a75a9e5c8a): click **Duplicate**, then paste the line above.
+
 **AI assistants:** follow [skills/guava-stack/SKILL.md](skills/guava-stack/SKILL.md).
 
 ## What it does
@@ -20,7 +22,7 @@ Notion's guide does the setup: it connects Notion, makes your private Agent Oper
 
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 
-Then Guava's parts, each with your yes:
+Then Guava's parts, each with your yes, except founder-mode, which is always on and yours to change:
 
 <table>
 <tr>
@@ -29,11 +31,11 @@ Then Guava's parts, each with your yes:
 </tr>
 <tr>
 <td align="center"><img src="assets/logo.png" width="80" alt="Guava logo"><br><strong>context</strong></td>
-<td>Your business and your voice, drafted from your website, with a link for each fact. Who you are stays on Notion's own About page.</td>
+<td>Your work, who it serves and your voice, drafted from your website or LinkedIn, with a link for each fact. Who you are stays on Notion's own About page.</td>
 </tr>
 <tr>
 <td align="center"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
-<td>Your own rules and the rules skills you turn on, such as founder-mode, word for word.</td>
+<td>Your working preferences and the rules skills you turn on, such as founder-mode, word for word.</td>
 </tr>
 </table>
 
@@ -54,7 +56,7 @@ Then Guava's parts, each with your yes:
 <table>
 <tr>
 <td align="center" width="200"><a href="skills/founder-mode/SKILL.md"><img src="assets/founder-mode.png" width="120" alt="Pixel-art speaker at a microphone"></a><br><strong>founder-mode</strong></td>
-<td><a href="skills/founder-mode/SKILL.md">16 working rules</a>. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent.</td>
+<td><a href="skills/founder-mode/SKILL.md">16 working rules</a>. Your AI does the safe work itself, checks the real result and asks before anything costly or permanent. The four safety rules go in your custom instructions, so they always hold. Always on; change any rule on your rules page.</td>
 </tr>
 </table>
 

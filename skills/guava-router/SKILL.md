@@ -23,7 +23,7 @@ Routing runs only in Claude Code or Codex on the owner's computer. In the deskto
 - Re-read the model lines right before each hand-off. Quick replies and lookups stay with you.
 - If this session already runs on that slot's model at its effort, do the work yourself. Otherwise hand it off with the slot's tool, model ID and effort, passing both, since each tool otherwise falls back to its own default. Run it in the folder it should work in, and give it only the access the job needs:
   - Claude Code: `claude -p --model <ID> --effort <effort> --permission-mode acceptEdits "<task>" < /dev/null` for work that writes files, or `--permission-mode plan` for reading and reviewing. Add any commands the job must run with `--allowedTools`, such as `--allowedTools "Bash(npm test:*)"`.
-  - Codex: `codex exec -m <ID> -c model_reasoning_effort=<effort> -s workspace-write --skip-git-repo-check "<task>" < /dev/null` for work that writes files in this folder, or `-s read-only` for reading and reviewing.
+  - Codex: `codex exec -m <ID> -c model_reasoning_effort=<effort> -s workspace-write --skip-git-repo-check "<task>" < /dev/null` for work that writes files in this folder, or `-s read-only` for reading and reviewing. `workspace-write` has no network, so when the job must reach the internet, such as `npm install`, `gh` or `curl`, also pass `-c sandbox_workspace_write.network_access=true`.
 
   Without `< /dev/null`, either tool can wait for input and hang.
 - Give each hand-off the goal, what's done, what to check and where to write the result. When the job reads Notion databases, tell it to use `notion-fetch` or a saved view (`notion-query-data-sources` in view mode), not SQL: on Free and Plus plans Notion meters SQL per workspace, and views have no limit.

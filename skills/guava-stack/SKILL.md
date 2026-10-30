@@ -26,7 +26,7 @@ Read Notion databases with `notion-fetch` or through a saved view (`notion-query
 
    Guava adds two things at the end of Notion's text, inside the same block, so the owner pastes once. First this line:
    ```
-   Also use my guava-hub in Notion, which my Agent Operating Guide links: read its context page before working for me, follow its rules page as my working preferences, and in Claude Code or Codex route work with my guava-router Skill.
+   Also use my guava-hub in Notion, which my Agent Operating Guide links: read its context and rules pages in the same step as the guide, follow the rules page as my working preferences, and in Claude Code or Codex route work with my guava-router Skill.
    ```
    Then founder-mode's rules 1 to 4, the block under **Never bend these** in [founder-mode](../founder-mode/SKILL.md), word for word. They're safety rules, so they go here, where they hold whatever any page says, even when Notion is down; the rest of founder-mode goes on the rules page.
    In Claude Code and Codex, show the owner the exact text and the file, and save it yourself after their yes, as Notion's guide offers. Add to what's there and keep the owner's other lines. Never put it in a project's `CLAUDE.md` or `AGENTS.md`: those live in code repositories, and Notion's guide keeps personal guidance out of them. Then have the owner start a new session and ask "Where does my Agent Operating Guide live?": it passes if the answer gives the guide's link without searching.

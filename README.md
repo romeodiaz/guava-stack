@@ -22,7 +22,18 @@ Notion's guide does the setup: it connects Notion, makes your private Agent Oper
 
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 
-Then Guava's parts, on one short plan and one yes. founder-mode is always on and yours to change:
+Here's what you end up with in your Notion. Notion's guide makes the first two, and guava-stack adds the work map, router settings and optional task log to your Agent Operating Guide. Guava's parts come on one short plan and one yes, and founder-mode is always on and yours to change:
+
+<table>
+<tr>
+<td align="center" width="200"><span style="font-size:64px">🧭</span><br><strong>Agent Operating Guide</strong></td>
+<td>Your private map for every agent: where each kind of work lives, in Notion or the apps you already use, such as Linear, HubSpot or Google Drive, one line for each place, plus your preferences and router settings. Your AI files work where the map says. Nothing moves, and a Notion database is only offered for work that has no home yet. Optionally, your AI logs the bigger work you'd track as tasks, wherever your tasks live, with each task's ID in commits, PRs and hand-offs.</td>
+</tr>
+<tr>
+<td align="center"><span style="font-size:64px">💭</span><br><strong>Memories</strong></td>
+<td>What your assistants learn about you, shared across every app: a short About page and one page for each topic. It starts with the memories your apps can already see, and you can read and edit all of it.</td>
+</tr>
+</table>
 
 <table>
 <tr>
@@ -36,13 +47,6 @@ Then Guava's parts, on one short plan and one yes. founder-mode is always on and
 <tr>
 <td align="center"><img src="assets/founder-mode.png" width="80" alt="Pixel-art speaker at a microphone"><br><strong>rules</strong></td>
 <td>Your working preferences and the rules skills you turn on, such as founder-mode, word for word.</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<td align="center" width="200"><span style="font-size:64px">🗺️</span><br><strong>where your work lives</strong></td>
-<td>Your AI learns where each kind of work lives, in Notion or the apps you already use, such as Linear, HubSpot or Google Drive, and files work there. The map lives in your Agent Operating Guide, one line for each place. Nothing moves, and a Notion database is only offered for work that has no home yet. Optionally, your AI logs the bigger work you'd track as tasks, wherever your tasks live, with each task's ID in commits, PRs and hand-offs.</td>
 </tr>
 </table>
 

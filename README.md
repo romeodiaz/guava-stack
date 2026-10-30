@@ -88,7 +88,7 @@ Then Guava's parts, each with your yes:
 <td>In Claude Code or Codex, work is split like a kitchen:<br><img src="assets/head-chef.png" width="50" alt="Pixel-art head chef"> the <strong>head-chef</strong> (Claude Opus 5.5) plans, writes and reviews<br><img src="assets/line-cook.png" width="50" alt="Pixel-art line cook"> the <strong>line-cook</strong> (GPT-6.1 Sol) does the bulk work and coding</td>
 </tr>
 <tr>
-<td align="center"><a href="skills/oracle-research/SKILL.md"><span style="font-size:64px">🔎</span></a><br><strong>7. oracle-research</strong></td>
+<td align="center"><a href="skills/oracle-research/SKILL.md"><img src="assets/oracle-research.png" width="80" alt="Pixel-art hooded, white-bearded sage holding a coral crystal ball"></a><br><strong>7. oracle-research</strong></td>
 <td>What people and the web have said about a topic in the last 30 days, as a short cited answer in the chat. Gemini 4 Argon searches Reddit, Hacker News, X, YouTube and the web through OpenRouter's Exa search, ranked by relevance and engagement, with only its findings coming back to your computer. About $0.30 a run.</td>
 </tr>
 </table>

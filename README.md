@@ -89,7 +89,7 @@ Then Guava's parts, each with your yes:
 </tr>
 <tr>
 <td align="center"><a href="skills/oracle-research/SKILL.md"><img src="assets/oracle-research.png" width="80" alt="Pixel-art hooded, white-bearded sage holding a coral crystal ball"></a><br><strong>7. oracle-research</strong></td>
-<td>What people and the web have said about a topic in the last 30 days, as a short cited answer in the chat. Gemini 4 Argon searches Reddit, Hacker News, X, YouTube and the web through OpenRouter's Exa search, ranked by relevance and engagement, with only its findings coming back to your computer. About $0.30 a run.</td>
+<td>What people and the web have said about a topic in the last 30 days, as a short cited answer in the chat. Gemini 4 Argon searches Reddit, Hacker News, YouTube and the web through OpenRouter's Perplexity and Exa search, ranked by relevance and engagement, with only its findings coming back to your computer. About $0.30 a run.</td>
 </tr>
 </table>
 

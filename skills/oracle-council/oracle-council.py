@@ -14,6 +14,7 @@ can be walked through what's missing.
 
 Seats and models come from members.json next to this script. Each answer is saved as
 DIR/<seat>.md, and DIR/council.json records which model and route served each seat.
+DIR/blind holds shuffled, unlabeled answers and a private letter-to-seat key.json.
 Standard library only. OpenRouter seats read OPENROUTER_API_KEY, then the key saved by
 --login at $XDG_CONFIG_HOME/guava-stack/openrouter-key (default ~/.config/guava-stack/openrouter-key).
 ChatGPT uses only Codex with --chatgpt yes, or OpenRouter with --chatgpt no.
@@ -29,7 +30,9 @@ import hashlib
 import http.server
 import json
 import os
+import random
 import secrets
+import shutil
 import subprocess
 import sys
 import threading
@@ -366,6 +369,25 @@ def ask(seat, args, prompt, results):
     results[seat] = {"ok": False, "failures": failures}
 
 
+def write_blind(out, results):
+    blind = out / "blind"
+    if blind.exists():
+        shutil.rmtree(blind)
+    blind.mkdir()
+    seats = [seat for seat in MEMBERS if results.get(seat, {}).get("ok") and (out / f"{seat}.md").is_file()]
+    random.SystemRandom().shuffle(seats)
+    key = {}
+    for letter, seat in zip("ABC", seats):
+        answer = (out / f"{seat}.md").read_text()
+        first, _, rest = answer.partition("\n")
+        result = results[seat]
+        if first == f"# {result['model']} via {result['route']}":
+            answer = rest
+        (blind / f"{letter}.md").write_text(f"# Answer {letter}\n{answer}")
+        key[letter] = seat
+    (blind / "key.json").write_text(json.dumps(key, indent=2) + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true", help="show which CLIs are installed and signed in, and which keys are set")
@@ -415,9 +437,11 @@ def main():
         thread.join()
     log = args.out / "council.json"
     earlier = json.loads(log.read_text())["results"] if log.exists() else {}
-    report = {**plan, "results": {**earlier, **results}}
+    blind = str(args.out / "blind")
+    report = {**plan, "results": {**earlier, **results}, "blind": blind}
     log.write_text(json.dumps(report, indent=2) + "\n")
-    print(json.dumps(results, indent=2))
+    write_blind(args.out, report["results"])
+    print(json.dumps({**results, "blind": blind}, indent=2))
     sys.exit(0 if any(r["ok"] for r in results.values()) else 1)
 
 

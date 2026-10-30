@@ -31,6 +31,8 @@ Then Guava's parts, each with your yes:
   5. [oracle-council](skills/oracle-council/SKILL.md): three top AIs from three companies answer one hard question at once, merged into one verdict. Gemini 4 Argon runs on OpenRouter, billed per use.
   6. [guava-router](skills/guava-router/SKILL.md): in Claude Code or Codex, the head-chef (Claude Opus 5.5) plans, writes and reviews, and the line-cook (GPT-6.1 Sol) does the bulk work and coding.
 
+**Just want oracle-council?** Tell any AI agent that can run commands on your computer: `Set up oracle-council from github.com/romeodiaz/guava-stack (skills/oracle-council)`. One OpenRouter key covers all three seats, with no subscriptions needed. In a chat app with no terminal, it runs as a council by hand: you paste one briefing into two other companies' AI apps.
+
 ## What it changes
 - **In Notion:** what Notion's guide makes, plus the guava-hub pages, any Tasks, Projects, Meetings or Docs database you're missing, the Routines columns and view in the Skills library, the skills you pick, and a few preference lines and a guava-stack settings section in your Agent Operating Guide, each with your yes.
 - **On your computer:** the custom instructions at the end of `~/.claude/CLAUDE.md` and Codex's global `AGENTS.md` (in `~/.codex`), a Notion connection in Claude Code or Codex if there isn't one yet, and with oracle-council, the OpenRouter key its browser sign-in makes, in `~/.config/guava-stack/openrouter-key`.

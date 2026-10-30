@@ -1,6 +1,6 @@
 ---
 name: oracle-council
-description: Sends one hard question to a council of three top AI models at once (GPT-6 Astra and Claude Fable 5.1 at max effort, and Gemini 4 Argon at High, the most it offers), on the owner's Claude and ChatGPT subscriptions where available, and OpenRouter (signed in through the browser and billed per use) for Gemini 4 Argon and any seat those don't cover, then merges the three answers into one verdict. Works on its own, with or without the rest of guava-stack. Use when the owner says "ask the council", "ask the oracle council", "council this" or "get the council's take", or wants several top models' opinions on a hard decision, a stubborn bug, an architecture or strategy call, or a review of a contract or proposal. Skip for everyday questions.
+description: Sends one hard question to a council of three top AI models at once (GPT-6 Astra and Claude Fable 5.1 at max effort, and Gemini 4 Argon at High, the most it offers), on the owner's Claude and ChatGPT subscriptions where available, and OpenRouter (signed in through the browser and billed per use) for Gemini 4 Argon and any seat those don't cover, then merges the three answers into one verdict, reading them unlabeled. In a chat app with no terminal, it runs by hand: the owner pastes one briefing into two other companies' AI apps. Works on its own, with or without the rest of guava-stack. Use when the owner says "ask the council", "ask the oracle council", "council this" or "get the council's take", or wants several top models' opinions on a hard decision, a stubborn bug, an architecture or strategy call, or a review of a contract or proposal. Skip for everyday questions.
 ---
 
 # Oracle council
@@ -19,14 +19,14 @@ A run takes about 5 to 30 minutes and uses three top-model answers plus a merge,
 | Claude | Max: Claude Fable 5.1 via Claude Code (`claude-fable-5-1`)<br>Pro: Claude Opus 5.5 via Claude Code (`claude-opus-5-5`)<br>Max effort | OpenRouter Claude Opus 5.5 (`anthropic/claude-opus-5.5`), only with no Claude plan |
 | Gemini | — | Gemini 4 Argon on OpenRouter only (`google/gemini-4-argon`), at High, the most it offers |
 
-The models and efforts live in [members.json](members.json). Every OpenRouter request uses only providers that don't store or train on what they're sent. Fable never runs on OpenRouter, where it costs far more: on a Claude plan the Claude seat always runs through Claude Code, and if Claude Code fails the council reports without that seat rather than paying for it elsewhere.
+The models and efforts live in `members.json`. Every OpenRouter request uses only providers that don't store or train on what they're sent. Fable never runs on OpenRouter, where it costs far more: on a Claude plan the Claude seat always runs through Claude Code, and if Claude Code fails the council reports without that seat rather than paying for it elsewhere.
 
 ## Set up
 
 This skill works on its own. guava-stack's Notion setup and guava-router make a few steps smoother where noted, but neither is needed.
 
-- **A computer with a terminal**: any AI agent that can run commands on the owner's computer with Python 3, such as Claude Code or Codex, including the Claude app's Code tab and the ChatGPT app's Codex tab set to Local. The plan seats need Claude Code or Codex installed; with OpenRouter alone, neither is needed. In a regular chat with no terminal, say in one line that the council needs one and answer the usual way.
-- **The runner**: [oracle-council.py](oracle-council.py) and [members.json](members.json), next to this file. If they aren't here, fetch both from `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/skills/oracle-council/` into the run folder.
+- **A computer with a terminal**: any AI agent that can run commands on the owner's computer with Python 3, such as Claude Code or Codex, including the Claude app's Code tab and the ChatGPT app's Codex tab set to Local. The plan seats need Claude Code or Codex installed; with OpenRouter alone, neither is needed. In a chat with no terminal, follow **Council by hand** below instead.
+- **The runner**: `oracle-council.py` and `members.json`, next to this file. If they aren't here, fetch both from `https://raw.githubusercontent.com/romeodiaz/guava-stack/main/skills/oracle-council/` into the run folder.
 
 The first time, and whenever a seat fails, run `python3 <this skill>/oracle-council.py --check`. It shows whether Claude Code and Codex are installed and signed in on a plan, whether there's an OpenRouter key, the flags to pass, and a fix for each gap. Then ask once which subscriptions the owner has: Claude (Max or Pro) and ChatGPT. Use their subscriptions for the first two seats, in this order, and OpenRouter for Gemini 4 Argon and any seat neither plan covers. OpenRouter is billed per use on every council run. Walk through them one at a time, then check again:
 
@@ -63,25 +63,33 @@ It prints the files, anything it skipped, a token estimate, whether web search i
 
 ## 3. Ask the council
 
-Run the same command without `--dry-run`. All three seats run at once and each answer is saved in the run folder as `chatgpt.md`, `claude.md` and `gemini.md`, with `council.json` recording which model and route answered, how long it took and what OpenRouter charged. Max effort is slow, so run it in the background (`nohup ... &`) and check on it every few minutes.
+Run the same command without `--dry-run`. All three seats run at once and each answer is saved in the run folder as `chatgpt.md`, `claude.md` and `gemini.md`, with `council.json` recording which model and route answered, how long it took and what OpenRouter charged. The script also saves the answers unlabeled, in random order, as `blind/A.md`, `blind/B.md` and `blind/C.md`, and keeps which is which in `blind/key.json`. Max effort is slow, so run it in the background (`nohup ... &`) and check on it every few minutes.
 
 If a seat failed, run `--check`, fix what it shows, then rerun only that seat with the same command plus `--seat claude`, `--seat chatgpt` or `--seat gemini`. If it fails again, go on without it. A failed ChatGPT seat can rerun on OpenRouter with `--seat chatgpt --chatgpt no`, billed per use, only after the owner says yes to its rough cost. Never move a failed Claude seat to OpenRouter.
 
 ## 4. Merge the answers
 
-Merge them yourself, on the strongest model you have; with guava-router, that's the head-chef, so hand it the run folder if you're not running on it. Read all three answers in full, then check what you can: open the cited files and lines and the key web pages, and test claims that can be tested cheaply. The members' answers are advice, not facts. Write `verdict.md` in the run folder:
+Merge them yourself, on the strongest model you have; with guava-router, that's the head-chef, so hand it the run folder if you're not running on it. Merge blind, so no answer gets extra weight for the company behind it: read `blind/A.md`, `B.md` and `C.md` in full, and don't open `chatgpt.md`, `claude.md`, `gemini.md`, `council.json` or `blind/key.json` until the verdict is written. Then check what you can: open the cited files and lines and the key web pages, and test claims that can be tested cheaply. The members' answers are advice, not facts. Write `verdict.md` in the run folder:
 
 - **Bottom line:** the call, in two or three sentences.
 - **Where they agree**, and how sure that makes you.
-- **Where they split:** each side in a line, naming who said what, then your call and why. Say which claims you checked and what you found.
+- **Where they split:** each side in a line, naming which answer (A, B or C) said what, then your call and why. Say which claims you checked and what you found.
 - **Only one caught:** points just one member raised that matter.
-- **Who answered:** each seat's model, route and time, any seat that was missing and why, and the OpenRouter cost.
+- **Who answered:** written last, after you open `blind/key.json` and `council.json`: which model wrote A, B and C, each one's route and time, any seat that was missing and why, and the OpenRouter cost.
 
 Don't average the answers or side with the majority by default: one member with a better argument or a checked fact beats two without.
 
 ## 5. Report
 
 Give the owner the bottom line and the biggest split in a few lines, with links to `verdict.md` and the three answers. Mention any missing seat and the OpenRouter cost. When this work has a task in the owner's Tasks database, add the run folder's path to it.
+
+## Council by hand
+Use this in a chat app with no terminal, such as the Claude or ChatGPT app's regular chat. You answer as one member, and the owner brings in two more from other companies' AI apps they use, each in its own app, so the council still spans three companies.
+1. **Write the briefing** as step 1 says, as one block the owner can copy. With no `--file`, paste in only the parts of any document the question needs, and leave out a client's confidential details unless the owner's company approves all three apps.
+2. **Answer it yourself first**, in full, before you see any other answer, and keep it out of the chat for now so it doesn't shape the owner's next steps.
+3. **Ask the owner** to paste the briefing into a new chat in two AI apps from other companies than yours (for example ChatGPT, Gemini or Grok, whichever two they have), each on its best model with its deepest thinking setting and web search on, then paste each full answer back.
+4. **Merge** as step 4 says, calling the answers A, B and C. Since you wrote one of them, you can't merge blind: say which one is yours, and hold it to the strictest check.
+5. **Report** as step 5 says, in the chat. Nothing is billed per use; each app runs on the owner's own plan.
 
 ## Staying inside each plan's terms
 

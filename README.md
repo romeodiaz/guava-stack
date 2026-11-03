@@ -18,7 +18,7 @@ You'll need a Claude <img src="assets/claude.svg" width="20" alt="Claude logo"> 
 **AI assistants:** follow [skills/guava-stack/SKILL.md](skills/guava-stack/SKILL.md).
 
 ## What it does
-Notion's guide does the setup: it connects Notion, makes your private Agent Operating Guide (where your things live, your preferences and a version history), gives every app the same custom instructions, offers a daily memory and setup check, and brings in the memories, documents and skills you already have.
+Notion's guide does the setup: it connects Notion, makes your private Agent Operating Guide (where your things live, your preferences and a version history), gives every app the same custom instructions, offers a daily memory and setup check, brings in the memories, documents and skills you already have, and ends by offering the Notion app.
 
 guava-stack adds what Notion's guide leaves to each app: connecting Claude Code and Codex to Notion, saving the same custom instructions where they read them, and adding your other apps, so all four read the same Notion.
 

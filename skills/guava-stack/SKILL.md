@@ -3,7 +3,7 @@ name: guava-stack
 description: Makes Notion the owner's shared memory and workspace in Claude and ChatGPT, in their desktop apps and in Claude Code and Codex, by running Notion's official setup guide for agents, adding the steps it leaves to each app, then Guava's parts (a guava-hub with the owner's context and rules, a map of where their work lives, in Notion or the apps they already use, their scheduled routines recorded in Notion's Skills library, founder-mode, and seven starter skills, the head-chef and line-cook router among them). Use when the owner says "set me up", "set this up https://workwithguava.com/guava-stack", "Follow the Start here steps in github.com/romeodiaz/guava-stack", "check my routines", "update guava-stack" or "uninstall guava-stack".
 ---
 
-# guava-stack v0.2.1
+# guava-stack v0.2.2
 
 guava-stack is a small add-on to Notion's official setup guide for agents, [Set up Notion for your agent](https://developers.notion.com/prompts/setup.md). Notion's guide does the setup. This skill adds what the guide leaves to each app (how Claude Code and Codex connect to Notion, where they keep the custom instructions, and how the owner's other apps join), then Guava's parts on top.
 
@@ -13,7 +13,7 @@ Read Notion databases with `notion-fetch` or through a saved view (`notion-query
 
 ## Set up
 1. **Run Notion's guide.** Read it in full, then run its steps in order, following its rules for talking with the user, and use steps 2 and 3 below where it leaves the details to your app. Where these steps and Notion's guide cover the same thing, follow Notion's guide. This guava-stack is tested with Notion's version 0.0.6: if the guide shows a newer version, run 0.0.6 from https://developers.notion.com/prompts/setup/versions/0.0.6.md and tell the owner once that Notion has a newer one. If that link doesn't load, run the newer version and tell the owner guava-stack isn't tested with it yet. The steps below name Notion's steps by their 0.0.6 number and name; if a version numbers them differently, go by the name and what the step does.
-   - **The setup card** (Notion's Choose how much to set up, right after step 1): guava-stack always runs the shared context layer, so don't show the card. Pick **Shared context layer** for the owner and tell them in one line, then do the rest of what Notion's guide says for that choice: save it as the **Notion agent setup choice** memory (update it if it says Basic setup) and treat it as the approval for Notion's private steps. Guava's parts still get their one plan and one yes.
+   - **The setup card** (Notion's Choose how much to set up, right after step 1): guava-stack always runs the shared context layer, so don't show the card. Pick **Shared context layer** for the owner and tell them in one line, then do the rest of what Notion's guide says for that choice: save it as the **Notion agent setup choice** memory and treat it as the approval for Notion's private steps. Guava's parts still get their one plan and one yes.
 2. **Connect Notion** (Notion's step 1, Set up the Notion MCP), in the app you're running in:
    - Claude desktop app: "Open https://claude.ai/customize/connectors?q=notion and click **Connect** next to Notion," then start a new chat if Notion's tools don't show up.
    - ChatGPT desktop app: "Open https://chatgpt.com/plugins?search=notion and click **+** next to Notion," then start a new chat if Notion doesn't show up.

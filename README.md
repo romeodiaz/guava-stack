@@ -53,7 +53,7 @@ Here's what you end up with in your Notion. Notion's guide makes the first two, 
 <table>
 <tr>
 <td align="center" width="200"><img src="assets/skills.png" width="120" alt="Pixel-art stack of books"><br><strong>Skills</strong></td>
-<td>Notion's Skills library, in your guava-hub, so every app can use the same skills. Drop any starter skill you don't want. Its Routines view records the scheduled tasks in your Claude and ChatGPT apps next to the skill each one runs: when it runs, where, what you approved ahead of time and when it last ran. Say "check my routines" anytime.</td>
+<td>Notion's Skills library, in your guava-hub, so every app can use the same skills. Drop any starter skill you don't want. Its Routines view records your scheduled jobs next to the skill each one runs: when it runs, where, what you approved ahead of time and when it last ran. Jobs run in the cloud when they can (Claude Code routines or ChatGPT scheduled tasks), so they keep running when your computer is off. Say "check my routines" anytime.</td>
 </tr>
 <tr>
 <td align="center"><a href="skills/workflow-review/SKILL.md"><img src="assets/workflow-review.png" width="80" alt="Pixel-art document with a flowchart under a magnifying glass"></a><br><strong>1. workflow-review</strong></td>
